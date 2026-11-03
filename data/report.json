@@ -1,0 +1,198 @@
+{
+ "meta": {
+  "generated_at": "2026-11-03T08:36:31Z",
+  "osm_timestamp": "2026-10-31T03:00:38Z",
+  "source": "OpenStreetMap contributors (ODbL)",
+  "attribution": {
+   "text": "© OpenStreetMap contributors",
+   "licence": "Open Database License (ODbL) 1.0",
+   "url": "https://www.openstreetmap.org/copyright",
+   "required": "Attribution must stay visible wherever this data is shown."
+  },
+  "provenance": {
+   "method": "Overpass API query on the NZ relation, tags copied verbatim",
+   "osm_query": "[out:json][timeout:180];\narea[\"ISO3166-1\"=\"NZ\"]->.a;\n(\n  nwr[\"amenity\"=\"place_of_worship\"][\"religion\"=\"muslim\"](area.a);\n  nwr[\"amenity\"=\"place_of_worship\"][\"religion\"=\"islamic\"](area.a);\n  nwr[\"building\"=\"mosque\"](area.a);\n  nwr[\"community_centre\"=\"muslim\"](area.a);\n  nwr[\"name\"~\"[Mm]asjid|[Mm]osque|[Mm]usall?ah|[Ii]slamic [Cc]ent\",i](area.a);\n  nwr[\"religion\"=\"muslim\"][\"name\"](area.a);\n);\nout center tags;",
+   "per_record": "every record carries sources[0].url pointing at its OSM element",
+   "human_verified": "verified/verified_by/jummah_times are only set by the app's verification flow"
+  },
+  "count": 118
+ },
+ "counts": {
+  "total": 118,
+  "skipped_irrelevant": 3,
+  "overrides_applied": 0,
+  "with_address": 105,
+  "with_contact": 73,
+  "by_region": {
+   "Auckland": 64,
+   "Wellington": 14,
+   "Canterbury": 10,
+   "Waikato": 7,
+   "Manawatu-Whanganui": 6,
+   "Otago": 4,
+   "Southland": 3,
+   "Bay of Plenty": 2,
+   "Hawke's Bay": 2,
+   "Taranaki": 2,
+   "Gisborne": 1,
+   "Marlborough": 1,
+   "Nelson": 1,
+   "Northland": 1
+  }
+ },
+ "issues": {
+  "missing_address": [
+   "node/1457541855",
+   "node/2993072656",
+   "relation/15912197",
+   "node/10742555935",
+   "way/868248409",
+   "way/868248411",
+   "way/421566349",
+   "way/1247590821",
+   "way/914921474",
+   "way/219766071",
+   "node/11967853485",
+   "node/7207101397",
+   "node/9989548739"
+  ],
+  "missing_contact": [
+   "way/314041410",
+   "node/12501069621",
+   "node/12501045626",
+   "way/1085592994",
+   "node/13667982402",
+   "node/1457541855",
+   "node/2993072656",
+   "relation/15912197",
+   "way/330474740",
+   "node/13846845915",
+   "way/330338372",
+   "way/339922286",
+   "way/330200951",
+   "node/10742555935",
+   "node/13704668603",
+   "way/188563031",
+   "way/425040599",
+   "node/12501069623",
+   "way/366051031",
+   "way/868248409",
+   "way/868248411",
+   "way/975206723",
+   "way/421566349",
+   "way/340098308",
+   "way/369951850",
+   "way/375662574",
+   "node/12508326802",
+   "way/102298567",
+   "way/1247590821",
+   "way/914921474",
+   "node/12501085509",
+   "way/778740428",
+   "way/370869018",
+   "way/1108456122",
+   "way/381844761",
+   "node/11967853485",
+   "way/383387925",
+   "way/371298256",
+   "node/7207101397",
+   "way/376316428",
+   "node/9989548739",
+   "way/1072123016",
+   "way/991808960",
+   "way/1023438859",
+   "node/12501069634"
+  ],
+  "needs_review": [],
+  "duplicate_candidates": [
+   {
+    "a": "node/5417500955",
+    "b": "node/12501045625",
+    "a_name": "Al Hijaz Masjid",
+    "b_name": "Al Hijaz Masjid",
+    "distance_m": 5,
+    "reason": "same name, same phone, 5 m apart"
+   },
+   {
+    "a": "node/1457541855",
+    "b": "node/2993072656",
+    "a_name": "Avondale Islamic Centre",
+    "b_name": "Avondale Islamic Centre",
+    "distance_m": 59,
+    "reason": "same name, 59 m apart"
+   },
+   {
+    "a": "node/1457541855",
+    "b": "way/295577814",
+    "a_name": "Avondale Islamic Centre",
+    "b_name": "Avondale Islamic Centre",
+    "distance_m": 33,
+    "reason": "same name, 33 m apart"
+   },
+   {
+    "a": "node/1457541855",
+    "b": "relation/15912197",
+    "a_name": "Avondale Islamic Centre",
+    "b_name": "Avondale Islamic Centre",
+    "distance_m": 25,
+    "reason": "same name, 25 m apart"
+   },
+   {
+    "a": "node/2993072656",
+    "b": "way/295577814",
+    "a_name": "Avondale Islamic Centre",
+    "b_name": "Avondale Islamic Centre",
+    "distance_m": 61,
+    "reason": "same name, 61 m apart"
+   },
+   {
+    "a": "node/2993072656",
+    "b": "relation/15912197",
+    "a_name": "Avondale Islamic Centre",
+    "b_name": "Avondale Islamic Centre",
+    "distance_m": 33,
+    "reason": "same name, 33 m apart"
+   },
+   {
+    "a": "way/295577814",
+    "b": "relation/15912197",
+    "a_name": "Avondale Islamic Centre",
+    "b_name": "Avondale Islamic Centre",
+    "distance_m": 37,
+    "reason": "same name, 37 m apart"
+   },
+   {
+    "a": "way/952209414",
+    "b": "node/12523108401",
+    "a_name": "Porchester Islamic Centre",
+    "b_name": "Porchester Islamic Centre - Masjid",
+    "distance_m": 56,
+    "reason": "same name, same phone, 56 m apart"
+   },
+   {
+    "a": "way/868248409",
+    "b": "way/868248411",
+    "a_name": "Unnamed Islamic place",
+    "b_name": "Unnamed Islamic place",
+    "distance_m": 52,
+    "reason": "same name, 52 m apart"
+   },
+   {
+    "a": "node/12508327102",
+    "b": "node/11967853485",
+    "a_name": "Queenstown Islamic Centre - Masjid",
+    "b_name": "Queenstown Masjid",
+    "distance_m": 38,
+    "reason": "same name, 38 m apart"
+   },
+   {
+    "a": "node/7207101397",
+    "b": "node/12501085619",
+    "a_name": "Aman Islamic Centre",
+    "b_name": "Aman Islamic Centre - Masjid",
+    "distance_m": 42,
+    "reason": "same name, 42 m apart"
+   }
+  ]
+ }
+}

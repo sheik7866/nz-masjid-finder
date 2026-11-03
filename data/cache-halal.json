@@ -1,0 +1,4148 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-03T08:07:23Z",
+    "timestamp_areas_base": "2026-11-03T04:24:56Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 279428355,
+  "lat": -41.2878945,
+  "lon": 174.7752506,
+  "tags": {
+    "addr:city": "Wellington Central, Wellington",
+    "addr:floor": "G",
+    "addr:housenumber": "68-70",
+    "addr:postcode": "6011",
+    "addr:street": "Willis Street",
+    "air_conditioning": "yes",
+    "branch": "Willis Street Metro",
+    "brand": "New World",
+    "brand:wikidata": "Q7012488",
+    "brand:wikipedia": "en:New World (supermarket)",
+    "check_date": "2025-11-18",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:meat": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "0",
+    "name": "New World",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa-Su 08:00-22:00",
+    "operator": "New World",
+    "organic": "yes",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+64 4 471 6580",
+    "shop": "supermarket",
+    "source": "local knowledge",
+    "stroller": "yes",
+    "toilets": "no",
+    "toilets:wheelchair": "no",
+    "website": "https://newworld.co.nz",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 468079665,
+  "lat": -37.0219138,
+  "lon": 174.8948155,
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Station Road",
+    "addr:suburb": "Manurewa",
+    "amenity": "fast_food",
+    "brand": "Beach Pizza",
+    "cuisine": "pizza;kebab",
+    "diet:halal": "yes",
+    "name": "Beach Pizza",
+    "phone": "+64 9 267 9817",
+    "ref:linz:address_id": "1229136",
+    "takeaway": "yes",
+    "website": "https://beachpizza.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 993412136,
+  "lat": -36.8580703,
+  "lon": 174.7606046,
+  "tags": {
+    "addr:housenumber": "150",
+    "addr:street": "Karangahape Road",
+    "addr:suburb": "Auckland Central",
+    "amenity": "fast_food",
+    "building:flats": "32",
+    "cuisine": "mexican",
+    "diet:halal": "yes",
+    "name": "Mexicali Fresh",
+    "opening_hours": "Sa-Th 10:00-21:00; Fr 10:00-22:00",
+    "ref:linz:address_id": "stack(1123845,2040083,2040086-2040092,2040095-2040117)",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1015095964,
+  "lat": -36.8576226,
+  "lon": 174.7594717,
+  "tags": {
+    "addr:housenumber": "217",
+    "addr:street": "Karangahape Road",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "diet:halal": "yes",
+    "name": "Little Turkish Cafe",
+    "opening_hours": "Mo, Tu, Su 10:00-03:30; We, Th 10:00-05:00; Fr, Sa 10:00-07:00",
+    "phone": "+64 9 302 0353",
+    "ref:linz:address_id": "1947650",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1603164800,
+  "lat": -36.8486588,
+  "lon": 174.7647089,
+  "tags": {
+    "addr:housenumber": "19-25",
+    "addr:street": "Victoria Street West",
+    "branch": "Auckland Victoria Street West",
+    "brand": "Woolworths",
+    "brand:wikidata": "Q5176845",
+    "diet:halal": "yes",
+    "name": "Woolworths",
+    "name:en": "Woolworths",
+    "name:ja": "カウントダウン オークランドメトロ店",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa,Su 08:00-20:00",
+    "payment:cash": "yes",
+    "payment:coins": "yes",
+    "payment:jcb": "yes",
+    "payment:mastercard": "yes",
+    "payment:notes": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+64 9 255 2428",
+    "shop": "supermarket",
+    "website": "https://www.woolworths.co.nz/store-finder/9283/auckland/auckland-victoria-street-west",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1735321674,
+  "lat": -36.8577456,
+  "lon": 174.7602866,
+  "tags": {
+    "addr:housenumber": "183",
+    "addr:street": "Karangahape Road",
+    "amenity": "fast_food",
+    "brand": "Sal's Pizza",
+    "brand:wikidata": "Q115566078",
+    "cuisine": "pizza",
+    "diet:halal": "yes",
+    "name": "Sal's Pizza",
+    "opening_hours": "Su-We 11:30-22:00; Th 11:30-23:00; Fr 11:00-23:00+; Sa 11:30-23:00+",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1789448106,
+  "lat": -36.8542923,
+  "lon": 174.7632599,
+  "tags": {
+    "addr:housenumber": "R2/430",
+    "addr:street": "Queen Street",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "only",
+    "name": "Mr. Turkish Kebab",
+    "opening_hours": "Mo-Sa 11:00-23:00",
+    "phone": "+64 9 558 7642",
+    "website": "https://mrturkishkebab.co.nz",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1789448146,
+  "lat": -36.8492648,
+  "lon": 174.7654177,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "220",
+    "addr:postcode": "1010",
+    "addr:street": "Queen Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "name": "Starbucks",
+    "name:en": "Starbucks",
+    "name:ja": "スターバックス",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Fr 06:30-22:00; Sa,Su 07:00-22:00",
+    "ref:linz:address_id": "2351518",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2506905712,
+  "lat": -37.7903790,
+  "lon": 175.2846917,
+  "tags": {
+    "addr:city": "Hamilton",
+    "addr:housenumber": "16",
+    "addr:street": "Hood Street",
+    "addr:suburb": "Hamilton Central",
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/Breezerestaurantnz/",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "email": "breezenz16@gmail.com",
+    "name": "Breeze Indian Restaurant",
+    "opening_hours": "Mo-We 15:00-21:30; Th-Su 11:30-21:30",
+    "phone": "+64 7 949 8159",
+    "ref:linz:address_id": "1554502",
+    "website": "http://www.breezerestaurant.co.nz",
+    "website:menu": "http://www.breezerestaurant.co.nz/dine-in-takeaway-menu/"
+  }
+},
+{
+  "type": "node",
+  "id": 2553115489,
+  "lat": -44.6956141,
+  "lon": 169.1340544,
+  "tags": {
+    "addr:housenumber": "139",
+    "addr:street": "Ardmore Street",
+    "amenity": "restaurant",
+    "cuisine": "kebab;turkish",
+    "diet:halal": "yes",
+    "indoor_seating": "yes",
+    "name": "Snack Shack Turkish Kebabs",
+    "outdoor_seating": "yes",
+    "phone": "+64 3 443 7622"
+  }
+},
+{
+  "type": "node",
+  "id": 2582171143,
+  "lat": -41.3127551,
+  "lon": 174.7796670,
+  "tags": {
+    "check_date": "2025-01-07",
+    "check_date:diet:halal": "2025-01-07",
+    "diet:halal": "yes",
+    "name": "Halal Meat Shop",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 2628210875,
+  "lat": -41.3139380,
+  "lon": 174.7800426,
+  "tags": {
+    "addr:housenumber": "183",
+    "addr:street": "Riddiford Street",
+    "amenity": "fast_food",
+    "cuisine": "arab",
+    "diet:halal": "yes",
+    "name": "Morteza Kebab & Bakery",
+    "opening_hours": "Tu-Su 11:00-21:00",
+    "phone": "+64 4 280 0476"
+  }
+},
+{
+  "type": "node",
+  "id": 2630700413,
+  "lat": -41.3175309,
+  "lon": 174.7937929,
+  "tags": {
+    "addr:city": "Wellington",
+    "addr:housenumber": "1",
+    "addr:postcode": "6022",
+    "addr:street": "Rongotai Road",
+    "amenity": "cafe",
+    "changing_table": "no",
+    "cuisine": "malaysian;fusion",
+    "diet:dairy_free": "yes",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "level": "0",
+    "name": "Kanama Kopi Kadai",
+    "opening_hours": "Tu-Sa 11:30-14:00,17:00-21:00",
+    "outdoor_seating": "no",
+    "phone": "+64 4 213 8367",
+    "toilets": "yes",
+    "toilets:wheelchair": "designated",
+    "website": "https://www.kanamakopikadai.co.nz",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2633068755,
+  "lat": -41.2940372,
+  "lon": 174.7718040,
+  "tags": {
+    "addr:housenumber": "2/248",
+    "alt_name": "Mercury Corner",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Mughlai Mer-curries",
+    "opening_hours": "Mo-We 18:00-22:00; Th-Su 18:00-22:00",
+    "phone": "+64 4 382 8554",
+    "takeaway": "yes",
+    "website": "https://mughlaimercurry.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 2672529577,
+  "lat": -37.8111903,
+  "lon": 175.2824974,
+  "tags": {
+    "addr:housenumber": "1",
+    "addr:street": "Normandy Avenue",
+    "addr:suburb": "Melville",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "drive_through": "no",
+    "name": "Shivani Restaurant",
+    "phone": "+64 7 843 9655",
+    "ref:linz:address_id": "1294925"
+  }
+},
+{
+  "type": "node",
+  "id": 3062573691,
+  "lat": -37.7725067,
+  "lon": 175.2940278,
+  "tags": {
+    "addr:city": "Hamilton",
+    "addr:housenumber": "4",
+    "addr:street": "Fifth Avenue",
+    "butcher": "halal",
+    "contact:facebook": "https://www.facebook.com/firdausmeats/",
+    "diet:halal": "yes",
+    "name": "Firdaus Halal Meat",
+    "phone": "+64 7 855 5914",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 3119789065,
+  "lat": -36.8882838,
+  "lon": 174.7471931,
+  "tags": {
+    "addr:housenumber": "636",
+    "addr:street": "Dominion Road",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "diet:halal": "yes",
+    "name": "Shaolin Kung Fu Noodle",
+    "opening_hours": "Mo-Su 11:30-23:00",
+    "phone": "+64 9 623 6298"
+  }
+},
+{
+  "type": "node",
+  "id": 3139667407,
+  "lat": -36.8638130,
+  "lon": 174.6293774,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "1/151",
+    "addr:street": "Lincoln Road",
+    "addr:suburb": "Henderson",
+    "amenity": "fast_food",
+    "cuisine": "burger",
+    "diet:halal": "yes",
+    "name": "Byte Burger",
+    "phone": "+64 9 217 4979",
+    "website": "https://byteburger.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 3211976589,
+  "lat": -36.8569651,
+  "lon": 174.7591116,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Subway",
+    "brand:wikidata": "Q244457",
+    "brand:wikipedia": "en:Subway (restaurant)",
+    "cuisine": "sandwich",
+    "diet:halal": "yes",
+    "drive_through": "no",
+    "name": "Subway",
+    "opening_hours": "Mo-Fr 09:00-20:00; Sa,Su 10:00-18:00",
+    "operator": "Subway",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3293524476,
+  "lat": -36.8429908,
+  "lon": 174.7670276,
+  "tags": {
+    "amenity": "ice_cream",
+    "check_date": "2023-09-18",
+    "diet:halal": "yes",
+    "email": "info@islandgelato.co.nz",
+    "name": "Island Gelato Company",
+    "opening_hours": "Mo-Th 07:00-22:30; Fr-Sa 07:00-11:00; Su 07:00-22:30",
+    "phone": "+64 21 536 860",
+    "website": "https://www.islandgelato.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 3293568761,
+  "lat": -36.8486215,
+  "lon": 174.7662163,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "diet:halal": "yes",
+    "name": "Teaser",
+    "opening_hours": "Mo-Th 11:00-21:00; Fr,Sa 11:00-22:00; Su 11:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 3431095891,
+  "lat": -36.7861548,
+  "lon": 174.7729248,
+  "tags": {
+    "addr:housenumber": "118",
+    "addr:street": "Hurstmere Road",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Shahrzad Kebab",
+    "opening_hours": "Mo-Sa 11:00-20:00",
+    "phone": "+64 9 486 1980"
+  }
+},
+{
+  "type": "node",
+  "id": 3508008512,
+  "lat": -36.8749507,
+  "lon": 174.7511853,
+  "tags": {
+    "addr:housenumber": "193",
+    "addr:street": "Dominion Road",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/makassarcorneradominionrd/",
+    "diet:halal": "yes",
+    "mobile": "+64 210 916 8818",
+    "name": "Makassar Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 3658338993,
+  "lat": -36.9931656,
+  "lon": 174.8860275,
+  "tags": {
+    "addr:city": "Manuakau",
+    "addr:housenumber": "5/726",
+    "addr:postcode": "2104",
+    "addr:street": "Great South Road",
+    "amenity": "fast_food",
+    "cuisine": "chicken;pizza",
+    "diet:halal": "yes",
+    "name": "Milano's Pizza & Grilled Chicken",
+    "phone": "+64 9 262 4040"
+  }
+},
+{
+  "type": "node",
+  "id": 3678186673,
+  "lat": -36.9645140,
+  "lon": 174.9028013,
+  "tags": {
+    "addr:city": "Flat Bush, Otara",
+    "addr:housenumber": "15/123",
+    "addr:postcode": "2016",
+    "addr:street": "Ormiston Road",
+    "addr:suburb": "Flat Bush",
+    "amenity": "fast_food",
+    "cuisine": "pizza",
+    "diet:halal": "yes",
+    "name": "Flame Pizza",
+    "website": "https://flamepizza.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 3688835407,
+  "lat": -36.9435621,
+  "lon": 174.8449777,
+  "tags": {
+    "addr:city": "Otahuhu",
+    "addr:housenumber": "64",
+    "addr:postcode": "1062",
+    "addr:street": "Atkinson Avenue",
+    "diet:halal": "yes",
+    "name": "Food 4 less",
+    "note": "Halal food available but No Beef",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 3719184140,
+  "lat": -36.8876419,
+  "lon": 174.7473862,
+  "tags": {
+    "addr:city": "Mount Eden",
+    "addr:housenumber": "598",
+    "addr:street": "Dominion Road",
+    "amenity": "restaurant",
+    "capacity": "10",
+    "contact:facebook": "https://facebook.com/pg/JadetownCuisine",
+    "cuisine": "uyghur",
+    "diet:halal": "yes",
+    "facebook": "https://www.facebook.com/pg/JadetownCuisine",
+    "name": "Jadetown Uyghur Cuisine",
+    "phone": "+64 9 623 5072",
+    "smoking": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3726691262,
+  "lat": -36.9483133,
+  "lon": 174.8456946,
+  "tags": {
+    "addr:housenumber": "545",
+    "addr:street": "Great South Road",
+    "contact:facebook": "https://www.facebook.com/SuperCityHalalMeats/",
+    "diet:halal": "yes",
+    "name": "Supercity Halal Meats",
+    "opening_hours": "Mo-Su 09:00-19:00",
+    "operator": "Rahid",
+    "phone": "+64 9 276 3777",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 3733790954,
+  "lat": -37.0231681,
+  "lon": 174.8981156,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "205",
+    "addr:postcode": "2102",
+    "addr:street": "Great South Road",
+    "addr:suburb": "Manurewa",
+    "amenity": "restaurant",
+    "capacity": "10",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Madni Chicken",
+    "ref:linz:address_id": "1239932",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3736730813,
+  "lat": -36.9704157,
+  "lon": 174.7988567,
+  "tags": {
+    "addr:city": "Mangere",
+    "addr:housename": "Mangere Town Centre",
+    "addr:housenumber": "Mangere Town Centre",
+    "addr:street": "Waddon Place",
+    "amenity": "restaurant",
+    "cuisine": "burger",
+    "diet:halal": "yes",
+    "name": "Pizza and Curry Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 3739749821,
+  "lat": -36.9057416,
+  "lon": 174.7305458,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "56",
+    "addr:postcode": "1041",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Wesley",
+    "amenity": "fast_food",
+    "contact:facebook": "https://facebook.com/p/Tasty-Kebab-100077049171223",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Tasty Kebab",
+    "phone": "+64 9 620 8407",
+    "ref:linz:address_id": "1079215",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3739756345,
+  "lat": -36.8916280,
+  "lon": 174.7361678,
+  "tags": {
+    "addr:city": "Sandrinham",
+    "addr:housenumber": "519 -523",
+    "addr:postcode": "1025",
+    "addr:street": "Sandringham Road",
+    "amenity": "restaurant",
+    "cuisine": "asian;indian",
+    "diet:halal": "yes",
+    "name": "Bawarchi",
+    "opening_hours": "Mo-Su 11:00-22:00",
+    "phone": "+64 9 845 5525",
+    "website": "https://bawarchi.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 3739761316,
+  "lat": -36.9689454,
+  "lon": 174.8602712,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "154",
+    "addr:postcode": "2025",
+    "addr:street": "Great South Road",
+    "addr:suburb": "Papatoetoe",
+    "amenity": "restaurant",
+    "cuisine": "chicken;pizza",
+    "diet:halal": "yes",
+    "name": "Milanos Pizza & Portuguese Chicken - halal",
+    "phone": "+64 9 277 8001",
+    "ref:linz:address_id": "1560527",
+    "website": "https://www.milanospizza.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 3740699320,
+  "lat": -36.9071855,
+  "lon": 174.6880799,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "13",
+    "addr:postcode": "0600",
+    "addr:street": "Veronica Street",
+    "addr:suburb": "New Lynn",
+    "amenity": "fast_food",
+    "cuisine": "asian;indian",
+    "diet:halal": "yes",
+    "name": "Food4Less Supermarket",
+    "opening_hours": "Mo-Su 08:00-20:00",
+    "phone": "+64 9 826 4387",
+    "ref:linz:address_id": "1027018",
+    "shop": "supermarket;butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 3741925395,
+  "lat": -41.2077986,
+  "lon": 174.9061201,
+  "tags": {
+    "addr:city": "Lower Hutt, Wellington",
+    "addr:housenumber": "280",
+    "addr:postcode": "5010",
+    "addr:street": "High Street",
+    "check_date": "2024-01-04",
+    "diet:halal": "yes",
+    "name": "Kiwi Halal Meats Ltd",
+    "opening_hours": "Tu-Th 11:00-18:00; Fr 09:00-18:00; Sa 08:00-17:00; Su 09:00-17:00",
+    "phone": "+64 4 586 9786",
+    "shop": "butcher",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3743497006,
+  "lat": -36.9102841,
+  "lon": 174.7758718,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "734",
+    "addr:street": "Manukau Road",
+    "addr:suburb": "Royal Oak",
+    "amenity": "restaurant",
+    "capacity": "10",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Royal Kebab",
+    "opening_hours:rubbish": "includes weekends",
+    "phone": "+64 9 625 8755",
+    "ref:linz:address_id": "1728401",
+    "smoking": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3837892616,
+  "lat": -36.8510620,
+  "lon": 174.7612168,
+  "tags": {
+    "addr:housenumber": "205",
+    "addr:street": "Federal Street",
+    "addr:suburb": "Auckland Central",
+    "diet:halal": "yes",
+    "name": "Starz Convenience Store",
+    "opening_hours": "Mo-Fr 07:00-23:00; PH,Sa,Su 09:00-23:00",
+    "ref:linz:address_id": "1732148",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 3879177643,
+  "lat": -36.8988985,
+  "lon": 174.6956747,
+  "tags": {
+    "addr:housenumber": "6A",
+    "addr:street": "Wingate Street",
+    "addr:suburb": "Avondale",
+    "amenity": "fast_food",
+    "branch": "Avondale",
+    "brand": "K Chicken",
+    "cuisine": "chicken;korean",
+    "diet:halal": "yes",
+    "drive_through": "no",
+    "name": "K Chicken",
+    "opening_hours": "Mo-Su 11:00-21:00",
+    "operator": "K Chicken",
+    "phone": "+64 9 838 5553",
+    "ref:linz:address_id": "1712351",
+    "website": "https://kchicken.co.nz/locations/korean-chicken-avondale"
+  }
+},
+{
+  "type": "node",
+  "id": 4049147937,
+  "lat": -36.8577632,
+  "lon": 174.7619603,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "only",
+    "name": "Tikka 'n' Talk",
+    "opening_hours": "PH,Mo-Su 11:00-04:00",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4057751085,
+  "lat": -36.8939869,
+  "lon": 174.7741643,
+  "tags": {
+    "addr:housenumber": "467",
+    "addr:street": "Manukau Road",
+    "amenity": "fast_food",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Epsom Turkish Kebabs",
+    "phone": "+64 9 630 0019",
+    "website": "https://www.epsomturkishkebab.co.nz",
+    "website:menu": "https://www.epsomturkishkebab.co.nz/menu/"
+  }
+},
+{
+  "type": "node",
+  "id": 4750209021,
+  "lat": -41.2268658,
+  "lon": 174.9053280,
+  "tags": {
+    "diet:halal": "yes",
+    "name": "Hz halal",
+    "name:en": "Hz halal",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906117,
+  "lat": -36.8577665,
+  "lon": 174.7570620,
+  "tags": {
+    "addr:housenumber": "347",
+    "addr:street": "Karangahape Road",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "only",
+    "name": "Kebab Kart",
+    "opening_hours": "Mo-Fr 11:00-22:00+; Sa 14:00-22:00+; Su 17:00-22:00+"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906118,
+  "lat": -36.8576714,
+  "lon": 174.7573765,
+  "tags": {
+    "addr:housenumber": "329",
+    "addr:street": "Karangahape Road",
+    "diet:halal": "yes",
+    "name": "Artisan Bakers",
+    "opening_hours": "Mo-Fr 07:30-14:00; Sa 08:30-14:30; Su 09:00-14:00",
+    "shop": "bakery",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906327,
+  "lat": -36.8574325,
+  "lon": 174.7581917,
+  "tags": {
+    "addr:housenumber": "277",
+    "addr:street": "Karangahape Road",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "branch": "K Road",
+    "brand": "Uncle Man's",
+    "cuisine": "malaysian",
+    "diet:halal": "only",
+    "name": "Uncle Man's",
+    "opening_hours": "Mo-Su 11:00-21:00",
+    "phone": "+64 9 377 1799",
+    "ref:linz:address_id": "2452871",
+    "website": "https://unclemans.com",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906348,
+  "lat": -36.8581699,
+  "lon": 174.7635490,
+  "tags": {
+    "addr:housenumber": "3/103",
+    "addr:street": "Symonds Street",
+    "amenity": "fast_food",
+    "check_date": "2023-09-19",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Kebab King",
+    "phone": "+64 9 300 7191",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906391,
+  "lat": -36.8472837,
+  "lon": 174.7612312,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Bal Ganga",
+    "opening_hours": "Mo-Su 09:30-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906393,
+  "lat": -36.8473219,
+  "lon": 174.7613817,
+  "tags": {
+    "addr:housenumber": "51D",
+    "addr:street": "Hobson Street",
+    "amenity": "fast_food",
+    "cuisine": "chicken",
+    "diet:halal": "yes",
+    "name": "New Sensational Kebab & Fried Chicken",
+    "opening_hours": "Sa-Th 11:30-03:00, Fr 11:30-14:00,16:00-03:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906396,
+  "lat": -36.8477348,
+  "lon": 174.7615878,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Raviz",
+    "opening_hours": "PH,Mo-Su 11:00-24:00+"
+  }
+},
+{
+  "type": "node",
+  "id": 4753906397,
+  "lat": -36.8476641,
+  "lon": 174.7616185,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Denny's",
+    "brand:wikidata": "Q1189695",
+    "brand:wikipedia": "en:Denny's",
+    "cuisine": "american",
+    "diet:halal": "yes",
+    "name": "Denny's",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 4769024244,
+  "lat": -36.8500797,
+  "lon": 174.7658121,
+  "tags": {
+    "addr:street": "Lorne Street",
+    "diet:halal": "yes",
+    "name": "Cocomo",
+    "opening_hours": "PH,Mo-Su 07:30-22:30",
+    "shop": "beverages",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4769024273,
+  "lat": -36.8463724,
+  "lon": 174.7681457,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Sal's Pizza",
+    "brand:wikidata": "Q115566078",
+    "check_date:opening_hours": "2025-09-03",
+    "cuisine": "pizza",
+    "diet:halal": "yes",
+    "name": "Sal's Pizza",
+    "opening_hours": "Mo,Tu 11:30-22:00; We,Th 11:30-23:00; Fr 11:00-22:00+; Sa 11:30-22:00+; Su 11:30-22:00",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4794075721,
+  "lat": -41.2829636,
+  "lon": 173.2483414,
+  "tags": {
+    "addr:city": "Nelson",
+    "addr:housenumber": "32",
+    "addr:postcode": "7011",
+    "addr:street": "Tahunanui Drive",
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "McDonald's",
+    "brand:wikidata": "Q38076",
+    "brand:wikipedia": "en:McDonald's",
+    "cuisine": "burger",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "yes",
+    "indoor_seating": "yes",
+    "name": "McDonald's",
+    "name:en": "McDonald's",
+    "opening_hours": "Mo-Su 07:00-21:00",
+    "outdoor_seating": "yes",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4797304732,
+  "lat": -36.8496176,
+  "lon": 174.7639296,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "diet:halal": "yes",
+    "name": "Long Fang",
+    "opening_hours": "Mo-Su 09:30-15:30,05:30-22:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4797304733,
+  "lat": -36.8492359,
+  "lon": 174.7643606,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "only",
+    "name": "Tandoor",
+    "opening_hours": "Mo-Su 12:00-22:00+"
+  }
+},
+{
+  "type": "node",
+  "id": 4814853860,
+  "lat": -36.8497140,
+  "lon": 174.7665405,
+  "tags": {
+    "addr:housenumber": "22",
+    "addr:street": "Kitchener Street",
+    "amenity": "restaurant",
+    "check_date:opening_hours": "2023-09-26",
+    "cuisine": "chinese",
+    "diet:halal": "only",
+    "name": "No. 1 Handmade Lanzhou Beef Ramen",
+    "opening_hours:signed": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4880757724,
+  "lat": -36.8430820,
+  "lon": 174.7670487,
+  "tags": {
+    "check_date:opening_hours": "2024-03-05",
+    "diet:halal": "yes",
+    "name": "Localito",
+    "opening_hours:signed": "no",
+    "shop": "convenience"
+  }
+},
+{
+  "type": "node",
+  "id": 4910509298,
+  "lat": -36.8471823,
+  "lon": 174.7645797,
+  "tags": {
+    "addr:city": "Auckland Central",
+    "addr:country": "NZ",
+    "addr:housenumber": "26-28",
+    "addr:postcode": "1010",
+    "addr:street": "Wyndham Street",
+    "check_date": "2026-10-02",
+    "diet:halal": "yes",
+    "fax": "+64 9 307 7102",
+    "name": "Japan Mart City Central",
+    "name:en": "Japan Mart City Central",
+    "name:ja": "ジャパンマート・シティセントラル",
+    "opening_hours": "Mo-Su 10:00-18:00",
+    "phone": "+64 9 307 7100",
+    "shop": "supermarket",
+    "website": "https://japanmart.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 4943367468,
+  "lat": -36.8970418,
+  "lon": 174.7332507,
+  "tags": {
+    "addr:housenumber": "685",
+    "addr:street": "Sandringham Road Extension",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Mithai Indian Vegetarian Restaurant",
+    "phone": "+64 9 620 0117"
+  }
+},
+{
+  "type": "node",
+  "id": 4943409489,
+  "lat": -36.8802644,
+  "lon": 174.7257402,
+  "tags": {
+    "addr:housenumber": "762",
+    "addr:street": "New North Road",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/rocketkebabs/",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Rocket Kebabs",
+    "phone": "+64 9 846 2300"
+  }
+},
+{
+  "type": "node",
+  "id": 4943409514,
+  "lat": -36.9004095,
+  "lon": 174.7208428,
+  "tags": {
+    "addr:housenumber": "196",
+    "addr:street": "Stoddard Road",
+    "amenity": "fast_food",
+    "cuisine": "chicken",
+    "diet:halal": "yes",
+    "name": "Halal Fried Chicken",
+    "phone": "+64 9 260 5785"
+  }
+},
+{
+  "type": "node",
+  "id": 4956159230,
+  "lat": -36.9076727,
+  "lon": 174.7331134,
+  "tags": {
+    "addr:housenumber": "207a/22",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Mount Roskill",
+    "amenity": "restaurant",
+    "brand": "PizzaExpress",
+    "brand:wikidata": "Q662845",
+    "brand:wikipedia": "en:PizzaExpress",
+    "cuisine": "pizza",
+    "diet:halal": "yes",
+    "name": "PizzaExpress",
+    "phone": "+64 9 555 5735"
+  }
+},
+{
+  "type": "node",
+  "id": 5015955232,
+  "lat": -36.8707086,
+  "lon": 174.7104250,
+  "tags": {
+    "addr:housenumber": "1218",
+    "addr:street": "Great North Road",
+    "amenity": "fast_food",
+    "cuisine": "burger;kebab;turkish",
+    "diet:halal": "yes",
+    "name": "Turkish Kebab and Burger",
+    "opening_hours": "Mo-Sa 10:00-21:00",
+    "phone": "+64 9 845 5151"
+  }
+},
+{
+  "type": "node",
+  "id": 5047602373,
+  "lat": -36.8443667,
+  "lon": 174.7646470,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-09-18",
+    "cuisine": "sandwich;breakfast;burger",
+    "diet:halal": "yes",
+    "internet_access": "yes",
+    "name": "Ronnies Cafe",
+    "opening_hours": "Mo-Fr 07:00-17:00; Sa 08:00-15:00; Su 08:00-14:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5057312532,
+  "lat": -36.7170676,
+  "lon": 174.7465990,
+  "tags": {
+    "addr:housenumber": "4/26",
+    "addr:street": "Anzac Road",
+    "amenity": "cafe",
+    "branch": "Browns Bay",
+    "brand": "Cafe Anatolia",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Cafe Anatolia",
+    "opening_hours": "11:00-21:00",
+    "phone": "+64 9 478 1661",
+    "website": "https://cafeanatolia.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5153233821,
+  "lat": -36.8536109,
+  "lon": 174.7631286,
+  "tags": {
+    "amenity": "restaurant",
+    "contact:facebook": "https://facebook.com/tanukicave",
+    "contact:instagram": "https://instagram.com/tanukiscave/",
+    "cuisine": "yakitori",
+    "diet:halal": "yes",
+    "name": "Tanuki's Cave",
+    "opening_hours": "Tu-Sa 17:00-22:00+",
+    "phone": "+64 9 379 5151",
+    "website": "https://tanukiscave.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 5156242247,
+  "lat": -36.8598616,
+  "lon": 174.7523082,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Great North Road",
+    "amenity": "fast_food",
+    "cuisine": "sushi",
+    "diet:halal": "yes",
+    "name": "Sushi Me",
+    "opening_hours": "Mo-Fr 08:00-15:00",
+    "phone": "+64 9 360 0203"
+  }
+},
+{
+  "type": "node",
+  "id": 5248090404,
+  "lat": -46.4104196,
+  "lon": 168.3476163,
+  "tags": {
+    "addr:housenumber": "91",
+    "addr:street": "Dee Street",
+    "amenity": "fast_food",
+    "cuisine": "kebab;turkish",
+    "diet:halal": "yes",
+    "indoor_seating": "yes",
+    "name": "Turkish Kebabs",
+    "opening_hours": "11:00-21:00",
+    "phone": "+64 3 218 3399",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5274600330,
+  "lat": -37.1994069,
+  "lon": 174.9053644,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Hall Street",
+    "addr:suburb": "Pukekohe",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Beach Pizza & Chicken N' Chips (Halal)",
+    "phone": "+64 9 947 7326",
+    "ref:linz:address_id": "1253421"
+  }
+},
+{
+  "type": "node",
+  "id": 5328615485,
+  "lat": -36.8766739,
+  "lon": 174.6292970,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "427",
+    "addr:postcode": "0610",
+    "addr:street": "Great North Road",
+    "addr:suburb": "Henderson",
+    "contact:facebook": "https://www.facebook.com/WestCityHalalMeats/",
+    "diet:halal": "yes",
+    "name": "Westcity Halal Meats",
+    "operator": "Shiraz",
+    "phone": "+64 9 835 4786",
+    "ref:linz:address_id": "982536",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 5328743006,
+  "lat": -36.8967030,
+  "lon": 174.6266277,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "8/80",
+    "addr:street": "Bruce McLaren Road",
+    "addr:suburb": "Henderson",
+    "diet:halal": "yes",
+    "name": "Barakah Halal Meat and Spices",
+    "operator": "Aziz",
+    "phone": "+64 9 818 6383",
+    "ref:linz:address_id": "1890801",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 5400472679,
+  "lat": -36.8569144,
+  "lon": 174.7591025,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "70",
+    "addr:postcode": "1010",
+    "addr:street": "Pitt Street",
+    "addr:suburb": "Auckland Central",
+    "diet:halal": "yes",
+    "email": "info@safka.co.nz",
+    "name": "Safka",
+    "old_name": "Safka Continental Goodies",
+    "opening_hours": "Mo-Fr 10:00-17:00; Sa 10:00-16:00; Su 11:00-16:00",
+    "phone": "+64 9 379 8030",
+    "shop": "supermarket",
+    "website": "https://safka.co.nz",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5400477758,
+  "lat": -36.8531708,
+  "lon": 174.7644009,
+  "tags": {
+    "addr:housenumber": "17B",
+    "addr:street": "Wakefield Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Kiwi Fish & Chips and Chicken",
+    "opening_hours": "Mo-Su 10:30-16:00",
+    "phone": "+64 9 948 1816",
+    "ref:linz:address_id": "1861031",
+    "website": "https://kiwifishchipsandchicken.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5400478996,
+  "lat": -36.8480804,
+  "lon": 174.7627761,
+  "tags": {
+    "addr:housenumber": "64A",
+    "addr:street": "Federal Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Izmir Kebab and Grill",
+    "phone": "+64 9 600 3515",
+    "ref:linz:address_id": "2013514",
+    "website": "https://izmirkebabgrill.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5406798027,
+  "lat": -36.8436443,
+  "lon": 174.7625421,
+  "tags": {
+    "addr:housenumber": "104",
+    "addr:street": "Customs Street West",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=100063122747390",
+    "cuisine": "thai",
+    "diet:halal": "yes",
+    "email": "arbungthaistreetfood@gmail.com",
+    "mobile": "+64 22 198 5140",
+    "name": "Arbung Thai Street Food      - halal",
+    "opening_hours": "Mo-Sa 11:00-21:00",
+    "phone": "+64 9 214 2010",
+    "website": "https://arbungthaistreetfood.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5415987137,
+  "lat": -36.8862970,
+  "lon": 174.6440885,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "238A",
+    "addr:postcode": "0610",
+    "addr:street": "Great North Road",
+    "addr:suburb": "Glendene",
+    "amenity": "fast_food",
+    "branch": "Glendene",
+    "brand": "Beach Pizza",
+    "diet:halal": "yes",
+    "name": "Beach Pizza",
+    "phone": "+64 9 837 3786",
+    "ref:linz:address_id": "1015389",
+    "website": "https://beachpizza.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5417509854,
+  "lat": -36.9016670,
+  "lon": 174.7230859,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "164",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Wesley",
+    "diet:halal": "yes",
+    "name": "Shefco Halal Meats",
+    "operator": "Mu Ali",
+    "phone": "+64 9 620 8080",
+    "ref:linz:address_id": "1059864",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 5417526283,
+  "lat": -36.9017509,
+  "lon": 174.7232293,
+  "tags": {
+    "addr:housenumber": "162",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Wesley",
+    "diet:halal": "yes",
+    "name": "Choice Chicken",
+    "phone": "+64 9 620 5945",
+    "ref:linz:address_id": "1059859",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 5417530762,
+  "lat": -36.9062537,
+  "lon": 174.7316430,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "46",
+    "addr:postcode": "1041",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Wesley",
+    "amenity": "cafe",
+    "cuisine": "ope",
+    "diet:halal": "yes",
+    "name": "Shefco Pastries",
+    "phone": "+64 9 553 6333",
+    "ref:linz:address_id": "1079159"
+  }
+},
+{
+  "type": "node",
+  "id": 5417703167,
+  "lat": -36.8912771,
+  "lon": 174.7362533,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "513",
+    "addr:postcode": "1025",
+    "addr:street": "Sandringham Road",
+    "addr:suburb": "Sandringham",
+    "diet:halal": "yes",
+    "name": "Bake and Beans",
+    "phone": "+64 9 600 3270",
+    "ref:linz:address_id": "1098214",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 5417704388,
+  "lat": -36.8914552,
+  "lon": 174.7367449,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "526",
+    "addr:postcode": "1025",
+    "addr:street": "Sandringham Road",
+    "addr:suburb": "Sandringham",
+    "diet:halal": "yes",
+    "name": "Auckland Halal Meats",
+    "operator": "Zia",
+    "phone": "+64 9 846 5115",
+    "ref:linz:address_id": "2319570",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 5421571847,
+  "lat": -36.8947612,
+  "lon": 174.7739276,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "483",
+    "addr:postcode": "1023",
+    "addr:street": "Manukau Road",
+    "addr:suburb": "Epsom",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/HambaguNewZealand/",
+    "contact:instagram": "hambagunz",
+    "contact:tiktok": "https://www.tiktok.com/@hambagunz",
+    "diet:halal": "yes",
+    "mobile": "+64 210 716 403",
+    "name": "Hambagu",
+    "opening_hours": "Mo-Th 11:30-22:00; Fr 11:30-13:30,14:30-24:00; Sa 12:00-24:00; Su 12:00-22:00",
+    "operator": "Yasin",
+    "ref:linz:address_id": "1739921",
+    "website": "https://www.hambagu.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 5427830129,
+  "lat": -43.5494553,
+  "lon": 172.6363058,
+  "tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "303",
+    "addr:postcode": "8023",
+    "addr:street": "Colombo Street",
+    "addr:suburb": "Sydenham",
+    "diet:halal": "yes",
+    "name": "Maihan Supermarket and Halal Meat",
+    "ref:linz:address_id": "229546",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 5461203819,
+  "lat": -36.9258692,
+  "lon": 174.8048783,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "277A",
+    "addr:street": "Neilson Street",
+    "addr:suburb": "Onehunga",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Pita House",
+    "phone": "+64 9 636 2005",
+    "ref:linz:address_id": "1373136"
+  }
+},
+{
+  "type": "node",
+  "id": 5475776227,
+  "lat": -36.8493381,
+  "lon": 174.7658620,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2025-12-28",
+    "cuisine": "japanese",
+    "diet:halal": "yes",
+    "name": "Yoshizawa",
+    "name:en": "Yoshizawa",
+    "name:ja": "吉沢",
+    "opening_hours": "Tu-Su 11:00-20:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5485876844,
+  "lat": -36.9674582,
+  "lon": 174.8605098,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "38",
+    "addr:postcode": "2025",
+    "addr:street": "East Tamaki Road",
+    "addr:suburb": "Papatoetoe",
+    "amenity": "cafe",
+    "diet:halal": "yes",
+    "name": "Khanz Cafe and Bakery",
+    "phone": "+64 9 250 1919",
+    "ref:linz:address_id": "1202379"
+  }
+},
+{
+  "type": "node",
+  "id": 5485879719,
+  "lat": -36.9729514,
+  "lon": 174.8403076,
+  "tags": {
+    "addr:housenumber": "66",
+    "addr:street": "Portage Road",
+    "addr:suburb": "Papatoetoe",
+    "amenity": "fast_food",
+    "branch": "Papatoetoe",
+    "brand": "Beach Pizza",
+    "diet:halal": "yes",
+    "name": "Beach Pizza",
+    "phone": "+64 9 216 1211",
+    "ref:linz:address_id": "1324597",
+    "website": "https://beachpizza.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 5490427579,
+  "lat": -36.9672610,
+  "lon": 174.9056724,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "138",
+    "addr:postcode": "2019",
+    "addr:street": "Chapel Road",
+    "addr:suburb": "Flat Bush",
+    "amenity": "restaurant",
+    "cuisine": "middle_eastern;arab;kebab;shawarma",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "name": "Sham Grill NZ",
+    "name:ar": "مشاوي الشام",
+    "name:en": "Sham Grill NZ",
+    "opening_hours": "Mo-Su 11:00-22:00",
+    "phone": "+64 9 558 7119",
+    "ref:linz:address_id": "2038847",
+    "website": "https://www.sham.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5504681009,
+  "lat": -36.7865684,
+  "lon": 174.7727378,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "98",
+    "addr:street": "Hurstmere Road",
+    "addr:suburb": "Takapuna",
+    "diet:halal": "yes",
+    "name": "Lunas Bakehouse",
+    "phone": "+64 22 455 6681",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 5504727206,
+  "lat": -36.7832249,
+  "lon": 174.7364474,
+  "tags": {
+    "addr:housenumber": "171",
+    "addr:street": "Archers Road",
+    "addr:suburb": "Hillcrest",
+    "diet:halal": "yes",
+    "name": "North Shore Meat Centre",
+    "operator": "Ahmad",
+    "phone": "+64 9 442 0068",
+    "ref:linz:address_id": "1089511",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 5546964722,
+  "lat": -40.3567313,
+  "lon": 175.6087715,
+  "tags": {
+    "addr:city": "Palmerston North",
+    "addr:housenumber": "60",
+    "addr:postcode": "4410",
+    "addr:street": "George Street",
+    "addr:suburb": "Palmerston North",
+    "amenity": "fast_food",
+    "contact:phone": "0800 100 068",
+    "cuisine": "pizza",
+    "diet:halal": "yes",
+    "name": "Pizza Pars",
+    "opening_hours": "Tu-We 10:00-14:30,17:00-21:00; Th-Sa 10:00-14:30,17:00-23:45; Su 10:00-14:30,17:00-21:00",
+    "ref:linz:address_id": "1064728",
+    "website": "https://pizzapars.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 5546977606,
+  "lat": -40.3567712,
+  "lon": 175.6088018,
+  "tags": {
+    "addr:city": "Palmerston North",
+    "addr:housenumber": "64",
+    "addr:postcode": "4410",
+    "addr:street": "George Street",
+    "addr:suburb": "Palmerston North",
+    "amenity": "restaurant",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Kapadokya",
+    "ref:linz:address_id": "1064725"
+  }
+},
+{
+  "type": "node",
+  "id": 5573100522,
+  "lat": -45.0332422,
+  "lon": 168.6620823,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:street": "Earl Street",
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "cuisine": "fish_and_chips;regional",
+    "delivery": "yes",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "no",
+    "internet_access": "wlan",
+    "name": "Erik's Fish and Chips",
+    "opening_hours": "Mo-Su 11:30-20:30",
+    "outdoor_seating": "yes",
+    "payment:alipay": "yes",
+    "payment:american_express": "yes",
+    "payment:apple_pay": "yes",
+    "payment:cards": "yes",
+    "payment:cash": "yes",
+    "payment:coins": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:diners_club": "yes",
+    "payment:discover_card": "yes",
+    "payment:google_pay": "yes",
+    "payment:jcb": "yes",
+    "payment:mastercard": "yes",
+    "payment:mastercard_contactless": "yes",
+    "payment:unionpay": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+64 3 441 3474",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://eriksfishandchips.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 5596123186,
+  "lat": -37.0395854,
+  "lon": 174.9148031,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "108",
+    "addr:postcode": "2112",
+    "addr:street": "Great South Road",
+    "addr:suburb": "Takanini",
+    "building:flats": "30",
+    "diet:halal": "yes",
+    "name": "Lubis",
+    "phone": "+64 9 250 4786",
+    "ref:linz:address_id": "1251853",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 5610439959,
+  "lat": -39.0565281,
+  "lon": 174.0786774,
+  "tags": {
+    "addr:city": "New Plymouth",
+    "addr:housenumber": "146",
+    "addr:postcode": "4310",
+    "addr:street": "Devon Street East",
+    "addr:suburb": "New Plymouth",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "capacity": "100",
+    "cuisine": "italian;pizza;seafood",
+    "delivery": "yes",
+    "diet:dairy_free": "yes",
+    "diet:egg_free": "yes",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:meat": "yes",
+    "diet:soy_free": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "email": "staff@bellavita.co.nz",
+    "name": "Bella Vita Restaurant",
+    "opening_hours": "Mo-Sa 11:30-02:30, Mo-Su 17:00-21:00",
+    "phone": "+64 6 758 3393",
+    "ref:linz:address_id": "874069",
+    "takeaway": "yes",
+    "website": "https://www.bellavita.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 5912757840,
+  "lat": -43.4986707,
+  "lon": 172.6092124,
+  "tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "475B",
+    "addr:postcode": "8053",
+    "addr:street": "Papanui Road",
+    "addr:suburb": "Papanui",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Taste of Egypt",
+    "phone": "+64 3 354 0336",
+    "ref:linz:address_id": "3001336",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6412816090,
+  "lat": -46.0984766,
+  "lon": 168.9443098,
+  "tags": {
+    "brand": "Woolworths",
+    "brand:wikidata": "Q5176845",
+    "brand:wikipedia": "en:Woolworths New Zealand",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "name": "Woolworths",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "operator": "Woolworths Group New Zealand",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6781657485,
+  "lat": -45.8717157,
+  "lon": 170.5057826,
+  "tags": {
+    "addr:housenumber": "72",
+    "addr:street": "Saint Andrew Street",
+    "amenity": "fast_food",
+    "cuisine": "kebab;mediterranean",
+    "diet:halal": "yes",
+    "name": "Konya Kebabs",
+    "phone": "+64 3 477 7749"
+  }
+},
+{
+  "type": "node",
+  "id": 6952885285,
+  "lat": -36.8463764,
+  "lon": 174.7681206,
+  "tags": {
+    "amenity": "restaurant",
+    "diet:halal": "yes",
+    "name": "Good life",
+    "opening_hours": "Mo-Fr 08:00-15:30; PH off",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7092241148,
+  "lat": -36.8439036,
+  "lon": 174.7652319,
+  "tags": {
+    "branch": "Albert Street",
+    "brand": "Woolworths",
+    "brand:wikidata": "Q5176845",
+    "diet:halal": "yes",
+    "level": "-1",
+    "name": "Woolworths",
+    "official_name": "Woolworths Metro Albert Street",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa-Su 08:00-18:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+64 9 372 8439",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8122051600,
+  "lat": -36.8590563,
+  "lon": 174.7533358,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "african;mediterranean",
+    "diet:halal": "yes",
+    "name": "Little Algiers",
+    "opening_hours": "Mo-Fr 07:30-16:30, Sa-Su 08:30-14:30",
+    "outdoor_seating": "yes",
+    "phone": "+64 9 336 1560",
+    "website": "https://www.facebook.com/littlealgierscafe/"
+  }
+},
+{
+  "type": "node",
+  "id": 8127060235,
+  "lat": -36.8436408,
+  "lon": 174.7673642,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-09-18",
+    "check_date:opening_hours": "2024-02-08",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Downtown Kebabs",
+    "opening_hours:signed": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 8223577458,
+  "lat": -36.8569182,
+  "lon": 174.7586678,
+  "tags": {
+    "amenity": "cafe",
+    "diet:halal": "yes",
+    "name": "No. 7",
+    "opening_hours": "Mo-Fr 08:00-14:30, Fr,Sa 17:00-22:00+"
+  }
+},
+{
+  "type": "node",
+  "id": 8223577463,
+  "lat": -36.8573972,
+  "lon": 174.7588283,
+  "tags": {
+    "addr:housenumber": "61/65",
+    "addr:street": "Pitt Street",
+    "amenity": "restaurant",
+    "check_date": "2026-03-10",
+    "check_date:opening_hours": "2026-03-10",
+    "contact:instagram": "lebanesegrocer",
+    "cuisine": "lebanese",
+    "diet:halal": "yes",
+    "email": "hello@lebanesegrocer.co.nz",
+    "name": "Lebanese Grocer",
+    "opening_hours": "Tu-Sa 10:00-15:00; Su 10:00-14:00",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8641915244,
+  "lat": -36.8799519,
+  "lon": 174.6329618,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "356-360",
+    "addr:postcode": "0612",
+    "addr:street": "Great North Road",
+    "addr:suburb": "Henderson",
+    "contact:instagram": "millbakery_nz",
+    "diet:halal": "yes",
+    "mobile": "+64 21 134 6154",
+    "name": "Mill Bakery",
+    "operator": "Rizky",
+    "ref:linz:address_id": "1659481",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 9094081104,
+  "lat": -43.5086725,
+  "lon": 172.6521762,
+  "tags": {
+    "addr:housenumber": "204",
+    "addr:street": "Hills Road",
+    "amenity": "fast_food",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Mainland Turkish Food",
+    "phone": "+64 3 386 2374"
+  }
+},
+{
+  "type": "node",
+  "id": 9300991090,
+  "lat": -36.9002551,
+  "lon": 174.7199765,
+  "tags": {
+    "addr:housenumber": "212",
+    "addr:street": "Richardson Road",
+    "amenity": "restaurant",
+    "cuisine": "thai",
+    "diet:halal": "yes",
+    "name": "Thai Kitchen Takeaway",
+    "phone": "+64 9 390 0565"
+  }
+},
+{
+  "type": "node",
+  "id": 9910617509,
+  "lat": -37.0051920,
+  "lon": 174.7827894,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Pita Pit",
+    "brand:wikidata": "Q7757289",
+    "check_date": "2026-01-10",
+    "check_date:diet:gluten_free": "2026-01-10",
+    "check_date:diet:halal": "2025-01-11",
+    "cuisine": "pita",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "level": "1",
+    "name": "Pita Pit",
+    "opening_hours": "Mo-Su 04:00-23:00",
+    "outdoor_seating": "no",
+    "phone": "+64 9 256 0269",
+    "takeaway": "yes",
+    "website": "http://www.pitapit.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 10003587617,
+  "lat": -43.5382834,
+  "lon": 172.5550347,
+  "tags": {
+    "diet:halal": "yes",
+    "name": "Mafco Halal Meat Market",
+    "phone": "+64 3 261 9500",
+    "shop": "butcher",
+    "survey:date": "2022-09-06",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10012449473,
+  "lat": -36.8541922,
+  "lon": 174.7586782,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "diet:halal": "yes",
+    "name": "The Sushi Store",
+    "opening_hours": "Mo-Fr 11:30-21:00; Sa,Su 12:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10139054533,
+  "lat": -36.9862614,
+  "lon": 174.8720173,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "1/16",
+    "addr:street": "Lambie Drive",
+    "addr:suburb": "Papatoetoe",
+    "diet:halal": "yes",
+    "name": "Madinah Halal Meats",
+    "operator": "Mohammad Shahhal",
+    "phone": "+64 9 263 8070",
+    "ref:linz:address_id": "2015815",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 10580674611,
+  "lat": -41.2947267,
+  "lon": 174.7751173,
+  "tags": {
+    "addr:floor": "G",
+    "addr:housenumber": "195",
+    "addr:street": "Cuba Street",
+    "amenity": "restaurant",
+    "check_date": "2026-07-22",
+    "cuisine": "turkish",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "email": "hello@kisarestaurant.co.nz",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Kisa",
+    "opening_hours": "Mo-Tu 16:00+; We-Fr 12:00+; Sa-Su 11:30+",
+    "outdoor_seating": "no",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+64 21 449 820",
+    "website": "https://kisarestaurant.co.nz/kitchen/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10613418505,
+  "lat": -43.5397547,
+  "lon": 172.5762212,
+  "tags": {
+    "addr:housenumber": "367",
+    "addr:postcode": "8041",
+    "addr:street": "Blenheim Road",
+    "contact:facebook": "https://www.facebook.com/GlobalFreshIndianSupermarket/",
+    "diet:halal": "yes",
+    "email": "contact@globalfresh.nz",
+    "mobile": "+64 22 589 9367",
+    "name": "Global Fresh",
+    "opening_hours": "Mo-Su 09:00-18:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "node",
+  "id": 10673339810,
+  "lat": -43.5339865,
+  "lon": 172.6341070,
+  "tags": {
+    "addr:city": "Christchurch",
+    "addr:housenumber": "96",
+    "addr:postcode": "8011",
+    "addr:province": "Canterbury",
+    "addr:street": "Oxford Terrace",
+    "addr:suburb": "Central City",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/dosakitchennz/",
+    "cuisine": "indian;chicken;curry;noodle",
+    "diet:dairy_free": "yes",
+    "diet:halal": "yes",
+    "diet:lacto_vegetarian": "yes",
+    "diet:ovo_vegetarian": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Dosa Kitchen",
+    "opening_hours": "Mo-We,Su 11:00-20:00; Th-Sa 11:00-21:00",
+    "payment:american_express": "yes",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+64 3 343 4343",
+    "takeaway": "yes",
+    "website": "https://www.dosakitchen.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 10705779608,
+  "lat": -43.4899325,
+  "lon": 172.5688311,
+  "tags": {
+    "addr:housenumber": "2/501",
+    "addr:street": "Wairakei Road",
+    "amenity": "fast_food",
+    "cuisine": "arab",
+    "diet:halal": "yes",
+    "drive_through": "no",
+    "name": "Hapsun Souvlaki",
+    "phone": "+64 3 595 0690"
+  }
+},
+{
+  "type": "node",
+  "id": 10736627183,
+  "lat": -43.4889990,
+  "lon": 172.5677025,
+  "tags": {
+    "addr:housenumber": "522",
+    "addr:street": "Wairakei Road",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/aminahbread/",
+    "cuisine": "asian",
+    "diet:halal": "yes",
+    "mobile": "+64 21 114 0751",
+    "name": "Aminah's Bread & Butter Bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 10892579815,
+  "lat": -36.8430460,
+  "lon": 174.7669034,
+  "tags": {
+    "amenity": "restaurant",
+    "diet:halal": "yes",
+    "name": "Harbourside Ocean Bar & Grill",
+    "opening_hours": "PH,Mo-Su 12:00-15:00+"
+  }
+},
+{
+  "type": "node",
+  "id": 10988287988,
+  "lat": -36.8536369,
+  "lon": 174.7631184,
+  "tags": {
+    "addr:housenumber": "319",
+    "addr:street": "Queen Street",
+    "amenity": "restaurant",
+    "contact:facebook": "http://facebook.com/Tanuki.sushi.and.sake.bar/",
+    "contact:instagram": "http://instagram.com/tanukisushiandsakebar/",
+    "cuisine": "japanese",
+    "diet:halal": "yes",
+    "name": "Tanuki",
+    "name:mi": "Tanuki",
+    "opening_hours": "We-Su 17:00-22:00",
+    "phone": "+64 9 379 5353",
+    "website": "https://tanuki.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 11092661805,
+  "lat": -36.8831212,
+  "lon": 174.7485430,
+  "tags": {
+    "addr:housenumber": "433",
+    "addr:street": "Dominion Road",
+    "amenity": "restaurant",
+    "contact:facebook": "raos.nz",
+    "cuisine": "indonesian",
+    "diet:halal": "yes",
+    "name": "Raos Indonesian Street Food",
+    "opening_hours": "Tu-Su 12:00-21:00",
+    "phone": "+64 9 623 0459"
+  }
+},
+{
+  "type": "node",
+  "id": 11118471396,
+  "lat": -43.5336222,
+  "lon": 172.6344386,
+  "tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "88",
+    "addr:postcode": "8011",
+    "addr:province": "Canterbury",
+    "addr:street": "Cashel Street",
+    "addr:suburb": "Christchurch Central",
+    "addr:unit": "4",
+    "amenity": "restaurant",
+    "contact:email": "streetkitchen9@gmail.com",
+    "contact:phone": "+64 3 371 7273",
+    "contact:website": "https://twofatindians.co.nz/citycentral/",
+    "cuisine": "curry;chicken;indian;juice;seafood",
+    "diet:dairy_free": "yes",
+    "diet:halal": "yes",
+    "diet:lacto_vegetarian": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "internet_access": "no",
+    "name": "Two Fat Indians",
+    "opening_hours": "Su-Th 11:30-21:00; Fr,Sa 11:30-21:30; Mo-Su 13:30-16:30 open \"High tea\"",
+    "outdoor_seating": "no",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "reservation": "yes",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:wheelchair": "designated",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11204019167,
+  "lat": -36.8502750,
+  "lon": 174.7657182,
+  "tags": {
+    "amenity": "cafe",
+    "check_date:opening_hours": "2026-05-26",
+    "cuisine": "bubble_tea",
+    "diet:halal": "yes",
+    "name": "Wucha",
+    "name:zh": "悟茶",
+    "opening_hours": "Mo-Th 11:00-21:30; Fr 11:00-22:00; Sa 12:00-22:00; Su 12:00-21:30",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11216624378,
+  "lat": -36.8516285,
+  "lon": 174.7603348,
+  "tags": {
+    "brand": "Circle K",
+    "brand:wikidata": "Q3268010",
+    "diet:halal": "yes",
+    "name": "Circle K",
+    "opening_hours": "24/7",
+    "shop": "convenience",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 11219127390,
+  "lat": -36.8497722,
+  "lon": 174.7665229,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "diet:halal": "yes",
+    "name": "Cosmo Coffee",
+    "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 08:00-16:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11221762021,
+  "lat": -36.8508731,
+  "lon": 174.7649088,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "japanese",
+    "diet:halal": "yes",
+    "name": "Sushi & Donburi",
+    "opening_hours": "Mo,Tu 10:00-20:00; We 10:00-17:00; Th,Fr 10:00-20:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11221827519,
+  "lat": -36.8493254,
+  "lon": 174.7658038,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2025-12-28",
+    "cuisine": "chinese",
+    "diet:halal": "yes",
+    "name": "Dumpling House",
+    "opening_hours": "Mo-Su 12:00-15:00,17:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11226275414,
+  "lat": -36.8490839,
+  "lon": 174.7592156,
+  "tags": {
+    "amenity": "cafe",
+    "diet:halal": "yes",
+    "name": "East",
+    "opening_hours": "Mo-Su 12:00-15:00,17:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11237558073,
+  "lat": -36.8483055,
+  "lon": 174.7632785,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "only",
+    "name": "Kebab Time",
+    "opening_hours": "Mo 09:00-01:00, Tu 09:00-02:00, We 09:00-02:30, Th 09:00-03:00, Fr 09:00-05:00, Sa 09:30-05:00, Su 10:00-24:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11242896437,
+  "lat": -36.8513064,
+  "lon": 174.7650321,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "sushi",
+    "diet:halal": "yes",
+    "name": "Sushipac",
+    "opening_hours": "Mo-Fr 08:30-16:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11254392518,
+  "lat": -36.8504055,
+  "lon": 174.7603492,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "only",
+    "name": "Sensational Chicken",
+    "opening_hours": "Su-Tu 10:00-02:00, We,Th 10:00-03:00, Fr,Sa 10:00-05:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11258933792,
+  "lat": -36.8501746,
+  "lon": 174.7636950,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "39",
+    "addr:street": "Elliott Street",
+    "addr:suburb": "Auckland Central",
+    "diet:halal": "yes",
+    "name": "Lunas Bakehouse",
+    "phone": "+64 22 455 6681",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 11369934283,
+  "lat": -36.8511560,
+  "lon": 174.7645919,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "bubble_tea",
+    "diet:halal": "yes",
+    "name": "Tang Tea",
+    "opening_hours": "Mo-Sa 11:00-21:30; Su 12:00-21:00",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11380877270,
+  "lat": -36.8450261,
+  "lon": 174.7666756,
+  "tags": {
+    "diet:halal": "yes",
+    "name": "Convenience Store",
+    "opening_hours": "24/7",
+    "shop": "convenience",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11406408834,
+  "lat": -45.8935502,
+  "lon": 170.4983705,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "name": "Indian Spice",
+    "opening_hours": "Tu-Sa 11:30-14:00, Mo-Su 17:00-21:30",
+    "outdoor_seating": "no",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "smoking": "no",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11458515288,
+  "lat": -36.9157603,
+  "lon": 174.7305829,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "5/489",
+    "addr:postcode": "1041",
+    "addr:street": "Richardson Road",
+    "addr:suburb": "Mount Roskill",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Pasand Pizza",
+    "opening_hours": "Mo-Th 11:30-21:30; Sa-Su 11:30-21:30; Fr off",
+    "phone": "+64 9 217 8958",
+    "ref:linz:address_id": "3084932",
+    "website": "https://pasandpizza.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 11499852347,
+  "lat": -41.2942028,
+  "lon": 174.7830536,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2026-01-05",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Kebab Plus",
+    "opening_hours": "Mo-Th, Su 11:00-00:00; Fr-Sa 11:00-04:00",
+    "payment:credit_cards": "yes",
+    "website": "https://kebabplusonline.co.nz/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11504267269,
+  "lat": -45.0314724,
+  "lon": 168.6599497,
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Shotover Street",
+    "amenity": "restaurant",
+    "cuisine": "kebab;turkish",
+    "diet:halal": "yes",
+    "name": "Turkish Kebabs of Queenstown",
+    "phone": "+64 3 441 3424"
+  }
+},
+{
+  "type": "node",
+  "id": 11590999799,
+  "lat": -36.8485165,
+  "lon": 174.7629834,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "japanese",
+    "diet:halal": "yes",
+    "name": "Fuga Japanese Brasserie",
+    "name:en": "Fuga Japanese Brasserie",
+    "name:ja": "ふうが",
+    "opening_hours": "Mo,Tu,Th-Sa 12:00-14:30,18:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12082785402,
+  "lat": -36.8920807,
+  "lon": 174.7355797,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "14A",
+    "addr:postcode": "1025",
+    "addr:street": "Kitchener Road",
+    "addr:suburb": "Sandringham",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Chicking",
+    "phone": "+64 9 212 6923",
+    "ref:linz:address_id": "3068542"
+  }
+},
+{
+  "type": "node",
+  "id": 12195824883,
+  "lat": -36.8501117,
+  "lon": 174.7636555,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "21-25",
+    "addr:postcode": "1010",
+    "addr:street": "Elliott Street",
+    "addr:suburb": "Auckland Central",
+    "addr:unit": "F1.02",
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/japanesediningyou/",
+    "cuisine": "japanese",
+    "diet:halal": "yes",
+    "name": "Japanese Dining You",
+    "opening_hours": "Mo-Fr 11:00-19:00; Sa 11:30-17:00",
+    "outdoor_seating": "no",
+    "phone": "+64 9 309 3378"
+  }
+},
+{
+  "type": "node",
+  "id": 12306014260,
+  "lat": -46.4132261,
+  "lon": 168.3510109,
+  "tags": {
+    "addr:housenumber": "61",
+    "addr:street": "Tay Street",
+    "amenity": "fast_food",
+    "cuisine": "kebab;mediterranean",
+    "diet:halal": "yes",
+    "indoor_seating": "yes",
+    "name": "Mevlana Kebabs",
+    "opening_hours": "Mo-Th 10:00-15:00,17:00+; Fr-Su 10:00+",
+    "phone": "+64 3 218 6468",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12345179547,
+  "lat": -45.8747811,
+  "lon": 170.5034186,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:street": "Princes Street",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "indoor_seating": "yes",
+    "name": "Dost Turkish Cafe",
+    "opening_hours": "Tu-Th,Su 11:00-22:00; Sa 11:00-15:30",
+    "phone": "+64 3 477 2477",
+    "takeaway": "yes",
+    "website": "https://dostturkishcafe.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 12445435113,
+  "lat": -36.8554799,
+  "lon": 174.6296396,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "Unit H",
+    "addr:street": "254 Lincoln Road",
+    "addr:suburb": "Henderson",
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61562724352019",
+    "contact:instagram": "boishakhinz",
+    "cuisine": "bangalideshi",
+    "diet:halal": "yes",
+    "diet:vegetarian": "yes",
+    "email": "info@boishakhi.co.nz",
+    "name": "Boishakhi",
+    "opening_hours": "Tu-Th,Su 12:00-22:00; Fr-Sa 12:00-23:00",
+    "phone": "+64 9 600 1072",
+    "website": "https://boishakhi.co.nz/",
+    "website:menu": "https://boishakhi.co.nz/our-menus/"
+  }
+},
+{
+  "type": "node",
+  "id": 12461831353,
+  "lat": -36.9042800,
+  "lon": 174.7419922,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "1276",
+    "addr:postcode": "1041",
+    "addr:street": "Dominion Road",
+    "addr:suburb": "Mount Roskill",
+    "amenity": "restaurant",
+    "cuisine": "middle_eastern",
+    "diet:halal": "yes",
+    "name": "Albasha Restaurant",
+    "opening_hours": "Mo-Th 15:00-22:00; Fr 15:00-23:00; Sa 11:30-24:00; Su 11:30-23:00",
+    "phone": "+64 22 883 0520"
+  }
+},
+{
+  "type": "node",
+  "id": 12476983888,
+  "lat": -36.9032787,
+  "lon": 174.7267690,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "4a/151",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Wesley",
+    "diet:halal": "yes",
+    "mobile": "+64 210 298 6484",
+    "name": "A1 Halal Chicken",
+    "opening_hours": "08:30-13:30; Su,PH off",
+    "operator": "Yeasin",
+    "shop": "butcher",
+    "website": "https://www.a1halalchicken.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 12477026454,
+  "lat": -36.9003975,
+  "lon": 174.7199567,
+  "tags": {
+    "addr:housenumber": "216",
+    "addr:street": "Richardson Road",
+    "addr:suburb": "Mount Roskill",
+    "contact:facebook": "etihadhalalmeat",
+    "diet:halal": "yes",
+    "email": "etihadhalalmeat@hotmail.com",
+    "name": "Etihad Halal Meat Butchery",
+    "opening_hours": "09:00-19:00",
+    "operator": "Mansoor",
+    "phone": "+64 9 948 1215",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12477072859,
+  "lat": -36.8341776,
+  "lon": 174.6030541,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "6/402",
+    "addr:street": "Don Buck Road",
+    "addr:suburb": "Massey",
+    "contact:facebook": "https://www.facebook.com/amanahbutchery/",
+    "diet:halal": "yes",
+    "name": "Amanah Butchery",
+    "opening_hours": "Tu-Su 09:00-17:30",
+    "phone": "+64 9 553 5353",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12477119473,
+  "lat": -36.9075158,
+  "lon": 174.6977371,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "11/2",
+    "addr:postcode": "0600",
+    "addr:street": "Lansford Crescent",
+    "addr:suburb": "Avondale",
+    "contact:facebook": "wolvertonmeatmarket",
+    "diet:halal": "yes",
+    "email": "yusuf@wolverton.co.nz",
+    "name": "Wolverton Meat Market",
+    "opening_hours": "Mo 09:00-17:00; Tu-Th,Sa 09:00-19:00; Fr 09:00-12:20,13:30-19:00; Su 10:00-16:30",
+    "operator": "Muhammad",
+    "phone": "+64 9 828 7869",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12477134362,
+  "lat": -36.8556059,
+  "lon": 174.6304769,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "5/255",
+    "addr:street": "Lincoln Road",
+    "addr:suburb": "Henderson",
+    "diet:halal": "yes",
+    "name": "Zam Zam Supermarket",
+    "phone": "+64 9 600 2219",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12477134426,
+  "lat": -36.9877471,
+  "lon": 174.8748164,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "57G",
+    "addr:street": "Cavendish Drive",
+    "addr:suburb": "Manukau",
+    "diet:halal": "yes",
+    "email": "sales@continentalmeats.co.nz",
+    "name": "Continental Meat n Spices halaal",
+    "opening_hours": "09:00-19:00",
+    "operator": "Ahmed Essop",
+    "phone": "+64 9 263 8080",
+    "shop": "butcher",
+    "website": "https://www.continentalmeats.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 12477178857,
+  "lat": -36.8526348,
+  "lon": 174.6305692,
+  "tags": {
+    "addr:housenumber": "301",
+    "addr:street": "Lincoln Road",
+    "addr:suburb": "Henderson",
+    "amenity": "fast_food",
+    "branch": "Henderson",
+    "brand": "Flame Pizza",
+    "diet:halal": "yes",
+    "name": "Flame Pizza",
+    "opening_hours": "Mo 16:00-21:00; Tu-Su 12:00-21:00",
+    "phone": "+64 9 836 5509",
+    "website": "https://flamepizza.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 12477184679,
+  "lat": -36.9644783,
+  "lon": 174.9144509,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "2/1",
+    "addr:street": "Bellingham Road",
+    "addr:suburb": "Flat Bush",
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/therusticpizzeria/",
+    "contact:instagram": "therusticpizzeria",
+    "diet:halal": "yes",
+    "name": "The Rustic Pizzeria",
+    "opening_hours": "Tu-Th,Sa-Sa 12:00-20:30; Fr 13:00-21:00",
+    "operator": "Tasleem",
+    "phone": "+64 9 478 7842",
+    "website": "https://www.therusticpizzeria.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 12477202683,
+  "lat": -36.9646052,
+  "lon": 174.9052173,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "15/125",
+    "addr:street": "Ormiston Road",
+    "addr:suburb": "Flat Bush",
+    "amenity": "fast_food",
+    "branch": "Flat Bush",
+    "brand": "Flame Pizza",
+    "diet:halal": "yes",
+    "name": "Flame Pizza",
+    "opening_hours": "11:30-21:30",
+    "phone": "+64 9 277 0842",
+    "website": "https://flamepizza.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 12477230596,
+  "lat": -36.8980072,
+  "lon": 174.6972090,
+  "tags": {
+    "addr:housenumber": "2020",
+    "addr:street": "Great North Road",
+    "addr:suburb": "Avondale",
+    "amenity": "fast_food",
+    "contact:facebook": "beachpizzaavondale",
+    "diet:halal": "yes",
+    "drive_through": "no",
+    "name": "Pizzas and Mocktails",
+    "opening_hours": "Mo-We 16:00-21:45, Th-Su 11:00-22:45",
+    "phone": "+64 9 217 0050",
+    "website": "https://pizzasandmocktails.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 12487391032,
+  "lat": -36.8476416,
+  "lon": 174.7616460,
+  "tags": {
+    "addr:housenumber": "51 - 61",
+    "addr:street": "Hobson Street",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Akbar Durbar Indian Takeaway",
+    "phone": "+64 9 309 5752"
+  }
+},
+{
+  "type": "node",
+  "id": 12487391734,
+  "lat": -36.7816281,
+  "lon": 174.7215306,
+  "tags": {
+    "addr:housenumber": "407",
+    "addr:street": "Glenfield Road",
+    "amenity": "fast_food",
+    "contact:facebook": "gekglenfield",
+    "diet:halal": "yes",
+    "name": "Glen Eden Kebab - Glenfield",
+    "opening_hours": "Sa-We 09:00-18:00; Th-Fr 09:00-21:00",
+    "phone": "+64 9 444 9645"
+  }
+},
+{
+  "type": "node",
+  "id": 12487391736,
+  "lat": -36.8495544,
+  "lon": 174.7642892,
+  "tags": {
+    "addr:housenumber": "12",
+    "addr:street": "Darby Street",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Celine Mediterranean Cuisine",
+    "phone": "+64 9 373 2450"
+  }
+},
+{
+  "type": "node",
+  "id": 12487391737,
+  "lat": -36.8460221,
+  "lon": 174.7650544,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Swanson Street",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "email": "thechamate@gmail.com",
+    "name": "Chamate Restaurant",
+    "opening_hours": "Mo-Th 11:00-21:30; Fr-Sa 11:00-23:00",
+    "phone": "+64 9 302 7788",
+    "website": "https://www.thechamate.com",
+    "website:menu": "https://www.thechamate.com/menu"
+  }
+},
+{
+  "type": "node",
+  "id": 12487391738,
+  "lat": -36.8436611,
+  "lon": 174.7664952,
+  "tags": {
+    "addr:street": "Quay Street",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Mazi"
+  }
+},
+{
+  "type": "node",
+  "id": 12487391739,
+  "lat": -36.9446024,
+  "lon": 174.8498564,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:street": "High Street",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "My Dear Eatery"
+  }
+},
+{
+  "type": "node",
+  "id": 12487392006,
+  "lat": -36.7812626,
+  "lon": 174.7215446,
+  "tags": {
+    "addr:housenumber": "2/407",
+    "addr:street": "Glenfield Road",
+    "amenity": "fast_food",
+    "branch": "Glenfield",
+    "brand": "Chicking",
+    "diet:halal": "yes",
+    "name": "Chicking",
+    "phone": "+64 9 948 0441",
+    "website": "https://chicking.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 12487392007,
+  "lat": -36.7878472,
+  "lon": 174.7693205,
+  "tags": {
+    "addr:street": "Anzac Street",
+    "amenity": "fast_food",
+    "branch": "Shore City",
+    "brand": "Wicked Chicken",
+    "diet:halal": "yes",
+    "name": "Wicked Chicken",
+    "opening_hours": "Mo-We,Fr-Sa 09:00-18:00; Th 09:00-21:00; Su 09:00-17:00",
+    "phone": "+64 9 573 5740",
+    "website": "https://wickedchicken.co.nz"
+  }
+},
+{
+  "type": "node",
+  "id": 12487392008,
+  "lat": -36.8545477,
+  "lon": 174.7667053,
+  "tags": {
+    "addr:housenumber": "11A",
+    "addr:street": "Mount Street",
+    "amenity": "fast_food",
+    "cuisine": "chicken",
+    "diet:halal": "yes",
+    "name": "Sensational Chicken",
+    "opening_hours": "Su-Th 11:00-22:00; Fr-Sa 11:00-23:59",
+    "phone": "+64 9 366 1624"
+  }
+},
+{
+  "type": "node",
+  "id": 12487392511,
+  "lat": -36.7166437,
+  "lon": 174.7467705,
+  "tags": {
+    "addr:housenumber": "10/25",
+    "addr:street": "Anzac Road",
+    "amenity": "fast_food",
+    "branch": "Browns Bay",
+    "brand": "Sensational Chicken | NZ Kebabs",
+    "diet:halal": "yes",
+    "name": "Sensational Chicken | NZ Kebabs",
+    "opening_hours": "Mo-Fr 10:00-21:00; Su 11:00-21:00",
+    "phone": "+64 9 217 1786",
+    "website": "https://www.sensationalchicken.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12487392512,
+  "lat": -36.8547477,
+  "lon": 174.7667021,
+  "tags": {
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Smash Burger",
+    "phone": "+64 9 307 6871",
+    "self_service": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12487495807,
+  "lat": -36.9080545,
+  "lon": 174.6965597,
+  "tags": {
+    "addr:housenumber": "166C",
+    "addr:street": "Saint Georges Road",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "email": "info@khanskebabclub.com",
+    "mobile": "+64 21 186 3897",
+    "name": "Khan's Kebab Club",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "website": "http://khanskebabclub.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12487498703,
+  "lat": -36.8874795,
+  "lon": 174.7474384,
+  "tags": {
+    "addr:housenumber": "590",
+    "addr:postcode": "1024",
+    "addr:street": "Dominion Road",
+    "amenity": "fast_food",
+    "contact:facebook": "https://www.facebook.com/profile.php/?id=61562065662486",
+    "cuisine": "asian;beef_bowl;chicken;chinese;fish;noodles;oriental",
+    "diet:halal": "yes",
+    "mobile": "+64 26 685 0027",
+    "name": "No.1 Lanzhou Beef Noodle"
+  }
+},
+{
+  "type": "node",
+  "id": 12501043505,
+  "lat": -40.3561206,
+  "lon": 175.6059088,
+  "tags": {
+    "addr:housenumber": "167",
+    "addr:street": "Cuba Street",
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/profile.php/?id=100027689875156",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Pacha's Kebab Cafe",
+    "phone": "+64 6 357 7055",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12501045622,
+  "lat": -37.7651910,
+  "lon": 175.2790245,
+  "tags": {
+    "addr:housenumber": "162",
+    "addr:street": "Clarkin Road",
+    "diet:halal": "yes",
+    "name": "Muzammil Halal Meats",
+    "opening_hours": "Tu-Fr 09:00-17:30; Sa,Su 09:00-17:00",
+    "phone": "+64 7 855 5243",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12501045633,
+  "lat": -37.7268633,
+  "lon": 176.1331979,
+  "tags": {
+    "addr:city": "Tauranga",
+    "addr:housenumber": "198",
+    "addr:postcode": "3112",
+    "addr:street": "Chadwick Road",
+    "addr:suburb": "Tauranga South",
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/motherskitchenltd/",
+    "cuisine": "indian",
+    "diet:halal": "only",
+    "email": "support@motherskitchen.com",
+    "name": "Mother's Kitchen",
+    "opening_hours": "Mo 11:00-20:30; We-Th 11:00-20:30; Fr 15:00-21:30; Sa 11:00-21:30; Su 11:00-20:30",
+    "phone": "+64 7 577 1203",
+    "website": "https://motherskitchen.tuckerfox.co.nz",
+    "website:menu": "http://motherskitchen.co.nz/shop/"
+  }
+},
+{
+  "type": "node",
+  "id": 12501069609,
+  "lat": -36.9420556,
+  "lon": 174.8414168,
+  "tags": {
+    "addr:housenumber": "283",
+    "addr:street": "Great South Road",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Halal Tasty Food",
+    "phone": "+64 9 276 6401"
+  }
+},
+{
+  "type": "node",
+  "id": 12501086605,
+  "lat": -41.3134264,
+  "lon": 174.7795293,
+  "tags": {
+    "addr:housenumber": "160",
+    "addr:street": "Riddiford Street",
+    "diet:halal": "yes",
+    "name": "Wellington Halal Meats Ltd",
+    "phone": "+64 4 380 0900",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12523108603,
+  "lat": -43.5321600,
+  "lon": 172.6374041,
+  "tags": {
+    "addr:housenumber": "138",
+    "addr:street": "Hereford Street",
+    "amenity": "restaurant",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "name": "Best Turkish Food Co",
+    "opening_hours": "Mo-Fr 12:00-14:00, Su-We 17:00-01:40, Th 17:00-02:40, Fr,Sa 17:00-04:30",
+    "outdoor_seating": "no",
+    "phone": "+64 3 366 0196",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12523108604,
+  "lat": -43.5637010,
+  "lon": 172.5886100,
+  "tags": {
+    "addr:housenumber": "4A",
+    "addr:street": "McCarthy Street",
+    "amenity": "fast_food",
+    "cuisine": "mediterranean",
+    "diet:halal": "yes",
+    "email": "thekiwikebab0822@gmail.com",
+    "mobile": "+64 22 470 5035",
+    "name": "The Kiwi Kebab",
+    "opening_hours": "Tu-We 16:00-22:00; Th 16:00-23:00; Fr-Sa 16:00-24:00; Su 16:00-21:00",
+    "website": "https://thekiwikebab.co.nz",
+    "website:menu": "https://thekiwikebab.co.nz/?page_id=2002"
+  }
+},
+{
+  "type": "node",
+  "id": 12523108606,
+  "lat": -45.0130062,
+  "lon": 168.7429576,
+  "tags": {
+    "addr:housenumber": "3/34",
+    "addr:street": "Grant Road",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Boliwood Restaurant Five Mile",
+    "phone": "+64 3 442 2019"
+  }
+},
+{
+  "type": "node",
+  "id": 12523109605,
+  "lat": -41.1940086,
+  "lon": 174.9431824,
+  "tags": {
+    "addr:housenumber": "1/935",
+    "addr:street": "High Street",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Kitchen Manthira",
+    "phone": "+64 4 260 0119"
+  }
+},
+{
+  "type": "node",
+  "id": 12523109606,
+  "lat": -40.6229080,
+  "lon": 175.2858131,
+  "tags": {
+    "addr:housenumber": "196",
+    "addr:street": "Oxford Street",
+    "amenity": "cafe",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Café Anatolia Turkish Cuisine",
+    "phone": "+64 6 368 7924"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110002,
+  "lat": -43.5388176,
+  "lon": 172.6423209,
+  "tags": {
+    "addr:housenumber": "347",
+    "addr:street": "Moorhouse Avenue",
+    "amenity": "restaurant",
+    "cuisine": "arab",
+    "diet:halal": "yes",
+    "mobile": "+64 210 255 5592",
+    "name": "Dubbba Deluxe",
+    "website": "https://dubbadeluxe.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110102,
+  "lat": -41.2053531,
+  "lon": 174.9116096,
+  "tags": {
+    "addr:housenumber": "462",
+    "addr:street": "High Street",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "New Paradise",
+    "phone": "+64 4 390 0108"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110103,
+  "lat": -43.5341033,
+  "lon": 172.6384613,
+  "tags": {
+    "addr:housenumber": "81",
+    "addr:street": "Lichfield Street",
+    "amenity": "fast_food",
+    "cuisine": "kebab",
+    "diet:halal": "yes",
+    "name": "Zak's Kebabs",
+    "phone": "+64 3 261 6124"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110104,
+  "lat": -45.8716038,
+  "lon": 170.5043920,
+  "tags": {
+    "addr:housenumber": "31",
+    "addr:street": "Saint Andrew Street",
+    "amenity": "restaurant",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Paasha Turkish Restaurant",
+    "phone": "+64 3 477 7181"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110702,
+  "lat": -43.5215343,
+  "lon": 172.6565424,
+  "tags": {
+    "addr:housenumber": "270",
+    "addr:street": "Stanmore Road",
+    "amenity": "restaurant",
+    "cuisine": "fine_dining;indian",
+    "diet:halal": "yes",
+    "name": "Indian Paradise",
+    "phone": "+64 3 381 1738"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110801,
+  "lat": -41.2818114,
+  "lon": 174.7757645,
+  "tags": {
+    "addr:housenumber": "180",
+    "amenity": "fast_food",
+    "cuisine": "mediterranean",
+    "diet:halal": "yes",
+    "name": "Kebabs on Queen",
+    "phone": "+64 4 499 4178"
+  }
+},
+{
+  "type": "node",
+  "id": 12523110802,
+  "lat": -43.4907716,
+  "lon": 172.5481517,
+  "tags": {
+    "addr:housenumber": "544",
+    "addr:street": "Memorial Avenue",
+    "amenity": "restaurant",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Authentic Turkish Doner Kebabs",
+    "phone": "+64 3 260 1282"
+  }
+},
+{
+  "type": "node",
+  "id": 12523111501,
+  "lat": -43.5448022,
+  "lon": 172.6099523,
+  "tags": {
+    "addr:housenumber": "268",
+    "addr:street": "Lincoln Road",
+    "diet:halal": "yes",
+    "name": "Bake and Beans",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 12523111503,
+  "lat": -46.3762961,
+  "lon": 168.3470350,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Ruru Street",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "AR Indian Restaurant",
+    "phone": "+64 3 215 9568"
+  }
+},
+{
+  "type": "node",
+  "id": 12523111601,
+  "lat": -43.4983880,
+  "lon": 172.6089383,
+  "tags": {
+    "addr:housenumber": "479",
+    "addr:street": "Papanui Road",
+    "amenity": "fast_food",
+    "diet:halal": "yes",
+    "name": "Flaming Pizza",
+    "phone": "+64 3 352 2577"
+  }
+},
+{
+  "type": "node",
+  "id": 12523111602,
+  "lat": -45.2519205,
+  "lon": 169.3890813,
+  "tags": {
+    "addr:housenumber": "51",
+    "addr:street": "Centennial Avenue",
+    "amenity": "fast_food",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "indoor_seating": "yes",
+    "name": "Kebab Time",
+    "opening_hours": "Mo-Su 11:00-21:00",
+    "outdoor_seating": "yes",
+    "phone": "+64 3 448 6941"
+  }
+},
+{
+  "type": "node",
+  "id": 12523111603,
+  "lat": -46.4131204,
+  "lon": 168.3462583,
+  "tags": {
+    "addr:housenumber": "11",
+    "addr:street": "The Crescent",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Indian at the Crescent",
+    "phone": "+64 3 214 1555"
+  }
+},
+{
+  "type": "node",
+  "id": 12523111701,
+  "lat": -43.3860580,
+  "lon": 172.6553197,
+  "tags": {
+    "addr:housenumber": "77",
+    "addr:street": "Williams Street",
+    "amenity": "cafe",
+    "diet:halal": "yes",
+    "name": "Rivertown Cafe",
+    "phone": "+64 3 327 0304"
+  }
+},
+{
+  "type": "node",
+  "id": 12523112701,
+  "lat": -46.4181167,
+  "lon": 168.3566930,
+  "tags": {
+    "addr:housenumber": "231",
+    "addr:street": "Tweed Street",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Curry Guru Tweed",
+    "phone": "+64 3 214 0296"
+  }
+},
+{
+  "type": "node",
+  "id": 12527833987,
+  "lat": -36.9227553,
+  "lon": 174.7201424,
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "4/602",
+    "addr:street": "Hillsborough Road",
+    "addr:suburb": "Mount Roskill",
+    "alt_name": "Madina Halal Meats",
+    "diet:halal": "yes",
+    "name": "Madinah Halal Meats",
+    "operator": "Radwan",
+    "phone": "+64 9 218 7788",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "node",
+  "id": 12679820041,
+  "lat": -36.8453865,
+  "lon": 174.7676392,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "greek",
+    "diet:halal": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Zeta Greek Kitchen",
+    "opening_hours": "Mo,Tu 08:30-22:00, We,Th 08:30-01:00, Fr,Sa 09:00-03:00, Su 09:00-24:00",
+    "outdoor_seating": "yes",
+    "phone": "+64 9 600 2598",
+    "source:diet": "website",
+    "takeaway": "yes",
+    "website": "https://www.zetagreekkitchen.co.nz/"
+  }
+},
+{
+  "type": "node",
+  "id": 13722062985,
+  "lat": -36.8520443,
+  "lon": 174.7642319,
+  "tags": {
+    "addr:postcode": "1010",
+    "addr:street": "Queen Street",
+    "amenity": "restaurant",
+    "check_date": "2026-06-19",
+    "cuisine": "burger;soft_serve",
+    "diet:halal": "yes",
+    "name": "flip",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13722384659,
+  "lat": -36.9001613,
+  "lon": 174.7199765,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "House of Authentic Kolkata Dum Biryani"
+  }
+},
+{
+  "type": "node",
+  "id": 13726730904,
+  "lat": -36.8920917,
+  "lon": 174.7356707,
+  "tags": {
+    "addr:street": "Kitchener Road",
+    "amenity": "cafe",
+    "cuisine": "indian",
+    "diet:halal": "yes",
+    "name": "Paradise",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14014139638,
+  "lat": -46.4073468,
+  "lon": 168.3688815,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "turkish",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:keto": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Souvlaki & Kebab Corner",
+    "opening_hours": "Su-We 11:00-21:30, Th-Sa 11:00-21:45"
+  }
+},
+{
+  "type": "node",
+  "id": 14015973195,
+  "lat": -45.8662258,
+  "lon": 170.5118239,
+  "tags": {
+    "amenity": "restaurant",
+    "changing_table": "no",
+    "contact:instagram": "migahako",
+    "cuisine": "korean",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:vegetarian": "yes",
+    "drink:beer": "no",
+    "indoor_seating": "no",
+    "name": "Miga Hako Express",
+    "opening_hours": "Mo-Fr 10:00-16:00",
+    "outdoor_seating": "no",
+    "takeaway": "only",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 101123130,
+  "center": {
+    "lat": -43.5297379,
+    "lon": 172.6385720
+  },
+  "tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "1",
+    "addr:postcode": "8011",
+    "addr:street": "New Regent Street",
+    "addr:suburb": "Christchurch Central",
+    "amenity": "restaurant",
+    "building": "retail",
+    "building:colour": "yellow",
+    "building:levels": "2",
+    "cuisine": "lebanese;kebab",
+    "diet:halal": "yes",
+    "disused:shop": "yes",
+    "height": "12",
+    "historic": "building",
+    "indoor_seating": "yes",
+    "name": "Mashawe",
+    "outdoor_seating": "yes",
+    "phone": "+64 3 420 0421",
+    "roof:colour": "yellow"
+  }
+},
+{
+  "type": "way",
+  "id": 104743614,
+  "center": {
+    "lat": -45.8548747,
+    "lon": 170.5197244
+  },
+  "tags": {
+    "addr:city": "Dunedin",
+    "addr:housenumber": "6",
+    "addr:postcode": "9010",
+    "addr:street": "North Road",
+    "addr:suburb": "North East Valley",
+    "brand": "New World",
+    "brand:wikidata": "Q7012488",
+    "brand:wikipedia": "en:New World (supermarket)",
+    "building": "retail",
+    "building:levels": "1",
+    "check_date:opening_hours": "2026-07-14",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "name": "New World",
+    "opening_hours": "Mo-Su 07:30-21:00",
+    "ref:linz:address_id": "55378",
+    "roof:levels": "1",
+    "roof:shape": "quadruple_saltbox",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 116455612,
+  "center": {
+    "lat": -45.8924649,
+    "lon": 170.4989215
+  },
+  "tags": {
+    "addr:city": "Dunedin",
+    "addr:housenumber": "124",
+    "addr:postcode": "9012",
+    "addr:street": "Hillside Road",
+    "addr:suburb": "South Dunedin",
+    "brand": "PAK'nSAVE",
+    "brand:wikidata": "Q7125339",
+    "brand:wikipedia": "en:Pak'nSave",
+    "building": "commercial",
+    "check_date:opening_hours": "2024-10-03",
+    "diet:halal": "yes",
+    "name": "PAK'nSAVE",
+    "opening_hours": "Mo-Su,PH 07:00-22:00",
+    "ref:linz:address_id": "1556756",
+    "ref:linz:building_id": "4679054",
+    "shop": "supermarket",
+    "source": "esri/LINZ_NZ_Buildings",
+    "website": "https://www.paknsave.co.nz/south-island/otago-and-southland/dunedin",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 162152485,
+  "center": {
+    "lat": -36.8576747,
+    "lon": 174.7604507
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "167",
+    "addr:postcode": "1010",
+    "addr:street": "Karangahape Road",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "brand": "St Pierre's Sushi",
+    "brand:wikidata": "Q111018464",
+    "building": "yes",
+    "cuisine": "sushi",
+    "diet:halal": "yes",
+    "name": "St Pierre's Sushi",
+    "opening_hours": "Mo-We 07:30-18:00; Th,Fr 07:30-19:00; Sa 09:30-18:00; Su 09:30-17:00",
+    "phone": "+64 9 379 3177",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 229240921,
+  "center": {
+    "lat": -37.7937843,
+    "lon": 175.2870722
+  },
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Anzac Parade",
+    "brand": "Woolworths",
+    "brand:wikidata": "Q5176845",
+    "brand:wikipedia": "en:Countdown (supermarket)",
+    "building": "retail",
+    "diet:halal": "yes",
+    "name": "Woolworths",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "phone": "+64 7 838 2714",
+    "roof:shape": "flat",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 235061485,
+  "center": {
+    "lat": -43.5433046,
+    "lon": 172.6125709
+  },
+  "tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "318",
+    "addr:postcode": "8024",
+    "addr:street": "Lincoln Road",
+    "addr:suburb": "Addington",
+    "amenity": "restaurant",
+    "building": "retail",
+    "cuisine": "asian",
+    "diet:halal": "yes",
+    "name": "AFG Restaurant",
+    "phone": "+64 3 338 7029",
+    "ref:linz:address_id": "205814",
+    "source": "Bing"
+  }
+},
+{
+  "type": "way",
+  "id": 260057114,
+  "center": {
+    "lat": -36.8513568,
+    "lon": 174.7598094
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:country": "NZ",
+    "addr:housenumber": "161",
+    "addr:postcode": "1010",
+    "addr:street": "Hobson Street",
+    "addr:suburb": "Auckland Central",
+    "building": "yes",
+    "building:levels": "3",
+    "description": "Korean foods",
+    "diet:halal": "yes",
+    "height": "11",
+    "name": "Asian Groceries",
+    "name:en": "Asian Groceries",
+    "name:ko": "ロイヤルセーブマート(韓国食材)",
+    "opening_hours": "PH,Mo-Su 10:00-22:00",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 293023331,
+  "center": {
+    "lat": -36.8562401,
+    "lon": 174.7623990
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "486",
+    "addr:postcode": "1010",
+    "addr:street": "Queen Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "chinese",
+    "diet:halal": "only",
+    "name": "Shaolin Kung Fu Noodle",
+    "opening_hours": "Mo-Sa 10:00-22:00",
+    "ref:linz:address_id": "1124159",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 309979336,
+  "center": {
+    "lat": -36.9040624,
+    "lon": 174.7421624
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "1274",
+    "addr:postcode": "1041",
+    "addr:street": "Dominion Road",
+    "addr:suburb": "Mount Roskill",
+    "building": "yes",
+    "diet:halal": "yes",
+    "mobile": "+64 22 357 3609",
+    "name": "Istanbul Halal Meats & Grocery",
+    "phone": "+64 9 971 1341",
+    "ref:linz:address_id": "1098620",
+    "shop": "butcher",
+    "website": "http://imamhalalmeats.co.nz"
+  }
+},
+{
+  "type": "way",
+  "id": 329096760,
+  "center": {
+    "lat": -36.9678710,
+    "lon": 174.8618714
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "55b",
+    "addr:postcode": "2025",
+    "addr:street": "East Tamaki Road",
+    "addr:suburb": "Papatoetoe",
+    "building": "yes",
+    "diet:halal": "yes",
+    "name": "Bake and Beans",
+    "phone": "+64 9 278 2119;0800 786 101",
+    "shop": "bakery",
+    "website": "https://bakeandbeans.co.nz/"
+  }
+},
+{
+  "type": "way",
+  "id": 410136297,
+  "center": {
+    "lat": -41.3118578,
+    "lon": 173.2345732
+  },
+  "tags": {
+    "branch": "Stoke",
+    "brand": "Woolworths",
+    "brand:wikidata": "Q5176845",
+    "brand:wikipedia": "en:Woolworths New Zealand",
+    "building": "retail",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "name": "Woolworths",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "operator": "Woolworths Group New Zealand",
+    "shop": "supermarket",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 816352005,
+  "center": {
+    "lat": -45.8763278,
+    "lon": 170.3487736
+  },
+  "tags": {
+    "addr:city": "Mosgiel",
+    "addr:housenumber": "104",
+    "addr:postcode": "9024",
+    "addr:street": "Gordon Road",
+    "addr:suburb": "Mosgiel",
+    "amenity": "restaurant",
+    "building": "yes",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=100054271881359",
+    "cuisine": "turkish",
+    "diet:halal": "yes",
+    "name": "Turkish Kitchen",
+    "opening_hours": "11:00-21:00; Mo off",
+    "phone": "+64 3 489 0900",
+    "phone:NZ": "0800 489 0900",
+    "ref:linz:address_id": "64151",
+    "website": "https://www.turkishkitchenmosgiel.co.nz"
+  }
+},
+{
+  "type": "way",
+  "id": 853219245,
+  "center": {
+    "lat": -36.9818633,
+    "lon": 174.7882745
+  },
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Westney Road",
+    "building": "yes",
+    "diet:halal": "yes",
+    "name": "Getfresh Halal Takeaway",
+    "phone": "+64 9 275 7195",
+    "shop": "supermarket"
+  }
+},
+{
+  "type": "way",
+  "id": 894759667,
+  "center": {
+    "lat": -36.8556517,
+    "lon": 174.7627054
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "462",
+    "addr:postcode": "1010",
+    "addr:street": "Queen Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "building": "yes",
+    "diet:halal": "yes",
+    "name": "Joong Wha Ru",
+    "opening_hours": "Mo,We-Fr 12:00-15:00,17:00-22:00; Sa,Su 12:00-22:00",
+    "ref:linz:address_id": "1124145",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 894759675,
+  "center": {
+    "lat": -36.8560400,
+    "lon": 174.7624868
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "478",
+    "addr:postcode": "1010",
+    "addr:street": "Queen Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "building": "yes",
+    "check_date:opening_hours": "2023-09-24",
+    "cuisine": "japanese",
+    "diet:halal": "yes",
+    "name": "Shoya",
+    "opening_hours:signed": "no",
+    "ref:linz:address_id": "256900",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 947693739,
+  "center": {
+    "lat": -36.8489845,
+    "lon": 174.7642151
+  },
+  "tags": {
+    "amenity": "fast_food",
+    "building": "container",
+    "diet:halal": "only",
+    "name": "Kebabzilla"
+  }
+},
+{
+  "type": "way",
+  "id": 947693741,
+  "center": {
+    "lat": -36.8489044,
+    "lon": 174.7642540
+  },
+  "tags": {
+    "amenity": "fast_food",
+    "building": "container",
+    "diet:halal": "yes",
+    "name": "Toastie"
+  }
+},
+{
+  "type": "way",
+  "id": 951396225,
+  "center": {
+    "lat": -41.2890414,
+    "lon": 173.2400783
+  },
+  "tags": {
+    "addr:city": "Nelson",
+    "addr:housenumber": "2A",
+    "addr:postcode": "7011",
+    "addr:street": "Roto Street",
+    "addr:suburb": "Tāhunanui",
+    "building": "retail",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "name": "Roto Street Dairy",
+    "opening_hours": "Mo-Su 06:00-19:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "phone": "+64 3 548 6581",
+    "shop": "convenience",
+    "source": "LINZ",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 999243958,
+  "center": {
+    "lat": -41.2511617,
+    "lon": 173.0937924
+  },
+  "tags": {
+    "addr:city": "Mapua",
+    "addr:housenumber": "84B",
+    "addr:street": "Aranui Road",
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "building": "yes",
+    "diet:gluten_free": "yes",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "name": "Java Hut",
+    "opening_hours": "Mo-Fr 06:45-14:00; Sa,Su 07:45-14:00",
+    "outdoor_seating": "pedestrian_zone",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "smoking": "outside",
+    "source": "LINZ",
+    "toilets": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 1018404192,
+  "center": {
+    "lat": -43.5305847,
+    "lon": 172.5743639
+  },
+  "tags": {
+    "addr:housenumber": "11B",
+    "addr:street": "Waimairi Road",
+    "amenity": "fast_food",
+    "building": "yes",
+    "cuisine": "moroccan",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "no",
+    "mobile": "+64 210 255 5592",
+    "name": "Dubba Dubba",
+    "website": "https://dubbadeluxe.co.nz",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1041821948,
+  "center": {
+    "lat": -36.8490424,
+    "lon": 174.7630185
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "103",
+    "addr:postcode": "1010",
+    "addr:street": "Albert Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "cafe",
+    "check_date:opening_hours": "2024-01-17",
+    "diet:halal": "yes",
+    "name": "Peppers",
+    "opening_hours:signed": "no",
+    "ref:linz:address_id": "1123232"
+  }
+},
+{
+  "type": "way",
+  "id": 1187063865,
+  "center": {
+    "lat": -36.7287041,
+    "lon": 174.7080340
+  },
+  "tags": {
+    "amenity": "cafe",
+    "branch": "Tea and Fresh Juice",
+    "brand": "CoCo",
+    "brand:wikidata": "Q65084369",
+    "cuisine": "bubble_tea",
+    "diet:halal": "yes",
+    "diet:vegan": "yes",
+    "name": "CoCo Fresh Tea & Juice",
+    "opening_hours": "Mo-Fr 09:00-18:00",
+    "short_name": "CoCo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1239218142,
+  "center": {
+    "lat": -43.5340315,
+    "lon": 172.6339368
+  },
+  "tags": {
+    "amenity": "fast_food",
+    "barrier": "wall",
+    "cuisine": "indonesian",
+    "diet:halal": "yes",
+    "indoor": "room",
+    "mobile": "+64 27 299 95742",
+    "name": "Indo Tempeh",
+    "website": "https://indotempeh.co.nz/"
+  }
+},
+{
+  "type": "way",
+  "id": 1311902032,
+  "center": {
+    "lat": -41.1287998,
+    "lon": 174.8392138
+  },
+  "tags": {
+    "building": "yes",
+    "diet:halal": "only",
+    "name": "North City Halal Meat",
+    "shop": "butcher"
+  }
+},
+{
+  "type": "way",
+  "id": 1360852786,
+  "center": {
+    "lat": -36.8531323,
+    "lon": 174.7641165
+  },
+  "tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "18/638",
+    "addr:postcode": "1010",
+    "addr:street": "Queen Street",
+    "addr:suburb": "Auckland Central",
+    "amenity": "restaurant",
+    "check_date": "2025-06-14",
+    "cuisine": "persian",
+    "diet:halal": "yes",
+    "email": "fericusine25@gmail.com",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "0",
+    "name": "Feri Cuisine",
+    "opening_hours": "09:00-21:00",
+    "phone": "+64 210 230 4341"
+  }
+},
+{
+  "type": "way",
+  "id": 1368013274,
+  "center": {
+    "lat": -41.3347586,
+    "lon": 173.2026342
+  },
+  "tags": {
+    "branch": "Richmond",
+    "brand": "Woolworths",
+    "brand:wikidata": "Q5176845",
+    "brand:wikipedia": "en:Countdown (supermarket)",
+    "building:part": "retail",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "name": "Woolworths",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "phone": "+64 3 543 8306",
+    "shop": "supermarket",
+    "toilets": "yes",
+    "website": "https://www.woolworths.co.nz/store-finder/9040/richmond/richmond-countdown",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1374354329,
+  "center": {
+    "lat": -41.3385867,
+    "lon": 173.1867477
+  },
+  "tags": {
+    "branch": "Richmond",
+    "brand": "PAK'nSAVE",
+    "brand:wikidata": "Q7125339",
+    "diet:halal": "yes",
+    "diet:kosher": "yes",
+    "indoor": "room",
+    "level": "0",
+    "name": "PAK'nSAVE",
+    "official_name": "Pak'nSave Richmond",
+    "opening_hours": "Mo,Tu,We,Fr,Sa,Su 08:00-21:00; Th 08:00-22:00; Dec 17-21 08:00-22:00; Dec 22-23 08:00-23:00; Dec 24 07:00-21:00; Dec 25 off; Dec 26 08:00-21:00; Jan 2 08:00-22:00",
+    "phone": "+64 3 544 8658",
+    "room": "shop",
+    "shop": "supermarket",
+    "website": "https://www.paknsave.co.nz/south-island/nelson/richmond",
+    "wheelchair": "yes"
+  }
+}
+
+  ]
+}

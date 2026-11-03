@@ -1,0 +1,11 @@
+# local test credentials — never commit
+.env
+.env.local
+
+# test output
+rls-live-results.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
