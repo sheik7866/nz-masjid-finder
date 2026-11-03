@@ -194,6 +194,11 @@ create policy "verifications community insert"
   on public.verifications for insert
   to anon, authenticated
   with check (
+    -- first insert needs a real (non-blank) name and a non-admin status only.
+    -- admins updating the same row afterwards may touch any field, because
+    -- UPDATE is governed by "verifications admin update", not this policy,
+    -- and PostgREST upserts authenticate against this policy: a plain anon or
+    -- signed-in user can never merge into an existing row that is not theirs.
     coalesce(nullif(btrim(coalesce(verified_by, '')), ''), nullif(btrim(coalesce(reported_by, '')), '')) is not null
     and status in ('verified', 'needs_review')
   );

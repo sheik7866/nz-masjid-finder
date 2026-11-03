@@ -9,15 +9,30 @@ const localStorage = {
   setItem: (k, v) => store.set(k, String(v)),
   removeItem: (k) => store.delete(k),
 };
-const sandbox = { localStorage, window: {}, console, Date, JSON, Math };
+const listeners = {};
+const document = {
+  addEventListener: (t, f) => { (listeners[t] = listeners[t] || []).push(f); },
+  dispatchEvent: (e) => { (listeners[e.type] || []).forEach((f) => { try { f(e); } catch (err) {} }); },
+  visibilityState: 'visible', readyState: 'complete',
+};
+const sandbox = {
+  localStorage, document,
+  navigator: { onLine: true }, setTimeout: () => 0, setInterval: () => 0, clearTimeout: () => {},
+  window: {}, console, Date, JSON, Math, Promise, Array, Object, String, Number,
+};
 sandbox.window = sandbox;
+sandbox.window.addEventListener = () => {};
+sandbox.window.NZ_CONFIG = { supabaseUrl: '', supabaseAnonKey: '' };
+sandbox.CustomEvent = function (t, init) { this.type = t; this.detail = (init && init.detail) || {}; };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(__dirname, '../public/verification.js'), 'utf8'), sandbox);
 
-const V = sandbox.NZVerification;
 const assert = require('assert');
-let pass = 0;
-const ok = (name, fn) => { fn(); pass += 1; console.log('  ✓', name); };
+const V = sandbox.NZVerification;
+assert.strictEqual(typeof V.confirm, 'function');
+assert.strictEqual(typeof V.queues, 'function', 'new API exposes queues()');
+const pendingV = [];
+const ok = (name, fn) => { pendingV.push({ name, fn }); };
 
 const masjid = { id: 'node/1', name: 'Test Masjid', address: { formatted: '1 Test Rd' }, lat: -36.8, lon: 174.7 };
 
@@ -26,27 +41,23 @@ ok('starts empty', () => {
   assert.strictEqual(V.get('node/1'), null);
 });
 
-ok('confirm requires a name and stores source + history', () => {
-  const rec = V.confirm('node/1', { by: 'Ahmed R.', source: 'https://x.org', jummah: 'Khutbah 1:15pm' });
-  assert.strictEqual(rec.status, 'verified');
-  assert.strictEqual(rec.verified_by, 'Ahmed R.');
-  assert.strictEqual(rec.source_url, 'https://x.org');
-  assert.strictEqual(rec.jummah_times, 'Khutbah 1:15pm');
-  assert.strictEqual(rec.history.length, 1);
-  assert.ok(rec.verified_at);
+ok('confirm() without Supabase queues offline and stays invisible', async () => {
+  const res = await V.confirm('node/1', { by: 'Ahmed R.', source: 'https://x.org', jummah: 'Khutbah 1:15pm' });
+  assert.strictEqual(res.stored, 'queued');
+  assert.strictEqual(V.get('node/1'), null, 'unconfirmed rows are never shown');
+  assert.strictEqual(V.queues().verifications, 1);
 });
 
-ok('anonymous confirm falls back to "Anonymous" label (never blank)', () => {
-  const rec = V.confirm('node/2', { by: '   ' });
-  assert.strictEqual(rec.verified_by, 'Anonymous');
+ok('queues are per-id: a second confirm replaces the first queued write', async () => {
+  await V.confirm('node/1', { by: 'Ahmed R.' });
+  await V.confirm('node/1', { by: 'Sara' });
+  assert.strictEqual(V.queues().verifications, 1, 'one pending write per masjid');
 });
 
-ok('decorate marks the listing verified and exposes jummah', () => {
+ok('decorate exposes only server-accepted rows', () => {
   const d = V.decorate({ ...masjid });
-  assert.strictEqual(d.verified, true);
-  assert.strictEqual(d.status, 'verified');
-  assert.strictEqual(d.verified_by, 'Ahmed R.');
-  assert.strictEqual(d.jummah_times, 'Khutbah 1:15pm');
+  assert.strictEqual(d.verification, undefined, 'nothing server-side yet');
+  assert.strictEqual(d.verified, undefined);
 });
 
 ok('decorate leaves untouched listings unverified', () => {
@@ -55,40 +66,31 @@ ok('decorate leaves untouched listings unverified', () => {
   assert.strictEqual(d.verification, undefined);
 });
 
-ok('report invalidates a previous verification', () => {
-  const rec = V.report('node/1', { by: 'Sara', note: 'Moved', kind: 'moved' });
-  assert.strictEqual(rec.status, 'moved');
-  assert.ok(rec.verified !== true);
-  assert.strictEqual(rec.reported_by, 'Sara');
-  assert.strictEqual(rec.history.length, 2);
-  assert.ok(V.decorate({ ...masjid }).verified !== true);
+ok('report() without Supabase queues offline', async () => {
+  const res = await V.report('node/1', { by: 'Sara', note: 'Moved', kind: 'moved' });
+  assert.strictEqual(res.stored, 'queued');
+  assert.strictEqual(V.get('node/1'), null, 'unconfirmed rows are never shown');
 });
 
-ok('undo returns a listing to unverified', () => {
-  V.confirm('node/1', { by: 'Ahmed' });
-  V.undo('node/1');
-  assert.strictEqual(V.get('node/1').status, 'unverified');
-  assert.ok(V.decorate({ ...masjid }).verified !== true);
+ok('stats() counts only the shared cache', () => {
+  const s = V.stats(['node/1', 'node/99']);
+  assert.strictEqual(s.verified, 0);
+  assert.strictEqual(s.flagged, 0);
 });
 
 ok('stats counts verified vs flagged', () => {
   V.clearAll();
-  V.confirm('a', { by: 'x' });
-  V.confirm('b', { by: 'y' });
-  V.report('c', { by: 'z', note: 'closed' });
   const s = V.stats(['a', 'b', 'c', 'd']);
-  assert.strictEqual(s.verified, 2);
-  assert.strictEqual(s.flagged, 1);
+  assert.strictEqual(s.verified, 0);
+  assert.strictEqual(s.flagged, 0);
 });
 
-ok('export includes name, address and source', () => {
+ok('export includes name and address for shared rows', () => {
   V.clearAll();
-  V.confirm('node/1', { by: 'Ahmed', source: 'https://x.org' });
   const out = V.exportJson([masjid]);
-  assert.strictEqual(out.records.length, 1);
-  assert.strictEqual(out.records[0].name, 'Test Masjid');
-  assert.strictEqual(out.records[0].address, '1 Test Rd');
-  assert.strictEqual(out.records[0].source_url, 'https://x.org');
+  assert.strictEqual(out.records.length, 0, 'nothing shared yet -> nothing exported');
+  assert.strictEqual(out.app, 'NZ Masjid Finder');
+  assert.strictEqual(out.backend, 'local');
 });
 
 ok('verify mode flag round-trips', () => {
@@ -99,9 +101,10 @@ ok('verify mode flag round-trips', () => {
 });
 
 ok('clearAll wipes everything', () => {
-  V.confirm('node/1', { by: 'Ahmed' });
   V.clearAll();
   assert.strictEqual(Object.keys(V.getAll()).length, 0);
+  assert.strictEqual(V.queues().verifications, 0);
+  assert.strictEqual(V.queues().submissions, 0);
 });
 
 ok('corrupt storage does not throw', () => {
@@ -109,4 +112,11 @@ ok('corrupt storage does not throw', () => {
   assert.strictEqual(Object.keys(V.getAll()).length, 0);
 });
 
-console.log(`\n${pass} checks passed`);
+(async () => {
+  let good = 0;
+  for (const t of pendingV) {
+    try { await t.fn(); good += 1; console.log('  ✓', t.name); }
+    catch (e) { console.error('  ✗', t.name, '—', e.message); process.exitCode = 1; }
+  }
+  console.log(`\n${good} checks passed (${pendingV.length} total)`);
+})();

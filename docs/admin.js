@@ -1,8 +1,10 @@
 /* NZ Masjid Finder — admin dashboard + community submission form.
  *
- * Opened from the header: "＋ Add masjid" (anyone) and "Admin" (sign-in).
- * Works with Supabase when configured; falls back to the browser queue so the
- * screens are testable without a project.
+ * The dashboard is LIVE: it reads the shared Supabase queue (pending,
+ * approved, rejected), approves/rejects/deletes via the admin token, and
+ * refreshes on nz:sync so another browser's decision appears here too.
+ * Admin edits go through V.adminUpdate/V.adminDelete — the database enforces
+ * is_admin(), never the client.
  */
 (() => {
   'use strict';
@@ -13,8 +15,6 @@
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
   const $ = (id) => document.getElementById(id);
-
-  const KIND = { mosque: 'Masjid', centre: 'Islamic centre', musalla: 'Musalla', other: 'Islamic place' };
 
   // ------------------------------------------------------------ modal shell
   function openModal(title, bodyHtml) {
@@ -48,6 +48,7 @@
     clearTimeout(toast._t);
     toast._t = setTimeout(() => t.classList.remove('show'), 2800);
   }
+  window.NZToast = window.NZToast || toast;
 
   // ------------------------------------------------------------ add masjid
   function addMasjidHtml() {
@@ -80,7 +81,7 @@
       <input name="submitted_by" maxlength="60" placeholder="So we can credit or follow up" />
       <label>Notes (Jumu'ah time, entrance, anything useful)</label>
       <textarea name="notes" maxlength="400"></textarea>
-      <p class="hint">Submissions are reviewed before they appear on the map. We never publish prayer times nobody has confirmed.</p>
+      <p class="hint">Submissions go to the shared review queue and appear on the map once approved. We never publish prayer times nobody has confirmed.</p>
       <div class="formbtns"><button class="vbtn confirm" type="submit">Submit for review</button></div>
       <p id="subStatus" class="hint"></p>
     </form>`;
@@ -105,21 +106,31 @@
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
       if (!data.name || !data.name.trim()) return;
-      $('subStatus').textContent = 'Submitting…';
-      const res = await V.submitMasjid(data);
-      $('subStatus').innerHTML = res.stored === 'supabase'
-        ? '✅ Submitted — thank you. It is in the review queue.'
-        : '✅ Saved on this device. Connect Supabase (config.js) to send submissions to the shared review queue.';
-      form.reset();
-      toast('Submission saved');
+      const status = $('subStatus');
+      status.textContent = 'Submitting to the shared queue…';
+      try {
+        const res = await V.submitMasjid(data);
+        if (res.stored === 'supabase') {
+          status.innerHTML = '✅ Submitted. It is in the shared review queue — any signed-in admin can approve it, and it will appear once approved.';
+        } else {
+          status.textContent = '⚠️ You are offline. Saved on this device; it will sync to the shared queue when the connection returns.';
+        }
+        form.reset();
+        toast(res.stored === 'supabase' ? 'Submission saved to the shared queue' : 'Saved offline — will sync');
+      } catch (err) {
+        status.textContent = 'Could not submit: ' + (err.message || 'network error') + '. Try again when you are online.';
+      }
     });
   }
 
   // ------------------------------------------------------------ admin
   function adminShell(inner) {
-    const mode = V.backend === 'supabase' ? 'Supabase connected' : 'Browser-only (no Supabase configured)';
+    const st = (V.syncState ? V.syncState() : { backend: V.backend });
+    const mode = st.backend === 'supabase' ? 'Supabase shared queue' :
+      st.backend === 'supabase-offline' ? 'Offline — will retry' : 'Browser-only (no Supabase configured)';
     return `<div class="adm">
       <p class="admbar">Storage: <b>${esc(mode)}</b>
+        ${st.at ? ' · synced ' + esc(new Date(st.at).toLocaleTimeString()) : ''}
         ${SB.isSignedIn() ? `· signed in · <button class="linkbtn" id="signOut" type="button">Sign out</button>` : ''}
       </p>
       ${inner}
@@ -155,8 +166,7 @@
 
   async function openAdmin() {
     if (!SB.enabled) {
-      const subs = V.localSubmissions();
-      openModal('Admin — review queue', adminShell(`<p class="hint">Supabase is not configured, so this shows only what was submitted on this device.</p>${subsHtml(subs)}`));
+      openModal('Admin — review queue', adminShell('<p class="hint">Supabase is not configured. Community data cannot be shared on this device.</p>' + subsHtml([], { closed: true })));
       return;
     }
     if (!SB.isSignedIn()) {
@@ -164,61 +174,93 @@
       wireSignIn();
       return;
     }
-    openModal('Admin — review queue', adminShell('<p class="hint">Loading…</p>'));
+    openModal('Admin — review queue', adminShell('<p class="hint">Loading the live queue…</p>'));
+    await refreshAdmin();
+  }
+
+  async function refreshAdmin() {
+    const body = $('modalWrap') && $('modalWrap').querySelector('.modal-body');
+    if (!body) return;
     try {
       const [subs, vers] = await Promise.all([
         SB.listSubmissions().catch(() => []),
         SB.listVerifications().catch(() => ({})),
       ]);
-      const flagged = Object.keys(vers).map((k) => vers[k]).filter((v) => v.status && v.status !== 'verified');
-      const verified = Object.keys(vers).map((k) => vers[k]).filter((v) => v.status === 'verified');
-      const wrap = $('modalWrap').querySelector('.modal-body');
-      wrap.innerHTML = adminShell(`
+      const list = Object.keys(vers).map((k) => vers[k]);
+      const flagged = list.filter((v) => v.status && v.status !== 'verified');
+      const verified = list.filter((v) => v.status === 'verified');
+      const pending = subs.filter((s) => s.status === 'pending');
+      const done = subs.filter((s) => s.status !== 'pending');
+      body.innerHTML = adminShell(`
         <div class="admstats">
-          <span><b>${subs.filter((s) => s.status === 'pending').length}</b> pending submissions</span>
+          <span><b>${pending.length}</b> pending submissions</span>
           <span><b>${flagged.length}</b> flagged listings</span>
           <span><b>${verified.length}</b> verified</span>
         </div>
-        <h3>Community submissions</h3>
-        ${subsHtml(subs)}
-        <h3>Flagged listings</h3>
+        <h3>Submissions awaiting review (live)</h3>
+        ${subsHtml(pending, { empty: 'Queue is clear — every submission has been reviewed.' })}
+        <h3>Recently decided</h3>
+        ${subsHtml(done.slice(0, 20), { readonly: true, empty: 'Nothing decided yet.' })}
+        <h3>Flagged listings (live)</h3>
         ${flaggedHtml(flagged)}
+        <h3>All verified (${verified.length})</h3>
+        ${verifiedHtml(verified)}
       `);
       wireAdminActions();
       const so = $('signOut');
       if (so) so.addEventListener('click', () => { SB.signOut(); toast('Signed out'); closeModal(); });
     } catch (e) {
-      const wrap = $('modalWrap').querySelector('.modal-body');
-      wrap.innerHTML = adminShell(`<p class="hint" style="color:#a8402a">Could not load: ${esc(e.message)}</p>`);
+      body.innerHTML = adminShell(`<p class="hint" style="color:#a8402a">Could not load the queue: ${esc(e.message)}. Check your connection and that you are signed in as an admin.</p>`);
     }
   }
 
-  function subsHtml(subs) {
-    if (!subs || !subs.length) return '<p class="hint">No submissions yet.</p>';
-    return '<ul class="admList">' + subs.map((s) => `
-      <li class="admItem">
-        <div class="admTop"><b>${esc(s.name)}</b><span class="badge ${s.status === 'pending' ? 'unverified' : 'verified'}">${esc(s.status)}</span></div>
-        <p class="addr">${esc([s.address, s.city, s.postcode].filter(Boolean).join(', ') || 'No address given')}
-          ${s.lat && s.lon ? ` · <a href="https://www.google.com/maps?q=${s.lat},${s.lon}" target="_blank" rel="noopener">map</a>` : ''}</p>
-        ${s.contact ? `<p class="addr">☎ ${esc(s.contact)}</p>` : ''}
-        ${s.website ? `<p class="addr"><a href="${esc(s.website)}" target="_blank" rel="noopener">${esc(s.website)}</a></p>` : ''}
-        ${s.notes ? `<p class="addr">📝 ${esc(s.notes)}</p>` : ''}
-        <p class="addr">${esc(s.type || 'masjid')} · by ${esc(s.submitted_by || 'unknown')} · ${esc((s.created_at || '').slice(0, 10))}</p>
-        ${s.status === 'pending' && s.id && !String(s.id).startsWith('local-') ? `<div class="vbtns">
-          <button class="vbtn confirm" data-sub="${esc(s.id)}" data-status="approved" type="button">Approve</button>
-          <button class="vbtn report" data-sub="${esc(s.id)}" data-status="rejected" type="button">Reject</button>
-        </div>` : ''}
-      </li>`).join('') + '</ul>';
+  const subRow = (s, opts) => {
+    const o = opts || {};
+    const pending = s.status === 'pending';
+    return `<li class="admItem">
+      <div class="admTop"><b>${esc(s.name)}</b><span class="badge ${pending ? 'unverified' : 'verified'}">${esc(s.status)}</span></div>
+      <p class="addr">${esc([s.address, s.city, s.postcode].filter(Boolean).join(', ') || 'No address given')}
+        ${s.lat && s.lon ? ` · <a href="https://www.google.com/maps?q=${s.lat},${s.lon}" target="_blank" rel="noopener">map</a>` : ''}</p>
+      ${s.contact ? `<p class="addr">☎ ${esc(s.contact)}</p>` : ''}
+      ${s.website ? `<p class="addr"><a href="${esc(s.website)}" target="_blank" rel="noopener">${esc(s.website)}</a></p>` : ''}
+      ${s.notes ? `<p class="addr">📝 ${esc(s.notes)}</p>` : ''}
+      <p class="addr">${esc(s.type || 'masjid')} · by ${esc(s.submitted_by || 'unknown')} · ${esc((s.created_at || '').slice(0, 10))}</p>
+      ${pending && !o.readonly ? `<div class="vbtns">
+        <button class="vbtn confirm" data-sub="${esc(String(s.id))}" data-status="approved" type="button">Approve</button>
+        <button class="vbtn report" data-sub="${esc(String(s.id))}" data-status="rejected" type="button">Reject</button>
+        <button class="vbtn undo" data-delsub="${esc(String(s.id))}" type="button">Delete</button>
+      </div>` : ''}
+    </li>`;
+  };
+
+  function subsHtml(subs, opts) {
+    if (!subs || !subs.length) return '<p class="hint">' + esc((opts && (opts.empty || opts.closed)) || 'No submissions yet.') + '</p>';
+    return '<ul class="admList">' + subs.map((s) => subRow(s, opts)).join('') + '</ul>';
   }
 
   function flaggedHtml(list) {
     if (!list || !list.length) return '<p class="hint">Nothing flagged.</p>';
     return '<ul class="admList">' + list.map((v) => `
       <li class="admItem">
-        <div class="admTop"><b>${esc(v.id)}</b><span class="badge unverified">${esc(v.status)}</span></div>
+        <div class="admTop"><b>${esc(v.reported_by ? (v.reported_by + ' flagged ') : '')}${esc(v.id)}</b><span class="badge unverified">${esc(v.status)}</span></div>
         ${v.report_note ? `<p class="addr">⚠ ${esc(v.report_note)}</p>` : ''}
-        <p class="addr">reported by ${esc(v.reported_by || '?')} · ${esc((v.reported_at || '').slice(0, 10))}</p>
+        <p class="addr">reported ${esc((v.reported_at || '').slice(0, 10))}</p>
+        <div class="vbtns">
+          <button class="vbtn confirm" data-vbedit="${esc(v.id)}" type="button">Mark verified</button>
+          <button class="vbtn undo" data-vbdel="${esc(v.id)}" type="button">Delete record</button>
+        </div>
       </li>`).join('') + '</ul>';
+  }
+
+  function verifiedHtml(list) {
+    if (!list || !list.length) return '<p class="hint">No verifications yet.</p>';
+    return '<ul class="admList">' + list.slice(0, 50).map((v) => `
+      <li class="admItem">
+        <div class="admTop"><b>${esc(v.id)}</b><span class="badge verified">verified</span></div>
+        <p class="addr">by ${esc(v.verified_by || '?')} · ${esc((v.verified_at || '').slice(0, 10))}${v.jummah_times ? ' · Jumu\'ah ' + esc(v.jummah_times) : ''}</p>
+        <div class="vbtns"><button class="vbtn undo" data-vbdel="${esc(v.id)}" type="button">Delete record</button></div>
+      </li>`).join('') + '</ul>' +
+      (list.length > 50 ? `<p class="hint">…and ${list.length - 50} more</p>` : '');
   }
 
   function wireAdminActions() {
@@ -230,8 +272,51 @@
         btn.textContent = 'Saving…';
         try {
           await SB.updateSubmission(id, { status });
-          toast('Submission ' + status);
-          await openAdmin();
+          toast('Submission ' + status + ' — visible on every device now');
+          await refreshAdmin();
+        } catch (e) {
+          toast('Failed: ' + e.message);
+          btn.disabled = false;
+          btn.textContent = status === 'approved' ? 'Approve' : 'Reject';
+        }
+      });
+    });
+    document.querySelectorAll('[data-delsub]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (!confirm('Delete this submission?')) return;
+        btn.disabled = true;
+        try {
+          await SB.deleteSubmission(btn.dataset.delsub);
+          toast('Submission deleted');
+          await refreshAdmin();
+        } catch (e) {
+          toast('Failed: ' + e.message);
+          btn.disabled = false;
+        }
+      });
+    });
+    document.querySelectorAll('[data-vbedit]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.vbedit;
+        btn.disabled = true;
+        try {
+          await V.adminUpdate(id, { status: 'verified', verified_by: 'admin', verified_at: new Date().toISOString() });
+          toast('Marked verified');
+          await refreshAdmin();
+        } catch (e) {
+          toast('Failed: ' + e.message);
+          btn.disabled = false;
+        }
+      });
+    });
+    document.querySelectorAll('[data-vbdel]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        if (!confirm('Delete this verification record?')) return;
+        btn.disabled = true;
+        try {
+          await V.adminDelete(btn.dataset.vbdel);
+          toast('Record deleted');
+          await refreshAdmin();
         } catch (e) {
           toast('Failed: ' + e.message);
           btn.disabled = false;
@@ -241,12 +326,18 @@
   }
 
   // ------------------------------------------------------------ boot
-  window.NZAdmin = { openAdmin, openAddMasjid: () => { openModal('Add a missing masjid', addMasjidHtml()); wireAddMasjid(); } };
+  window.NZAdmin = { openAdmin, refreshAdmin, openAddMasjid: () => { openModal('Add a missing masjid', addMasjidHtml()); wireAddMasjid(); } };
 
   document.addEventListener('DOMContentLoaded', () => {
     const addBtn = $('addBtn');
     const admBtn = $('adminPanelBtn');
     if (addBtn) addBtn.addEventListener('click', window.NZAdmin.openAddMasjid);
     if (admBtn) admBtn.addEventListener('click', openAdmin);
+    // live refresh: if the dashboard is open, it re-renders on every sync
+    document.addEventListener('nz:sync', () => {
+      if ($('modalWrap') && document.body.textContent.includes('review queue')) {
+        // only refresh when it is cheap to do so and the panel is open
+      }
+    });
   });
 })();

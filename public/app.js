@@ -236,6 +236,24 @@
     });
   }
 
+  // ------------------------------------------------------------- sync readout
+  function updateBackendBadge() {
+    const V = window.NZVerification;
+    const backendEl = $('backendState');
+    if (!V || !backendEl) return;
+    const st = (V.syncState ? V.syncState() : { backend: V.backend, shared: 0, queued: 0 });
+    if (st.backend === 'supabase') {
+      backendEl.textContent = '· shared: ' + st.shared + ' record(s)' +
+        (st.queued ? ' · ' + st.queued + ' queued' : '') +
+        (st.realtime ? ' · live' : '');
+    } else if (st.backend === 'supabase-offline') {
+      backendEl.textContent = '· offline — showing last shared data (' + (st.queued || 0) + ' change(s) queued)';
+    } else {
+      backendEl.textContent = '· this device only (Supabase not configured)';
+    }
+    updateStats();
+  }
+
   // ------------------------------------------------------------ boot
   async function boot() {
     const metaEl = $('meta');
@@ -247,6 +265,8 @@
       const mDoc = await mRes.json();
       const V = window.NZVerification;
       if (V && V.sync) await V.sync();
+      try { if (V && V.subscribe) await V.subscribe(); } catch (e) { /* realtime optional */ }
+      updateBackendBadge();
       App.masjids = (mDoc.masjids || []).map((m) => (V ? V.decorate(m) : m));
       App.meta = mDoc.meta || {};
       if (hRes && hRes.ok) {
@@ -377,9 +397,15 @@
     const App = window.NZApp;
     const V = window.NZVerification;
     const idx = App.masjids.findIndex((m) => m.id === id);
-    if (idx >= 0) App.masjids[idx] = V.decorate(App.masjids[idx]);
+    if (idx >= 0) {
+      const base = Object.assign({}, App.masjids[idx]);
+      delete base.verification; delete base.verified; delete base.status;
+      delete base.verified_by; delete base.verified_at; delete base.jummah_times;
+      App.masjids[idx] = V.decorate(base);
+    }
     delete App.masjidState.openForm[id];
     updateStats();
+    updateBackendBadge();
     App.renderMasjidList(false);
   }
 
@@ -473,6 +499,18 @@
 
     document.addEventListener('nz:tab', (e) => {
       if (e.detail.tab === 'map') App.renderMasjidList(false);
-    });
+  });
+  document.addEventListener('nz:masjids-changed', () => {
+      const V = window.NZVerification;
+      if (V) {
+        App.masjids = App.masjids.map((m) => {
+          const base = Object.assign({}, m);
+          delete base.verification;
+          return V.decorate(base);
+        });
+      }
+      updateBackendBadge();
+      App.renderMasjidList(false);
+  });
   });
 })();
