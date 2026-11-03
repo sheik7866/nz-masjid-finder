@@ -1,0 +1,6096 @@
+{
+ "meta": {
+  "generated_at": "2026-11-03T08:36:31Z",
+  "osm_timestamp": "2026-10-31T03:00:38Z",
+  "source": "OpenStreetMap contributors (ODbL)",
+  "attribution": {
+   "text": "© OpenStreetMap contributors",
+   "licence": "Open Database License (ODbL) 1.0",
+   "url": "https://www.openstreetmap.org/copyright",
+   "required": "Attribution must stay visible wherever this data is shown."
+  },
+  "provenance": {
+   "method": "Overpass API query on the NZ relation, tags copied verbatim",
+   "osm_query": "[out:json][timeout:180];\narea[\"ISO3166-1\"=\"NZ\"]->.a;\n(\n  nwr[\"amenity\"=\"place_of_worship\"][\"religion\"=\"muslim\"](area.a);\n  nwr[\"amenity\"=\"place_of_worship\"][\"religion\"=\"islamic\"](area.a);\n  nwr[\"building\"=\"mosque\"](area.a);\n  nwr[\"community_centre\"=\"muslim\"](area.a);\n  nwr[\"name\"~\"[Mm]asjid|[Mm]osque|[Mm]usall?ah|[Ii]slamic [Cc]ent\",i](area.a);\n  nwr[\"religion\"=\"muslim\"][\"name\"](area.a);\n);\nout center tags;",
+   "per_record": "every record carries sources[0].url pointing at its OSM element",
+   "human_verified": "verified/verified_by/jummah_times are only set by the app's verification flow"
+  },
+  "count": 118
+ },
+ "masjids": [
+  {
+   "id": "node/5417509863",
+   "osm": {
+    "type": "node",
+    "id": 5417509863
+   },
+   "name": "AIT Musallah ( Masjid)",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "2/36 Stoddard Road",
+    "suburb": "Wesley",
+    "city": null,
+    "postcode": null,
+    "formatted": "2/36 Stoddard Road, Wesley"
+   },
+   "lat": -36.9066812,
+   "lon": 174.7321817,
+   "region": "Auckland",
+   "phones": [
+    "+64 22 354 8741"
+   ],
+   "email": null,
+   "website": "https://ait.org.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417509863"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "2/36",
+    "addr:street": "Stoddard Road",
+    "addr:suburb": "Wesley"
+   },
+   "completeness": 67,
+   "slug": "ait-musallah-masjid-node-5417509863"
+  },
+  {
+   "id": "node/5417500955",
+   "osm": {
+    "type": "node",
+    "id": 5417500955
+   },
+   "name": "Al Hijaz Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "236 Richardson Road",
+    "suburb": "Wesley",
+    "city": "Auckland",
+    "postcode": "1041",
+    "formatted": "236 Richardson Road, Wesley, Auckland, 1041"
+   },
+   "lat": -36.9007709,
+   "lon": 174.7199486,
+   "region": "Auckland",
+   "phones": [
+    "+64 22 509 9786"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417500955"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "236",
+    "addr:postcode": "1041",
+    "addr:street": "Richardson Road",
+    "addr:suburb": "Wesley"
+   },
+   "completeness": 67,
+   "slug": "al-hijaz-masjid-node-5417500955"
+  },
+  {
+   "id": "node/12501045625",
+   "osm": {
+    "type": "node",
+    "id": 12501045625
+   },
+   "name": "Al Hijaz Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "236 Richardson Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "236 Richardson Road"
+   },
+   "lat": -36.900781,
+   "lon": 174.7199981,
+   "region": "Auckland",
+   "phones": [
+    "+64 22 509 9786",
+    "+64 21 796 786",
+    "+64 210 634 839"
+   ],
+   "email": null,
+   "website": "https://alhijaz.co.nz/",
+   "facebook": "https://facebook.com/p/Al-Hijaz-Masjid-10067210011215",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045625"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "236",
+    "addr:street": "Richardson Road",
+    "contact:facebook": "https://facebook.com/p/Al-Hijaz-Masjid-10067210011215"
+   },
+   "completeness": 50,
+   "slug": "al-hijaz-masjid-node-12501045625"
+  },
+  {
+   "id": "node/12527833992",
+   "osm": {
+    "type": "node",
+    "id": 12527833992
+   },
+   "name": "Al Iqra Islamic Centre - (Takanini Islamic Centre)",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "12A Tironui Station Road West",
+    "suburb": "Takanini",
+    "city": "Auckland",
+    "postcode": "2112",
+    "formatted": "12A Tironui Station Road West, Takanini, Auckland, 2112"
+   },
+   "lat": -37.0511752,
+   "lon": 174.9336971,
+   "region": "Auckland",
+   "phones": [
+    "+64 274 428 785",
+    "+64 210 247 0734",
+    "+64 22 614 3261"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "Al-Iqra-Islamic-Centre-109562737435524",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12527833992"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "12A",
+    "addr:postcode": "2112",
+    "addr:street": "Tironui Station Road West",
+    "addr:suburb": "Takanini",
+    "contact:facebook": "Al-Iqra-Islamic-Centre-109562737435524"
+   },
+   "completeness": 67,
+   "slug": "al-iqra-islamic-centre-takanini-islamic-centre-node-12527833992"
+  },
+  {
+   "id": "way/314041410",
+   "osm": {
+    "type": "way",
+    "id": 314041410
+   },
+   "name": "Al Maktoum Mosque",
+   "alt_names": [
+    "Airport Masjid"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "91 Westney Road",
+    "suburb": "Māngere",
+    "city": "Auckland",
+    "postcode": "2022",
+    "formatted": "91 Westney Road, Māngere, Auckland, 2022"
+   },
+   "lat": -36.9820222,
+   "lon": 174.7872031,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Large parking area on the front.",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/314041410"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "91",
+    "addr:postcode": "2022",
+    "addr:street": "Westney Road",
+    "addr:suburb": "Māngere",
+    "alt_name": "Airport Masjid"
+   },
+   "completeness": 50,
+   "slug": "al-maktoum-mosque-way-314041410"
+  },
+  {
+   "id": "node/12501069621",
+   "osm": {
+    "type": "node",
+    "id": 12501069621
+   },
+   "name": "Al Mustafa Charity Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "3 Drury Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "3 Drury Street"
+   },
+   "lat": -36.9030074,
+   "lon": 174.6886124,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": "almustafa.nz",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069621"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Drury Street",
+    "contact:facebook": "almustafa.nz"
+   },
+   "completeness": 17,
+   "slug": "al-mustafa-charity-centre-node-12501069621"
+  },
+  {
+   "id": "node/12501045626",
+   "osm": {
+    "type": "node",
+    "id": 12501045626
+   },
+   "name": "Al Rahman Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "84 Hendon Avenue",
+    "suburb": "Mount Albert",
+    "city": "Auckland",
+    "postcode": "1025",
+    "formatted": "84 Hendon Avenue, Mount Albert, Auckland, 1025"
+   },
+   "lat": -36.8983509,
+   "lon": 174.7129922,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045626"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "84",
+    "addr:postcode": "1025",
+    "addr:street": "Hendon Avenue",
+    "addr:suburb": "Mount Albert"
+   },
+   "completeness": 50,
+   "slug": "al-rahman-masjid-node-12501045626"
+  },
+  {
+   "id": "way/329811386",
+   "osm": {
+    "type": "way",
+    "id": 329811386
+   },
+   "name": "Al Rahman Masjid - Al Manar Islamic Trust",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "72 Carr Road",
+    "suburb": "Mount Roskill",
+    "city": "Auckland",
+    "postcode": "1041",
+    "formatted": "72 Carr Road, Mount Roskill, Auckland, 1041"
+   },
+   "lat": -36.9128146,
+   "lon": 174.7495925,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 971 9596",
+    "+64 22 016 0269"
+   ],
+   "email": null,
+   "website": "https://almanar.co.nz",
+   "facebook": "AlManarNZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/329811386"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "72",
+    "addr:postcode": "1041",
+    "addr:street": "Carr Road",
+    "addr:suburb": "Mount Roskill",
+    "contact:facebook": "AlManarNZ"
+   },
+   "completeness": 83,
+   "slug": "al-rahman-masjid-al-manar-islamic-trust-way-329811386"
+  },
+  {
+   "id": "way/1085592994",
+   "osm": {
+    "type": "way",
+    "id": 1085592994
+   },
+   "name": "Al-Falaah Mosque - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "1/8 Laidlaw Way",
+    "suburb": "East Tāmaki",
+    "city": null,
+    "postcode": "2023",
+    "formatted": "1/8 Laidlaw Way, East Tāmaki, 2023"
+   },
+   "lat": -36.9616535,
+   "lon": 174.8956139,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Business place. problem parking on days like Friday. Mosque has to engage Parking Wardens to look after parking as business-neighbors gets annoyed taking up their parkings and Auckland Council is also keeping an eye into it as it generates complaints",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1085592994"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "1/8",
+    "addr:postcode": "2023",
+    "addr:street": "Laidlaw Way",
+    "addr:suburb": "East Tāmaki"
+   },
+   "completeness": 50,
+   "slug": "al-falaah-mosque-masjid-way-1085592994"
+  },
+  {
+   "id": "way/317610415",
+   "osm": {
+    "type": "way",
+    "id": 317610415
+   },
+   "name": "Al-Masjid Al-Jamie",
+   "alt_names": [
+    "Ponsonby Masjid"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "17 Vermont Street",
+    "suburb": "Ponsonby",
+    "city": "Auckland",
+    "postcode": "1011",
+    "formatted": "17 Vermont Street, Ponsonby, Auckland, 1011"
+   },
+   "lat": -36.8525956,
+   "lon": 174.7437379,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 378 8200"
+   ],
+   "email": "ponsonby@nzmz.kiwi.nz",
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/317610415"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "17",
+    "addr:postcode": "1011",
+    "addr:street": "Vermont Street",
+    "addr:suburb": "Ponsonby",
+    "alt_name": "Ponsonby Masjid",
+    "contact:phone": "+64 9 378 8200"
+   },
+   "completeness": 83,
+   "slug": "al-masjid-al-jamie-way-317610415"
+  },
+  {
+   "id": "way/360117094",
+   "osm": {
+    "type": "way",
+    "id": 360117094
+   },
+   "name": "Al-Mustafa Jamia Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "26 Mangere Road",
+    "suburb": "Ōtāhuhu",
+    "city": "Auckland",
+    "postcode": "1062",
+    "formatted": "26 Mangere Road, Ōtāhuhu, Auckland, 1062"
+   },
+   "lat": -36.9520624,
+   "lon": 174.8444612,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": "https://sama.co.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Plenty spaces of Car Parking. Front, back and both sides. Corner of Mangere Rd and Gt South Road",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/360117094"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "26",
+    "addr:postcode": "1062",
+    "addr:street": "Mangere Road",
+    "addr:suburb": "Ōtāhuhu"
+   },
+   "completeness": 67,
+   "slug": "al-mustafa-jamia-masjid-way-360117094"
+  },
+  {
+   "id": "node/12501069624",
+   "osm": {
+    "type": "node",
+    "id": 12501069624
+   },
+   "name": "Aotearoa Muslim Youth - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "71 Hallberry Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "71 Hallberry Road"
+   },
+   "lat": -36.9682983,
+   "lon": 174.8276953,
+   "region": "Auckland",
+   "phones": [
+    "+64 27 703 6560",
+    "+64 22 317 1144"
+   ],
+   "email": "amy.muslim.youth@gmail.com",
+   "website": "https://muslimyouth.nz/",
+   "facebook": "AotearoaMuslimYouthMZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069624"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "71",
+    "addr:street": "Hallberry Road",
+    "contact:facebook": "AotearoaMuslimYouthMZ"
+   },
+   "completeness": 67,
+   "slug": "aotearoa-muslim-youth-masjid-node-12501069624"
+  },
+  {
+   "id": "node/13667982402",
+   "osm": {
+    "type": "node",
+    "id": 13667982402
+   },
+   "name": "AUT Masjid - Muslim Prayer Hall",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "49 Saint Paul Street",
+    "suburb": null,
+    "city": null,
+    "postcode": "1010",
+    "formatted": "49 Saint Paul Street, 1010"
+   },
+   "lat": -36.8538335,
+   "lon": 174.7654386,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/13667982402"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "49",
+    "addr:postcode": "1010",
+    "addr:street": "Saint Paul Street"
+   },
+   "completeness": 33,
+   "slug": "aut-masjid-muslim-prayer-hall-node-13667982402"
+  },
+  {
+   "id": "node/1457541855",
+   "osm": {
+    "type": "node",
+    "id": 1457541855
+   },
+   "name": "Avondale Islamic Centre",
+   "alt_names": [
+    "Avondale Islamic Centre",
+    "Te Pokapū Ihirama o Avondale"
+   ],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.8951573,
+   "lon": 174.7010414,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/1457541855"
+    }
+   ],
+   "raw_tags": {
+    "name:en": "Avondale Islamic Centre",
+    "name:mi": "Te Pokapū Ihirama o Avondale"
+   },
+   "completeness": 0,
+   "slug": "avondale-islamic-centre-node-1457541855"
+  },
+  {
+   "id": "node/2993072656",
+   "osm": {
+    "type": "node",
+    "id": 2993072656
+   },
+   "name": "Avondale Islamic Centre",
+   "alt_names": [
+    "Avondale Islamic Centre",
+    "Te Pokapū Ihirama o Avondale"
+   ],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.8956728,
+   "lon": 174.7009077,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2993072656"
+    }
+   ],
+   "raw_tags": {
+    "name:en": "Avondale Islamic Centre",
+    "name:mi": "Te Pokapū Ihirama o Avondale"
+   },
+   "completeness": 0,
+   "slug": "avondale-islamic-centre-node-2993072656"
+  },
+  {
+   "id": "way/295577814",
+   "osm": {
+    "type": "way",
+    "id": 295577814
+   },
+   "name": "Avondale Islamic Centre",
+   "alt_names": [
+    "Masjid Al Noor",
+    "Avondale Islamic Centre",
+    "Te Pokapū Ihirama o Avondale"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "122 - 126 Blockhouse Bay Road",
+    "suburb": null,
+    "city": "Avondale",
+    "postcode": "2010",
+    "formatted": "122 - 126 Blockhouse Bay Road, Avondale, 2010"
+   },
+   "lat": -36.8952768,
+   "lon": 174.7013789,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 974 2742"
+   ],
+   "email": "avondale@nzma.kiwi.nz",
+   "website": "https://nzma.kiwi.nz/masjids/avondale/",
+   "facebook": "https://facebook.com/Avondale-Islamic-Centre-200392586640066/",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Entrance from Tait Street which is a closed one. Gates on Blockhouse bay Rd are closed. In front are Bus stops on both sides and 5 to 7 minutes walk to Avondale Train Station.",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/295577814"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Avondale",
+    "addr:housenumber": "122 - 126",
+    "addr:postcode": "2010",
+    "addr:street": "Blockhouse Bay Road",
+    "alt_name": "Masjid Al Noor",
+    "contact:facebook": "https://facebook.com/Avondale-Islamic-Centre-200392586640066/",
+    "name:en": "Avondale Islamic Centre",
+    "name:mi": "Te Pokapū Ihirama o Avondale"
+   },
+   "completeness": 100,
+   "slug": "avondale-islamic-centre-way-295577814"
+  },
+  {
+   "id": "relation/15912197",
+   "osm": {
+    "type": "relation",
+    "id": 15912197
+   },
+   "name": "Avondale Islamic Centre",
+   "alt_names": [
+    "Avondale Islamic Centre",
+    "Te Pokapū Ihirama o Avondale"
+   ],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.8953819,
+   "lon": 174.700986,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/relation/15912197"
+    }
+   ],
+   "raw_tags": {
+    "name:en": "Avondale Islamic Centre",
+    "name:mi": "Te Pokapū Ihirama o Avondale"
+   },
+   "completeness": 0,
+   "slug": "avondale-islamic-centre-relation-15912197"
+  },
+  {
+   "id": "node/12523109304",
+   "osm": {
+    "type": "node",
+    "id": 12523109304
+   },
+   "name": "Avondale Islamic Centre Youth",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "122",
+    "suburb": null,
+    "city": null,
+    "postcode": "1022",
+    "formatted": "122, 1022"
+   },
+   "lat": -36.8951111,
+   "lon": 174.701472,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 828 2786"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523109304"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "122",
+    "addr:postcode": "1022"
+   },
+   "completeness": 50,
+   "slug": "avondale-islamic-centre-youth-node-12523109304"
+  },
+  {
+   "id": "node/12501085506",
+   "osm": {
+    "type": "node",
+    "id": 12501085506
+   },
+   "name": "Baitul Mukarram Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "1484b Dominion Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "1484b Dominion Road"
+   },
+   "lat": -36.9205234,
+   "lon": 174.7366952,
+   "region": "Auckland",
+   "phones": [
+    "+64 210 262 4169",
+    "+64 21 234 7019",
+    "+64 20 4056 1550"
+   ],
+   "email": null,
+   "website": "https://baitulmukarram.co.nz/",
+   "facebook": "BaitulMukarramNZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085506"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "1484b",
+    "addr:street": "Dominion Road",
+    "contact:facebook": "BaitulMukarramNZ"
+   },
+   "completeness": 50,
+   "slug": "baitul-mukarram-islamic-centre-node-12501085506"
+  },
+  {
+   "id": "way/330474740",
+   "osm": {
+    "type": "way",
+    "id": 330474740
+   },
+   "name": "Baitul Muqeet Mosque",
+   "alt_names": [
+    "Bait-ul-Muqeet Mosque;Baitul Muqeet;Bait-ul-Muqeet",
+    "Baitul Muqeet Mosque"
+   ],
+   "kind": "mosque",
+   "denomination": "ahmadiyya",
+   "address": {
+    "line1": "20 Dalgety Drive",
+    "suburb": "Wiri",
+    "city": "Auckland",
+    "postcode": "2104",
+    "formatted": "20 Dalgety Drive, Wiri, Auckland, 2104"
+   },
+   "lat": -37.0126286,
+   "lon": 174.8740659,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": "500",
+   "notes": "Close to Homai Train Station. Entrance from Dalgety Drive , service road",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/330474740"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "20",
+    "addr:postcode": "2104",
+    "addr:street": "Dalgety Drive",
+    "addr:suburb": "Wiri",
+    "alt_name": "Bait-ul-Muqeet Mosque;Baitul Muqeet;Bait-ul-Muqeet",
+    "alt_name:ur": "بیت المقیت",
+    "name:en": "Baitul Muqeet Mosque",
+    "name:ur": "مسجد بیت المقیت"
+   },
+   "completeness": 50,
+   "slug": "baitul-muqeet-mosque-way-330474740"
+  },
+  {
+   "id": "node/12501069620",
+   "osm": {
+    "type": "node",
+    "id": 12501069620
+   },
+   "name": "Darul Arqam Mosque ( Sandringham Islamic Trust )",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "L1/14 Kitchener Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "L1/14 Kitchener Road"
+   },
+   "lat": -36.892108,
+   "lon": 174.7356601,
+   "region": "Auckland",
+   "phones": [
+    "+64 20 444 6060",
+    "+64 20 4024 4684"
+   ],
+   "email": "uklatrust@gmail.com",
+   "website": null,
+   "facebook": "darularqammosque",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069620"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "L1/14",
+    "addr:street": "Kitchener Road",
+    "contact:facebook": "darularqammosque"
+   },
+   "completeness": 50,
+   "slug": "darul-arqam-mosque-sandringham-islamic-trust-node-12501069620"
+  },
+  {
+   "id": "node/12501086702",
+   "osm": {
+    "type": "node",
+    "id": 12501086702
+   },
+   "name": "Darul Uloom Ihyaa-ud-deen Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "7 Razorback Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "7 Razorback Road"
+   },
+   "lat": -37.190637,
+   "lon": 174.992411,
+   "region": "Auckland",
+   "phones": [
+    "+64 22 103 5814"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "darululoomnz",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501086702"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Razorback Road",
+    "contact:facebook": "darululoomnz"
+   },
+   "completeness": 33,
+   "slug": "darul-uloom-ihyaa-ud-deen-masjid-node-12501086702"
+  },
+  {
+   "id": "way/959907739",
+   "osm": {
+    "type": "way",
+    "id": 959907739
+   },
+   "name": "Ellerslie Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "5 Ballarat Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "5 Ballarat Street"
+   },
+   "lat": -36.897493,
+   "lon": 174.8232719,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 675 994",
+    "+64 210 242 8830"
+   ],
+   "email": "rohailkundi@hotmail.com",
+   "website": null,
+   "facebook": "EllerslieIslamicCentre",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/959907739"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Ballarat Street",
+    "contact:facebook": "EllerslieIslamicCentre"
+   },
+   "completeness": 50,
+   "slug": "ellerslie-islamic-centre-way-959907739"
+  },
+  {
+   "id": "node/13846845915",
+   "osm": {
+    "type": "node",
+    "id": 13846845915
+   },
+   "name": "Epsom Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "2/123 Manukau Road",
+    "suburb": null,
+    "city": null,
+    "postcode": "1023",
+    "formatted": "2/123 Manukau Road, 1023"
+   },
+   "lat": -36.8791314,
+   "lon": 174.7759736,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/13846845915"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "2/123",
+    "addr:postcode": "1023",
+    "addr:street": "Manukau Road"
+   },
+   "completeness": 33,
+   "slug": "epsom-islamic-centre-node-13846845915"
+  },
+  {
+   "id": "node/12501085507",
+   "osm": {
+    "type": "node",
+    "id": 12501085507
+   },
+   "name": "Falahe Darain (Papakura Musallah Masjid)",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "48 Ponga Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "48 Ponga Road"
+   },
+   "lat": -37.0865299,
+   "lon": 174.9646202,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 876 836",
+    "+64 21 137 1310"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "Papakura-Mussalah-101739702016073",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085507"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "48",
+    "addr:street": "Ponga Road",
+    "contact:facebook": "Papakura-Mussalah-101739702016073"
+   },
+   "completeness": 33,
+   "slug": "falahe-darain-papakura-musallah-masjid-node-12501085507"
+  },
+  {
+   "id": "node/3683197689",
+   "osm": {
+    "type": "node",
+    "id": 3683197689
+   },
+   "name": "Glen Innes Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "127 Elstree Avenue",
+    "suburb": "Point England",
+    "city": "Auckland",
+    "postcode": "1072",
+    "formatted": "127 Elstree Avenue, Point England, Auckland, 1072"
+   },
+   "lat": -36.8822808,
+   "lon": 174.8648563,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 114 9367",
+    "+64 21 170 5352"
+   ],
+   "email": null,
+   "website": "https://buildamosque.co.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Though the address is on 127 Elstree Ave, the Faheema Superette shop, it's on top.The entrance is at the back, from Point of England Rd at nearby round-a-about. It is close to Bus Stop on the Point of England Rd and prominent Telco tower close-by. Upstair",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3683197689"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "127",
+    "addr:postcode": "1072",
+    "addr:street": "Elstree Avenue",
+    "addr:suburb": "Point England"
+   },
+   "completeness": 83,
+   "slug": "glen-innes-islamic-centre-node-3683197689"
+  },
+  {
+   "id": "node/5362650146",
+   "osm": {
+    "type": "node",
+    "id": 5362650146
+   },
+   "name": "Hibiscus Coast Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "8 Hibiscus Coast Highway",
+    "suburb": "Silverdale",
+    "city": "Auckland",
+    "postcode": "0932",
+    "formatted": "8 Hibiscus Coast Highway, Silverdale, Auckland, 0932"
+   },
+   "lat": -36.6224418,
+   "lon": 174.6685086,
+   "region": "Auckland",
+   "phones": [
+    "+64 210 277 2327"
+   ],
+   "email": null,
+   "website": "https://www.hcic.org.nz",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5362650146"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "8",
+    "addr:postcode": "0932",
+    "addr:street": "Hibiscus Coast Highway",
+    "addr:suburb": "Silverdale"
+   },
+   "completeness": 83,
+   "slug": "hibiscus-coast-islamic-centre-node-5362650146"
+  },
+  {
+   "id": "node/12501045628",
+   "osm": {
+    "type": "node",
+    "id": 12501045628
+   },
+   "name": "Imam Ali Mosque",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "1/17 Hannigan Drive",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "1/17 Hannigan Drive"
+   },
+   "lat": -36.8861008,
+   "lon": 174.8545865,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 570 6061"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045628"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "1/17",
+    "addr:street": "Hannigan Drive"
+   },
+   "completeness": 33,
+   "slug": "imam-ali-mosque-node-12501045628"
+  },
+  {
+   "id": "way/330338372",
+   "osm": {
+    "type": "way",
+    "id": 330338372
+   },
+   "name": "Imam Reza Mosque",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "7b Astley Avenue",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "7b Astley Avenue"
+   },
+   "lat": -36.9127771,
+   "lon": 174.6874037,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/330338372"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "7b",
+    "addr:street": "Astley Avenue"
+   },
+   "completeness": 17,
+   "slug": "imam-reza-mosque-way-330338372"
+  },
+  {
+   "id": "node/3702016441",
+   "osm": {
+    "type": "node",
+    "id": 3702016441
+   },
+   "name": "Islamic Ahlulbayt Foundation of New Zealand",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "shia",
+   "address": {
+    "line1": "27 Ben Lomond Crescent",
+    "suburb": "Pakuranga Heights",
+    "city": "Auckland",
+    "postcode": "2010",
+    "formatted": "27 Ben Lomond Crescent, Pakuranga Heights, Auckland, 2010"
+   },
+   "lat": -36.9147099,
+   "lon": 174.8990349,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 577 1127"
+   ],
+   "email": null,
+   "website": "https://islam.org.nz",
+   "facebook": "IAFONZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3702016441"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "27",
+    "addr:postcode": "2010",
+    "addr:street": "Ben Lomond Crescent",
+    "addr:suburb": "Pakuranga Heights",
+    "contact:facebook": "IAFONZ"
+   },
+   "completeness": 83,
+   "slug": "islamic-ahlulbayt-foundation-of-new-zealand-node-3702016441"
+  },
+  {
+   "id": "node/12501069627",
+   "osm": {
+    "type": "node",
+    "id": 12501069627
+   },
+   "name": "Manukau Islamic Youth Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "38 Webster Lane",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "38 Webster Lane"
+   },
+   "lat": -36.979216,
+   "lon": 174.8533045,
+   "region": "Auckland",
+   "phones": [
+    "0800 696 492"
+   ],
+   "email": null,
+   "website": "https://miyc.co.nz/",
+   "facebook": "miycnz",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069627"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "38",
+    "addr:street": "Webster Lane",
+    "contact:facebook": "miycnz"
+   },
+   "completeness": 50,
+   "slug": "manukau-islamic-youth-centre-masjid-node-12501069627"
+  },
+  {
+   "id": "way/333783842",
+   "osm": {
+    "type": "way",
+    "id": 333783842
+   },
+   "name": "Masjid Abu Bakr Al Saddiq",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "5B Cortina Place",
+    "suburb": "Pakuranga",
+    "city": "Auckland",
+    "postcode": "2010",
+    "formatted": "5B Cortina Place, Pakuranga, Auckland, 2010"
+   },
+   "lat": -36.9153047,
+   "lon": 174.872235,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 144 6641",
+    "+64 21 509 293",
+    "+64 22 671 6102"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "MasjidAbuBakrPAK.NZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Close to Pakuranga Plaza corner and accessible from it as well as Ti Rakau Drive. Entrance from Cortina Place and has a huge prayer's areas for women and men, and Madrassa inside as well. Current Iman is Shamshuddin. August 07, 2015",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/333783842"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "5B",
+    "addr:postcode": "2010",
+    "addr:street": "Cortina Place",
+    "addr:suburb": "Pakuranga",
+    "contact:facebook": "MasjidAbuBakrPAK.NZ"
+   },
+   "completeness": 67,
+   "slug": "masjid-abu-bakr-al-saddiq-way-333783842"
+  },
+  {
+   "id": "node/3701968582",
+   "osm": {
+    "type": "node",
+    "id": 3701968582
+   },
+   "name": "Masjid As-Salam",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "3 Akatea Road",
+    "suburb": "Glendene",
+    "city": "Auckland",
+    "postcode": "0602",
+    "formatted": "3 Akatea Road, Glendene, Auckland, 0602"
+   },
+   "lat": -36.8879907,
+   "lon": 174.6603547,
+   "region": "Auckland",
+   "phones": [
+    "+64 27 582 7552"
+   ],
+   "email": null,
+   "website": "http://www.salammasjid.co.nz",
+   "facebook": "salammasjidnz",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3701968582"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "3",
+    "addr:postcode": "0602",
+    "addr:street": "Akatea Road",
+    "addr:suburb": "Glendene",
+    "contact:facebook": "salammasjidnz"
+   },
+   "completeness": 83,
+   "slug": "masjid-as-salam-node-3701968582"
+  },
+  {
+   "id": "node/3683039850",
+   "osm": {
+    "type": "node",
+    "id": 3683039850
+   },
+   "name": "Masjid At-Taqwa",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "58 Grayson Avenue",
+    "suburb": "Papatoetoe",
+    "city": "Auckland",
+    "postcode": "2104",
+    "formatted": "58 Grayson Avenue, Papatoetoe, Auckland, 2104"
+   },
+   "lat": -36.9891349,
+   "lon": 174.8662104,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 277 7175",
+    "+64 27 517 1107",
+    "+64 21 800 361"
+   ],
+   "email": null,
+   "website": "https://masjidattaqwa.co.nz",
+   "facebook": "masjidattaqwanz",
+   "wheelchair": "yes",
+   "capacity": null,
+   "notes": "Parking spaces for 30 cars in front of the front building. Mosque is the back building.",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3683039850"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "58",
+    "addr:postcode": "2104",
+    "addr:street": "Grayson Avenue",
+    "addr:suburb": "Papatoetoe",
+    "contact:facebook": "masjidattaqwanz"
+   },
+   "completeness": 83,
+   "slug": "masjid-at-taqwa-node-3683039850"
+  },
+  {
+   "id": "way/439643386",
+   "osm": {
+    "type": "way",
+    "id": 439643386
+   },
+   "name": "Masjid Ayesha",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "96 Maich Road",
+    "suburb": "Manurewa",
+    "city": "Auckland",
+    "postcode": "2102",
+    "formatted": "96 Maich Road, Manurewa, Auckland, 2102"
+   },
+   "lat": -37.0138191,
+   "lon": 174.8893188,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": "https://www.masjidayesha.co.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Corner of Clark Street",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/439643386"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "96",
+    "addr:postcode": "2102",
+    "addr:street": "Maich Road",
+    "addr:suburb": "Manurewa"
+   },
+   "completeness": 67,
+   "slug": "masjid-ayesha-way-439643386"
+  },
+  {
+   "id": "node/3702024763",
+   "osm": {
+    "type": "node",
+    "id": 3702024763
+   },
+   "name": "Masjid e Abu Hurairah (Kelston Islamic Centre NZMA)",
+   "alt_names": [
+    "Kelston Islamic Centre",
+    "مسجد أبي هريرة"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "45 Cartwright Road",
+    "suburb": "Kelston",
+    "city": "Auckland",
+    "postcode": "0602",
+    "formatted": "45 Cartwright Road, Kelston, Auckland, 0602"
+   },
+   "lat": -36.9045206,
+   "lon": 174.6609955,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 132 4793",
+    "+64 210 818 8122",
+    "+64 21 138 9983"
+   ],
+   "email": "kelston@nzma.kiwi.nz",
+   "website": "http://nzma.kiwi.nz/masjids/kelston/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3702024763"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "45",
+    "addr:postcode": "0602",
+    "addr:street": "Cartwright Road",
+    "addr:suburb": "Kelston",
+    "alt_name": "Kelston Islamic Centre",
+    "name:ar": "مسجد أبي هريرة"
+   },
+   "completeness": 100,
+   "slug": "masjid-e-abu-hurairah-kelston-islamic-centre-nzma-node-3702024763"
+  },
+  {
+   "id": "way/308373663",
+   "osm": {
+    "type": "way",
+    "id": 308373663
+   },
+   "name": "Masjid e Umar",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "185 - 187 Stoddard Road",
+    "suburb": null,
+    "city": "Mt. Roskill, Mt. Eden , Auckland",
+    "postcode": null,
+    "formatted": "185 - 187 Stoddard Road, Mt. Roskill, Mt. Eden , Auckland"
+   },
+   "lat": -36.9018062,
+   "lon": 174.7244192,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": "https://www.masjideumar.co.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/308373663"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Mt. Roskill, Mt. Eden , Auckland",
+    "addr:housenumber": "185 - 187",
+    "addr:street": "Stoddard Road"
+   },
+   "completeness": 50,
+   "slug": "masjid-e-umar-way-308373663"
+  },
+  {
+   "id": "way/339922286",
+   "osm": {
+    "type": "way",
+    "id": 339922286
+   },
+   "name": "Masjid-E-Bilal",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "7 Waikaukau Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "7 Waikaukau Road"
+   },
+   "lat": -36.907699,
+   "lon": 174.6374775,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/339922286"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Waikaukau Road"
+   },
+   "completeness": 17,
+   "slug": "masjid-e-bilal-way-339922286"
+  },
+  {
+   "id": "node/12501069626",
+   "osm": {
+    "type": "node",
+    "id": 12501069626
+   },
+   "name": "Masjid-E-Zahra - (Al Falah Education Trust)",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "26 Ranfurly Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "26 Ranfurly Road"
+   },
+   "lat": -36.9895847,
+   "lon": 174.8615719,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 263 1308",
+    "+64 22 070 3819"
+   ],
+   "email": null,
+   "website": "http://alfalah.nz",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069626"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Ranfurly Road"
+   },
+   "completeness": 50,
+   "slug": "masjid-e-zahra-al-falah-education-trust-node-12501069626"
+  },
+  {
+   "id": "way/330200951",
+   "osm": {
+    "type": "way",
+    "id": 330200951
+   },
+   "name": "Maunatul Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "45 Thomas Road",
+    "suburb": "Māngere",
+    "city": "Auckland",
+    "postcode": "2022",
+    "formatted": "45 Thomas Road, Māngere, Auckland, 2022"
+   },
+   "lat": -36.9719493,
+   "lon": 174.7944258,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/330200951"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "45",
+    "addr:postcode": "2022",
+    "addr:street": "Thomas Road",
+    "addr:suburb": "Māngere"
+   },
+   "completeness": 50,
+   "slug": "maunatul-islamic-centre-way-330200951"
+  },
+  {
+   "id": "node/3700505525",
+   "osm": {
+    "type": "node",
+    "id": 3700505525
+   },
+   "name": "Mount Albert Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "38 Wairere Avenue",
+    "suburb": "Mount Albert",
+    "city": "Auckland",
+    "postcode": "1025",
+    "formatted": "38 Wairere Avenue, Mount Albert, Auckland, 1025"
+   },
+   "lat": -36.8794007,
+   "lon": 174.7247916,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 167 7292"
+   ],
+   "email": null,
+   "website": "https://mtalbertislamiccentre.org",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3700505525"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "38",
+    "addr:postcode": "1025",
+    "addr:street": "Wairere Avenue",
+    "addr:suburb": "Mount Albert"
+   },
+   "completeness": 83,
+   "slug": "mount-albert-islamic-centre-node-3700505525"
+  },
+  {
+   "id": "node/12501085508",
+   "osm": {
+    "type": "node",
+    "id": 12501085508
+   },
+   "name": "Musallah Fatima - Masjid",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "8 Burundi Avenue",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "8 Burundi Avenue"
+   },
+   "lat": -37.0277914,
+   "lon": 174.8659869,
+   "region": "Auckland",
+   "phones": [
+    "+64 27 305 7393",
+    "+64 22 598 9362"
+   ],
+   "email": "musallahfatima@gmail.com",
+   "website": null,
+   "facebook": "musallahfatima",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085508"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Burundi Avenue",
+    "contact:facebook": "musallahfatima"
+   },
+   "completeness": 50,
+   "slug": "musallah-fatima-masjid-node-12501085508"
+  },
+  {
+   "id": "node/10742555935",
+   "osm": {
+    "type": "node",
+    "id": 10742555935
+   },
+   "name": "Muslim Prayer Room",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.7335464,
+   "lon": 174.7029239,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10742555935"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "muslim-prayer-room-node-10742555935"
+  },
+  {
+   "id": "node/3700492108",
+   "osm": {
+    "type": "node",
+    "id": 3700492108
+   },
+   "name": "New Lynn Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "13 Ward Street",
+    "suburb": "New Lynn",
+    "city": "Auckland",
+    "postcode": "0600",
+    "formatted": "13 Ward Street, New Lynn, Auckland, 0600"
+   },
+   "lat": -36.908124,
+   "lon": 174.6889927,
+   "region": "Auckland",
+   "phones": [
+    "+64 274 876 429",
+    "+64 274 300 177"
+   ],
+   "email": "abubakar7860@hotmail.com",
+   "website": "https://newlynnislamiccentre.co.nz",
+   "facebook": "NewLynnIslamicCentre",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3700492108"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "13",
+    "addr:postcode": "0600",
+    "addr:street": "Ward Street",
+    "addr:suburb": "New Lynn",
+    "contact:facebook": "NewLynnIslamicCentre"
+   },
+   "completeness": 100,
+   "slug": "new-lynn-islamic-centre-node-3700492108"
+  },
+  {
+   "id": "node/3683200835",
+   "osm": {
+    "type": "node",
+    "id": 3683200835
+   },
+   "name": "North Shore Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "9 B Kaimahi Road",
+    "suburb": null,
+    "city": "Auckland",
+    "postcode": "0620",
+    "formatted": "9 B Kaimahi Road, Auckland, 0620"
+   },
+   "lat": -36.7669749,
+   "lon": 174.7368757,
+   "region": "Auckland",
+   "phones": [
+    "+64 9 441 2493"
+   ],
+   "email": "secretary@northshoreislamiccentre.org",
+   "website": "http://isnorthshore.org",
+   "facebook": "northshireislam",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3683200835"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "9 B",
+    "addr:postcode": "0620",
+    "addr:street": "Kaimahi Road",
+    "contact:facebook": "northshireislam",
+    "contact:phone": "+64 9 441 2493"
+   },
+   "completeness": 100,
+   "slug": "north-shore-islamic-centre-node-3683200835"
+  },
+  {
+   "id": "node/12501069622",
+   "osm": {
+    "type": "node",
+    "id": 12501069622
+   },
+   "name": "North West Masjid and Darul Uloom - (Darul Uloom Arabia Islamia)",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "277 Trigg Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "277 Trigg Road"
+   },
+   "lat": -36.7750786,
+   "lon": 174.513223,
+   "region": "Auckland",
+   "phones": [
+    "+64 22 562 4511"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069622"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "277",
+    "addr:street": "Trigg Road"
+   },
+   "completeness": 33,
+   "slug": "north-west-masjid-and-darul-uloom-darul-uloom-arabia-islamia-node-12501069622"
+  },
+  {
+   "id": "node/13704668603",
+   "osm": {
+    "type": "node",
+    "id": 13704668603
+   },
+   "name": "NSIA Hub ( Masjid & Centre)",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "58 Akoranga Drive",
+    "suburb": null,
+    "city": null,
+    "postcode": "0627",
+    "formatted": "58 Akoranga Drive, 0627"
+   },
+   "lat": -36.7951718,
+   "lon": 174.7560234,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/13704668603"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "58",
+    "addr:postcode": "0627",
+    "addr:street": "Akoranga Drive"
+   },
+   "completeness": 33,
+   "slug": "nsia-hub-masjid-centre-node-13704668603"
+  },
+  {
+   "id": "way/188563031",
+   "osm": {
+    "type": "way",
+    "id": 188563031
+   },
+   "name": "Onehunga Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "140 Church Street",
+    "suburb": "Onehunga",
+    "city": "Auckland",
+    "postcode": "1061",
+    "formatted": "140 Church Street, Onehunga, Auckland, 1061"
+   },
+   "lat": -36.9223481,
+   "lon": 174.7895875,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Corner with Spring Street",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/188563031"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "140",
+    "addr:postcode": "1061",
+    "addr:street": "Church Street",
+    "addr:suburb": "Onehunga"
+   },
+   "completeness": 50,
+   "slug": "onehunga-islamic-centre-way-188563031"
+  },
+  {
+   "id": "node/12527833991",
+   "osm": {
+    "type": "node",
+    "id": 12527833991
+   },
+   "name": "Otahuhu Mosque - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "34 Portage Road",
+    "suburb": "Ōtāhuhu",
+    "city": "Auckland",
+    "postcode": "1062",
+    "formatted": "34 Portage Road, Ōtāhuhu, Auckland, 1062"
+   },
+   "lat": -36.9358507,
+   "lon": 174.8403258,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 135 197"
+   ],
+   "email": null,
+   "website": "https://masjidalfarooq.co.nz/",
+   "facebook": "alfarooqmadrasah",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12527833991"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "34",
+    "addr:postcode": "1062",
+    "addr:street": "Portage Road",
+    "addr:suburb": "Ōtāhuhu",
+    "contact:facebook": "alfarooqmadrasah"
+   },
+   "completeness": 83,
+   "slug": "otahuhu-mosque-masjid-node-12527833991"
+  },
+  {
+   "id": "way/425040599",
+   "osm": {
+    "type": "way",
+    "id": 425040599
+   },
+   "name": "Papatoetoe Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "63 Park Avenue",
+    "suburb": "Papatoetoe",
+    "city": "Auckland",
+    "postcode": "2025",
+    "formatted": "63 Park Avenue, Papatoetoe, Auckland, 2025"
+   },
+   "lat": -36.9785469,
+   "lon": 174.8367161,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/425040599"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "63",
+    "addr:postcode": "2025",
+    "addr:street": "Park Avenue",
+    "addr:suburb": "Papatoetoe"
+   },
+   "completeness": 50,
+   "slug": "papatoetoe-islamic-centre-way-425040599"
+  },
+  {
+   "id": "node/12501045630",
+   "osm": {
+    "type": "node",
+    "id": 12501045630
+   },
+   "name": "Papatoetoe Muslim Youth - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "167 Tui Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "167 Tui Road"
+   },
+   "lat": -36.9747935,
+   "lon": 174.8784371,
+   "region": "Auckland",
+   "phones": [
+    "+64 27 578 6756",
+    "+64 22 383 5016"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045630"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "167",
+    "addr:street": "Tui Road"
+   },
+   "completeness": 33,
+   "slug": "papatoetoe-muslim-youth-masjid-node-12501045630"
+  },
+  {
+   "id": "way/952209414",
+   "osm": {
+    "type": "way",
+    "id": 952209414
+   },
+   "name": "Porchester Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "463 Porchester Road",
+    "suburb": null,
+    "city": null,
+    "postcode": "2105",
+    "formatted": "463 Porchester Road, 2105"
+   },
+   "lat": -37.021455,
+   "lon": 174.9230958,
+   "region": "Auckland",
+   "phones": [
+    "+64 210 884 2947",
+    "+64 21 828 947"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "Porchester-Islamic-Centre-FIANZ-422812938557465",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/952209414"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "463",
+    "addr:postcode": "2105",
+    "addr:street": "Porchester Road",
+    "contact:facebook": "Porchester-Islamic-Centre-FIANZ-422812938557465"
+   },
+   "completeness": 50,
+   "slug": "porchester-islamic-centre-way-952209414"
+  },
+  {
+   "id": "node/12523108401",
+   "osm": {
+    "type": "node",
+    "id": 12523108401
+   },
+   "name": "Porchester Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "463 Porchester Road",
+    "suburb": null,
+    "city": null,
+    "postcode": "2105",
+    "formatted": "463 Porchester Road, 2105"
+   },
+   "lat": -37.0215278,
+   "lon": 174.9224687,
+   "region": "Auckland",
+   "phones": [
+    "+64 210 884 2947",
+    "+64 21 828 947"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "Porchester-Islamic-Centre-FIANZ-422812938557465",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523108401"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "463",
+    "addr:postcode": "2105",
+    "addr:street": "Porchester Road",
+    "contact:facebook": "Porchester-Islamic-Centre-FIANZ-422812938557465"
+   },
+   "completeness": 50,
+   "slug": "porchester-islamic-centre-masjid-node-12523108401"
+  },
+  {
+   "id": "node/3700494179",
+   "osm": {
+    "type": "node",
+    "id": 3700494179
+   },
+   "name": "Pukekohe Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "107 Princes Street",
+    "suburb": "Pukekohe",
+    "city": "Pukekohe",
+    "postcode": "2120",
+    "formatted": "107 Princes Street, Pukekohe, Pukekohe, 2120"
+   },
+   "lat": -37.1976274,
+   "lon": 174.8922321,
+   "region": "Auckland",
+   "phones": [
+    "+64 21 113 3578",
+    "+64 21 951 030",
+    "+64 210 859 2761"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3700494179"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Pukekohe",
+    "addr:housenumber": "107",
+    "addr:postcode": "2120",
+    "addr:street": "Princes Street",
+    "addr:suburb": "Pukekohe"
+   },
+   "completeness": 67,
+   "slug": "pukekohe-islamic-centre-node-3700494179"
+  },
+  {
+   "id": "way/1464569803",
+   "osm": {
+    "type": "way",
+    "id": 1464569803
+   },
+   "name": "Qiyam Education Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "11 Crown Street",
+    "suburb": null,
+    "city": null,
+    "postcode": "1023",
+    "formatted": "11 Crown Street, 1023"
+   },
+   "lat": -36.9100232,
+   "lon": 174.7738628,
+   "region": "Auckland",
+   "phones": [
+    "+64 22 404 4305"
+   ],
+   "email": "info@qiyam.nz",
+   "website": "https://qiyam.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1464569803"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "11",
+    "addr:postcode": "1023",
+    "addr:street": "Crown Street"
+   },
+   "completeness": 83,
+   "slug": "qiyam-education-centre-way-1464569803"
+  },
+  {
+   "id": "node/12501069623",
+   "osm": {
+    "type": "node",
+    "id": 12501069623
+   },
+   "name": "Titirangi Musala Mosque",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "295 Huia Road",
+    "suburb": null,
+    "city": null,
+    "postcode": "0604",
+    "formatted": "295 Huia Road, 0604"
+   },
+   "lat": -36.9488472,
+   "lon": 174.6304086,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069623"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "295",
+    "addr:postcode": "0604",
+    "addr:street": "Huia Road"
+   },
+   "completeness": 33,
+   "slug": "titirangi-musala-mosque-node-12501069623"
+  },
+  {
+   "id": "way/1458827076",
+   "osm": {
+    "type": "way",
+    "id": 1458827076
+   },
+   "name": "Ulul Albab Islamic Institute NZ",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "27 Stock Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "27 Stock Street"
+   },
+   "lat": -36.9021335,
+   "lon": 174.6866871,
+   "region": "Auckland",
+   "phones": [
+    "+64 27 519 4475"
+   ],
+   "email": null,
+   "website": "https://ululalbabinstitute.co.nz/",
+   "facebook": "UAIINZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1458827076"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "27",
+    "addr:street": "Stock Street",
+    "contact:facebook": "UAIINZ"
+   },
+   "completeness": 50,
+   "slug": "ulul-albab-islamic-institute-nz-way-1458827076"
+  },
+  {
+   "id": "way/366051031",
+   "osm": {
+    "type": "way",
+    "id": 366051031
+   },
+   "name": "Unnamed Islamic place",
+   "alt_names": [],
+   "kind": "other",
+   "denomination": null,
+   "address": {
+    "line1": "144 Triangle Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "144 Triangle Road"
+   },
+   "lat": -36.8377542,
+   "lon": 174.6179306,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/366051031"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "144",
+    "addr:street": "Triangle Road"
+   },
+   "completeness": 17,
+   "slug": "unnamed-islamic-place-way-366051031"
+  },
+  {
+   "id": "way/868248409",
+   "osm": {
+    "type": "way",
+    "id": 868248409
+   },
+   "name": "Unnamed Islamic place",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.9361145,
+   "lon": 174.8403275,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/868248409"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "unnamed-islamic-place-way-868248409"
+  },
+  {
+   "id": "way/868248411",
+   "osm": {
+    "type": "way",
+    "id": 868248411
+   },
+   "name": "Unnamed Islamic place",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.935726,
+   "lon": 174.840652,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/868248411"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "unnamed-islamic-place-way-868248411"
+  },
+  {
+   "id": "way/975206723",
+   "osm": {
+    "type": "way",
+    "id": 975206723
+   },
+   "name": "Unnamed Islamic place",
+   "alt_names": [],
+   "kind": "other",
+   "denomination": null,
+   "address": {
+    "line1": "84 Hendon Avenue",
+    "suburb": "Mount Albert",
+    "city": "Auckland",
+    "postcode": "1025",
+    "formatted": "84 Hendon Avenue, Mount Albert, Auckland, 1025"
+   },
+   "lat": -36.8982936,
+   "lon": 174.7130601,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/975206723"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "84",
+    "addr:postcode": "1025",
+    "addr:street": "Hendon Avenue",
+    "addr:suburb": "Mount Albert"
+   },
+   "completeness": 50,
+   "slug": "unnamed-islamic-place-way-975206723"
+  },
+  {
+   "id": "way/421566349",
+   "osm": {
+    "type": "way",
+    "id": 421566349
+   },
+   "name": "Vajihi Markaz",
+   "alt_names": [],
+   "kind": "other",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -36.8824867,
+   "lon": 174.6396635,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/421566349"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "vajihi-markaz-way-421566349"
+  },
+  {
+   "id": "node/12501069628",
+   "osm": {
+    "type": "node",
+    "id": 12501069628
+   },
+   "name": "Wellsford Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "11 Station Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "11 Station Road"
+   },
+   "lat": -36.2941676,
+   "lon": 174.5245278,
+   "region": "Auckland",
+   "phones": [
+    "+64 27 367 0214",
+    "+64 21 160 7677"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "wict2021",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069628"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "11",
+    "addr:street": "Station Road",
+    "contact:facebook": "wict2021"
+   },
+   "completeness": 33,
+   "slug": "wellsford-islamic-centre-masjid-node-12501069628"
+  },
+  {
+   "id": "way/340098308",
+   "osm": {
+    "type": "way",
+    "id": 340098308
+   },
+   "name": "West Auckland Islamic Centre",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "31-33 Armada Drive",
+    "suburb": "Rānui",
+    "city": "Auckland",
+    "postcode": "0612",
+    "formatted": "31-33 Armada Drive, Rānui, Auckland, 0612"
+   },
+   "lat": -36.8625115,
+   "lon": 174.6017065,
+   "region": "Auckland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/340098308"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Auckland",
+    "addr:housenumber": "31-33",
+    "addr:postcode": "0612",
+    "addr:street": "Armada Drive",
+    "addr:suburb": "Rānui"
+   },
+   "completeness": 50,
+   "slug": "west-auckland-islamic-centre-way-340098308"
+  },
+  {
+   "id": "way/369951850",
+   "osm": {
+    "type": "way",
+    "id": 369951850
+   },
+   "name": "Rotorua Islamic Association",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "274 Old Taupo Road",
+    "suburb": null,
+    "city": null,
+    "postcode": "3015",
+    "formatted": "274 Old Taupo Road, 3015"
+   },
+   "lat": -38.1507737,
+   "lon": 176.2399458,
+   "region": "Bay of Plenty",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/369951850"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "274",
+    "addr:postcode": "3015",
+    "addr:street": "Old Taupo Road"
+   },
+   "completeness": 33,
+   "slug": "rotorua-islamic-association-way-369951850"
+  },
+  {
+   "id": "way/375662574",
+   "osm": {
+    "type": "way",
+    "id": 375662574
+   },
+   "name": "Tauranga Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "85 Eighteenth Avenue",
+    "suburb": null,
+    "city": "Tauranga",
+    "postcode": "3112",
+    "formatted": "85 Eighteenth Avenue, Tauranga, 3112"
+   },
+   "lat": -37.7095626,
+   "lon": 176.1524961,
+   "region": "Bay of Plenty",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/375662574"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Tauranga",
+    "addr:housenumber": "85",
+    "addr:postcode": "3112",
+    "addr:street": "Eighteenth Avenue"
+   },
+   "completeness": 50,
+   "slug": "tauranga-masjid-way-375662574"
+  },
+  {
+   "id": "node/12508326802",
+   "osm": {
+    "type": "node",
+    "id": 12508326802
+   },
+   "name": "Addington Musolah - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "58 Whiteleigh Avenue",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "58 Whiteleigh Avenue"
+   },
+   "lat": -43.5418177,
+   "lon": 172.6054538,
+   "region": "Canterbury",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508326802"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "58",
+    "addr:street": "Whiteleigh Avenue"
+   },
+   "completeness": 17,
+   "slug": "addington-musolah-masjid-node-12508326802"
+  },
+  {
+   "id": "way/102298567",
+   "osm": {
+    "type": "way",
+    "id": 102298567
+   },
+   "name": "Al Noor Mosque",
+   "alt_names": [
+    "Al Noor Mosque",
+    "مسجد النور"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "101 Deans Avenue",
+    "suburb": "Riccarton",
+    "city": "Christchurch",
+    "postcode": "8011",
+    "formatted": "101 Deans Avenue, Riccarton, Christchurch, 8011"
+   },
+   "lat": -43.5329451,
+   "lon": 172.6117271,
+   "region": "Canterbury",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Location of one of two terrorist mass shootings of mosque worshippers on 20190315: https://en.wikipedia.org/wiki/Christchurch_mosque_shootings",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/102298567"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "101",
+    "addr:postcode": "8011",
+    "addr:street": "Deans Avenue",
+    "addr:suburb": "Riccarton",
+    "name:ar": "مسجد النور",
+    "name:en": "Al Noor Mosque",
+    "name:fa": "مسجد نور",
+    "name:ku": "Mizgefta El Nur",
+    "name:tr": "El Nur Camii",
+    "name:ur": "مسجد النور"
+   },
+   "completeness": 50,
+   "slug": "al-noor-mosque-way-102298567"
+  },
+  {
+   "id": "way/408830992",
+   "osm": {
+    "type": "way",
+    "id": 408830992
+   },
+   "name": "Ashburton Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "139 Archibald Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "139 Archibald Street"
+   },
+   "lat": -43.9221984,
+   "lon": 171.7169581,
+   "region": "Canterbury",
+   "phones": [
+    "+64 21 163 4739",
+    "+64 22 175 8265"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "aman.nz.page",
+   "wheelchair": "yes",
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/408830992"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "139",
+    "addr:street": "Archibald Street",
+    "contact:facebook": "aman.nz.page"
+   },
+   "completeness": 33,
+   "slug": "ashburton-masjid-way-408830992"
+  },
+  {
+   "id": "way/1247590821",
+   "osm": {
+    "type": "way",
+    "id": 1247590821
+   },
+   "name": "Former Site of Linwood Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -43.5323959,
+   "lon": 172.6724593,
+   "region": "Canterbury",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1247590821"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "former-site-of-linwood-islamic-centre-way-1247590821"
+  },
+  {
+   "id": "node/12508326803",
+   "osm": {
+    "type": "node",
+    "id": 12508326803
+   },
+   "name": "Linwood Islam Centre - Masjid Al-Shuhada'a",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "223 Linwood Avenue",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "223 Linwood Avenue"
+   },
+   "lat": -43.5326435,
+   "lon": 172.6724489,
+   "region": "Canterbury",
+   "phones": [
+    "+64 274 222 256",
+    "+64 210 515 767"
+   ],
+   "email": null,
+   "website": "https://linwoodislamiccentre.org.nz/",
+   "facebook": "LinwoodMosque",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508326803"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "223",
+    "addr:street": "Linwood Avenue",
+    "contact:facebook": "LinwoodMosque"
+   },
+   "completeness": 50,
+   "slug": "linwood-islam-centre-masjid-al-shuhada-a-node-12508326803"
+  },
+  {
+   "id": "node/12508327001",
+   "osm": {
+    "type": "node",
+    "id": 12508327001
+   },
+   "name": "Masjid Bilal",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "9 Napier Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "9 Napier Street"
+   },
+   "lat": -44.4013344,
+   "lon": 171.246549,
+   "region": "Canterbury",
+   "phones": [
+    "+64 22 583 9850",
+    "+64 27 215 6006",
+    "+64 21 104 1146"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508327001"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Napier Street"
+   },
+   "completeness": 33,
+   "slug": "masjid-bilal-node-12508327001"
+  },
+  {
+   "id": "node/3702073524",
+   "osm": {
+    "type": "node",
+    "id": 3702073524
+   },
+   "name": "Nawawi Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "201 Peterborough Street",
+    "suburb": "Christchurch Central",
+    "city": "Christchurch",
+    "postcode": "8013",
+    "formatted": "201 Peterborough Street, Christchurch Central, Christchurch, 8013"
+   },
+   "lat": -43.5250465,
+   "lon": 172.6422209,
+   "region": "Canterbury",
+   "phones": null,
+   "email": null,
+   "website": "https://nawawicenter.org/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3702073524"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Christchurch",
+    "addr:country": "NZ",
+    "addr:housenumber": "201",
+    "addr:postcode": "8013",
+    "addr:street": "Peterborough Street",
+    "addr:suburb": "Christchurch Central"
+   },
+   "completeness": 67,
+   "slug": "nawawi-centre-node-3702073524"
+  },
+  {
+   "id": "way/914921474",
+   "osm": {
+    "type": "way",
+    "id": 914921474
+   },
+   "name": "Rasol-O-Allah Islamic Center",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -43.4906231,
+   "lon": 172.5812001,
+   "region": "Canterbury",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/914921474"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "rasol-o-allah-islamic-center-way-914921474"
+  },
+  {
+   "id": "node/12508326804",
+   "osm": {
+    "type": "node",
+    "id": 12508326804
+   },
+   "name": "Rolleston Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "21/35 Illinois Drive",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "21/35 Illinois Drive"
+   },
+   "lat": -43.5810805,
+   "lon": 172.3661843,
+   "region": "Canterbury",
+   "phones": [
+    "+64 27 216 0314",
+    "+64 22 621 8451",
+    "0800 129 689"
+   ],
+   "email": "info@ric.org.nz",
+   "website": "http://ric.org.nz",
+   "facebook": "RICTNZ",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508326804"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "21/35",
+    "addr:street": "Illinois Drive",
+    "contact:facebook": "RICTNZ"
+   },
+   "completeness": 67,
+   "slug": "rolleston-islamic-centre-masjid-node-12508326804"
+  },
+  {
+   "id": "way/837271009",
+   "osm": {
+    "type": "way",
+    "id": 837271009
+   },
+   "name": "University of Canterbury Musalla",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "37 Creyke Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "37 Creyke Road"
+   },
+   "lat": -43.5221762,
+   "lon": 172.5862745,
+   "region": "Canterbury",
+   "phones": null,
+   "email": null,
+   "website": "https://www.canterburymusa.com",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/837271009"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "37",
+    "addr:street": "Creyke Road"
+   },
+   "completeness": 33,
+   "slug": "university-of-canterbury-musalla-way-837271009"
+  },
+  {
+   "id": "node/12501085509",
+   "osm": {
+    "type": "node",
+    "id": 12501085509
+   },
+   "name": "Gisborne Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "81 Childers Road",
+    "suburb": null,
+    "city": null,
+    "postcode": "4010",
+    "formatted": "81 Childers Road, 4010"
+   },
+   "lat": -38.667789,
+   "lon": 178.0254063,
+   "region": "Gisborne",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": "Gisbornemuslims",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085509"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "81",
+    "addr:postcode": "4010",
+    "addr:street": "Childers Road",
+    "contact:facebook": "Gisbornemuslims"
+   },
+   "completeness": 33,
+   "slug": "gisborne-islamic-centre-masjid-node-12501085509"
+  },
+  {
+   "id": "way/438225997",
+   "osm": {
+    "type": "way",
+    "id": 438225997
+   },
+   "name": "Hastings Mosque",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "718 Heretaunga Street East",
+    "suburb": null,
+    "city": "East Hastings, Parkvale , Hastings",
+    "postcode": "4122",
+    "formatted": "718 Heretaunga Street East, East Hastings, Parkvale , Hastings, 4122"
+   },
+   "lat": -39.6480938,
+   "lon": 176.8501337,
+   "region": "Hawke's Bay",
+   "phones": null,
+   "email": null,
+   "website": "https://www.hastingsmosque.org",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/438225997"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "East Hastings, Parkvale , Hastings",
+    "addr:country": "NZ",
+    "addr:housenumber": "718",
+    "addr:postcode": "4122",
+    "addr:street": "Heretaunga Street East"
+   },
+   "completeness": 67,
+   "slug": "hastings-mosque-way-438225997"
+  },
+  {
+   "id": "way/1067027825",
+   "osm": {
+    "type": "way",
+    "id": 1067027825
+   },
+   "name": "Taupo Islamic Centre",
+   "alt_names": [
+    "Taupo Islamic Centre"
+   ],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "57 Kaimanawa Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "57 Kaimanawa Street"
+   },
+   "lat": -38.6875057,
+   "lon": 176.0780041,
+   "region": "Hawke's Bay",
+   "phones": [
+    "+64 22 092 1657",
+    "+64 21 248 6786"
+   ],
+   "email": "taupoislamic.centre@gmail.com",
+   "website": null,
+   "facebook": "Taupoislamiccentre",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1067027825"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "57",
+    "addr:street": "Kaimanawa Street",
+    "contact:facebook": "Taupoislamiccentre",
+    "name:en": "Taupo Islamic Centre",
+    "name:fr": "Mosquee de Taupo"
+   },
+   "completeness": 50,
+   "slug": "taupo-islamic-centre-way-1067027825"
+  },
+  {
+   "id": "way/778740428",
+   "osm": {
+    "type": "way",
+    "id": 778740428
+   },
+   "name": "Al Qadiri Islamic Centre Manawatu",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "24 Jupiter Street",
+    "suburb": "Milson",
+    "city": "Palmerston North",
+    "postcode": "4414",
+    "formatted": "24 Jupiter Street, Milson, Palmerston North, 4414"
+   },
+   "lat": -40.3291961,
+   "lon": 175.6027815,
+   "region": "Manawatu-Whanganui",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/778740428"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Palmerston North",
+    "addr:housenumber": "24",
+    "addr:postcode": "4414",
+    "addr:street": "Jupiter Street",
+    "addr:suburb": "Milson"
+   },
+   "completeness": 50,
+   "slug": "al-qadiri-islamic-centre-manawatu-way-778740428"
+  },
+  {
+   "id": "node/12501045635",
+   "osm": {
+    "type": "node",
+    "id": 12501045635
+   },
+   "name": "Fielding Islamic Trust - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "23 Poole Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "23 Poole Street"
+   },
+   "lat": -40.2290682,
+   "lon": 175.5785968,
+   "region": "Manawatu-Whanganui",
+   "phones": [
+    "+64 210 738 176",
+    "+64 210 651 422",
+    "+64 21 149 2732"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "Fielding-Islamic-Centre-1514314035565101",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045635"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "23",
+    "addr:street": "Poole Street",
+    "contact:facebook": "Fielding-Islamic-Centre-1514314035565101"
+   },
+   "completeness": 33,
+   "slug": "fielding-islamic-trust-masjid-node-12501045635"
+  },
+  {
+   "id": "way/370869018",
+   "osm": {
+    "type": "way",
+    "id": 370869018
+   },
+   "name": "Masjid e Bilal - Wanganui Islamic Centre",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "68 Talbot Street",
+    "suburb": "Wanganui East",
+    "city": "Whanganui",
+    "postcode": "4500",
+    "formatted": "68 Talbot Street, Wanganui East, Whanganui, 4500"
+   },
+   "lat": -39.9064779,
+   "lon": 175.0684563,
+   "region": "Manawatu-Whanganui",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/370869018"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Whanganui",
+    "addr:housenumber": "68",
+    "addr:postcode": "4500",
+    "addr:street": "Talbot Street",
+    "addr:suburb": "Wanganui East"
+   },
+   "completeness": 50,
+   "slug": "masjid-e-bilal-wanganui-islamic-centre-way-370869018"
+  },
+  {
+   "id": "way/219766071",
+   "osm": {
+    "type": "way",
+    "id": 219766071
+   },
+   "name": "Massey Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -40.3875352,
+   "lon": 175.6173958,
+   "region": "Manawatu-Whanganui",
+   "phones": [
+    "+64 21 158 5936"
+   ],
+   "email": "mms.president@gmail.com",
+   "website": null,
+   "facebook": "MasseyMuslimSociety",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/219766071"
+    }
+   ],
+   "raw_tags": {
+    "contact:facebook": "MasseyMuslimSociety"
+   },
+   "completeness": 33,
+   "slug": "massey-islamic-centre-way-219766071"
+  },
+  {
+   "id": "way/368408185",
+   "osm": {
+    "type": "way",
+    "id": 368408185
+   },
+   "name": "Palmerston North Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "81 Cook Street",
+    "suburb": "Palmerston North",
+    "city": "Palmerston North",
+    "postcode": "4410",
+    "formatted": "81 Cook Street, Palmerston North, Palmerston North, 4410"
+   },
+   "lat": -40.3621471,
+   "lon": 175.6049261,
+   "region": "Manawatu-Whanganui",
+   "phones": null,
+   "email": null,
+   "website": "https://www.manawatumuslims.org.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/368408185"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Palmerston North",
+    "addr:housenumber": "81",
+    "addr:postcode": "4410",
+    "addr:street": "Cook Street",
+    "addr:suburb": "Palmerston North"
+   },
+   "completeness": 67,
+   "slug": "palmerston-north-islamic-centre-way-368408185"
+  },
+  {
+   "id": "way/1108456122",
+   "osm": {
+    "type": "way",
+    "id": 1108456122
+   },
+   "name": "Taihape Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "3 Tui Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "3 Tui Street"
+   },
+   "lat": -39.6782086,
+   "lon": 175.7979581,
+   "region": "Manawatu-Whanganui",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1108456122"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "3",
+    "addr:street": "Tui Street"
+   },
+   "completeness": 17,
+   "slug": "taihape-islamic-centre-way-1108456122"
+  },
+  {
+   "id": "node/12508326905",
+   "osm": {
+    "type": "node",
+    "id": 12508326905
+   },
+   "name": "Blenheim Masjid and Community Centre",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "14B Stephenson Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "14B Stephenson Street"
+   },
+   "lat": -41.51942,
+   "lon": 173.9546453,
+   "region": "Marlborough",
+   "phones": [
+    "+64 210 519 308",
+    "+64 27 387 9671"
+   ],
+   "email": null,
+   "website": "https://mam.nz",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508326905"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "14B",
+    "addr:street": "Stephenson Street"
+   },
+   "completeness": 50,
+   "slug": "blenheim-masjid-and-community-centre-node-12508326905"
+  },
+  {
+   "id": "node/12508327002",
+   "osm": {
+    "type": "node",
+    "id": 12508327002
+   },
+   "name": "Nelson Islamic Cultural Society (NICS)",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "120 Hardy Street",
+    "suburb": null,
+    "city": null,
+    "postcode": "7010",
+    "formatted": "120 Hardy Street, 7010"
+   },
+   "lat": -41.274486,
+   "lon": 173.2821168,
+   "region": "Nelson",
+   "phones": [
+    "+64 210 856 442",
+    "+64 22 534 1063",
+    "+64 27 286 4599"
+   ],
+   "email": "nelsonislamic@gmail.com",
+   "website": "https://nelsonmosque.co.nz/",
+   "facebook": "NelsonICSI",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508327002"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "120",
+    "addr:postcode": "7010",
+    "addr:street": "Hardy Street",
+    "contact:facebook": "NelsonICSI"
+   },
+   "completeness": 83,
+   "slug": "nelson-islamic-cultural-society-nics-node-12508327002"
+  },
+  {
+   "id": "node/3703999430",
+   "osm": {
+    "type": "node",
+    "id": 3703999430
+   },
+   "name": "Whangarei Masjid (Northland Muslim Charitable Trust)",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "11 Porowini Avenue",
+    "suburb": null,
+    "city": "Whangarei",
+    "postcode": "0110",
+    "formatted": "11 Porowini Avenue, Whangarei, 0110"
+   },
+   "lat": -35.7289034,
+   "lon": 174.3169176,
+   "region": "Northland",
+   "phones": [
+    "+64 21 313 786",
+    "+64 22 644 2544",
+    "+64 21 103 8722"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "The Masjid is at the rear of the house and email shirleyishere@hotmail.com for prayers' times",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3703999430"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Whangarei",
+    "addr:country": "NZ",
+    "addr:housenumber": "11",
+    "addr:postcode": "0110",
+    "addr:street": "Porowini Avenue"
+   },
+   "completeness": 67,
+   "slug": "whangarei-masjid-northland-muslim-charitable-trust-node-3703999430"
+  },
+  {
+   "id": "node/12501086606",
+   "osm": {
+    "type": "node",
+    "id": 12501086606
+   },
+   "name": "Al-Maryam Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "195 Macandrew Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "195 Macandrew Road"
+   },
+   "lat": -45.8995065,
+   "lon": 170.4938137,
+   "region": "Otago",
+   "phones": [
+    "+64 21 269 0157"
+   ],
+   "email": "admin@dunedinmuslims.co.nz",
+   "website": "https://dunedinmuslims.co.nz/",
+   "facebook": "MuslimsDunedin",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501086606"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "195",
+    "addr:street": "Macandrew Road",
+    "contact:facebook": "MuslimsDunedin"
+   },
+   "completeness": 67,
+   "slug": "al-maryam-islamic-centre-masjid-node-12501086606"
+  },
+  {
+   "id": "way/381844761",
+   "osm": {
+    "type": "way",
+    "id": 381844761
+   },
+   "name": "Masjid Al Huda",
+   "alt_names": [
+    "Dunedin Islamic Center"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "21 Clyde Street",
+    "suburb": "North Dunedin",
+    "city": "Dunedin",
+    "postcode": "9016",
+    "formatted": "21 Clyde Street, North Dunedin, Dunedin, 9016"
+   },
+   "lat": -45.869153,
+   "lon": 170.5152367,
+   "region": "Otago",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/381844761"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Dunedin",
+    "addr:housenumber": "21",
+    "addr:postcode": "9016",
+    "addr:street": "Clyde Street",
+    "addr:suburb": "North Dunedin",
+    "alt_name": "Dunedin Islamic Center"
+   },
+   "completeness": 50,
+   "slug": "masjid-al-huda-way-381844761"
+  },
+  {
+   "id": "node/12508327102",
+   "osm": {
+    "type": "node",
+    "id": 12508327102
+   },
+   "name": "Queenstown Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "5/159 Gorge Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "5/159 Gorge Road"
+   },
+   "lat": -45.0198196,
+   "lon": 168.6632293,
+   "region": "Otago",
+   "phones": [
+    "+64 21 105 1523",
+    "+64 22 639 3625"
+   ],
+   "email": null,
+   "website": "http://queenstownislamiccentre.org.nz",
+   "facebook": "queenstownmuslimcommunity",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508327102"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "5/159",
+    "addr:street": "Gorge Road",
+    "contact:facebook": "queenstownmuslimcommunity"
+   },
+   "completeness": 50,
+   "slug": "queenstown-islamic-centre-masjid-node-12508327102"
+  },
+  {
+   "id": "node/11967853485",
+   "osm": {
+    "type": "node",
+    "id": 11967853485
+   },
+   "name": "Queenstown Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -45.0198857,
+   "lon": 168.6637087,
+   "region": "Otago",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11967853485"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "queenstown-masjid-node-11967853485"
+  },
+  {
+   "id": "node/12508326906",
+   "osm": {
+    "type": "node",
+    "id": 12508326906
+   },
+   "name": "Invercargill Islamic Trust - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "85 Miller Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "85 Miller Street"
+   },
+   "lat": -46.4170355,
+   "lon": 168.3733451,
+   "region": "Southland",
+   "phones": [
+    "+64 22 647 8804",
+    "+64 210 272 6406",
+    "+64 22 096 0166"
+   ],
+   "email": null,
+   "website": "https://www.iit.org.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508326906"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "85",
+    "addr:street": "Miller Street"
+   },
+   "completeness": 50,
+   "slug": "invercargill-islamic-trust-masjid-node-12508326906"
+  },
+  {
+   "id": "way/383387925",
+   "osm": {
+    "type": "way",
+    "id": 383387925
+   },
+   "name": "Mataura Masjid",
+   "alt_names": [
+    "Mataura Mosque"
+   ],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "127 Main Street",
+    "suburb": "Mataura",
+    "city": "Mataura",
+    "postcode": "9712",
+    "formatted": "127 Main Street, Mataura, Mataura, 9712"
+   },
+   "lat": -46.1925266,
+   "lon": 168.8665072,
+   "region": "Southland",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/383387925"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Mataura",
+    "addr:housenumber": "127",
+    "addr:postcode": "9712",
+    "addr:street": "Main Street",
+    "addr:suburb": "Mataura",
+    "alt_name": "Mataura Mosque"
+   },
+   "completeness": 50,
+   "slug": "mataura-masjid-way-383387925"
+  },
+  {
+   "id": "way/1347920415",
+   "osm": {
+    "type": "way",
+    "id": 1347920415
+   },
+   "name": "Southland Muslims Association Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "31 Fairview Avenue",
+    "suburb": "Hawthorndale",
+    "city": "Invercargill",
+    "postcode": "9810",
+    "formatted": "31 Fairview Avenue, Hawthorndale, Invercargill, 9810"
+   },
+   "lat": -46.4098093,
+   "lon": 168.3890206,
+   "region": "Southland",
+   "phones": null,
+   "email": null,
+   "website": "http://www.sma.org.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1347920415"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Invercargill",
+    "addr:country": "NZ",
+    "addr:housenumber": "31",
+    "addr:postcode": "9810",
+    "addr:street": "Fairview Avenue",
+    "addr:suburb": "Hawthorndale"
+   },
+   "completeness": 67,
+   "slug": "southland-muslims-association-masjid-way-1347920415"
+  },
+  {
+   "id": "way/371298256",
+   "osm": {
+    "type": "way",
+    "id": 371298256
+   },
+   "name": "Hawera Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "20 Turuturu Road",
+    "suburb": "Hāwera",
+    "city": "Hāwera",
+    "postcode": "4610",
+    "formatted": "20 Turuturu Road, Hāwera, Hāwera, 4610"
+   },
+   "lat": -39.5785452,
+   "lon": 174.2727765,
+   "region": "Taranaki",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/371298256"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Hāwera",
+    "addr:housenumber": "20",
+    "addr:postcode": "4610",
+    "addr:street": "Turuturu Road",
+    "addr:suburb": "Hāwera"
+   },
+   "completeness": 50,
+   "slug": "hawera-islamic-centre-way-371298256"
+  },
+  {
+   "id": "node/12501085510",
+   "osm": {
+    "type": "node",
+    "id": 12501085510
+   },
+   "name": "New Plymouth Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "185 Smart Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "185 Smart Road"
+   },
+   "lat": -39.0623573,
+   "lon": 174.1171343,
+   "region": "Taranaki",
+   "phones": [
+    "+64 21 160 4583",
+    "+64 22 508 8623",
+    "0800 786 000"
+   ],
+   "email": "nakimuslim@gmail.com",
+   "website": "http://nakimuslim.org",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085510"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "185",
+    "addr:street": "Smart Road"
+   },
+   "completeness": 67,
+   "slug": "new-plymouth-islamic-centre-node-12501085510"
+  },
+  {
+   "id": "node/12501069629",
+   "osm": {
+    "type": "node",
+    "id": 12501069629
+   },
+   "name": "Hamilton West Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "45 Bandon Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "45 Bandon Street"
+   },
+   "lat": -37.7921871,
+   "lon": 175.2592137,
+   "region": "Waikato",
+   "phones": [
+    "+64 274 744 201",
+    "+64 27 293 6974",
+    "+64 22 047 0656"
+   ],
+   "email": null,
+   "website": "https://www.nzmuslimleague.org/",
+   "facebook": "NewZealandMuslimLeagueIncHamilton",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069629"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "45",
+    "addr:street": "Bandon Street",
+    "contact:facebook": "NewZealandMuslimLeagueIncHamilton"
+   },
+   "completeness": 50,
+   "slug": "hamilton-west-islamic-centre-masjid-node-12501069629"
+  },
+  {
+   "id": "node/12501069630",
+   "osm": {
+    "type": "node",
+    "id": 12501069630
+   },
+   "name": "Huntly Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "9 Bridge Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "9 Bridge Street"
+   },
+   "lat": -37.5609695,
+   "lon": 175.152846,
+   "region": "Waikato",
+   "phones": [
+    "+64 27 519 4434"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069630"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "9",
+    "addr:street": "Bridge Street"
+   },
+   "completeness": 33,
+   "slug": "huntly-islamic-centre-masjid-node-12501069630"
+  },
+  {
+   "id": "way/222843028",
+   "osm": {
+    "type": "way",
+    "id": 222843028
+   },
+   "name": "Jamia Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "921 Heaphy Terrace",
+    "suburb": "Claudelands",
+    "city": "Hamilton",
+    "postcode": "3214",
+    "formatted": "921 Heaphy Terrace, Claudelands, Hamilton, 3214"
+   },
+   "lat": -37.7751038,
+   "lon": 175.2843572,
+   "region": "Waikato",
+   "phones": null,
+   "email": null,
+   "website": "https://hamiltonmosque.com/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": "Also Waikato Islamic School of Education (WISE) is there",
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/222843028"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Hamilton",
+    "addr:housenumber": "921",
+    "addr:postcode": "3214",
+    "addr:street": "Heaphy Terrace",
+    "addr:suburb": "Claudelands"
+   },
+   "completeness": 67,
+   "slug": "jamia-masjid-way-222843028"
+  },
+  {
+   "id": "node/11191907237",
+   "osm": {
+    "type": "node",
+    "id": 11191907237
+   },
+   "name": "Masjid - Khadijah Rototuna Islamic Centre",
+   "alt_names": [
+    "Masjid - Khadijah Rototuna Islamic Centre",
+    "مسجد خديجة - مركز روتوتونا الإسلامي"
+   ],
+   "kind": "mosque",
+   "denomination": "sunni",
+   "address": {
+    "line1": "240 Thomas Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "240 Thomas Road"
+   },
+   "lat": -37.7309813,
+   "lon": 175.2632126,
+   "region": "Waikato",
+   "phones": [
+    "+64 21 464 757"
+   ],
+   "email": null,
+   "website": "https://ricc.org.nz/",
+   "facebook": "ricc2028",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11191907237"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "240",
+    "addr:street": "Thomas Road",
+    "contact:facebook": "ricc2028",
+    "name:ar": "مسجد خديجة - مركز روتوتونا الإسلامي",
+    "name:en": "Masjid - Khadijah Rototuna Islamic Centre"
+   },
+   "completeness": 50,
+   "slug": "masjid-khadijah-rototuna-islamic-centre-node-11191907237"
+  },
+  {
+   "id": "node/12501069631",
+   "osm": {
+    "type": "node",
+    "id": 12501069631
+   },
+   "name": "Musallah Sidrah - Masjid",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "105 Rogers Place",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "105 Rogers Place"
+   },
+   "lat": -38.0070551,
+   "lon": 175.3308375,
+   "region": "Waikato",
+   "phones": [
+    "+64 21 203 3635",
+    "+64 21 166 8091",
+    "+64 22 621 8231"
+   ],
+   "email": "info@sidrah.co.nz",
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069631"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "105",
+    "addr:street": "Rogers Place"
+   },
+   "completeness": 50,
+   "slug": "musallah-sidrah-masjid-node-12501069631"
+  },
+  {
+   "id": "node/12501085613",
+   "osm": {
+    "type": "node",
+    "id": 12501085613
+   },
+   "name": "Te Aroha Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "44 Rewi Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "44 Rewi Street"
+   },
+   "lat": -37.5444304,
+   "lon": 175.7125164,
+   "region": "Waikato",
+   "phones": [
+    "+64 274 843 712",
+    "+64 21 167 1490"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "tearoha.islamic",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085613"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "44",
+    "addr:street": "Rewi Street",
+    "contact:facebook": "tearoha.islamic"
+   },
+   "completeness": 33,
+   "slug": "te-aroha-islamic-centre-masjid-node-12501085613"
+  },
+  {
+   "id": "node/12501045629",
+   "osm": {
+    "type": "node",
+    "id": 12501045629
+   },
+   "name": "Te Kuiti Islamic Centre \" Markaz-e-Jaitoon \" - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "70 Taupiri Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "70 Taupiri Street"
+   },
+   "lat": -38.3359665,
+   "lon": 175.1677136,
+   "region": "Waikato",
+   "phones": [
+    "+64 27 663 5000",
+    "+64 210 345 139",
+    "+64 22 341 0762",
+    "+64 22 130 2786",
+    "+64 22 183 6702"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045629"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "70",
+    "addr:street": "Taupiri Street"
+   },
+   "completeness": 33,
+   "slug": "te-kuiti-islamic-centre-markaz-e-jaitoon-masjid-node-12501045629"
+  },
+  {
+   "id": "node/12501085511",
+   "osm": {
+    "type": "node",
+    "id": 12501085511
+   },
+   "name": "Abu Bakr Siddiqui Musalla - Masjid",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "80 Queens Drive",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "80 Queens Drive"
+   },
+   "lat": -41.2101099,
+   "lon": 174.9037945,
+   "region": "Wellington",
+   "phones": [
+    "+64 210 288 7233",
+    "+64 22 378 9887"
+   ],
+   "email": null,
+   "website": "https://abst.co.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085511"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "80",
+    "addr:street": "Queens Drive"
+   },
+   "completeness": 50,
+   "slug": "abu-bakr-siddiqui-musalla-masjid-node-12501085511"
+  },
+  {
+   "id": "node/7207101397",
+   "osm": {
+    "type": "node",
+    "id": 7207101397
+   },
+   "name": "Aman Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -41.3119522,
+   "lon": 174.779503,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/7207101397"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "aman-islamic-centre-node-7207101397"
+  },
+  {
+   "id": "node/12501085619",
+   "osm": {
+    "type": "node",
+    "id": 12501085619
+   },
+   "name": "Aman Islamic Centre - Masjid",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "117B Riddiford Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "117B Riddiford Street"
+   },
+   "lat": -41.3115881,
+   "lon": 174.7793713,
+   "region": "Wellington",
+   "phones": [
+    "+64 21 256 742",
+    "+64 22 065 4746"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "Aman-Islamic-Centre-Newtown-115831483390802",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501085619"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "117B",
+    "addr:street": "Riddiford Street",
+    "contact:facebook": "Aman-Islamic-Centre-Newtown-115831483390802"
+   },
+   "completeness": 33,
+   "slug": "aman-islamic-centre-masjid-node-12501085619"
+  },
+  {
+   "id": "way/376316502",
+   "osm": {
+    "type": "way",
+    "id": 376316502
+   },
+   "name": "Haleema Kindergarten - Haleema Kindergarten Trust",
+   "alt_names": [],
+   "kind": "other",
+   "denomination": null,
+   "address": {
+    "line1": "14-20 Hunter Street",
+    "suburb": "Taita, Lower Hutt",
+    "city": "Wellington",
+    "postcode": "5011",
+    "formatted": "14-20 Hunter Street, Taita, Lower Hutt, Wellington, 5011"
+   },
+   "lat": -41.1841265,
+   "lon": 174.9540363,
+   "region": "Wellington",
+   "phones": [
+    "+64 4 567 2788"
+   ],
+   "email": null,
+   "website": "https://www.haleema.org.nz/",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/376316502"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Wellington",
+    "addr:housenumber": "14-20",
+    "addr:postcode": "5011",
+    "addr:street": "Hunter Street",
+    "addr:suburb": "Taita, Lower Hutt"
+   },
+   "completeness": 83,
+   "slug": "haleema-kindergarten-haleema-kindergarten-trust-way-376316502"
+  },
+  {
+   "id": "way/376316428",
+   "osm": {
+    "type": "way",
+    "id": 376316428
+   },
+   "name": "Lower Hutt Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": "sunni",
+   "address": {
+    "line1": "14 Hunter Street",
+    "suburb": "Taitā",
+    "city": "Lower Hutt",
+    "postcode": "5011",
+    "formatted": "14 Hunter Street, Taitā, Lower Hutt, 5011"
+   },
+   "lat": -41.1842444,
+   "lon": 174.95389,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/376316428"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Lower Hutt",
+    "addr:housenumber": "14",
+    "addr:postcode": "5011",
+    "addr:street": "Hunter Street",
+    "addr:suburb": "Taitā"
+   },
+   "completeness": 50,
+   "slug": "lower-hutt-islamic-centre-way-376316428"
+  },
+  {
+   "id": "node/12508326904",
+   "osm": {
+    "type": "node",
+    "id": 12508326904
+   },
+   "name": "Masjid Al Noor Trust",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "76 River Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "76 River Road"
+   },
+   "lat": -40.9597587,
+   "lon": 175.6739655,
+   "region": "Wellington",
+   "phones": [
+    "+64 22 088 9713",
+    "+64 27 650 4133"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": "masjidalnoorwairarapa",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12508326904"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "76",
+    "addr:street": "River Road",
+    "contact:facebook": "masjidalnoorwairarapa"
+   },
+   "completeness": 33,
+   "slug": "masjid-al-noor-trust-node-12508326904"
+  },
+  {
+   "id": "node/9562316061",
+   "osm": {
+    "type": "node",
+    "id": 9562316061
+   },
+   "name": "Masjid Al-Ameen",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "64 Kenmore Street",
+    "suburb": null,
+    "city": "Newlands, Wellington",
+    "postcode": "6037",
+    "formatted": "64 Kenmore Street, Newlands, Wellington, 6037"
+   },
+   "lat": -41.2259035,
+   "lon": 174.8278373,
+   "region": "Wellington",
+   "phones": [
+    "+64 22 390 6955"
+   ],
+   "email": "info@alameen.org.nz",
+   "website": "https://www.alameen.org.nz",
+   "facebook": "alameen.nz",
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/9562316061"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Newlands, Wellington",
+    "addr:housenumber": "64",
+    "addr:postcode": "6037",
+    "addr:street": "Kenmore Street",
+    "contact:facebook": "alameen.nz"
+   },
+   "completeness": 100,
+   "slug": "masjid-al-ameen-node-9562316061"
+  },
+  {
+   "id": "node/9989548739",
+   "osm": {
+    "type": "node",
+    "id": 9989548739
+   },
+   "name": "Muslims Students Association Prayer Rooms",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": null,
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": null
+   },
+   "lat": -41.2885012,
+   "lon": 174.7683214,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/9989548739"
+    }
+   ],
+   "raw_tags": {},
+   "completeness": 0,
+   "slug": "muslims-students-association-prayer-rooms-node-9989548739"
+  },
+  {
+   "id": "way/1072123016",
+   "osm": {
+    "type": "way",
+    "id": 1072123016
+   },
+   "name": "Newlands Mosque",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "40 Bracken Road",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "40 Bracken Road"
+   },
+   "lat": -41.2209665,
+   "lon": 174.82292,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1072123016"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "40",
+    "addr:street": "Bracken Road"
+   },
+   "completeness": 17,
+   "slug": "newlands-mosque-way-1072123016"
+  },
+  {
+   "id": "way/991808960",
+   "osm": {
+    "type": "way",
+    "id": 991808960
+   },
+   "name": "Porirua Mosque",
+   "alt_names": [],
+   "kind": "mosque",
+   "denomination": null,
+   "address": {
+    "line1": "58 Waihora Crescent",
+    "suburb": "Waitangirua",
+    "city": "Porirua",
+    "postcode": "5024",
+    "formatted": "58 Waihora Crescent, Waitangirua, Porirua, 5024"
+   },
+   "lat": -41.137482,
+   "lon": 174.8805241,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/991808960"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Porirua",
+    "addr:housenumber": "58",
+    "addr:postcode": "5024",
+    "addr:street": "Waihora Crescent",
+    "addr:suburb": "Waitangirua"
+   },
+   "completeness": 50,
+   "slug": "porirua-mosque-way-991808960"
+  },
+  {
+   "id": "way/1023440048",
+   "osm": {
+    "type": "way",
+    "id": 1023440048
+   },
+   "name": "Tawa Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "6 Oxford Street",
+    "suburb": "Tawa",
+    "city": "Wellington",
+    "postcode": "5028",
+    "formatted": "6 Oxford Street, Tawa, Wellington, 5028"
+   },
+   "lat": -41.1735027,
+   "lon": 174.8255101,
+   "region": "Wellington",
+   "phones": [
+    "+64 4 232 1155"
+   ],
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1023440048"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Wellington",
+    "addr:housenumber": "6",
+    "addr:postcode": "5028",
+    "addr:street": "Oxford Street",
+    "addr:suburb": "Tawa"
+   },
+   "completeness": 67,
+   "slug": "tawa-islamic-centre-way-1023440048"
+  },
+  {
+   "id": "way/1023438859",
+   "osm": {
+    "type": "way",
+    "id": 1023438859
+   },
+   "name": "Upper Hutt Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "71 Merton Street",
+    "suburb": "Trentham",
+    "city": "Upper Hutt",
+    "postcode": "5018",
+    "formatted": "71 Merton Street, Trentham, Upper Hutt, 5018"
+   },
+   "lat": -41.1284629,
+   "lon": 175.0361361,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1023438859"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Upper Hutt",
+    "addr:housenumber": "71",
+    "addr:postcode": "5018",
+    "addr:street": "Merton Street",
+    "addr:suburb": "Trentham"
+   },
+   "completeness": 50,
+   "slug": "upper-hutt-islamic-centre-way-1023438859"
+  },
+  {
+   "id": "node/12501069634",
+   "osm": {
+    "type": "node",
+    "id": 12501069634
+   },
+   "name": "Wellington City Prayer Room - Masjid",
+   "alt_names": [],
+   "kind": "musalla",
+   "denomination": null,
+   "address": {
+    "line1": "26 Brandon Street",
+    "suburb": null,
+    "city": null,
+    "postcode": null,
+    "formatted": "26 Brandon Street"
+   },
+   "lat": -41.2832,
+   "lon": 174.7764251,
+   "region": "Wellington",
+   "phones": null,
+   "email": null,
+   "website": null,
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069634"
+    }
+   ],
+   "raw_tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Brandon Street"
+   },
+   "completeness": 17,
+   "slug": "wellington-city-prayer-room-masjid-node-12501069634"
+  },
+  {
+   "id": "way/813231842",
+   "osm": {
+    "type": "way",
+    "id": 813231842
+   },
+   "name": "Wellington Islamic Centre",
+   "alt_names": [],
+   "kind": "centre",
+   "denomination": null,
+   "address": {
+    "line1": "7/11 Queens Drive",
+    "suburb": null,
+    "city": "Kilbirnie, Wellington",
+    "postcode": "6022",
+    "formatted": "7/11 Queens Drive, Kilbirnie, Wellington, 6022"
+   },
+   "lat": -41.3205251,
+   "lon": 174.7940719,
+   "region": "Wellington",
+   "phones": [
+    "+64 4 387 4226"
+   ],
+   "email": null,
+   "website": "https://www.iman.co.nz/ic/nz.php",
+   "facebook": null,
+   "wheelchair": null,
+   "capacity": null,
+   "notes": null,
+   "opening_hours": null,
+   "jummah_times": null,
+   "prayer_times": null,
+   "verified": false,
+   "verified_by": null,
+   "verified_at": null,
+   "status": "unverified",
+   "last_checked": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/813231842"
+    }
+   ],
+   "raw_tags": {
+    "addr:city": "Kilbirnie, Wellington",
+    "addr:housenumber": "7/11",
+    "addr:postcode": "6022",
+    "addr:street": "Queens Drive"
+   },
+   "completeness": 83,
+   "slug": "wellington-islamic-centre-way-813231842"
+  }
+ ]
+}

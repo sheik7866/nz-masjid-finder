@@ -399,15 +399,23 @@ sh tests/run-all.sh
 - `tests/schema.test.cjs` (24) — RLS, grants, policies, admin role, constraints, rerunnability
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 
-## Deploy (free)
+## Deploy
 
-1. Push this repo to GitHub.
-2. Cloudflare Pages → Create project → connect the repo:
-   - Build command: *(none)*
-   - Output directory: `public`
-3. Done — HTTPS, global CDN, unlimited requests on the free plan.
+**Live:** https://sheik7866.github.io/nz-masjid-finder/
 
-Netlify and GitHub Pages work the same way: publish `public/` as-is.
+The site auto-publishes from the `docs/` folder on `main` via GitHub Pages —
+free, HTTPS, no build step. After any change to `public/`:
+
+```
+sh scripts/sync_docs.sh
+git add docs <changed files> && git commit -m "..." && git push
+```
+
+`docs/` is a mirror; edit `public/` and re-sync, never the other way round.
+
+Alternatives (also free, same output directory `public/`): Cloudflare Pages
+(recommended if you want your own domain + global CDN) and
+app.netlify.com/drop (drag-and-drop). Netlify and GitHub Pages work the same way: publish `public/` as-is.
 
 Add to home screen on iPhone (Share → Add to Home Screen) or Android
 (Chrome menu → Install app) — `manifest.webmanifest` makes it open full-screen

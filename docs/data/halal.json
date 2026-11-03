@@ -1,0 +1,5375 @@
+{
+ "meta": {
+  "generated_at": "2026-11-03T08:36:31Z",
+  "source": "OpenStreetMap contributors (ODbL)",
+  "attribution": {
+   "text": "© OpenStreetMap contributors",
+   "licence": "Open Database License (ODbL) 1.0",
+   "url": "https://www.openstreetmap.org/copyright"
+  },
+  "provenance": {
+   "method": "Overpass API: diet:halal=yes|only, halal butchers, halal cuisine, nationwide",
+   "osm_query": "[out:json][timeout:180];\narea[\"ISO3166-1\"=\"NZ\"]->.a;\n(\n  nwr[\"diet:halal\"=\"yes\"](area.a);\n  nwr[\"diet:halal\"=\"only\"](area.a);\n  nwr[\"shop\"=\"butcher\"][\"diet:halal\"](area.a);\n  nwr[\"cuisine\"~\"halal\",i](area.a);\n);\nout center tags;",
+   "tag_counts": {
+    "yes": 211,
+    "only": 12
+   }
+  },
+  "note": "Halal status is a community OSM tag, not a certificate. Confirm before eating.",
+  "count": 223
+ },
+ "businesses": [
+  {
+   "id": "node/4753906118",
+   "name": "Artisan Bakers",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "329 Karangahape Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8576714,
+   "lon": 174.7573765,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 07:30-14:00; Sa 08:30-14:30; Su 09:00-14:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906118"
+    }
+   ]
+  },
+  {
+   "id": "node/5417703167",
+   "name": "Bake and Beans",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "513 Sandringham Road, Sandringham, Auckland, 1025",
+   "city": "Auckland",
+   "postcode": "1025",
+   "lat": -36.8912771,
+   "lon": 174.7362533,
+   "region": "Auckland",
+   "phone": "+64 9 600 3270",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417703167"
+    }
+   ]
+  },
+  {
+   "id": "way/329096760",
+   "name": "Bake and Beans",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "55b East Tamaki Road, Papatoetoe, Auckland, 2025",
+   "city": "Auckland",
+   "postcode": "2025",
+   "lat": -36.967871,
+   "lon": 174.8618714,
+   "region": "Auckland",
+   "phone": "+64 9 278 2119;0800 786 101",
+   "website": "https://bakeandbeans.co.nz/",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/329096760"
+    }
+   ]
+  },
+  {
+   "id": "node/5596123186",
+   "name": "Lubis",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "108 Great South Road, Takanini, Auckland, 2112",
+   "city": "Auckland",
+   "postcode": "2112",
+   "lat": -37.0395854,
+   "lon": 174.9148031,
+   "region": "Auckland",
+   "phone": "+64 9 250 4786",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5596123186"
+    }
+   ]
+  },
+  {
+   "id": "node/5504681009",
+   "name": "Lunas Bakehouse",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "98 Hurstmere Road, Takapuna, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.7865684,
+   "lon": 174.7727378,
+   "region": "Auckland",
+   "phone": "+64 22 455 6681",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5504681009"
+    }
+   ]
+  },
+  {
+   "id": "node/11258933792",
+   "name": "Lunas Bakehouse",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "39 Elliott Street, Auckland Central, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.8501746,
+   "lon": 174.763695,
+   "region": "Auckland",
+   "phone": "+64 22 455 6681",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11258933792"
+    }
+   ]
+  },
+  {
+   "id": "node/8641915244",
+   "name": "Mill Bakery",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "356-360 Great North Road, Henderson, Auckland, 0612",
+   "city": "Auckland",
+   "postcode": "0612",
+   "lat": -36.8799519,
+   "lon": 174.6329618,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/8641915244"
+    }
+   ]
+  },
+  {
+   "id": "node/12476983888",
+   "name": "A1 Halal Chicken",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "4a/151 Stoddard Road, Wesley, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9032787,
+   "lon": 174.726769,
+   "region": "Auckland",
+   "phone": null,
+   "website": "https://www.a1halalchicken.co.nz/",
+   "opening_hours": "08:30-13:30; Su,PH off",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12476983888"
+    }
+   ]
+  },
+  {
+   "id": "node/12477072859",
+   "name": "Amanah Butchery",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "6/402 Don Buck Road, Massey, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.8341776,
+   "lon": 174.6030541,
+   "region": "Auckland",
+   "phone": "+64 9 553 5353",
+   "website": null,
+   "opening_hours": "Tu-Su 09:00-17:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477072859"
+    }
+   ]
+  },
+  {
+   "id": "node/5417704388",
+   "name": "Auckland Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "526 Sandringham Road, Sandringham, Auckland, 1025",
+   "city": "Auckland",
+   "postcode": "1025",
+   "lat": -36.8914552,
+   "lon": 174.7367449,
+   "region": "Auckland",
+   "phone": "+64 9 846 5115",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417704388"
+    }
+   ]
+  },
+  {
+   "id": "node/5328743006",
+   "name": "Barakah Halal Meat and Spices",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "8/80 Bruce McLaren Road, Henderson, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.896703,
+   "lon": 174.6266277,
+   "region": "Auckland",
+   "phone": "+64 9 818 6383",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5328743006"
+    }
+   ]
+  },
+  {
+   "id": "node/5417526283",
+   "name": "Choice Chicken",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "162 Stoddard Road, Wesley",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9017509,
+   "lon": 174.7232293,
+   "region": "Auckland",
+   "phone": "+64 9 620 5945",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417526283"
+    }
+   ]
+  },
+  {
+   "id": "node/12477134426",
+   "name": "Continental Meat n Spices halaal",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "57G Cavendish Drive, Manukau, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9877471,
+   "lon": 174.8748164,
+   "region": "Auckland",
+   "phone": "+64 9 263 8080",
+   "website": "https://www.continentalmeats.co.nz",
+   "opening_hours": "09:00-19:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477134426"
+    }
+   ]
+  },
+  {
+   "id": "node/12477026454",
+   "name": "Etihad Halal Meat Butchery",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "216 Richardson Road, Mount Roskill",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9003975,
+   "lon": 174.7199567,
+   "region": "Auckland",
+   "phone": "+64 9 948 1215",
+   "website": null,
+   "opening_hours": "09:00-19:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477026454"
+    }
+   ]
+  },
+  {
+   "id": "way/309979336",
+   "name": "Istanbul Halal Meats & Grocery",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "1274 Dominion Road, Mount Roskill, Auckland, 1041",
+   "city": "Auckland",
+   "postcode": "1041",
+   "lat": -36.9040624,
+   "lon": 174.7421624,
+   "region": "Auckland",
+   "phone": "+64 9 971 1341",
+   "website": "http://imamhalalmeats.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/309979336"
+    }
+   ]
+  },
+  {
+   "id": "node/10139054533",
+   "name": "Madinah Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "1/16 Lambie Drive, Papatoetoe, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9862614,
+   "lon": 174.8720173,
+   "region": "Auckland",
+   "phone": "+64 9 263 8070",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10139054533"
+    }
+   ]
+  },
+  {
+   "id": "node/12527833987",
+   "name": "Madinah Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "4/602 Hillsborough Road, Mount Roskill, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9227553,
+   "lon": 174.7201424,
+   "region": "Auckland",
+   "phone": "+64 9 218 7788",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12527833987"
+    }
+   ]
+  },
+  {
+   "id": "node/5504727206",
+   "name": "North Shore Meat Centre",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "171 Archers Road, Hillcrest",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7832249,
+   "lon": 174.7364474,
+   "region": "Auckland",
+   "phone": "+64 9 442 0068",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5504727206"
+    }
+   ]
+  },
+  {
+   "id": "node/5417509854",
+   "name": "Shefco Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "164 Stoddard Road, Wesley, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.901667,
+   "lon": 174.7230859,
+   "region": "Auckland",
+   "phone": "+64 9 620 8080",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417509854"
+    }
+   ]
+  },
+  {
+   "id": "node/3726691262",
+   "name": "Supercity Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "545 Great South Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9483133,
+   "lon": 174.8456946,
+   "region": "Auckland",
+   "phone": "+64 9 276 3777",
+   "website": null,
+   "opening_hours": "Mo-Su 09:00-19:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3726691262"
+    }
+   ]
+  },
+  {
+   "id": "node/5328615485",
+   "name": "Westcity Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "427 Great North Road, Henderson, Auckland, 0610",
+   "city": "Auckland",
+   "postcode": "0610",
+   "lat": -36.8766739,
+   "lon": 174.629297,
+   "region": "Auckland",
+   "phone": "+64 9 835 4786",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5328615485"
+    }
+   ]
+  },
+  {
+   "id": "node/12477119473",
+   "name": "Wolverton Meat Market",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "11/2 Lansford Crescent, Avondale, Auckland, 0600",
+   "city": "Auckland",
+   "postcode": "0600",
+   "lat": -36.9075158,
+   "lon": 174.6977371,
+   "region": "Auckland",
+   "phone": "+64 9 828 7869",
+   "website": null,
+   "opening_hours": "Mo 09:00-17:00; Tu-Th,Sa 09:00-19:00; Fr 09:00-12:20,13:30-19:00; Su 10:00-16:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477119473"
+    }
+   ]
+  },
+  {
+   "id": "node/12477134362",
+   "name": "Zam Zam Supermarket",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "5/255 Lincoln Road, Henderson, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.8556059,
+   "lon": 174.6304769,
+   "region": "Auckland",
+   "phone": "+64 9 600 2219",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477134362"
+    }
+   ]
+  },
+  {
+   "id": "node/5057312532",
+   "name": "Cafe Anatolia",
+   "category": "Cafe",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "4/26 Anzac Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7170676,
+   "lon": 174.746599,
+   "region": "Auckland",
+   "phone": "+64 9 478 1661",
+   "website": "https://cafeanatolia.co.nz",
+   "opening_hours": "11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5057312532"
+    }
+   ]
+  },
+  {
+   "id": "way/1187063865",
+   "name": "CoCo Fresh Tea & Juice",
+   "category": "Cafe",
+   "cuisine": "bubble_tea",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.7287041,
+   "lon": 174.708034,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 09:00-18:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1187063865"
+    }
+   ]
+  },
+  {
+   "id": "node/11219127390",
+   "name": "Cosmo Coffee",
+   "category": "Cafe",
+   "cuisine": "coffee_shop",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8497722,
+   "lon": 174.7665229,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su 08:00-16:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11219127390"
+    }
+   ]
+  },
+  {
+   "id": "node/11226275414",
+   "name": "East",
+   "category": "Cafe",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8490839,
+   "lon": 174.7592156,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 12:00-15:00,17:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11226275414"
+    }
+   ]
+  },
+  {
+   "id": "node/5485876844",
+   "name": "Khanz Cafe and Bakery",
+   "category": "Cafe",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "38 East Tamaki Road, Papatoetoe, Auckland, 2025",
+   "city": "Auckland",
+   "postcode": "2025",
+   "lat": -36.9674582,
+   "lon": 174.8605098,
+   "region": "Auckland",
+   "phone": "+64 9 250 1919",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5485876844"
+    }
+   ]
+  },
+  {
+   "id": "node/8122051600",
+   "name": "Little Algiers",
+   "category": "Cafe",
+   "cuisine": "african;mediterranean",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8590563,
+   "lon": 174.7533358,
+   "region": "Auckland",
+   "phone": "+64 9 336 1560",
+   "website": "https://www.facebook.com/littlealgierscafe/",
+   "opening_hours": "Mo-Fr 07:30-16:30, Sa-Su 08:30-14:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/8122051600"
+    }
+   ]
+  },
+  {
+   "id": "node/8223577458",
+   "name": "No. 7",
+   "category": "Cafe",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8569182,
+   "lon": 174.7586678,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 08:00-14:30, Fr,Sa 17:00-22:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/8223577458"
+    }
+   ]
+  },
+  {
+   "id": "node/13726730904",
+   "name": "Paradise",
+   "category": "Cafe",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "Kitchener Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8920917,
+   "lon": 174.7356707,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/13726730904"
+    }
+   ]
+  },
+  {
+   "id": "way/1041821948",
+   "name": "Peppers",
+   "category": "Cafe",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "103 Albert Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8490424,
+   "lon": 174.7630185,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1041821948"
+    }
+   ]
+  },
+  {
+   "id": "node/5047602373",
+   "name": "Ronnies Cafe",
+   "category": "Cafe",
+   "cuisine": "sandwich;breakfast;burger",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8443667,
+   "lon": 174.764647,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 07:00-17:00; Sa 08:00-15:00; Su 08:00-14:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5047602373"
+    }
+   ]
+  },
+  {
+   "id": "node/5417530762",
+   "name": "Shefco Pastries",
+   "category": "Cafe",
+   "cuisine": "ope",
+   "halal_tag": "yes",
+   "address": "46 Stoddard Road, Wesley, Auckland, 1041",
+   "city": "Auckland",
+   "postcode": "1041",
+   "lat": -36.9062537,
+   "lon": 174.731643,
+   "region": "Auckland",
+   "phone": "+64 9 553 6333",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5417530762"
+    }
+   ]
+  },
+  {
+   "id": "node/1789448146",
+   "name": "Starbucks",
+   "category": "Cafe",
+   "cuisine": "coffee_shop",
+   "halal_tag": "yes",
+   "address": "220 Queen Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8492648,
+   "lon": 174.7654177,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 06:30-22:00; Sa,Su 07:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/1789448146"
+    }
+   ]
+  },
+  {
+   "id": "node/11369934283",
+   "name": "Tang Tea",
+   "category": "Cafe",
+   "cuisine": "bubble_tea",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.851156,
+   "lon": 174.7645919,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Sa 11:00-21:30; Su 12:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11369934283"
+    }
+   ]
+  },
+  {
+   "id": "node/3293568761",
+   "name": "Teaser",
+   "category": "Cafe",
+   "cuisine": "bubble_tea",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8486215,
+   "lon": 174.7662163,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Th 11:00-21:00; Fr,Sa 11:00-22:00; Su 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3293568761"
+    }
+   ]
+  },
+  {
+   "id": "node/11204019167",
+   "name": "Wucha",
+   "category": "Cafe",
+   "cuisine": "bubble_tea",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.850275,
+   "lon": 174.7657182,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Th 11:00-21:30; Fr 11:00-22:00; Sa 12:00-22:00; Su 12:00-21:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11204019167"
+    }
+   ]
+  },
+  {
+   "id": "node/11216624378",
+   "name": "Circle K",
+   "category": "Convenience store",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8516285,
+   "lon": 174.7603348,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "24/7",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11216624378"
+    }
+   ]
+  },
+  {
+   "id": "node/11380877270",
+   "name": "Convenience Store",
+   "category": "Convenience store",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8450261,
+   "lon": 174.7666756,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "24/7",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11380877270"
+    }
+   ]
+  },
+  {
+   "id": "node/4880757724",
+   "name": "Localito",
+   "category": "Convenience store",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.843082,
+   "lon": 174.7670487,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4880757724"
+    }
+   ]
+  },
+  {
+   "id": "node/3837892616",
+   "name": "Starz Convenience Store",
+   "category": "Convenience store",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "205 Federal Street, Auckland Central",
+   "city": null,
+   "postcode": null,
+   "lat": -36.851062,
+   "lon": 174.7612168,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 07:00-23:00; PH,Sa,Su 09:00-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3837892616"
+    }
+   ]
+  },
+  {
+   "id": "node/4769024244",
+   "name": "Cocomo",
+   "category": "Drinks",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "Lorne Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8500797,
+   "lon": 174.7658121,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "PH,Mo-Su 07:30-22:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4769024244"
+    }
+   ]
+  },
+  {
+   "id": "node/12487391032",
+   "name": "Akbar Durbar Indian Takeaway",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "51 - 61 Hobson Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8476416,
+   "lon": 174.761646,
+   "region": "Auckland",
+   "phone": "+64 9 309 5752",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487391032"
+    }
+   ]
+  },
+  {
+   "id": "node/5406798027",
+   "name": "Arbung Thai Street Food - halal",
+   "category": "Fast food",
+   "cuisine": "thai",
+   "halal_tag": "yes",
+   "address": "104 Customs Street West",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8436443,
+   "lon": 174.7625421,
+   "region": "Auckland",
+   "phone": "+64 9 214 2010",
+   "website": "https://arbungthaistreetfood.co.nz",
+   "opening_hours": "Mo-Sa 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5406798027"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906391",
+   "name": "Bal Ganga",
+   "category": "Fast food",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8472837,
+   "lon": 174.7612312,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 09:30-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906391"
+    }
+   ]
+  },
+  {
+   "id": "node/468079665",
+   "name": "Beach Pizza",
+   "category": "Fast food",
+   "cuisine": "pizza;kebab",
+   "halal_tag": "yes",
+   "address": "41 Station Road, Manurewa",
+   "city": null,
+   "postcode": null,
+   "lat": -37.0219138,
+   "lon": 174.8948155,
+   "region": "Auckland",
+   "phone": "+64 9 267 9817",
+   "website": "https://beachpizza.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/468079665"
+    }
+   ]
+  },
+  {
+   "id": "node/5415987137",
+   "name": "Beach Pizza",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "238A Great North Road, Glendene, Auckland, 0610",
+   "city": "Auckland",
+   "postcode": "0610",
+   "lat": -36.886297,
+   "lon": 174.6440885,
+   "region": "Auckland",
+   "phone": "+64 9 837 3786",
+   "website": "https://beachpizza.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5415987137"
+    }
+   ]
+  },
+  {
+   "id": "node/5485879719",
+   "name": "Beach Pizza",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "66 Portage Road, Papatoetoe",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9729514,
+   "lon": 174.8403076,
+   "region": "Auckland",
+   "phone": "+64 9 216 1211",
+   "website": "https://beachpizza.co.nz/",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5485879719"
+    }
+   ]
+  },
+  {
+   "id": "node/5274600330",
+   "name": "Beach Pizza & Chicken N' Chips (Halal)",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "12 Hall Street, Pukekohe",
+   "city": null,
+   "postcode": null,
+   "lat": -37.1994069,
+   "lon": 174.9053644,
+   "region": "Auckland",
+   "phone": "+64 9 947 7326",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5274600330"
+    }
+   ]
+  },
+  {
+   "id": "node/3139667407",
+   "name": "Byte Burger",
+   "category": "Fast food",
+   "cuisine": "burger",
+   "halal_tag": "yes",
+   "address": "1/151 Lincoln Road, Henderson, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.863813,
+   "lon": 174.6293774,
+   "region": "Auckland",
+   "phone": "+64 9 217 4979",
+   "website": "https://byteburger.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3139667407"
+    }
+   ]
+  },
+  {
+   "id": "node/12487391736",
+   "name": "Celine Mediterranean Cuisine",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "12 Darby Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8495544,
+   "lon": 174.7642892,
+   "region": "Auckland",
+   "phone": "+64 9 373 2450",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487391736"
+    }
+   ]
+  },
+  {
+   "id": "node/12487391737",
+   "name": "Chamate Restaurant",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "17 Swanson Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8460221,
+   "lon": 174.7650544,
+   "region": "Auckland",
+   "phone": "+64 9 302 7788",
+   "website": "https://www.thechamate.com",
+   "opening_hours": "Mo-Th 11:00-21:30; Fr-Sa 11:00-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487391737"
+    }
+   ]
+  },
+  {
+   "id": "node/12082785402",
+   "name": "Chicking",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "14A Kitchener Road, Sandringham, Auckland, 1025",
+   "city": "Auckland",
+   "postcode": "1025",
+   "lat": -36.8920807,
+   "lon": 174.7355797,
+   "region": "Auckland",
+   "phone": "+64 9 212 6923",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12082785402"
+    }
+   ]
+  },
+  {
+   "id": "node/12487392006",
+   "name": "Chicking",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "2/407 Glenfield Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7812626,
+   "lon": 174.7215446,
+   "region": "Auckland",
+   "phone": "+64 9 948 0441",
+   "website": "https://chicking.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487392006"
+    }
+   ]
+  },
+  {
+   "id": "node/8127060235",
+   "name": "Downtown Kebabs",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8436408,
+   "lon": 174.7673642,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/8127060235"
+    }
+   ]
+  },
+  {
+   "id": "node/4057751085",
+   "name": "Epsom Turkish Kebabs",
+   "category": "Fast food",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "467 Manukau Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8939869,
+   "lon": 174.7741643,
+   "region": "Auckland",
+   "phone": "+64 9 630 0019",
+   "website": "https://www.epsomturkishkebab.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4057751085"
+    }
+   ]
+  },
+  {
+   "id": "node/3678186673",
+   "name": "Flame Pizza",
+   "category": "Fast food",
+   "cuisine": "pizza",
+   "halal_tag": "yes",
+   "address": "15/123 Ormiston Road, Flat Bush, Flat Bush, Otara, 2016",
+   "city": "Flat Bush, Otara",
+   "postcode": "2016",
+   "lat": -36.964514,
+   "lon": 174.9028013,
+   "region": "Auckland",
+   "phone": null,
+   "website": "https://flamepizza.co.nz/",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3678186673"
+    }
+   ]
+  },
+  {
+   "id": "node/12477178857",
+   "name": "Flame Pizza",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "301 Lincoln Road, Henderson",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8526348,
+   "lon": 174.6305692,
+   "region": "Auckland",
+   "phone": "+64 9 836 5509",
+   "website": "https://flamepizza.co.nz",
+   "opening_hours": "Mo 16:00-21:00; Tu-Su 12:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477178857"
+    }
+   ]
+  },
+  {
+   "id": "node/12477202683",
+   "name": "Flame Pizza",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "15/125 Ormiston Road, Flat Bush, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9646052,
+   "lon": 174.9052173,
+   "region": "Auckland",
+   "phone": "+64 9 277 0842",
+   "website": "https://flamepizza.co.nz/",
+   "opening_hours": "11:30-21:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477202683"
+    }
+   ]
+  },
+  {
+   "id": "node/3740699320",
+   "name": "Food4Less Supermarket",
+   "category": "Fast food",
+   "cuisine": "asian;indian",
+   "halal_tag": "yes",
+   "address": "13 Veronica Street, New Lynn, Auckland, 0600",
+   "city": "Auckland",
+   "postcode": "0600",
+   "lat": -36.9071855,
+   "lon": 174.6880799,
+   "region": "Auckland",
+   "phone": "+64 9 826 4387",
+   "website": null,
+   "opening_hours": "Mo-Su 08:00-20:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3740699320"
+    }
+   ]
+  },
+  {
+   "id": "node/12487391734",
+   "name": "Glen Eden Kebab - Glenfield",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "407 Glenfield Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7816281,
+   "lon": 174.7215306,
+   "region": "Auckland",
+   "phone": "+64 9 444 9645",
+   "website": null,
+   "opening_hours": "Sa-We 09:00-18:00; Th-Fr 09:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487391734"
+    }
+   ]
+  },
+  {
+   "id": "node/4943409514",
+   "name": "Halal Fried Chicken",
+   "category": "Fast food",
+   "cuisine": "chicken",
+   "halal_tag": "yes",
+   "address": "196 Stoddard Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9004095,
+   "lon": 174.7208428,
+   "region": "Auckland",
+   "phone": "+64 9 260 5785",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4943409514"
+    }
+   ]
+  },
+  {
+   "id": "node/12501069609",
+   "name": "Halal Tasty Food",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "283 Great South Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9420556,
+   "lon": 174.8414168,
+   "region": "Auckland",
+   "phone": "+64 9 276 6401",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501069609"
+    }
+   ]
+  },
+  {
+   "id": "node/5421571847",
+   "name": "Hambagu",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "483 Manukau Road, Epsom, Auckland, 1023",
+   "city": "Auckland",
+   "postcode": "1023",
+   "lat": -36.8947612,
+   "lon": 174.7739276,
+   "region": "Auckland",
+   "phone": null,
+   "website": "https://www.hambagu.co.nz/",
+   "opening_hours": "Mo-Th 11:30-22:00; Fr 11:30-13:30,14:30-24:00; Sa 12:00-24:00; Su 12:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5421571847"
+    }
+   ]
+  },
+  {
+   "id": "node/5400478996",
+   "name": "Izmir Kebab and Grill",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "64A Federal Street, Auckland Central",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8480804,
+   "lon": 174.7627761,
+   "region": "Auckland",
+   "phone": "+64 9 600 3515",
+   "website": "https://izmirkebabgrill.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5400478996"
+    }
+   ]
+  },
+  {
+   "id": "node/3879177643",
+   "name": "K Chicken",
+   "category": "Fast food",
+   "cuisine": "chicken;korean",
+   "halal_tag": "yes",
+   "address": "6A Wingate Street, Avondale",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8988985,
+   "lon": 174.6956747,
+   "region": "Auckland",
+   "phone": "+64 9 838 5553",
+   "website": "https://kchicken.co.nz/locations/korean-chicken-avondale",
+   "opening_hours": "Mo-Su 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3879177643"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906117",
+   "name": "Kebab Kart",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "only",
+   "address": "347 Karangahape Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8577665,
+   "lon": 174.757062,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 11:00-22:00+; Sa 14:00-22:00+; Su 17:00-22:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906117"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906348",
+   "name": "Kebab King",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "3/103 Symonds Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8581699,
+   "lon": 174.763549,
+   "region": "Auckland",
+   "phone": "+64 9 300 7191",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906348"
+    }
+   ]
+  },
+  {
+   "id": "node/11237558073",
+   "name": "Kebab Time",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "only",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8483055,
+   "lon": 174.7632785,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo 09:00-01:00, Tu 09:00-02:00, We 09:00-02:30, Th 09:00-03:00, Fr 09:00-05:00, Sa 09:30-05:00, Su 10:00-24:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11237558073"
+    }
+   ]
+  },
+  {
+   "id": "way/947693739",
+   "name": "Kebabzilla",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "only",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8489845,
+   "lon": 174.7642151,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/947693739"
+    }
+   ]
+  },
+  {
+   "id": "node/12487495807",
+   "name": "Khan's Kebab Club",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "166C Saint Georges Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9080545,
+   "lon": 174.6965597,
+   "region": "Auckland",
+   "phone": null,
+   "website": "http://khanskebabclub.com",
+   "opening_hours": "Mo-Su 11:00-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487495807"
+    }
+   ]
+  },
+  {
+   "id": "node/5400477758",
+   "name": "Kiwi Fish & Chips and Chicken",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "17B Wakefield Street, Auckland Central",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8531708,
+   "lon": 174.7644009,
+   "region": "Auckland",
+   "phone": "+64 9 948 1816",
+   "website": "https://kiwifishchipsandchicken.co.nz",
+   "opening_hours": "Mo-Su 10:30-16:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5400477758"
+    }
+   ]
+  },
+  {
+   "id": "node/3508008512",
+   "name": "Makassar Corner",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "193 Dominion Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8749507,
+   "lon": 174.7511853,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3508008512"
+    }
+   ]
+  },
+  {
+   "id": "node/12487391738",
+   "name": "Mazi",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "Quay Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8436611,
+   "lon": 174.7664952,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487391738"
+    }
+   ]
+  },
+  {
+   "id": "node/993412136",
+   "name": "Mexicali Fresh",
+   "category": "Fast food",
+   "cuisine": "mexican",
+   "halal_tag": "yes",
+   "address": "150 Karangahape Road, Auckland Central",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8580703,
+   "lon": 174.7606046,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Sa-Th 10:00-21:00; Fr 10:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/993412136"
+    }
+   ]
+  },
+  {
+   "id": "node/3658338993",
+   "name": "Milano's Pizza & Grilled Chicken",
+   "category": "Fast food",
+   "cuisine": "chicken;pizza",
+   "halal_tag": "yes",
+   "address": "5/726 Great South Road, Manuakau, 2104",
+   "city": "Manuakau",
+   "postcode": "2104",
+   "lat": -36.9931656,
+   "lon": 174.8860275,
+   "region": "Auckland",
+   "phone": "+64 9 262 4040",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3658338993"
+    }
+   ]
+  },
+  {
+   "id": "node/1789448106",
+   "name": "Mr. Turkish Kebab",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "only",
+   "address": "R2/430 Queen Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8542923,
+   "lon": 174.7632599,
+   "region": "Auckland",
+   "phone": "+64 9 558 7642",
+   "website": "https://mrturkishkebab.co.nz",
+   "opening_hours": "Mo-Sa 11:00-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/1789448106"
+    }
+   ]
+  },
+  {
+   "id": "node/12487391739",
+   "name": "My Dear Eatery",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "47 High Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9446024,
+   "lon": 174.8498564,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487391739"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906393",
+   "name": "New Sensational Kebab & Fried Chicken",
+   "category": "Fast food",
+   "cuisine": "chicken",
+   "halal_tag": "yes",
+   "address": "51D Hobson Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8473219,
+   "lon": 174.7613817,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Sa-Th 11:30-03:00, Fr 11:30-14:00,16:00-03:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906393"
+    }
+   ]
+  },
+  {
+   "id": "node/12487498703",
+   "name": "No.1 Lanzhou Beef Noodle",
+   "category": "Fast food",
+   "cuisine": "asian;beef_bowl;chicken;chinese;fish;noodles;oriental",
+   "halal_tag": "yes",
+   "address": "590 Dominion Road, 1024",
+   "city": null,
+   "postcode": "1024",
+   "lat": -36.8874795,
+   "lon": 174.7474384,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487498703"
+    }
+   ]
+  },
+  {
+   "id": "node/11458515288",
+   "name": "Pasand Pizza",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "5/489 Richardson Road, Mount Roskill, Auckland, 1041",
+   "city": "Auckland",
+   "postcode": "1041",
+   "lat": -36.9157603,
+   "lon": 174.7305829,
+   "region": "Auckland",
+   "phone": "+64 9 217 8958",
+   "website": "https://pasandpizza.co.nz/",
+   "opening_hours": "Mo-Th 11:30-21:30; Sa-Su 11:30-21:30; Fr off",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11458515288"
+    }
+   ]
+  },
+  {
+   "id": "node/5461203819",
+   "name": "Pita House",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "277A Neilson Street, Onehunga, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9258692,
+   "lon": 174.8048783,
+   "region": "Auckland",
+   "phone": "+64 9 636 2005",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5461203819"
+    }
+   ]
+  },
+  {
+   "id": "node/9910617509",
+   "name": "Pita Pit",
+   "category": "Fast food",
+   "cuisine": "pita",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -37.005192,
+   "lon": 174.7827894,
+   "region": "Auckland",
+   "phone": "+64 9 256 0269",
+   "website": "http://www.pitapit.nz",
+   "opening_hours": "Mo-Su 04:00-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/9910617509"
+    }
+   ]
+  },
+  {
+   "id": "node/12477230596",
+   "name": "Pizzas and Mocktails",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "2020 Great North Road, Avondale",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8980072,
+   "lon": 174.697209,
+   "region": "Auckland",
+   "phone": "+64 9 217 0050",
+   "website": "https://pizzasandmocktails.co.nz/",
+   "opening_hours": "Mo-We 16:00-21:45, Th-Su 11:00-22:45",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477230596"
+    }
+   ]
+  },
+  {
+   "id": "node/4943409489",
+   "name": "Rocket Kebabs",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "762 New North Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8802644,
+   "lon": 174.7257402,
+   "region": "Auckland",
+   "phone": "+64 9 846 2300",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4943409489"
+    }
+   ]
+  },
+  {
+   "id": "node/1735321674",
+   "name": "Sal's Pizza",
+   "category": "Fast food",
+   "cuisine": "pizza",
+   "halal_tag": "yes",
+   "address": "183 Karangahape Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8577456,
+   "lon": 174.7602866,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Su-We 11:30-22:00; Th 11:30-23:00; Fr 11:00-23:00+; Sa 11:30-23:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/1735321674"
+    }
+   ]
+  },
+  {
+   "id": "node/4769024273",
+   "name": "Sal's Pizza",
+   "category": "Fast food",
+   "cuisine": "pizza",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8463724,
+   "lon": 174.7681457,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo,Tu 11:30-22:00; We,Th 11:30-23:00; Fr 11:00-22:00+; Sa 11:30-22:00+; Su 11:30-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4769024273"
+    }
+   ]
+  },
+  {
+   "id": "node/11254392518",
+   "name": "Sensational Chicken",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "only",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8504055,
+   "lon": 174.7603492,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Su-Tu 10:00-02:00, We,Th 10:00-03:00, Fr,Sa 10:00-05:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11254392518"
+    }
+   ]
+  },
+  {
+   "id": "node/12487392008",
+   "name": "Sensational Chicken",
+   "category": "Fast food",
+   "cuisine": "chicken",
+   "halal_tag": "yes",
+   "address": "11A Mount Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8545477,
+   "lon": 174.7667053,
+   "region": "Auckland",
+   "phone": "+64 9 366 1624",
+   "website": null,
+   "opening_hours": "Su-Th 11:00-22:00; Fr-Sa 11:00-23:59",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487392008"
+    }
+   ]
+  },
+  {
+   "id": "node/12487392511",
+   "name": "Sensational Chicken | NZ Kebabs",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "10/25 Anzac Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7166437,
+   "lon": 174.7467705,
+   "region": "Auckland",
+   "phone": "+64 9 217 1786",
+   "website": "https://www.sensationalchicken.com",
+   "opening_hours": "Mo-Fr 10:00-21:00; Su 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487392511"
+    }
+   ]
+  },
+  {
+   "id": "node/3431095891",
+   "name": "Shahrzad Kebab",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "118 Hurstmere Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7861548,
+   "lon": 174.7729248,
+   "region": "Auckland",
+   "phone": "+64 9 486 1980",
+   "website": null,
+   "opening_hours": "Mo-Sa 11:00-20:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3431095891"
+    }
+   ]
+  },
+  {
+   "id": "node/12487392512",
+   "name": "Smash Burger",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8547477,
+   "lon": 174.7667021,
+   "region": "Auckland",
+   "phone": "+64 9 307 6871",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487392512"
+    }
+   ]
+  },
+  {
+   "id": "node/3211976589",
+   "name": "Subway",
+   "category": "Fast food",
+   "cuisine": "sandwich",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8569651,
+   "lon": 174.7591116,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 09:00-20:00; Sa,Su 10:00-18:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3211976589"
+    }
+   ]
+  },
+  {
+   "id": "node/5156242247",
+   "name": "Sushi Me",
+   "category": "Fast food",
+   "cuisine": "sushi",
+   "halal_tag": "yes",
+   "address": "11 Great North Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8598616,
+   "lon": 174.7523082,
+   "region": "Auckland",
+   "phone": "+64 9 360 0203",
+   "website": null,
+   "opening_hours": "Mo-Fr 08:00-15:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5156242247"
+    }
+   ]
+  },
+  {
+   "id": "node/3739749821",
+   "name": "Tasty Kebab",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "56 Stoddard Road, Wesley, Auckland, 1041",
+   "city": "Auckland",
+   "postcode": "1041",
+   "lat": -36.9057416,
+   "lon": 174.7305458,
+   "region": "Auckland",
+   "phone": "+64 9 620 8407",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3739749821"
+    }
+   ]
+  },
+  {
+   "id": "way/947693741",
+   "name": "Toastie",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8489044,
+   "lon": 174.764254,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/947693741"
+    }
+   ]
+  },
+  {
+   "id": "node/5015955232",
+   "name": "Turkish Kebab and Burger",
+   "category": "Fast food",
+   "cuisine": "burger;kebab;turkish",
+   "halal_tag": "yes",
+   "address": "1218 Great North Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8707086,
+   "lon": 174.710425,
+   "region": "Auckland",
+   "phone": "+64 9 845 5151",
+   "website": null,
+   "opening_hours": "Mo-Sa 10:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5015955232"
+    }
+   ]
+  },
+  {
+   "id": "node/12487392007",
+   "name": "Wicked Chicken",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "Anzac Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.7878472,
+   "lon": 174.7693205,
+   "region": "Auckland",
+   "phone": "+64 9 573 5740",
+   "website": "https://wickedchicken.co.nz",
+   "opening_hours": "Mo-We,Fr-Sa 09:00-18:00; Th 09:00-21:00; Su 09:00-17:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12487392007"
+    }
+   ]
+  },
+  {
+   "id": "node/12679820041",
+   "name": "Zeta Greek Kitchen",
+   "category": "Fast food",
+   "cuisine": "greek",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8453865,
+   "lon": 174.7676392,
+   "region": "Auckland",
+   "phone": "+64 9 600 2598",
+   "website": "https://www.zetagreekkitchen.co.nz/",
+   "opening_hours": "Mo,Tu 08:30-22:00, We,Th 08:30-01:00, Fr,Sa 09:00-03:00, Su 09:00-24:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12679820041"
+    }
+   ]
+  },
+  {
+   "id": "node/3293524476",
+   "name": "Island Gelato Company",
+   "category": "Ice cream",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8429908,
+   "lon": 174.7670276,
+   "region": "Auckland",
+   "phone": "+64 21 536 860",
+   "website": "https://www.islandgelato.co.nz/",
+   "opening_hours": "Mo-Th 07:00-22:30; Fr-Sa 07:00-11:00; Su 07:00-22:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3293524476"
+    }
+   ]
+  },
+  {
+   "id": "node/12461831353",
+   "name": "Albasha Restaurant",
+   "category": "Restaurant",
+   "cuisine": "middle_eastern",
+   "halal_tag": "yes",
+   "address": "1276 Dominion Road, Mount Roskill, Auckland, 1041",
+   "city": "Auckland",
+   "postcode": "1041",
+   "lat": -36.90428,
+   "lon": 174.7419922,
+   "region": "Auckland",
+   "phone": "+64 22 883 0520",
+   "website": null,
+   "opening_hours": "Mo-Th 15:00-22:00; Fr 15:00-23:00; Sa 11:30-24:00; Su 11:30-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12461831353"
+    }
+   ]
+  },
+  {
+   "id": "node/3739756345",
+   "name": "Bawarchi",
+   "category": "Restaurant",
+   "cuisine": "asian;indian",
+   "halal_tag": "yes",
+   "address": "519 -523 Sandringham Road, Sandrinham, 1025",
+   "city": "Sandrinham",
+   "postcode": "1025",
+   "lat": -36.891628,
+   "lon": 174.7361678,
+   "region": "Auckland",
+   "phone": "+64 9 845 5525",
+   "website": "https://bawarchi.co.nz/",
+   "opening_hours": "Mo-Su 11:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3739756345"
+    }
+   ]
+  },
+  {
+   "id": "node/12445435113",
+   "name": "Boishakhi",
+   "category": "Restaurant",
+   "cuisine": "bangalideshi",
+   "halal_tag": "yes",
+   "address": "Unit H 254 Lincoln Road, Henderson, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.8554799,
+   "lon": 174.6296396,
+   "region": "Auckland",
+   "phone": "+64 9 600 1072",
+   "website": "https://boishakhi.co.nz/",
+   "opening_hours": "Tu-Th,Su 12:00-22:00; Fr-Sa 12:00-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12445435113"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906397",
+   "name": "Denny's",
+   "category": "Restaurant",
+   "cuisine": "american",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8476641,
+   "lon": 174.7616185,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "24/7",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906397"
+    }
+   ]
+  },
+  {
+   "id": "node/11221827519",
+   "name": "Dumpling House",
+   "category": "Restaurant",
+   "cuisine": "chinese",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8493254,
+   "lon": 174.7658038,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 12:00-15:00,17:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11221827519"
+    }
+   ]
+  },
+  {
+   "id": "way/1360852786",
+   "name": "Feri Cuisine",
+   "category": "Restaurant",
+   "cuisine": "persian",
+   "halal_tag": "yes",
+   "address": "18/638 Queen Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8531323,
+   "lon": 174.7641165,
+   "region": "Auckland",
+   "phone": "+64 210 230 4341",
+   "website": null,
+   "opening_hours": "09:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1360852786"
+    }
+   ]
+  },
+  {
+   "id": "node/13722062985",
+   "name": "flip",
+   "category": "Restaurant",
+   "cuisine": "burger;soft_serve",
+   "halal_tag": "yes",
+   "address": "Queen Street, 1010",
+   "city": null,
+   "postcode": "1010",
+   "lat": -36.8520443,
+   "lon": 174.7642319,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/13722062985"
+    }
+   ]
+  },
+  {
+   "id": "node/11590999799",
+   "name": "Fuga Japanese Brasserie",
+   "category": "Restaurant",
+   "cuisine": "japanese",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8485165,
+   "lon": 174.7629834,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo,Tu,Th-Sa 12:00-14:30,18:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11590999799"
+    }
+   ]
+  },
+  {
+   "id": "node/6952885285",
+   "name": "Good life",
+   "category": "Restaurant",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8463764,
+   "lon": 174.7681206,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 08:00-15:30; PH off",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/6952885285"
+    }
+   ]
+  },
+  {
+   "id": "node/10892579815",
+   "name": "Harbourside Ocean Bar & Grill",
+   "category": "Restaurant",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.843046,
+   "lon": 174.7669034,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "PH,Mo-Su 12:00-15:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10892579815"
+    }
+   ]
+  },
+  {
+   "id": "node/13722384659",
+   "name": "House of Authentic Kolkata Dum Biryani",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.9001613,
+   "lon": 174.7199765,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/13722384659"
+    }
+   ]
+  },
+  {
+   "id": "node/3719184140",
+   "name": "Jadetown Uyghur Cuisine",
+   "category": "Restaurant",
+   "cuisine": "uyghur",
+   "halal_tag": "yes",
+   "address": "598 Dominion Road, Mount Eden",
+   "city": "Mount Eden",
+   "postcode": null,
+   "lat": -36.8876419,
+   "lon": 174.7473862,
+   "region": "Auckland",
+   "phone": "+64 9 623 5072",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3719184140"
+    }
+   ]
+  },
+  {
+   "id": "node/12195824883",
+   "name": "Japanese Dining You",
+   "category": "Restaurant",
+   "cuisine": "japanese",
+   "halal_tag": "yes",
+   "address": "21-25 Elliott Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8501117,
+   "lon": 174.7636555,
+   "region": "Auckland",
+   "phone": "+64 9 309 3378",
+   "website": null,
+   "opening_hours": "Mo-Fr 11:00-19:00; Sa 11:30-17:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12195824883"
+    }
+   ]
+  },
+  {
+   "id": "way/894759667",
+   "name": "Joong Wha Ru",
+   "category": "Restaurant",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "462 Queen Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8556517,
+   "lon": 174.7627054,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo,We-Fr 12:00-15:00,17:00-22:00; Sa,Su 12:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/894759667"
+    }
+   ]
+  },
+  {
+   "id": "node/8223577463",
+   "name": "Lebanese Grocer",
+   "category": "Restaurant",
+   "cuisine": "lebanese",
+   "halal_tag": "yes",
+   "address": "61/65 Pitt Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8573972,
+   "lon": 174.7588283,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Tu-Sa 10:00-15:00; Su 10:00-14:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/8223577463"
+    }
+   ]
+  },
+  {
+   "id": "node/1015095964",
+   "name": "Little Turkish Cafe",
+   "category": "Restaurant",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "217 Karangahape Road, Auckland Central",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8576226,
+   "lon": 174.7594717,
+   "region": "Auckland",
+   "phone": "+64 9 302 0353",
+   "website": null,
+   "opening_hours": "Mo, Tu, Su 10:00-03:30; We, Th 10:00-05:00; Fr, Sa 10:00-07:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/1015095964"
+    }
+   ]
+  },
+  {
+   "id": "node/4797304732",
+   "name": "Long Fang",
+   "category": "Restaurant",
+   "cuisine": "chinese",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8496176,
+   "lon": 174.7639296,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 09:30-15:30,05:30-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4797304732"
+    }
+   ]
+  },
+  {
+   "id": "node/3733790954",
+   "name": "Madni Chicken",
+   "category": "Restaurant",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "205 Great South Road, Manurewa, Auckland, 2102",
+   "city": "Auckland",
+   "postcode": "2102",
+   "lat": -37.0231681,
+   "lon": 174.8981156,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3733790954"
+    }
+   ]
+  },
+  {
+   "id": "node/3739761316",
+   "name": "Milanos Pizza & Portuguese Chicken - halal",
+   "category": "Restaurant",
+   "cuisine": "chicken;pizza",
+   "halal_tag": "yes",
+   "address": "154 Great South Road, Papatoetoe, Auckland, 2025",
+   "city": "Auckland",
+   "postcode": "2025",
+   "lat": -36.9689454,
+   "lon": 174.8602712,
+   "region": "Auckland",
+   "phone": "+64 9 277 8001",
+   "website": "https://www.milanospizza.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3739761316"
+    }
+   ]
+  },
+  {
+   "id": "node/4943367468",
+   "name": "Mithai Indian Vegetarian Restaurant",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "685 Sandringham Road Extension",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8970418,
+   "lon": 174.7332507,
+   "region": "Auckland",
+   "phone": "+64 9 620 0117",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4943367468"
+    }
+   ]
+  },
+  {
+   "id": "node/4814853860",
+   "name": "No. 1 Handmade Lanzhou Beef Ramen",
+   "category": "Restaurant",
+   "cuisine": "chinese",
+   "halal_tag": "only",
+   "address": "22 Kitchener Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.849714,
+   "lon": 174.7665405,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4814853860"
+    }
+   ]
+  },
+  {
+   "id": "node/3736730813",
+   "name": "Pizza and Curry Corner",
+   "category": "Restaurant",
+   "cuisine": "burger",
+   "halal_tag": "yes",
+   "address": "Mangere Town Centre Waddon Place, Mangere",
+   "city": "Mangere",
+   "postcode": null,
+   "lat": -36.9704157,
+   "lon": 174.7988567,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3736730813"
+    }
+   ]
+  },
+  {
+   "id": "node/4956159230",
+   "name": "PizzaExpress",
+   "category": "Restaurant",
+   "cuisine": "pizza",
+   "halal_tag": "yes",
+   "address": "207a/22 Stoddard Road, Mount Roskill",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9076727,
+   "lon": 174.7331134,
+   "region": "Auckland",
+   "phone": "+64 9 555 5735",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4956159230"
+    }
+   ]
+  },
+  {
+   "id": "node/11092661805",
+   "name": "Raos Indonesian Street Food",
+   "category": "Restaurant",
+   "cuisine": "indonesian",
+   "halal_tag": "yes",
+   "address": "433 Dominion Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8831212,
+   "lon": 174.748543,
+   "region": "Auckland",
+   "phone": "+64 9 623 0459",
+   "website": null,
+   "opening_hours": "Tu-Su 12:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11092661805"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906396",
+   "name": "Raviz",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8477348,
+   "lon": 174.7615878,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "PH,Mo-Su 11:00-24:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906396"
+    }
+   ]
+  },
+  {
+   "id": "node/3743497006",
+   "name": "Royal Kebab",
+   "category": "Restaurant",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "734 Manukau Road, Royal Oak, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9102841,
+   "lon": 174.7758718,
+   "region": "Auckland",
+   "phone": "+64 9 625 8755",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3743497006"
+    }
+   ]
+  },
+  {
+   "id": "node/5490427579",
+   "name": "Sham Grill NZ",
+   "category": "Restaurant",
+   "cuisine": "middle_eastern;arab;kebab;shawarma",
+   "halal_tag": "yes",
+   "address": "138 Chapel Road, Flat Bush, Auckland, 2019",
+   "city": "Auckland",
+   "postcode": "2019",
+   "lat": -36.967261,
+   "lon": 174.9056724,
+   "region": "Auckland",
+   "phone": "+64 9 558 7119",
+   "website": "https://www.sham.co.nz",
+   "opening_hours": "Mo-Su 11:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5490427579"
+    }
+   ]
+  },
+  {
+   "id": "node/3119789065",
+   "name": "Shaolin Kung Fu Noodle",
+   "category": "Restaurant",
+   "cuisine": "chinese",
+   "halal_tag": "yes",
+   "address": "636 Dominion Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8882838,
+   "lon": 174.7471931,
+   "region": "Auckland",
+   "phone": "+64 9 623 6298",
+   "website": null,
+   "opening_hours": "Mo-Su 11:30-23:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3119789065"
+    }
+   ]
+  },
+  {
+   "id": "way/293023331",
+   "name": "Shaolin Kung Fu Noodle",
+   "category": "Restaurant",
+   "cuisine": "chinese",
+   "halal_tag": "only",
+   "address": "486 Queen Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8562401,
+   "lon": 174.762399,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Sa 10:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/293023331"
+    }
+   ]
+  },
+  {
+   "id": "way/894759675",
+   "name": "Shoya",
+   "category": "Restaurant",
+   "cuisine": "japanese",
+   "halal_tag": "yes",
+   "address": "478 Queen Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.85604,
+   "lon": 174.7624868,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/894759675"
+    }
+   ]
+  },
+  {
+   "id": "way/162152485",
+   "name": "St Pierre's Sushi",
+   "category": "Restaurant",
+   "cuisine": "sushi",
+   "halal_tag": "yes",
+   "address": "167 Karangahape Road, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8576747,
+   "lon": 174.7604507,
+   "region": "Auckland",
+   "phone": "+64 9 379 3177",
+   "website": null,
+   "opening_hours": "Mo-We 07:30-18:00; Th,Fr 07:30-19:00; Sa 09:30-18:00; Su 09:30-17:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/162152485"
+    }
+   ]
+  },
+  {
+   "id": "node/11221762021",
+   "name": "Sushi & Donburi",
+   "category": "Restaurant",
+   "cuisine": "japanese",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8508731,
+   "lon": 174.7649088,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo,Tu 10:00-20:00; We 10:00-17:00; Th,Fr 10:00-20:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11221762021"
+    }
+   ]
+  },
+  {
+   "id": "node/11242896437",
+   "name": "Sushipac",
+   "category": "Restaurant",
+   "cuisine": "sushi",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8513064,
+   "lon": 174.7650321,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 08:30-16:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11242896437"
+    }
+   ]
+  },
+  {
+   "id": "node/4797304733",
+   "name": "Tandoor",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "only",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8492359,
+   "lon": 174.7643606,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 12:00-22:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4797304733"
+    }
+   ]
+  },
+  {
+   "id": "node/10988287988",
+   "name": "Tanuki",
+   "category": "Restaurant",
+   "cuisine": "japanese",
+   "halal_tag": "yes",
+   "address": "319 Queen Street",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8536369,
+   "lon": 174.7631184,
+   "region": "Auckland",
+   "phone": "+64 9 379 5353",
+   "website": "https://tanuki.co.nz/",
+   "opening_hours": "We-Su 17:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10988287988"
+    }
+   ]
+  },
+  {
+   "id": "node/5153233821",
+   "name": "Tanuki's Cave",
+   "category": "Restaurant",
+   "cuisine": "yakitori",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8536109,
+   "lon": 174.7631286,
+   "region": "Auckland",
+   "phone": "+64 9 379 5151",
+   "website": "https://tanukiscave.co.nz/",
+   "opening_hours": "Tu-Sa 17:00-22:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5153233821"
+    }
+   ]
+  },
+  {
+   "id": "node/9300991090",
+   "name": "Thai Kitchen Takeaway",
+   "category": "Restaurant",
+   "cuisine": "thai",
+   "halal_tag": "yes",
+   "address": "212 Richardson Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9002551,
+   "lon": 174.7199765,
+   "region": "Auckland",
+   "phone": "+64 9 390 0565",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/9300991090"
+    }
+   ]
+  },
+  {
+   "id": "node/12477184679",
+   "name": "The Rustic Pizzeria",
+   "category": "Restaurant",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "2/1 Bellingham Road, Flat Bush, Auckland",
+   "city": "Auckland",
+   "postcode": null,
+   "lat": -36.9644783,
+   "lon": 174.9144509,
+   "region": "Auckland",
+   "phone": "+64 9 478 7842",
+   "website": "https://www.therusticpizzeria.co.nz/",
+   "opening_hours": "Tu-Th,Sa-Sa 12:00-20:30; Fr 13:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12477184679"
+    }
+   ]
+  },
+  {
+   "id": "node/10012449473",
+   "name": "The Sushi Store",
+   "category": "Restaurant",
+   "cuisine": "sushi",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8541922,
+   "lon": 174.7586782,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 11:30-21:00; Sa,Su 12:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10012449473"
+    }
+   ]
+  },
+  {
+   "id": "node/4049147937",
+   "name": "Tikka 'n' Talk",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "only",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8577632,
+   "lon": 174.7619603,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "PH,Mo-Su 11:00-04:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4049147937"
+    }
+   ]
+  },
+  {
+   "id": "node/4753906327",
+   "name": "Uncle Man's",
+   "category": "Restaurant",
+   "cuisine": "malaysian",
+   "halal_tag": "only",
+   "address": "277 Karangahape Road, Auckland Central",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8574325,
+   "lon": 174.7581917,
+   "region": "Auckland",
+   "phone": "+64 9 377 1799",
+   "website": "https://unclemans.com",
+   "opening_hours": "Mo-Su 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4753906327"
+    }
+   ]
+  },
+  {
+   "id": "node/5475776227",
+   "name": "Yoshizawa",
+   "category": "Restaurant",
+   "cuisine": "japanese",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8493381,
+   "lon": 174.765862,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Tu-Su 11:00-20:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5475776227"
+    }
+   ]
+  },
+  {
+   "id": "way/260057114",
+   "name": "Asian Groceries",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "161 Hobson Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8513568,
+   "lon": 174.7598094,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": "PH,Mo-Su 10:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/260057114"
+    }
+   ]
+  },
+  {
+   "id": "node/3688835407",
+   "name": "Food 4 less",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "64 Atkinson Avenue, Otahuhu, 1062",
+   "city": "Otahuhu",
+   "postcode": "1062",
+   "lat": -36.9435621,
+   "lon": 174.8449777,
+   "region": "Auckland",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3688835407"
+    }
+   ]
+  },
+  {
+   "id": "way/853219245",
+   "name": "Getfresh Halal Takeaway",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "99 Westney Road",
+   "city": null,
+   "postcode": null,
+   "lat": -36.9818633,
+   "lon": 174.7882745,
+   "region": "Auckland",
+   "phone": "+64 9 275 7195",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/853219245"
+    }
+   ]
+  },
+  {
+   "id": "node/4910509298",
+   "name": "Japan Mart City Central",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "26-28 Wyndham Street, Auckland Central, 1010",
+   "city": "Auckland Central",
+   "postcode": "1010",
+   "lat": -36.8471823,
+   "lon": 174.7645797,
+   "region": "Auckland",
+   "phone": "+64 9 307 7100",
+   "website": "https://japanmart.co.nz/",
+   "opening_hours": "Mo-Su 10:00-18:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4910509298"
+    }
+   ]
+  },
+  {
+   "id": "node/5400472679",
+   "name": "Safka",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "70 Pitt Street, Auckland Central, Auckland, 1010",
+   "city": "Auckland",
+   "postcode": "1010",
+   "lat": -36.8569144,
+   "lon": 174.7591025,
+   "region": "Auckland",
+   "phone": "+64 9 379 8030",
+   "website": "https://safka.co.nz",
+   "opening_hours": "Mo-Fr 10:00-17:00; Sa 10:00-16:00; Su 11:00-16:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5400472679"
+    }
+   ]
+  },
+  {
+   "id": "node/1603164800",
+   "name": "Woolworths",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "19-25 Victoria Street West",
+   "city": null,
+   "postcode": null,
+   "lat": -36.8486588,
+   "lon": 174.7647089,
+   "region": "Auckland",
+   "phone": "+64 9 255 2428",
+   "website": "https://www.woolworths.co.nz/store-finder/9283/auckland/auckland-victoria-street-west",
+   "opening_hours": "Mo-Fr 07:00-20:00; Sa,Su 08:00-20:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/1603164800"
+    }
+   ]
+  },
+  {
+   "id": "node/7092241148",
+   "name": "Woolworths",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -36.8439036,
+   "lon": 174.7652319,
+   "region": "Auckland",
+   "phone": "+64 9 372 8439",
+   "website": null,
+   "opening_hours": "Mo-Fr 08:00-19:00; Sa-Su 08:00-18:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/7092241148"
+    }
+   ]
+  },
+  {
+   "id": "node/5546964722",
+   "name": "Pizza Pars",
+   "category": "Fast food",
+   "cuisine": "pizza",
+   "halal_tag": "yes",
+   "address": "60 George Street, Palmerston North, Palmerston North, 4410",
+   "city": "Palmerston North",
+   "postcode": "4410",
+   "lat": -40.3567313,
+   "lon": 175.6087715,
+   "region": "Hawke's Bay",
+   "phone": "0800 100 068",
+   "website": "https://pizzapars.co.nz/",
+   "opening_hours": "Tu-We 10:00-14:30,17:00-21:00; Th-Sa 10:00-14:30,17:00-23:45; Su 10:00-14:30,17:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5546964722"
+    }
+   ]
+  },
+  {
+   "id": "node/5546977606",
+   "name": "Kapadokya",
+   "category": "Restaurant",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "64 George Street, Palmerston North, Palmerston North, 4410",
+   "city": "Palmerston North",
+   "postcode": "4410",
+   "lat": -40.3567712,
+   "lon": 175.6088018,
+   "region": "Hawke's Bay",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5546977606"
+    }
+   ]
+  },
+  {
+   "id": "node/12501043505",
+   "name": "Pacha's Kebab Cafe",
+   "category": "Restaurant",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "167 Cuba Street",
+   "city": null,
+   "postcode": null,
+   "lat": -40.3561206,
+   "lon": 175.6059088,
+   "region": "Hawke's Bay",
+   "phone": "+64 6 357 7055",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501043505"
+    }
+   ]
+  },
+  {
+   "id": "node/12523109606",
+   "name": "Café Anatolia Turkish Cuisine",
+   "category": "Cafe",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "196 Oxford Street",
+   "city": null,
+   "postcode": null,
+   "lat": -40.622908,
+   "lon": 175.2858131,
+   "region": "Manawatu-Whanganui",
+   "phone": "+64 6 368 7924",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523109606"
+    }
+   ]
+  },
+  {
+   "id": "way/951396225",
+   "name": "Roto Street Dairy",
+   "category": "Convenience store",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "2A Roto Street, Tāhunanui, Nelson, 7011",
+   "city": "Nelson",
+   "postcode": "7011",
+   "lat": -41.2890414,
+   "lon": 173.2400783,
+   "region": "Nelson",
+   "phone": "+64 3 548 6581",
+   "website": null,
+   "opening_hours": "Mo-Su 06:00-19:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/951396225"
+    }
+   ]
+  },
+  {
+   "id": "node/4794075721",
+   "name": "McDonald's",
+   "category": "Fast food",
+   "cuisine": "burger",
+   "halal_tag": "yes",
+   "address": "32 Tahunanui Drive, Nelson, 7011",
+   "city": "Nelson",
+   "postcode": "7011",
+   "lat": -41.2829636,
+   "lon": 173.2483414,
+   "region": "Nelson",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 07:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4794075721"
+    }
+   ]
+  },
+  {
+   "id": "way/410136297",
+   "name": "Woolworths",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.3118578,
+   "lon": 173.2345732,
+   "region": "Nelson",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 07:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/410136297"
+    }
+   ]
+  },
+  {
+   "id": "way/1368013274",
+   "name": "Woolworths",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.3347586,
+   "lon": 173.2026342,
+   "region": "Nelson",
+   "phone": "+64 3 543 8306",
+   "website": "https://www.woolworths.co.nz/store-finder/9040/richmond/richmond-countdown",
+   "opening_hours": "Mo-Su 07:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1368013274"
+    }
+   ]
+  },
+  {
+   "id": "node/12345179547",
+   "name": "Dost Turkish Cafe",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "15 Princes Street",
+   "city": null,
+   "postcode": null,
+   "lat": -45.8747811,
+   "lon": 170.5034186,
+   "region": "Otago",
+   "phone": "+64 3 477 2477",
+   "website": "https://dostturkishcafe.co.nz/",
+   "opening_hours": "Tu-Th,Su 11:00-22:00; Sa 11:00-15:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12345179547"
+    }
+   ]
+  },
+  {
+   "id": "node/5573100522",
+   "name": "Erik's Fish and Chips",
+   "category": "Fast food",
+   "cuisine": "fish_and_chips;regional",
+   "halal_tag": "yes",
+   "address": "13 Earl Street",
+   "city": null,
+   "postcode": null,
+   "lat": -45.0332422,
+   "lon": 168.6620823,
+   "region": "Otago",
+   "phone": "+64 3 441 3474",
+   "website": "https://eriksfishandchips.co.nz",
+   "opening_hours": "Mo-Su 11:30-20:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5573100522"
+    }
+   ]
+  },
+  {
+   "id": "node/12523111602",
+   "name": "Kebab Time",
+   "category": "Fast food",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "51 Centennial Avenue",
+   "city": null,
+   "postcode": null,
+   "lat": -45.2519205,
+   "lon": 169.3890813,
+   "region": "Otago",
+   "phone": "+64 3 448 6941",
+   "website": null,
+   "opening_hours": "Mo-Su 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523111602"
+    }
+   ]
+  },
+  {
+   "id": "node/6781657485",
+   "name": "Konya Kebabs",
+   "category": "Fast food",
+   "cuisine": "kebab;mediterranean",
+   "halal_tag": "yes",
+   "address": "72 Saint Andrew Street",
+   "city": null,
+   "postcode": null,
+   "lat": -45.8717157,
+   "lon": 170.5057826,
+   "region": "Otago",
+   "phone": "+64 3 477 7749",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/6781657485"
+    }
+   ]
+  },
+  {
+   "id": "node/12306014260",
+   "name": "Mevlana Kebabs",
+   "category": "Fast food",
+   "cuisine": "kebab;mediterranean",
+   "halal_tag": "yes",
+   "address": "61 Tay Street",
+   "city": null,
+   "postcode": null,
+   "lat": -46.4132261,
+   "lon": 168.3510109,
+   "region": "Otago",
+   "phone": "+64 3 218 6468",
+   "website": null,
+   "opening_hours": "Mo-Th 10:00-15:00,17:00+; Fr-Su 10:00+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12306014260"
+    }
+   ]
+  },
+  {
+   "id": "node/14014139638",
+   "name": "Souvlaki & Kebab Corner",
+   "category": "Fast food",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -46.4073468,
+   "lon": 168.3688815,
+   "region": "Otago",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Su-We 11:00-21:30, Th-Sa 11:00-21:45",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/14014139638"
+    }
+   ]
+  },
+  {
+   "id": "node/5248090404",
+   "name": "Turkish Kebabs",
+   "category": "Fast food",
+   "cuisine": "kebab;turkish",
+   "halal_tag": "yes",
+   "address": "91 Dee Street",
+   "city": null,
+   "postcode": null,
+   "lat": -46.4104196,
+   "lon": 168.3476163,
+   "region": "Otago",
+   "phone": "+64 3 218 3399",
+   "website": null,
+   "opening_hours": "11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5248090404"
+    }
+   ]
+  },
+  {
+   "id": "node/12523111503",
+   "name": "AR Indian Restaurant",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "2 Ruru Street",
+   "city": null,
+   "postcode": null,
+   "lat": -46.3762961,
+   "lon": 168.347035,
+   "region": "Otago",
+   "phone": "+64 3 215 9568",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523111503"
+    }
+   ]
+  },
+  {
+   "id": "node/12523108606",
+   "name": "Boliwood Restaurant Five Mile",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "3/34 Grant Road",
+   "city": null,
+   "postcode": null,
+   "lat": -45.0130062,
+   "lon": 168.7429576,
+   "region": "Otago",
+   "phone": "+64 3 442 2019",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523108606"
+    }
+   ]
+  },
+  {
+   "id": "node/12523112701",
+   "name": "Curry Guru Tweed",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "231 Tweed Street",
+   "city": null,
+   "postcode": null,
+   "lat": -46.4181167,
+   "lon": 168.356693,
+   "region": "Otago",
+   "phone": "+64 3 214 0296",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523112701"
+    }
+   ]
+  },
+  {
+   "id": "node/12523111603",
+   "name": "Indian at the Crescent",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "11 The Crescent",
+   "city": null,
+   "postcode": null,
+   "lat": -46.4131204,
+   "lon": 168.3462583,
+   "region": "Otago",
+   "phone": "+64 3 214 1555",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523111603"
+    }
+   ]
+  },
+  {
+   "id": "node/11406408834",
+   "name": "Indian Spice",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -45.8935502,
+   "lon": 170.4983705,
+   "region": "Otago",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Tu-Sa 11:30-14:00, Mo-Su 17:00-21:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11406408834"
+    }
+   ]
+  },
+  {
+   "id": "node/14015973195",
+   "name": "Miga Hako Express",
+   "category": "Restaurant",
+   "cuisine": "korean",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -45.8662258,
+   "lon": 170.5118239,
+   "region": "Otago",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 10:00-16:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/14015973195"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110104",
+   "name": "Paasha Turkish Restaurant",
+   "category": "Restaurant",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "31 Saint Andrew Street",
+   "city": null,
+   "postcode": null,
+   "lat": -45.8716038,
+   "lon": 170.504392,
+   "region": "Otago",
+   "phone": "+64 3 477 7181",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110104"
+    }
+   ]
+  },
+  {
+   "id": "node/2553115489",
+   "name": "Snack Shack Turkish Kebabs",
+   "category": "Restaurant",
+   "cuisine": "kebab;turkish",
+   "halal_tag": "yes",
+   "address": "139 Ardmore Street",
+   "city": null,
+   "postcode": null,
+   "lat": -44.6956141,
+   "lon": 169.1340544,
+   "region": "Otago",
+   "phone": "+64 3 443 7622",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2553115489"
+    }
+   ]
+  },
+  {
+   "id": "node/11504267269",
+   "name": "Turkish Kebabs of Queenstown",
+   "category": "Restaurant",
+   "cuisine": "kebab;turkish",
+   "halal_tag": "yes",
+   "address": "34 Shotover Street",
+   "city": null,
+   "postcode": null,
+   "lat": -45.0314724,
+   "lon": 168.6599497,
+   "region": "Otago",
+   "phone": "+64 3 441 3424",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11504267269"
+    }
+   ]
+  },
+  {
+   "id": "way/816352005",
+   "name": "Turkish Kitchen",
+   "category": "Restaurant",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "104 Gordon Road, Mosgiel, Mosgiel, 9024",
+   "city": "Mosgiel",
+   "postcode": "9024",
+   "lat": -45.8763278,
+   "lon": 170.3487736,
+   "region": "Otago",
+   "phone": "+64 3 489 0900",
+   "website": "https://www.turkishkitchenmosgiel.co.nz",
+   "opening_hours": "11:00-21:00; Mo off",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/816352005"
+    }
+   ]
+  },
+  {
+   "id": "way/104743614",
+   "name": "New World",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "6 North Road, North East Valley, Dunedin, 9010",
+   "city": "Dunedin",
+   "postcode": "9010",
+   "lat": -45.8548747,
+   "lon": 170.5197244,
+   "region": "Otago",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 07:30-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/104743614"
+    }
+   ]
+  },
+  {
+   "id": "way/116455612",
+   "name": "PAK'nSAVE",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "124 Hillside Road, South Dunedin, Dunedin, 9012",
+   "city": "Dunedin",
+   "postcode": "9012",
+   "lat": -45.8924649,
+   "lon": 170.4989215,
+   "region": "Otago",
+   "phone": null,
+   "website": "https://www.paknsave.co.nz/south-island/otago-and-southland/dunedin",
+   "opening_hours": "Mo-Su,PH 07:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/116455612"
+    }
+   ]
+  },
+  {
+   "id": "node/6412816090",
+   "name": "Woolworths",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -46.0984766,
+   "lon": 168.9443098,
+   "region": "Otago",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 08:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/6412816090"
+    }
+   ]
+  },
+  {
+   "id": "node/5610439959",
+   "name": "Bella Vita Restaurant",
+   "category": "Restaurant",
+   "cuisine": "italian;pizza;seafood",
+   "halal_tag": "yes",
+   "address": "146 Devon Street East, New Plymouth, New Plymouth, 4310",
+   "city": "New Plymouth",
+   "postcode": "4310",
+   "lat": -39.0565281,
+   "lon": 174.0786774,
+   "region": "Taranaki",
+   "phone": "+64 6 758 3393",
+   "website": "https://www.bellavita.co.nz/",
+   "opening_hours": "Mo-Sa 11:30-02:30, Mo-Su 17:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5610439959"
+    }
+   ]
+  },
+  {
+   "id": "way/999243958",
+   "name": "Java Hut",
+   "category": "Cafe",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "84B Aranui Road, Mapua",
+   "city": "Mapua",
+   "postcode": null,
+   "lat": -41.2511617,
+   "lon": 173.0937924,
+   "region": "Tasman",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Fr 06:45-14:00; Sa,Su 07:45-14:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/999243958"
+    }
+   ]
+  },
+  {
+   "id": "way/1374354329",
+   "name": "PAK'nSAVE",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.3385867,
+   "lon": 173.1867477,
+   "region": "Tasman",
+   "phone": "+64 3 544 8658",
+   "website": "https://www.paknsave.co.nz/south-island/nelson/richmond",
+   "opening_hours": "Mo,Tu,We,Fr,Sa,Su 08:00-21:00; Th 08:00-22:00; Dec 17-21 08:00-22:00; Dec 22-23 08:00-23:00; Dec 24 07:00-21:00; Dec 25 off; Dec 26 08:00-21:00; Jan 2 08:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1374354329"
+    }
+   ]
+  },
+  {
+   "id": "node/3062573691",
+   "name": "Firdaus Halal Meat",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "4 Fifth Avenue, Hamilton",
+   "city": "Hamilton",
+   "postcode": null,
+   "lat": -37.7725067,
+   "lon": 175.2940278,
+   "region": "Waikato",
+   "phone": "+64 7 855 5914",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3062573691"
+    }
+   ]
+  },
+  {
+   "id": "node/12501045622",
+   "name": "Muzammil Halal Meats",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "162 Clarkin Road",
+   "city": null,
+   "postcode": null,
+   "lat": -37.765191,
+   "lon": 175.2790245,
+   "region": "Waikato",
+   "phone": "+64 7 855 5243",
+   "website": null,
+   "opening_hours": "Tu-Fr 09:00-17:30; Sa,Su 09:00-17:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045622"
+    }
+   ]
+  },
+  {
+   "id": "node/2506905712",
+   "name": "Breeze Indian Restaurant",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "16 Hood Street, Hamilton Central, Hamilton",
+   "city": "Hamilton",
+   "postcode": null,
+   "lat": -37.790379,
+   "lon": 175.2846917,
+   "region": "Waikato",
+   "phone": "+64 7 949 8159",
+   "website": "http://www.breezerestaurant.co.nz",
+   "opening_hours": "Mo-We 15:00-21:30; Th-Su 11:30-21:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2506905712"
+    }
+   ]
+  },
+  {
+   "id": "node/12501045633",
+   "name": "Mother's Kitchen",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "only",
+   "address": "198 Chadwick Road, Tauranga South, Tauranga, 3112",
+   "city": "Tauranga",
+   "postcode": "3112",
+   "lat": -37.7268633,
+   "lon": 176.1331979,
+   "region": "Waikato",
+   "phone": "+64 7 577 1203",
+   "website": "https://motherskitchen.tuckerfox.co.nz",
+   "opening_hours": "Mo 11:00-20:30; We-Th 11:00-20:30; Fr 15:00-21:30; Sa 11:00-21:30; Su 11:00-20:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501045633"
+    }
+   ]
+  },
+  {
+   "id": "node/2672529577",
+   "name": "Shivani Restaurant",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "1 Normandy Avenue, Melville",
+   "city": null,
+   "postcode": null,
+   "lat": -37.8111903,
+   "lon": 175.2824974,
+   "region": "Waikato",
+   "phone": "+64 7 843 9655",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2672529577"
+    }
+   ]
+  },
+  {
+   "id": "way/229240921",
+   "name": "Woolworths",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "2 Anzac Parade",
+   "city": null,
+   "postcode": null,
+   "lat": -37.7937843,
+   "lon": 175.2870722,
+   "region": "Waikato",
+   "phone": "+64 7 838 2714",
+   "website": null,
+   "opening_hours": "Mo-Su 07:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/229240921"
+    }
+   ]
+  },
+  {
+   "id": "node/2582171143",
+   "name": "Halal Meat Shop",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.3127551,
+   "lon": 174.779667,
+   "region": "Wellington",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2582171143"
+    }
+   ]
+  },
+  {
+   "id": "node/4750209021",
+   "name": "Hz halal",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.2268658,
+   "lon": 174.905328,
+   "region": "Wellington",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/4750209021"
+    }
+   ]
+  },
+  {
+   "id": "node/3741925395",
+   "name": "Kiwi Halal Meats Ltd",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "280 High Street, Lower Hutt, Wellington, 5010",
+   "city": "Lower Hutt, Wellington",
+   "postcode": "5010",
+   "lat": -41.2077986,
+   "lon": 174.9061201,
+   "region": "Wellington",
+   "phone": "+64 4 586 9786",
+   "website": null,
+   "opening_hours": "Tu-Th 11:00-18:00; Fr 09:00-18:00; Sa 08:00-17:00; Su 09:00-17:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/3741925395"
+    }
+   ]
+  },
+  {
+   "id": "way/1311902032",
+   "name": "North City Halal Meat",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "only",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.1287998,
+   "lon": 174.8392138,
+   "region": "Wellington",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1311902032"
+    }
+   ]
+  },
+  {
+   "id": "node/12501086605",
+   "name": "Wellington Halal Meats Ltd",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "160 Riddiford Street",
+   "city": null,
+   "postcode": null,
+   "lat": -41.3134264,
+   "lon": 174.7795293,
+   "region": "Wellington",
+   "phone": "+64 4 380 0900",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12501086605"
+    }
+   ]
+  },
+  {
+   "id": "node/2630700413",
+   "name": "Kanama Kopi Kadai",
+   "category": "Cafe",
+   "cuisine": "malaysian;fusion",
+   "halal_tag": "yes",
+   "address": "1 Rongotai Road, Wellington, 6022",
+   "city": "Wellington",
+   "postcode": "6022",
+   "lat": -41.3175309,
+   "lon": 174.7937929,
+   "region": "Wellington",
+   "phone": "+64 4 213 8367",
+   "website": "https://www.kanamakopikadai.co.nz",
+   "opening_hours": "Tu-Sa 11:30-14:00,17:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2630700413"
+    }
+   ]
+  },
+  {
+   "id": "node/11499852347",
+   "name": "Kebab Plus",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -41.2942028,
+   "lon": 174.7830536,
+   "region": "Wellington",
+   "phone": null,
+   "website": "https://kebabplusonline.co.nz/",
+   "opening_hours": "Mo-Th, Su 11:00-00:00; Fr-Sa 11:00-04:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11499852347"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110801",
+   "name": "Kebabs on Queen",
+   "category": "Fast food",
+   "cuisine": "mediterranean",
+   "halal_tag": "yes",
+   "address": "180",
+   "city": null,
+   "postcode": null,
+   "lat": -41.2818114,
+   "lon": 174.7757645,
+   "region": "Wellington",
+   "phone": "+64 4 499 4178",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110801"
+    }
+   ]
+  },
+  {
+   "id": "node/2628210875",
+   "name": "Morteza Kebab & Bakery",
+   "category": "Fast food",
+   "cuisine": "arab",
+   "halal_tag": "yes",
+   "address": "183 Riddiford Street",
+   "city": null,
+   "postcode": null,
+   "lat": -41.313938,
+   "lon": 174.7800426,
+   "region": "Wellington",
+   "phone": "+64 4 280 0476",
+   "website": null,
+   "opening_hours": "Tu-Su 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2628210875"
+    }
+   ]
+  },
+  {
+   "id": "node/10580674611",
+   "name": "Kisa",
+   "category": "Restaurant",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "195 Cuba Street",
+   "city": null,
+   "postcode": null,
+   "lat": -41.2947267,
+   "lon": 174.7751173,
+   "region": "Wellington",
+   "phone": "+64 21 449 820",
+   "website": "https://kisarestaurant.co.nz/kitchen/",
+   "opening_hours": "Mo-Tu 16:00+; We-Fr 12:00+; Sa-Su 11:30+",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10580674611"
+    }
+   ]
+  },
+  {
+   "id": "node/12523109605",
+   "name": "Kitchen Manthira",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "1/935 High Street",
+   "city": null,
+   "postcode": null,
+   "lat": -41.1940086,
+   "lon": 174.9431824,
+   "region": "Wellington",
+   "phone": "+64 4 260 0119",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523109605"
+    }
+   ]
+  },
+  {
+   "id": "node/2633068755",
+   "name": "Mughlai Mer-curries",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "2/248",
+   "city": null,
+   "postcode": null,
+   "lat": -41.2940372,
+   "lon": 174.771804,
+   "region": "Wellington",
+   "phone": "+64 4 382 8554",
+   "website": "https://mughlaimercurry.co.nz",
+   "opening_hours": "Mo-We 18:00-22:00; Th-Su 18:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/2633068755"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110102",
+   "name": "New Paradise",
+   "category": "Restaurant",
+   "cuisine": "indian",
+   "halal_tag": "yes",
+   "address": "462 High Street",
+   "city": null,
+   "postcode": null,
+   "lat": -41.2053531,
+   "lon": 174.9116096,
+   "region": "Wellington",
+   "phone": "+64 4 390 0108",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110102"
+    }
+   ]
+  },
+  {
+   "id": "node/279428355",
+   "name": "New World",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "68-70 Willis Street, Wellington Central, Wellington, 6011",
+   "city": "Wellington Central, Wellington",
+   "postcode": "6011",
+   "lat": -41.2878945,
+   "lon": 174.7752506,
+   "region": "Wellington",
+   "phone": "+64 4 471 6580",
+   "website": "https://newworld.co.nz",
+   "opening_hours": "Mo-Fr 07:00-22:00; Sa-Su 08:00-22:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/279428355"
+    }
+   ]
+  },
+  {
+   "id": "node/12523111501",
+   "name": "Bake and Beans",
+   "category": "Bakery",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "268 Lincoln Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.5448022,
+   "lon": 172.6099523,
+   "region": "West Coast",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523111501"
+    }
+   ]
+  },
+  {
+   "id": "node/10003587617",
+   "name": "Mafco Halal Meat Market",
+   "category": "Butcher",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -43.5382834,
+   "lon": 172.5550347,
+   "region": "West Coast",
+   "phone": "+64 3 261 9500",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10003587617"
+    }
+   ]
+  },
+  {
+   "id": "node/12523111701",
+   "name": "Rivertown Cafe",
+   "category": "Cafe",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "77 Williams Street",
+   "city": null,
+   "postcode": null,
+   "lat": -43.386058,
+   "lon": 172.6553197,
+   "region": "West Coast",
+   "phone": "+64 3 327 0304",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523111701"
+    }
+   ]
+  },
+  {
+   "id": "node/10736627183",
+   "name": "Aminah's Bread & Butter Bakery",
+   "category": "Fast food",
+   "cuisine": "asian",
+   "halal_tag": "yes",
+   "address": "522 Wairakei Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.488999,
+   "lon": 172.5677025,
+   "region": "West Coast",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10736627183"
+    }
+   ]
+  },
+  {
+   "id": "node/10673339810",
+   "name": "Dosa Kitchen",
+   "category": "Fast food",
+   "cuisine": "indian;chicken;curry;noodle",
+   "halal_tag": "yes",
+   "address": "96 Oxford Terrace, Central City, Christchurch, 8011",
+   "city": "Christchurch",
+   "postcode": "8011",
+   "lat": -43.5339865,
+   "lon": 172.634107,
+   "region": "West Coast",
+   "phone": "+64 3 343 4343",
+   "website": "https://www.dosakitchen.co.nz/",
+   "opening_hours": "Mo-We,Su 11:00-20:00; Th-Sa 11:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10673339810"
+    }
+   ]
+  },
+  {
+   "id": "way/1018404192",
+   "name": "Dubba Dubba",
+   "category": "Fast food",
+   "cuisine": "moroccan",
+   "halal_tag": "yes",
+   "address": "11B Waimairi Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.5305847,
+   "lon": 172.5743639,
+   "region": "West Coast",
+   "phone": null,
+   "website": "https://dubbadeluxe.co.nz",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1018404192"
+    }
+   ]
+  },
+  {
+   "id": "node/12523111601",
+   "name": "Flaming Pizza",
+   "category": "Fast food",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "479 Papanui Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.498388,
+   "lon": 172.6089383,
+   "region": "West Coast",
+   "phone": "+64 3 352 2577",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523111601"
+    }
+   ]
+  },
+  {
+   "id": "node/10705779608",
+   "name": "Hapsun Souvlaki",
+   "category": "Fast food",
+   "cuisine": "arab",
+   "halal_tag": "yes",
+   "address": "2/501 Wairakei Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.4899325,
+   "lon": 172.5688311,
+   "region": "West Coast",
+   "phone": "+64 3 595 0690",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10705779608"
+    }
+   ]
+  },
+  {
+   "id": "way/1239218142",
+   "name": "Indo Tempeh",
+   "category": "Fast food",
+   "cuisine": "indonesian",
+   "halal_tag": "yes",
+   "address": null,
+   "city": null,
+   "postcode": null,
+   "lat": -43.5340315,
+   "lon": 172.6339368,
+   "region": "West Coast",
+   "phone": null,
+   "website": "https://indotempeh.co.nz/",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/1239218142"
+    }
+   ]
+  },
+  {
+   "id": "node/9094081104",
+   "name": "Mainland Turkish Food",
+   "category": "Fast food",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "204 Hills Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.5086725,
+   "lon": 172.6521762,
+   "region": "West Coast",
+   "phone": "+64 3 386 2374",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/9094081104"
+    }
+   ]
+  },
+  {
+   "id": "node/5912757840",
+   "name": "Taste of Egypt",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "475B Papanui Road, Papanui, Christchurch, 8053",
+   "city": "Christchurch",
+   "postcode": "8053",
+   "lat": -43.4986707,
+   "lon": 172.6092124,
+   "region": "West Coast",
+   "phone": "+64 3 354 0336",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5912757840"
+    }
+   ]
+  },
+  {
+   "id": "node/12523108604",
+   "name": "The Kiwi Kebab",
+   "category": "Fast food",
+   "cuisine": "mediterranean",
+   "halal_tag": "yes",
+   "address": "4A McCarthy Street",
+   "city": null,
+   "postcode": null,
+   "lat": -43.563701,
+   "lon": 172.58861,
+   "region": "West Coast",
+   "phone": null,
+   "website": "https://thekiwikebab.co.nz",
+   "opening_hours": "Tu-We 16:00-22:00; Th 16:00-23:00; Fr-Sa 16:00-24:00; Su 16:00-21:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523108604"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110103",
+   "name": "Zak's Kebabs",
+   "category": "Fast food",
+   "cuisine": "kebab",
+   "halal_tag": "yes",
+   "address": "81 Lichfield Street",
+   "city": null,
+   "postcode": null,
+   "lat": -43.5341033,
+   "lon": 172.6384613,
+   "region": "West Coast",
+   "phone": "+64 3 261 6124",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110103"
+    }
+   ]
+  },
+  {
+   "id": "way/235061485",
+   "name": "AFG Restaurant",
+   "category": "Restaurant",
+   "cuisine": "asian",
+   "halal_tag": "yes",
+   "address": "318 Lincoln Road, Addington, Christchurch, 8024",
+   "city": "Christchurch",
+   "postcode": "8024",
+   "lat": -43.5433046,
+   "lon": 172.6125709,
+   "region": "West Coast",
+   "phone": "+64 3 338 7029",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/235061485"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110802",
+   "name": "Authentic Turkish Doner Kebabs",
+   "category": "Restaurant",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "544 Memorial Avenue",
+   "city": null,
+   "postcode": null,
+   "lat": -43.4907716,
+   "lon": 172.5481517,
+   "region": "West Coast",
+   "phone": "+64 3 260 1282",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110802"
+    }
+   ]
+  },
+  {
+   "id": "node/12523108603",
+   "name": "Best Turkish Food Co",
+   "category": "Restaurant",
+   "cuisine": "turkish",
+   "halal_tag": "yes",
+   "address": "138 Hereford Street",
+   "city": null,
+   "postcode": null,
+   "lat": -43.53216,
+   "lon": 172.6374041,
+   "region": "West Coast",
+   "phone": "+64 3 366 0196",
+   "website": null,
+   "opening_hours": "Mo-Fr 12:00-14:00, Su-We 17:00-01:40, Th 17:00-02:40, Fr,Sa 17:00-04:30",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523108603"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110002",
+   "name": "Dubbba Deluxe",
+   "category": "Restaurant",
+   "cuisine": "arab",
+   "halal_tag": "yes",
+   "address": "347 Moorhouse Avenue",
+   "city": null,
+   "postcode": null,
+   "lat": -43.5388176,
+   "lon": 172.6423209,
+   "region": "West Coast",
+   "phone": null,
+   "website": "https://dubbadeluxe.co.nz/",
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110002"
+    }
+   ]
+  },
+  {
+   "id": "node/12523110702",
+   "name": "Indian Paradise",
+   "category": "Restaurant",
+   "cuisine": "fine_dining;indian",
+   "halal_tag": "yes",
+   "address": "270 Stanmore Road",
+   "city": null,
+   "postcode": null,
+   "lat": -43.5215343,
+   "lon": 172.6565424,
+   "region": "West Coast",
+   "phone": "+64 3 381 1738",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/12523110702"
+    }
+   ]
+  },
+  {
+   "id": "way/101123130",
+   "name": "Mashawe",
+   "category": "Restaurant",
+   "cuisine": "lebanese;kebab",
+   "halal_tag": "yes",
+   "address": "1 New Regent Street, Christchurch Central, Christchurch, 8011",
+   "city": "Christchurch",
+   "postcode": "8011",
+   "lat": -43.5297379,
+   "lon": 172.638572,
+   "region": "West Coast",
+   "phone": "+64 3 420 0421",
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/way/101123130"
+    }
+   ]
+  },
+  {
+   "id": "node/11118471396",
+   "name": "Two Fat Indians",
+   "category": "Restaurant",
+   "cuisine": "curry;chicken;indian;juice;seafood",
+   "halal_tag": "yes",
+   "address": "88 Cashel Street, Christchurch Central, Christchurch, 8011",
+   "city": "Christchurch",
+   "postcode": "8011",
+   "lat": -43.5336222,
+   "lon": 172.6344386,
+   "region": "West Coast",
+   "phone": "+64 3 371 7273",
+   "website": "https://twofatindians.co.nz/citycentral/",
+   "opening_hours": "Su-Th 11:30-21:00; Fr,Sa 11:30-21:30; Mo-Su 13:30-16:30 open \"High tea\"",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/11118471396"
+    }
+   ]
+  },
+  {
+   "id": "node/10613418505",
+   "name": "Global Fresh",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "367 Blenheim Road, 8041",
+   "city": null,
+   "postcode": "8041",
+   "lat": -43.5397547,
+   "lon": 172.5762212,
+   "region": "West Coast",
+   "phone": null,
+   "website": null,
+   "opening_hours": "Mo-Su 09:00-18:00",
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/10613418505"
+    }
+   ]
+  },
+  {
+   "id": "node/5427830129",
+   "name": "Maihan Supermarket and Halal Meat",
+   "category": "Supermarket",
+   "cuisine": null,
+   "halal_tag": "yes",
+   "address": "303 Colombo Street, Sydenham, Christchurch, 8023",
+   "city": "Christchurch",
+   "postcode": "8023",
+   "lat": -43.5494553,
+   "lon": 172.6363058,
+   "region": "West Coast",
+   "phone": null,
+   "website": null,
+   "opening_hours": null,
+   "verified": false,
+   "certification": null,
+   "sources": [
+    {
+     "type": "OpenStreetMap",
+     "url": "https://www.openstreetmap.org/node/5427830129"
+    }
+   ]
+  }
+ ]
+}
