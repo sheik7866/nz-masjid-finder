@@ -251,7 +251,14 @@
     } else {
       backendEl.textContent = '· this device only (Supabase not configured)';
     }
-    updateStats();
+    try {
+      const App = window.NZApp;
+      if (V && App && App.masjids) {
+        const st2 = V.stats(App.masjids.map((m) => m.id));
+        const el = $('verifyStats');
+        if (el) el.textContent = st2.verified + ' verified · ' + st2.flagged + ' flagged · ' + (App.masjids.length - st2.verified - st2.flagged) + ' unchecked';
+      }
+    } catch (e) { /* stats must never break boot */ }
   }
 
   // ------------------------------------------------------------ boot
@@ -320,6 +327,18 @@
     toast._t = setTimeout(() => t.classList.remove('show'), 2800);
   }
   window.NZToast = toast;
+
+  function updateStats() {
+    try {
+      const V = window.NZVerification;
+      const App = window.NZApp;
+      if (!V || !App || !App.masjids) return;
+      const st = V.stats(App.masjids.map((m) => m.id));
+      const el = $('verifyStats');
+      if (el) el.textContent = st.verified + ' verified · ' + st.flagged + ' flagged · ' + (App.masjids.length - st.verified - st.flagged) + ' unchecked';
+    } catch (e) { /* stats are best-effort and must never break boot */ }
+  }
+
 
   const relTime = (iso) => {
     if (!iso) return '';
@@ -407,15 +426,6 @@
     updateStats();
     updateBackendBadge();
     App.renderMasjidList(false);
-  }
-
-  function updateStats() {
-    const V = window.NZVerification;
-    const App = window.NZApp;
-    if (!V) return;
-    const s = V.stats(App.masjids.map((m) => m.id));
-    const el = $('verifyStats');
-    if (el) el.textContent = s.verified + ' verified · ' + s.flagged + ' flagged · ' + (App.masjids.length - s.verified - s.flagged) + ' unchecked';
   }
 
   document.addEventListener('DOMContentLoaded', () => {
