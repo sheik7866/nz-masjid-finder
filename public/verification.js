@@ -124,7 +124,10 @@
         await flushQueues();
         const [remote, approvedList] = await Promise.all([
           SB.listVerifications(),
-          SB.listApprovedSubmissions ? SB.listApprovedSubmissions().catch(() => approved) : Promise.resolve(approved),
+          SB.listApprovedSubmissions
+            ? SB.listApprovedSubmissions()
+              .catch((err) => { lastError = 'approved:' + (err && err.message); return approved; })
+            : Promise.resolve(approved),
         ]);
         mergeRemote(remote);
         approved = Array.isArray(approvedList) ? approvedList : approved;

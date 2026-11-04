@@ -347,7 +347,8 @@
     const vtag = $('vtag');
     if (vtag) {
       const approvedN = (V && V.approvedCountHint) ? V.approvedCountHint() : 0;
-      vtag.textContent = 'v5 · ' + App.masjids.length + ' masjids · ' + approvedN + ' community';
+      const err = (V && V.lastError) ? V.lastError : '';
+      vtag.textContent = 'v5 · ' + App.masjids.length + ' masjids · ' + approvedN + ' community' + (err ? ' · ERR:' + err : '');
     }
     if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
 
