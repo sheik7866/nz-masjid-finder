@@ -348,3 +348,8 @@ select.full { width: 100%; }
   .tabbar { position: sticky; }
   main { padding-bottom: 0; }
 }
+.vtag {
+  font-size: 10px; font-weight: 700; letter-spacing: .4px;
+  color: var(--gold); background: rgba(200,163,90,.12);
+  padding: 2px 7px; border-radius: 999px; margin-left: 6px; white-space: nowrap;
+}
