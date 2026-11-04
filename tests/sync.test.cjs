@@ -65,10 +65,15 @@ asyncOk('without Supabase configured, writes queue honestly and never claim to s
 });
 
 // ---------------------------------------------------------------- sync loads shared rows; server wins
-asyncOk('sync() loads server rows; local merge cannot resurrect deleted rows', async () => {
+asyncOk('sync() loads verifications AND approved submissions', async () => {
   const server = { [ID]: { id: ID, status: 'verified', verified_by: 'Server', updated_at: '2026-01-02T00:00:00Z' } };
+  const approvedRows = [
+    { id: 'uuid-1', name: 'Approved Mosque', type: 'masjid', status: 'approved', city: 'Hamilton', lat: -37.78, lon: 175.28 },
+    { id: 'uuid-2', name: 'Approved Halal', type: 'halal', status: 'approved', city: 'Auckland', lat: -36.85, lon: 174.76 },
+  ];
   const { V } = makeEnv((url, opts) => {
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([server[ID]]) });
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify(approvedRows) });
     return Promise.reject(new Error('unexpected ' + url));
   });
   const r = await V.sync();
@@ -76,8 +81,11 @@ asyncOk('sync() loads server rows; local merge cannot resurrect deleted rows', a
   assert.strictEqual(V.get(ID).verified_by, 'Server');
   assert.strictEqual(Object.keys(V.getAll()).length, 1, 'cache holds exactly the server set');
   assert.strictEqual(V.getAll()[ID].verified_by, 'Server');
+  assert.strictEqual(V.approvedSubmissions().length, 2, 'approved submissions are cached');
+  assert.strictEqual(V.approvedSubmissions()[0].status, 'approved');
   // resilience: a locally cached row the server has deleted must not come back
   const { V: V2 } = makeEnv((url) => {
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     return Promise.reject(new Error('unexpected ' + url));
   });
@@ -90,6 +98,7 @@ ok('confirm() writes to Supabase and caches only the server-accepted row', async
   const calls = [];
   const { V } = makeEnv((url, opts) => {
     calls.push({ url, opts });
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if ((opts.method || 'GET') === 'POST' && url.includes('/verifications')) {
       return Promise.resolve({ ok: true, status: 201, text: () => JSON.stringify('') });
@@ -112,6 +121,7 @@ ok('write() falls back INSERT -> admin UPDATE on 409 conflict', async () => {
   const seen = [];
   const { V } = makeEnv((url, opts) => {
     seen.push({ url, method: opts.method });
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (opts.method === 'POST') return Promise.resolve({ ok: false, status: 409, text: () => JSON.stringify({ code: '23505', message: 'duplicate' }) });
     if (opts.method === 'PATCH') return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify('') });
@@ -156,6 +166,36 @@ ok('offline writes queue invisibly and flush on the next sync', async () => {
 });
 
 // ---------------------------------------------------------------- realtime push triggers a fresh sync
+ok('subscribe() opens the realtime socket and joins both tables', async () => {
+  const opened = [];
+  const sockets = [];
+  function FakeSock() { this.readyState = 1; this.sent = []; }
+  FakeSock.prototype.send = function (m) { this.sent.push(JSON.parse(m)); };
+  const sandboxWebSocket = function (urlStr) {
+    opened.push(urlStr);
+    const s = new FakeSock();
+    sockets.push(s);
+    setTimeout(() => { if (s.onopen) s.onopen(); }, 0);
+    return s;
+  };
+  const { sandbox, V } = makeEnv((url) => {
+    if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
+    return Promise.reject(new Error('unexpected ' + url));
+  });
+  sandbox.WebSocket = sandboxWebSocket;
+  const ok1 = await V.subscribe(['verifications', 'submissions']);
+  assert.strictEqual(ok1, true, 'subscribe resolved true');
+  assert.strictEqual(opened.length, 1, 'one websocket opened');
+  assert.ok(/\/realtime\/v1\/websocket\?apikey=/.test(opened[0]), 'realtime endpoint used');
+  const topics = sockets[0].sent.filter((m) => m.event === 'phx_join').map((m) => m.topic);
+  assert.deepStrictEqual(topics.sort(), ['realtime:submissions', 'realtime:verifications'], 'joined both tables');
+  const joins = sockets[0].sent.filter((m) => m.event === 'phx_join');
+  joins.forEach((j) => {
+    assert.strictEqual(j.payload.config.postgres_changes[0].table, j.topic.replace('realtime:', ''));
+  });
+});
+
 ok('a Realtime postgres_changes event triggers a fresh sync', async () => {
   let selects = 0;
   const server = [{ id: ID, status: 'verified', verified_by: 'Other device', updated_at: '2026-01-03T00:00:00Z' }];
@@ -168,6 +208,7 @@ ok('a Realtime postgres_changes event triggers a fresh sync', async () => {
   });
   await V.sync();
   assert.strictEqual(selects, 1);
+  assert.strictEqual(V.approvedSubmissions().length, 0, 'no approved rows yet');
   // the production nz:data listener is registered on DOMContentLoaded; replicate it here
   sandbox.document.addEventListener('nz:data', () => V.sync().catch(() => {}));
   sandbox.document.dispatchEvent(new sandbox.CustomEvent('nz:data', { detail: { table: 'verifications' } }));
@@ -183,6 +224,7 @@ ok('adminUpdate/adminDelete go through is_admin() and never queue offline', asyn
   const calls = [];
   const { V } = makeEnv((url, opts) => {
     calls.push({ url, method: opts.method, body: opts.body });
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (opts.method === 'PATCH' || opts.method === 'DELETE') return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify('') });
     return Promise.reject(new Error('unexpected ' + url + ' ' + opts.method));
@@ -199,6 +241,7 @@ ok('adminUpdate/adminDelete go through is_admin() and never queue offline', asyn
 ok('submitMasjid goes to the shared queue; offline only as a retry queue', async () => {
   const posted = [];
   const { sandbox, V } = makeEnv((url, opts) => {
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (url.includes('/submissions')) {
       posted.push(JSON.parse(opts.body));
@@ -212,6 +255,15 @@ ok('submitMasjid goes to the shared queue; offline only as a retry queue', async
   assert.strictEqual(res.stored, 'supabase');
   assert.strictEqual(posted[0].name, 'Test Masjid X');
   assert.strictEqual(V.localSubmissions().length, 0, 'no shadow local list when shared');
+  // the new row appears for every device only after admin approval — simulate it
+  const { V: Vb } = makeEnv((url) => {
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([{ id: 'uuid-x', name: 'Test Masjid X', type: 'masjid', status: 'approved', city: 'Hamilton', lat: -37.78, lon: 175.28 }]) });
+    if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
+    return Promise.reject(new Error('unexpected ' + url));
+  });
+  await Vb.sync();
+  assert.strictEqual(Vb.approvedSubmissions().length, 1, 'a second device sees the approved row');
+  assert.strictEqual(Vb.approvedSubmissions()[0].name, 'Test Masjid X');
   sandbox.navigator.onLine = false;
   const off = await V.submitMasjid({ name: 'Offline Masjid', city: 'Nelson', type: 'masjid' });
   assert.strictEqual(off.stored, 'queued');

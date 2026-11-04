@@ -274,13 +274,15 @@
   async function renderEvents() {
     const box = $('rEvents');
     if (!box) return;
+    const approvedEvents = (App.communityEvents || []).slice();
     const local = (V && V.localSubmissions) ? V.localSubmissions().filter((s) => s.type === 'event') : [];
     let remote = [];
     const SB = window.NZSupabase;
     if (SB && SB.enabled && SB.isSignedIn && SB.isSignedIn()) {
       try { remote = await SB.listSubmissions(); } catch (e) { remote = []; }
     }
-    const events = remote.concat(local).filter((s) => (s.type === 'event') || /iftar|event/i.test(s.notes || ''));
+    const events = approvedEvents.concat(remote, local)
+      .filter((s, i, arr) => s.type === 'event' && arr.findIndex((x) => String(x.id) === String(s.id)) === i);
     if (!events.length) {
       box.innerHTML = '<p class="empty">No iftar or event listings yet. Community events appear here once a masjid or organiser submits them.</p>';
       return;

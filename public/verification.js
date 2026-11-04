@@ -23,6 +23,7 @@
   const SUBQ_KEY = 'nzmasjidfinder.submitQueue.v2';
   const MODE_KEY = 'nzmasjidfinder.verifyMode';
   const LAST_SYNC_KEY = 'nzmasjidfinder.lastSync.v1';
+  const APPROVED_KEY = 'nzmasjidfinder.approved.v1';     // last good approved list
 
   const SB = window.NZSupabase || { enabled: false };
 
@@ -39,6 +40,7 @@
   let cache = readJson(KEY, {});          // id -> server row (last good sync)
   let queue = readJson(QUEUE_KEY, []);    // verification writes not yet accepted
   let subQueue = readJson(SUBQ_KEY, []);  // submissions not yet accepted
+  let approved = readJson(APPROVED_KEY, []); // last good APPROVED submissions list
   let synced = false;
   let lastSync = readJson(LAST_SYNC_KEY, null);
   let lastError = null;
@@ -110,14 +112,22 @@
     get realtime() { return realtimeOn; },
     queues() { return { verifications: queue.length, submissions: subQueue.length }; },
 
+    /** APPROVED community submissions — the shared, public list. */
+    approvedSubmissions: () => approved.slice(),
+
     /** Load shared records. Flush pending writes FIRST (they become server
      *  rows), then re-read so the cache reflects what the server accepted. */
     async sync() {
       if (!SB.enabled) return { mode: 'local' };
       try {
         await flushQueues();
-        const remote = await SB.listVerifications();
+        const [remote, approvedList] = await Promise.all([
+          SB.listVerifications(),
+          SB.listApprovedSubmissions ? SB.listApprovedSubmissions().catch(() => approved) : Promise.resolve(approved),
+        ]);
         mergeRemote(remote);
+        approved = Array.isArray(approvedList) ? approvedList : approved;
+        writeJson(APPROVED_KEY, approved);
         // re-read queued rows the server has not yet acknowledged: after a
         // flush that failed its follow-up read, a blind merge would drop rows
         // the server actually holds. Instead, re-apply queued rows that are
@@ -147,6 +157,7 @@
         backend: api.backend,
         at: lastSync,
         shared: Object.keys(cache).length,
+        approved: approved.length,
         queued: queue.length + subQueue.length,
         error: lastError,
         realtime: realtimeOn,
@@ -154,10 +165,11 @@
     },
 
     /** Subscribe to live changes (Realtime); falls back to polling. */
-    async subscribe() {
+    async subscribe(tables) {
       if (!SB.enabled || !SB.realtime || realtimeOn) return false;
       try {
-        await SB.realtime.subscribe('verifications', () => api.sync());
+        const list = Array.isArray(tables) && tables.length ? tables : ['verifications', 'submissions'];
+        await Promise.all(list.map((t) => SB.realtime.subscribe(t, () => api.sync())));
         realtimeOn = true;
         document.dispatchEvent(new CustomEvent('nz:sync', { detail: api.syncState() }));
         return true;

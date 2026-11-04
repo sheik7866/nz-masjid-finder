@@ -229,6 +229,13 @@
     },
 
     // ---------------------------------------------------------- submissions
+    /** Public: approved submissions are visible to everyone — this is what an
+     *  approved masjid/halal spot/event becomes on the map. */
+    async listApprovedSubmissions(type) {
+      const filter = type ? '&type=eq.' + q(type) : '';
+      return request('/rest/v1/submissions?select=*' + filter + '&status=eq.approved&order=created_at.desc&limit=500');
+    },
+
     async createSubmission(sub) {
       const row = {
         // status is never sent: the database forces 'pending' on insert.

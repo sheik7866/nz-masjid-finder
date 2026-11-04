@@ -228,8 +228,9 @@
       ${pending && !o.readonly ? `<div class="vbtns">
         <button class="vbtn confirm" data-sub="${esc(String(s.id))}" data-status="approved" type="button">Approve</button>
         <button class="vbtn report" data-sub="${esc(String(s.id))}" data-status="rejected" type="button">Reject</button>
+        <button class="vbtn" data-editsub="${esc(String(s.id))}" type="button">Edit</button>
         <button class="vbtn undo" data-delsub="${esc(String(s.id))}" type="button">Delete</button>
-      </div>` : ''}
+      </div>` : (o.readonly ? '' : `<div class="vbtns"><button class="vbtn" data-editsub="${esc(String(s.id))}" type="button">Edit</button></div>`)}
     </li>`;
   };
 
@@ -263,6 +264,58 @@
       (list.length > 50 ? `<p class="hint">…and ${list.length - 50} more</p>` : '');
   }
 
+  async function ensureCommunityVisible() {
+    try { if (window.NZVerification && window.NZVerification.sync) await window.NZVerification.sync(); } catch (e) { /* badge already updated */ }
+  }
+
+  function wireEditDialog() {
+    document.querySelectorAll('[data-editsub]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.editsub;
+        let s = null;
+        try {
+          const subs = await SB.listSubmissions().catch(() => []);
+          s = subs.find((x) => String(x.id) === String(id));
+        } catch (e) { s = null; }
+        if (!s) return toast('Submission not found — it may have been deleted.');
+        openModal('Edit submission', '<form id="editSubForm" class="vform">' +
+          '<label>Name *</label><input name="name" required maxlength="120" value="' + esc(s.name || '') + '" />' +
+          '<label>What is it?</label><select name="type">' +
+          '<option value="masjid"' + (s.type === 'masjid' ? ' selected' : '') + '>A masjid / Islamic centre</option>' +
+          '<option value="halal"' + (s.type === 'halal' ? ' selected' : '') + '>A halal restaurant or shop</option>' +
+          '<option value="event"' + (s.type === 'event' ? ' selected' : '') + '>A Ramadan iftar or event</option></select>' +
+          '<label>Street address</label><input name="address" maxlength="160" value="' + esc(s.address || '') + '" />' +
+          '<div class="row"><div><label>City / town</label><input name="city" maxlength="60" value="' + esc(s.city || '') + '" /></div>' +
+          '<div><label>Postcode</label><input name="postcode" maxlength="10" value="' + esc(s.postcode || '') + '" /></div></div>' +
+          '<div class="row"><div><label>Phone / contact</label><input name="contact" maxlength="60" value="' + esc(s.contact || '') + '" /></div>' +
+          '<div><label>Website</label><input name="website" maxlength="200" value="' + esc(s.website || '') + '" /></div></div>' +
+          '<div class="row"><div><label>Latitude</label><input name="lat" maxlength="20" inputmode="decimal" value="' + esc(s.lat == null ? '' : s.lat) + '" /></div>' +
+          '<div><label>Longitude</label><input name="lon" maxlength="20" inputmode="decimal" value="' + esc(s.lon == null ? '' : s.lon) + '" /></div></div>' +
+          '<label>Notes</label><textarea name="notes" maxlength="400">' + esc(s.notes || '') + '</textarea>' +
+          '<div class="formbtns"><button class="vbtn confirm" type="submit">Save changes</button>' +
+          '<button class="vbtn undo" type="button" id="editCancel">Cancel</button></div>' +
+          '<p id="editErr" class="hint" style="color:#a8402a"></p></form>');
+        $('editCancel').addEventListener('click', () => openAdmin());
+        $('editSubForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const d = Object.fromEntries(new FormData(e.target).entries());
+          if (!d.name || !d.name.trim()) { $('editErr').textContent = 'Name is required.'; return; }
+          try {
+            await SB.updateSubmission(id, {
+              name: d.name.trim(), type: d.type || 'masjid',
+              address: d.address || null, city: d.city || null, postcode: d.postcode || null,
+              lat: d.lat === '' ? null : Number(d.lat), lon: d.lon === '' ? null : Number(d.lon),
+              contact: d.contact || null, website: d.website || null, notes: d.notes || null,
+            });
+            toast('Saved — live on every device.');
+            await openAdmin();
+            await ensureCommunityVisible();
+          } catch (err) { $('editErr').textContent = err.message || 'Save failed.'; }
+        });
+      });
+    });
+  }
+
   function wireAdminActions() {
     document.querySelectorAll('[data-sub]').forEach((btn) => {
       btn.addEventListener('click', async () => {
@@ -274,6 +327,7 @@
           await SB.updateSubmission(id, { status });
           toast('Submission ' + status + ' — visible on every device now');
           await refreshAdmin();
+          await ensureCommunityVisible();
         } catch (e) {
           toast('Failed: ' + e.message);
           btn.disabled = false;
@@ -289,6 +343,7 @@
           await SB.deleteSubmission(btn.dataset.delsub);
           toast('Submission deleted');
           await refreshAdmin();
+          await ensureCommunityVisible();
         } catch (e) {
           toast('Failed: ' + e.message);
           btn.disabled = false;
@@ -309,6 +364,7 @@
         }
       });
     });
+    wireEditDialog();
     document.querySelectorAll('[data-vbdel]').forEach((btn) => {
       btn.addEventListener('click', async () => {
         if (!confirm('Delete this verification record?')) return;
@@ -317,6 +373,7 @@
           await V.adminDelete(btn.dataset.vbdel);
           toast('Record deleted');
           await refreshAdmin();
+          await ensureCommunityVisible();
         } catch (e) {
           toast('Failed: ' + e.message);
           btn.disabled = false;

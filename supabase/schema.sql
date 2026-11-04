@@ -163,6 +163,7 @@ drop policy if exists "verifications community insert"   on public.verifications
 drop policy if exists "verifications admin update"       on public.verifications;
 drop policy if exists "verifications admin delete"       on public.verifications;
 drop policy if exists "submissions public insert"        on public.submissions;
+drop policy if exists "submissions approved read"        on public.submissions;
 drop policy if exists "submissions admin read"           on public.submissions;
 drop policy if exists "submissions admin update"         on public.submissions;
 drop policy if exists "submissions admin delete"         on public.submissions;
@@ -223,6 +224,16 @@ create policy "submissions public insert"
   to anon, authenticated
   with check (status = 'pending');
 
+-- Public: anyone may read APPROVED submissions — that is what makes an
+-- approved masjid/halal spot/event visible on every device. Only status,
+-- name and place fields of approved rows are exposed through this policy;
+-- selecting the full row is acceptable because contact/notes are public once
+-- approved. Pending/rejected rows stay admin-only (see below).
+create policy "submissions approved read"
+  on public.submissions for select
+  to anon, authenticated
+  using (status = 'approved');
+
 -- Admin only: read the queue, approve/reject, clean up.
 create policy "submissions admin read"
   on public.submissions for select
@@ -248,7 +259,7 @@ revoke all on public.verifications from anon, authenticated;
 revoke all on public.submissions   from anon, authenticated;
 
 grant select, insert on public.verifications to anon, authenticated;
-grant insert         on public.submissions   to anon, authenticated;
+grant select, insert on public.submissions   to anon, authenticated;
 
 -- Admins still need UPDATE/DELETE to exist as a privilege for the policy to
 -- matter, but only rows passing is_admin() are visible to them.

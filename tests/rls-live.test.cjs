@@ -212,9 +212,18 @@ async function cleanup() {
     const r = await req('/rest/v1/submissions', { method: 'POST', prefer: 'return=minimal', body: { name: SUB_NAME + ' approved', type: 'masjid', status: 'approved' } });
     if (r.ok) throw new Error('status=approved was ACCEPTED');
   });
-  await check('anon', 'cannot read the submission queue', async () => {
-    const r = await req('/rest/v1/submissions?select=id,name');
-    if (!denied(r)) throw new Error('anon can read submissions (' + r.status + ')');
+  await check('anon', 'cannot read the PENDING submission queue', async () => {
+    const r = await req('/rest/v1/submissions?select=id,name&status=eq.pending');
+    if (!denied(r)) throw new Error('anon can read pending submissions (' + r.status + ')');
+  });
+
+  await check('anon', 'CAN read approved listings (that is what appears on the map)', async () => {
+    const r = await req('/rest/v1/submissions?select=id,name,status&status=eq.approved');
+    if (r.status !== 200) throw new Error('approved read failed: ' + r.status);
+    if (!Array.isArray(r.data)) throw new Error('expected an array');
+    r.data.forEach((row) => {
+      if (row.status !== 'approved') throw new Error('a non-approved row leaked: ' + JSON.stringify(row));
+    });
   });
   await check('anon', 'cannot update or delete a submission', async () => {
     const p = await req('/rest/v1/submissions?name=like.' + encodeURIComponent(SUB_NAME + '*'), { method: 'PATCH', body: { status: 'approved' } });
@@ -233,8 +242,8 @@ async function cleanup() {
       const r = await req('/rest/v1/verifications?select=id&limit=1', { headers: user });
       if (r.status !== 200) throw new Error('expected 200, got ' + r.status);
     });
-    await check('user', 'cannot read the submission queue', async () => {
-      const r = await req('/rest/v1/submissions?select=id,name', { headers: user });
+    await check('user', 'cannot read the PENDING submission queue', async () => {
+      const r = await req('/rest/v1/submissions?select=id,name&status=eq.pending', { headers: user });
       if (!denied(r)) throw new Error('signed-in non-admin read the queue (' + r.status + ')');
     });
     await check('user', 'cannot approve its own submission', async () => {
@@ -263,22 +272,32 @@ async function cleanup() {
     });
     await check('user', 'cannot promote itself with user_metadata', async () => {
       // A signed-in user CAN write user_metadata. Prove it does not matter.
-      const token = user.Authorization.replace('Bearer ', '');
       const up = await req('/auth/v1/user', {
         method: 'PUT',
         headers: user,
         body: { data: { role: 'admin', app_metadata: { role: 'admin' } } },
       });
       const claims = jwtClaims(user);
-      const appRole = claims.app_metadata && claims.app_metadata.role;
-      const r = await req('/rest/v1/submissions?select=id', { headers: user });
-      if (appRole === 'admin') throw new Error('app_metadata changed by the user — CRITICAL');
+      if (claims.app_metadata && claims.app_metadata.role === 'admin') {
+        throw new Error('app_metadata changed by the user — CRITICAL');
+      }
+      // Promotion attempt grants nothing: the user must still be unable to read
+      // the PENDING queue (pending rows are the admin-only part). Approved rows
+      // are public by design, so reading those proves nothing.
+      const r = await req('/rest/v1/submissions?select=id&status=eq.pending', { headers: user });
       if (!denied(r)) throw new Error('user_metadata edit granted admin access — CRITICAL');
+      // UPDATE on a filter matching zero visible rows returns 204 either way, so
+      // the meaningful check is the ADMIN read (pending rows stay invisible).
+      const write = await req('/rest/v1/submissions?name=like.' + encodeURIComponent(SUB_NAME + '*'), { method: 'PATCH', headers: user, body: { status: 'approved' } });
+      const afterWrite = await req('/rest/v1/submissions?select=status&name=like.' + encodeURIComponent(SUB_NAME + '*'), { headers: user });
+      const visibleStatus = afterWrite.data && afterWrite.data.length ? afterWrite.data[0].status : null;
+      if (visibleStatus === 'approved') throw new Error('user_metadata edit granted admin write — CRITICAL');
+      if (!denied(afterWrite)) throw new Error('user_metadata edit granted admin read — CRITICAL');
+      if (write.status !== 204 && !denied(write)) throw new Error('unexpected PATCH result ' + write.status);
       if (up.ok) {
         // the write to user_metadata was allowed; that is expected and harmless
         record('user', 'user_metadata write attempted (allowed by Supabase, ignored by RLS)', 'PASS');
       }
-      if (!token) throw new Error('session lost');
     });
   }
 

@@ -7,10 +7,55 @@
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
 
+  function submissionToMasjid(s) {
+    const lat = s.lat != null ? Number(s.lat) : null;
+    const lon = s.lon != null ? Number(s.lon) : null;
+    const addr = [s.address, s.city, s.postcode].filter(Boolean).join(', ') || null;
+    return {
+      id: 'sub/' + s.id,
+      osm: null,
+      name: s.name,
+      alt_names: [],
+      kind: 'mosque',
+      denomination: null,
+      address: { line1: s.address || null, suburb: null, city: s.city || null, postcode: s.postcode || null, formatted: addr },
+      lat: lat, lon: lon,
+      region: guessRegion(s.city) || 'New Zealand',
+      phones: s.contact ? [s.contact] : null,
+      email: null,
+      website: s.website || null,
+      facebook: null,
+      wheelchair: null,
+      capacity: null,
+      notes: ['Community submission', s.notes].filter(Boolean).join(' — ') || null,
+      opening_hours: null,
+      jummah_times: null,
+      prayer_times: null,
+      verified: false,
+      verified_by: null,
+      verified_at: null,
+      status: 'unverified',
+      last_checked: null,
+      community: true,
+      submission_id: s.id,
+      sources: [{ type: 'Community submission', url: null }],
+      raw_tags: {},
+    };
+  }
+  function guessRegion(city) {
+    const c = (city || '').toLowerCase();
+    const table = { auckland: 'Auckland', hamilton: 'Waikato', tauranga: 'Bay of Plenty', rotorua: 'Bay of Plenty', gisborne: 'Gisborne', napier: "Hawke's Bay", hastings: "Hawke's Bay", palmerston: 'Manawatu-Whanganui', wellington: 'Wellington', nelson: 'Nelson', christchurch: 'Canterbury', dunedin: 'Otago', queenstown: 'Otago', invercargill: 'Southland' };
+    for (const k of Object.keys(table)) { if (c.indexOf(k) !== -1) return table[k]; }
+    return null;
+  }
+
   const App = {
     masjids: [],
     halal: [],
     meta: {},
+    communityMasjids: [],
+    communityHalal: [],
+    communityEvents: [],
     userPos: null,
     place: { lat: -36.8485, lon: 174.7633, label: 'Auckland' },
     maps: {},          // id -> L.Map
@@ -262,6 +307,59 @@
   }
 
   // ------------------------------------------------------------ boot
+  function rebuildFromSources(mDoc, hDoc) {
+    const V = window.NZVerification;
+    const approved = (V && V.approvedSubmissions) ? V.approvedSubmissions() : [];
+    const approvedMasjids = approved
+        .filter((s) => (s.type || 'masjid') === 'masjid' && s.status === 'approved')
+        .map(submissionToMasjid)
+        .filter((m) => m.lat != null && m.lon != null && !isNaN(m.lat) && !isNaN(m.lon));
+      const approvedHalal = approved
+        .filter((s) => s.type === 'halal' && s.status === 'approved')
+        .map((s) => ({
+          id: 'sub/' + s.id,
+          name: s.name,
+          category: 'Halal business',
+          cuisine: s.notes || null,
+          address: [s.address, s.city, s.postcode].filter(Boolean).join(', ') || null,
+          city: s.city || null,
+          postcode: s.postcode || null,
+          lat: s.lat != null ? Number(s.lat) : null,
+          lon: s.lon != null ? Number(s.lon) : null,
+          region: guessRegion(s.city) || 'New Zealand',
+          phone: s.contact || null,
+          website: s.website || null,
+          opening_hours: null,
+          verified: true,
+          sources: [{ type: 'Community submission', url: null }],
+        }))
+        .filter((b) => b.lat != null && b.lon != null && !isNaN(b.lat) && !isNaN(b.lon));
+      const approvedEvents = approved.filter((s) => s.type === 'event' && s.status === 'approved');
+    App.masjids = (mDoc.masjids || []).concat(approvedMasjids).map((m) => (V ? V.decorate(m) : m));
+    App.communityMasjids = approvedMasjids;
+    App.communityHalal = approvedHalal;
+    App.communityEvents = approvedEvents;
+    App.meta = mDoc.meta || {};
+    App.halal = (hDoc && hDoc.businesses ? hDoc.businesses : []).concat(approvedHalal);
+    App.halalMeta = (hDoc && hDoc.meta) || {};
+    document.dispatchEvent(new CustomEvent('nz:community', { detail: { masjids: approvedMasjids.length, halal: approvedHalal.length, events: approvedEvents.length } }));
+    const metaEl = $('meta');
+    if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
+
+    const regions = {};
+    App.masjids.forEach((m) => { regions[m.region] = (regions[m.region] || 0) + 1; });
+    const sel = $('mRegion');
+    if (sel) {
+      sel.innerHTML = '<option value="">All regions</option>';
+      Object.entries(regions).sort((a, b) => b[1] - a[1]).forEach(([r, n]) => {
+        const o = document.createElement('option');
+        o.value = r; o.textContent = r + ' (' + n + ')';
+        sel.appendChild(o);
+      });
+    }
+    renderMasjidList(true);
+  }
+
   async function boot() {
     const metaEl = $('meta');
     try {
@@ -270,33 +368,28 @@
         fetch('data/halal.json', { cache: 'no-cache' }).catch(() => null),
       ]);
       const mDoc = await mRes.json();
+      const hDoc = (hRes && hRes.ok) ? await hRes.json() : null;
       const V = window.NZVerification;
       if (V && V.sync) await V.sync();
-      try { if (V && V.subscribe) await V.subscribe(); } catch (e) { /* realtime optional */ }
+      try { if (V && V.subscribe) await V.subscribe(['verifications', 'submissions']); } catch (e) { /* realtime optional */ }
       updateBackendBadge();
-      App.masjids = (mDoc.masjids || []).map((m) => (V ? V.decorate(m) : m));
-      App.meta = mDoc.meta || {};
-      if (hRes && hRes.ok) {
-        const hDoc = await hRes.json();
-        App.halal = hDoc.businesses || [];
-        App.halalMeta = hDoc.meta || {};
-      }
-      if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
-
-      const regions = {};
-      App.masjids.forEach((m) => { regions[m.region] = (regions[m.region] || 0) + 1; });
-      const sel = $('mRegion');
-      if (sel) {
-        Object.entries(regions).sort((a, b) => b[1] - a[1]).forEach(([r, n]) => {
-          const o = document.createElement('option');
-          o.value = r; o.textContent = r + ' (' + n + ')';
-          sel.appendChild(o);
-        });
-      }
+      App.rawMosques = mDoc;
+      App.rawHalal = hDoc;
+      rebuildFromSources(mDoc, hDoc);
 
       baseMap('masjidMap');
       renderMasjidList(true);
       wireMasjidView();
+
+      document.addEventListener('nz:sync', () => {
+        try {
+          if (!App.rawMosques) return;
+          rebuildFromSources(App.rawMosques, App.rawHalal);
+          renderMasjidList(false);
+          updateBackendBadge();
+          document.dispatchEvent(new CustomEvent('nz:masjids-changed'));
+        } catch (e) { console.warn('community refresh failed', e); }
+      });
     } catch (err) {
       if (metaEl) metaEl.textContent = 'Data failed to load';
       console.error(err);

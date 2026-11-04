@@ -55,8 +55,12 @@ ok('user_metadata is never used for authorisation', () => {
 });
 
 ok('every admin policy calls is_admin() — none falls back to "any signed-in user"', () => {
+  // Intentional public reads (badges and approved listings) are excluded: both
+  // are read-only views of data that is meant to be public. Every write policy,
+  // and the admin-only reads, must gate on is_admin().
+  const PUBLIC_READS = ['verifications public read', 'submissions approved read'];
   const adminPolicies = allPolicies.filter((p) => /for (update|delete|select)/i.test(p.body) &&
-    !/for select[\s\S]*?using \(true\)/i.test(p.body));
+    PUBLIC_READS.indexOf(p.name) === -1);
   assert.ok(adminPolicies.length >= 4, 'expected admin policies, found ' + adminPolicies.length);
   adminPolicies.forEach((p) => {
     assert.ok(/is_admin\(\)/.test(p.body), p.name + ' must gate on is_admin()');
@@ -147,10 +151,14 @@ ok('submissions can only be inserted as pending', () => {
   assert.ok(/with check \(status = 'pending'\)/i.test(p));
 });
 
-ok('submissions are not publicly readable', () => {
-  const publicRead = allPolicies.filter((p) => /for select/i.test(p.body) &&
+ok('only APPROVED submissions are publicly readable — pending queue stays admin-only', () => {
+  const publicReads = allPolicies.filter((p) => /for select/i.test(p.body) &&
     /to [^;]*\banon\b/i.test(p.body) && /on public\.submissions/i.test(p.body));
-  assert.strictEqual(publicRead.length, 0, 'anon must not select submissions');
+  assert.strictEqual(publicReads.length, 1, 'exactly one public read policy, for approved rows');
+  assert.ok(/using \(status = 'approved'\)/i.test(publicReads[0].body),
+    'the public read policy must expose only status=approved');
+  const adminRead = policy('submissions admin read');
+  assert.ok(adminRead && /to authenticated/i.test(adminRead), 'admin keeps full read via is_admin()');
 });
 
 ok('submission input is bounded', () => {
@@ -169,7 +177,7 @@ ok('ordinary authenticated users get the same minimal grants as anon', () => {
   assert.strictEqual(verifyAnon.privs, 'select, insert');
   const subAnon = grants.find((g) => g.table === 'submissions' && g.roles === 'anon, authenticated');
   assert.ok(subAnon, 'shared grant for submissions');
-  assert.strictEqual(subAnon.privs, 'insert');
+  assert.strictEqual(subAnon.privs, 'select, insert', 'public needs SELECT so the approved-only policy can serve approved rows');
 });
 
 ok('no GRANT gives anon UPDATE or DELETE anywhere', () => {
