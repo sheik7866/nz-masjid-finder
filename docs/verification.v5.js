@@ -114,6 +114,7 @@
 
     /** APPROVED community submissions — the shared, public list. */
     approvedSubmissions: () => approved.slice(),
+    approvedCountHint: () => approved.length,
 
     /** Load shared records. Flush pending writes FIRST (they become server
      *  rows), then re-read so the cache reflects what the server accepted. */

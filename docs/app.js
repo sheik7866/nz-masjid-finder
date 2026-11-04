@@ -344,6 +344,11 @@
     App.halalMeta = (hDoc && hDoc.meta) || {};
     document.dispatchEvent(new CustomEvent('nz:community', { detail: { masjids: approvedMasjids.length, halal: approvedHalal.length, events: approvedEvents.length } }));
     const metaEl = $('meta');
+    const vtag = $('vtag');
+    if (vtag) {
+      const approvedN = (V && V.approvedCountHint) ? V.approvedCountHint() : 0;
+      vtag.textContent = 'v5 · ' + App.masjids.length + ' masjids · ' + approvedN + ' community';
+    }
     if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
 
     const regions = {};
