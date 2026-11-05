@@ -335,7 +335,9 @@
         }))
         .filter((b) => b.lat != null && b.lon != null && !isNaN(b.lat) && !isNaN(b.lon));
       const approvedEvents = approved.filter((s) => s.type === 'event' && s.status === 'approved');
-    App.masjids = (mDoc.masjids || []).concat(approvedMasjids).map((m) => (V ? V.decorate(m) : m));
+    App.masjids = (mDoc.masjids || []).concat(approvedMasjids)
+      .filter((m) => !(V && V.isRemoved && V.isRemoved(m.id)))
+      .map((m) => (V ? V.decorate(m) : m));
     App.communityMasjids = approvedMasjids;
     App.communityHalal = approvedHalal;
     App.communityEvents = approvedEvents;

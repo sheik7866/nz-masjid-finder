@@ -280,6 +280,50 @@
       return true;
     },
 
+    /** True when an admin has removed this masjid from the public map. */
+    isRemoved(id) {
+      const v = cache[id];
+      return Boolean(v && v.status === 'closed' &&
+        (v.history || []).some((h) => h && h.action === 'admin:removed'));
+    },
+
+    /** Admin only: hide a masjid from the map for everyone. Uses the existing
+     *  verifications table so no schema change is needed: a first row is
+     *  inserted through the community path if none exists yet, then the admin
+     *  UPDATE (enforced by is_admin()) marks it closed + admin:removed. */
+    async adminRemove(id, opts) {
+      if (!SB.enabled) throw new Error('Supabase is not configured');
+      const o = opts || {};
+      const reason = (o.reason || '').trim() || 'Removed by admin';
+      if (!cache[id]) {
+        try {
+          await SB.createVerification({
+            id, status: 'needs_review', reported_by: 'admin', reported_at: nowIso(),
+            report_note: reason, history: [],
+          });
+        } catch (e) {
+          const dup = e.status === 409 || (e.body && (e.body.code === '23505' || /duplicate/i.test(e.message || '')));
+          if (!dup) throw e;
+        }
+      }
+      const prev = cache[id] || {};
+      return api.adminUpdate(id, {
+        status: 'closed',
+        verified_by: null,
+        verified_at: null,
+        reported_by: 'admin',
+        reported_at: nowIso(),
+        report_note: reason,
+        note: o.name ? ('Removed: ' + o.name) : (prev.note || null),
+        history: (prev.history || []).concat([{ action: 'admin:removed', at: nowIso(), by: 'admin', note: reason }]),
+      });
+    },
+
+    /** Admin only: put a removed masjid back (drops its verification record). */
+    async adminRestore(id) {
+      return api.adminDelete(id);
+    },
+
     clearAll() {
       // Only clears local offline artefacts — shared rows are never deleted here.
       queue = [];
