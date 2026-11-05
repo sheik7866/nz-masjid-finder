@@ -187,7 +187,9 @@
         SB.listVerifications().catch(() => ({})),
       ]);
       const list = Object.keys(vers).map((k) => vers[k]);
-      const flagged = list.filter((v) => v.status && v.status !== 'verified');
+      const isRemoved = (v) => v.status === 'closed' && (v.history || []).some((h) => h && h.action === 'admin:removed');
+      const removed = list.filter(isRemoved);
+      const flagged = list.filter((v) => v.status && v.status !== 'verified' && !isRemoved(v));
       const verified = list.filter((v) => v.status === 'verified');
       const pending = subs.filter((s) => s.status === 'pending');
       const done = subs.filter((s) => s.status !== 'pending');
@@ -205,8 +207,17 @@
         ${flaggedHtml(flagged)}
         <h3>All verified (${verified.length})</h3>
         ${verifiedHtml(verified)}
+        <h3>Delete a masjid</h3>
+        <div class="vform">
+          <input id="delSearch" type="search" maxlength="80" placeholder="Search by name, city or address" autocomplete="off" />
+          <p class="hint">Deleting hides the masjid from the map and list on every device. Community-added masjids are deleted permanently; listings from the OpenStreetMap dataset can be restored below.</p>
+        </div>
+        <ul class="admList" id="delResults"></ul>
+        <h3>Removed masjids (${removed.length})</h3>
+        ${removedHtml(removed)}
       `);
       wireAdminActions();
+      wireDeleteMasjid();
       const so = $('signOut');
       if (so) so.addEventListener('click', () => { SB.signOut(); toast('Signed out'); closeModal(); });
     } catch (e) {
@@ -262,6 +273,85 @@
         <div class="vbtns"><button class="vbtn undo" data-vbdel="${esc(v.id)}" type="button">Delete record</button></div>
       </li>`).join('') + '</ul>' +
       (list.length > 50 ? `<p class="hint">…and ${list.length - 50} more</p>` : '');
+  }
+
+  // ------------------------------------------------------------ delete masjid
+  function masjidName(id) {
+    const App = window.NZApp || {};
+    const raw = (App.rawMosques && App.rawMosques.masjids) || [];
+    const m = raw.find((x) => x.id === id) || (App.masjids || []).find((x) => x.id === id);
+    return m ? m.name : null;
+  }
+
+  function removedHtml(list) {
+    if (!list || !list.length) return '<p class="hint">No masjids have been removed.</p>';
+    return '<ul class="admList">' + list.map((v) => `
+      <li class="admItem">
+        <div class="admTop"><b>${esc(masjidName(v.id) || v.id)}</b><span class="badge unverified">removed</span></div>
+        <p class="addr">${esc(v.id)} · removed ${esc((v.reported_at || '').slice(0, 10))}${v.report_note ? ' · ' + esc(v.report_note) : ''}</p>
+        <div class="vbtns"><button class="vbtn confirm" data-restore="${esc(v.id)}" type="button">Restore</button></div>
+      </li>`).join('') + '</ul>';
+  }
+
+  function wireDeleteMasjid() {
+    const input = $('delSearch');
+    const out = $('delResults');
+    if (!input || !out) return;
+    const render = () => {
+      const qv = input.value.trim().toLowerCase();
+      if (qv.length < 2) { out.innerHTML = ''; return; }
+      const all = (window.NZApp && window.NZApp.masjids) || [];
+      const hits = all.filter((m) => [m.name, m.address && m.address.formatted, m.region]
+        .filter(Boolean).join(' ').toLowerCase().indexOf(qv) !== -1).slice(0, 15);
+      out.innerHTML = hits.length ? hits.map((m) => `
+        <li class="admItem">
+          <div class="admTop"><b>${esc(m.name)}</b><span class="badge ${m.community ? 'unverified' : 'verified'}">${m.community ? 'community' : 'OSM'}</span></div>
+          <p class="addr">${esc((m.address && m.address.formatted) || m.region || '')}</p>
+          <div class="vbtns"><button class="vbtn undo" data-delmasjid="${esc(m.id)}" type="button">Delete masjid</button></div>
+        </li>`).join('') : '<p class="hint">No masjid matches that search.</p>';
+    };
+    let t;
+    input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(render, 150); });
+    out.addEventListener('click', async (e) => {
+      const btn = e.target.closest('[data-delmasjid]');
+      if (!btn) return;
+      const id = btn.dataset.delmasjid;
+      const all = (window.NZApp && window.NZApp.masjids) || [];
+      const m = all.find((x) => x.id === id);
+      const name = (m && m.name) || id;
+      const community = id.indexOf('sub/') === 0;
+      const reason = window.prompt('Delete "' + name + '" from the map for everyone?\n' +
+        (community ? 'This community submission will be deleted permanently.\n' : 'You can restore it later from "Removed masjids".\n') +
+        '\nReason (optional):', '');
+      if (reason === null) return;
+      btn.disabled = true;
+      btn.textContent = 'Deleting…';
+      try {
+        if (community) await SB.deleteSubmission(id.slice(4));
+        else await V.adminRemove(id, { name, reason });
+        toast('Deleted "' + name + '" — removed on every device');
+        await ensureCommunityVisible();
+        await refreshAdmin();
+      } catch (err) {
+        toast('Failed: ' + err.message);
+        btn.disabled = false;
+        btn.textContent = 'Delete masjid';
+      }
+    });
+    document.querySelectorAll('[data-restore]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true;
+        try {
+          await V.adminRestore(btn.dataset.restore);
+          toast('Masjid restored');
+          await ensureCommunityVisible();
+          await refreshAdmin();
+        } catch (err) {
+          toast('Failed: ' + err.message);
+          btn.disabled = false;
+        }
+      });
+    });
   }
 
   async function ensureCommunityVisible() {
