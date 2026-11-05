@@ -181,6 +181,11 @@
         (m.website ? '<a href="' + esc(m.website) + '" target="_blank" rel="noopener">Website</a>' : '') +
       '</div>' +
       (m.jummah_times ? '<p class="addr" style="margin:8px 0 0"><b>Jumu\'ah:</b> ' + esc(m.jummah_times) + '</p>' : '') +
+      ((!m.jummah_times && App.aiJummah && App.aiJummah[m.id]) ? (function (a) {
+        return '<p class="addr" style="margin:8px 0 0"><b>Jumu\'ah:</b> ' + esc(a.jummahTimes) +
+          ' <span class="badge unverified">AI-checked</span><br><small>“' + esc(a.evidence) + '” — <a href="' + esc(a.sourceUrl) +
+          '" target="_blank" rel="noopener">source</a>. Please confirm with the masjid.</small></p>';
+      })(App.aiJummah[m.id]) : '') +
       (window.NZMapExtra ? window.NZMapExtra.verifySection(m) : '');
   }
   App.masjidCard = masjidCard;

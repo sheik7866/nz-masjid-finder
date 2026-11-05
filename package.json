@@ -1,0 +1,20 @@
+{
+  "name": "nz-masjid-finder",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "NZ Masjid Finder - static app plus Netlify Functions for AI Jumu'ah checks",
+  "scripts": {
+    "test": "sh tests/run-all.sh",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.5.0",
+    "@netlify/database": "^2.0.1",
+    "@netlify/functions": "^6.1.0",
+    "drizzle-orm": "^1.0.0-beta.22"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^1.0.0-beta.22"
+  }
+}
