@@ -92,10 +92,46 @@
     prayerTimer = setInterval(() => { if (!$('view-prayer').hidden) renderPrayer(); }, 60000);
   }
 
+  let aiLoaded = false;
+  function loadAiJummah() {
+    fetch('/api/ai-jummah', { cache: 'no-cache' }).then((r) => r.json()).then((d) => {
+      App.aiJummah = {};
+      (d.results || []).filter((r) => r.status === 'found' && r.jummahTimes).forEach((r) => { App.aiJummah[r.masjidId] = r; });
+      App.aiJummahMeta = d;
+      aiLoaded = true;
+      if ($('pJummah')) renderJummah();
+      if (App.renderMasjidList) App.renderMasjidList(false);
+      if (d.refreshing && !loadAiJummah._retry) { loadAiJummah._retry = setTimeout(() => { loadAiJummah._retry = null; loadAiJummah(); }, 45000); }
+    }).catch(() => {});
+  }
+  document.addEventListener('DOMContentLoaded', loadAiJummah);
+
+  function aiJummahHtml() {
+    const ai = App.aiJummah || {};
+    const human = new Set(P.verifiedJummah(App.masjids).map((j) => j.id));
+    const rows = App.masjids.filter((m) => ai[m.id] && !human.has(m.id)).sort((a, b) => a.name.localeCompare(b.name));
+    const meta = App.aiJummahMeta || {};
+    const head = '<li class="empty"><b>AI-checked from masjid websites</b> — read automatically from each masjid\'s own site. Please confirm before relying on it.' +
+      (meta.refreshing ? ' <i>Checking websites now… results appear over the next few minutes.</i>' : '') + '</li>';
+    if (!rows.length) return aiLoaded ? head : '';
+    return head + rows.map((m) => {
+      const a = ai[m.id];
+      const dir = App.directionsLinks(m);
+      return '<li><div><b>' + esc(m.name) + '</b>' +
+        '<p class="addr">' + esc((m.address && m.address.formatted) || m.region || '') + '</p>' +
+        '<p class="addr small">“' + esc(a.evidence) + '” — <a href="' + esc(a.sourceUrl) + '" target="_blank" rel="noopener">source</a> · checked ' + esc(String(a.checkedAt || '').slice(0, 10)) + '</p>' +
+        (a.notes ? '<p class="addr small">⚠ ' + esc(a.notes) + '</p>' : '') + '</div>' +
+        '<div class="jright"><span class="jtime">' + esc(a.jummahTimes) + '</span><span class="badge unverified">AI-checked</span><br>' +
+        '<a href="' + dir.google + '" target="_blank" rel="noopener">Directions</a></div></li>';
+    }).join('') + aiJummahHtml();
+  }
+
   function renderJummah() {
     const list = P.verifiedJummah(App.masjids);
-    $('jCount').textContent = String(list.length);
+    const aiCount = Object.keys(App.aiJummah || {}).length;
+    $('jCount').textContent = String(list.length + aiCount);
     if (!list.length) {
+      if (aiLoaded) { $('pJummah').innerHTML = aiJummahHtml(); return; }
       $('pJummah').innerHTML = '<li class="empty">No verified Jumu\'ah times yet. Open a masjid in the Masjids tab and press “Confirm details” once you have checked its own timetable — that is what fills this list.</li>';
       return;
     }
