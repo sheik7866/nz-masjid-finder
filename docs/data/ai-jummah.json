@@ -1,0 +1,683 @@
+{
+ "generated_at": "2026-11-05T11:47:51.196Z",
+ "checkable": 43,
+ "results": [
+  {
+   "masjidId": "node/5417509863",
+   "masjidName": "AIT Musallah ( Masjid)",
+   "website": "https://ait.org.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Pages list only daily Zuhr/Dhuhr times and general timetable notes; no explicit Jumu'ah or Friday prayer/khutbah time is stated.",
+   "pagesChecked": [
+    "https://ait.org.nz/",
+    "https://ait.org.nz/prayer-time-table/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.600Z"
+  },
+  {
+   "masjidId": "node/12501045625",
+   "masjidName": "Al Hijaz Masjid",
+   "website": "https://alhijaz.co.nz/",
+   "status": "found",
+   "jummahTimes": "Jum'ah Prayer Fridays at 12:35",
+   "evidence": "Jum'ah Prayer, Fridays at 12:35",
+   "sourceUrl": "https://www.alhijaz.co.nz/",
+   "confidence": 0.5,
+   "notes": "Appears under an 'Upcoming Events' section tagged FRIDAY/2024, so it may be out of date. It may also change with daylight saving. The services page gives no time.",
+   "pagesChecked": [
+    "https://www.alhijaz.co.nz/",
+    "https://www.alhijaz.co.nz/services"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/329811386",
+   "masjidName": "Al Rahman Masjid - Al Manar Islamic Trust",
+   "website": "https://almanar.co.nz",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The page only mentions prayer times for Masjid Ar-Rahman as a link. It gives no Jumu'ah or Friday prayer time.",
+   "pagesChecked": [
+    "https://almanar.co.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/360117094",
+   "masjidName": "Al-Mustafa Jamia Masjid",
+   "website": "https://sama.co.nz/",
+   "status": "found",
+   "jummahTimes": "Jumu'ah prayer 12:40 PM (1:40 PM during daylight saving time)",
+   "evidence": "The jamaat unites for jumu’ah prayers at 12:40 PM (1:40 PM during daylight saving time).",
+   "sourceUrl": "https://sama.co.nz/",
+   "confidence": 0.85,
+   "notes": "Time changes with daylight saving; khutbah time not stated separately.",
+   "pagesChecked": [
+    "https://sama.co.nz/",
+    "https://sama.co.nz/janaza/",
+    "https://sama.co.nz/ramadan/",
+    "https://sama.co.nz/religious-studies/",
+    "https://sama.co.nz/sama-youth/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501069624",
+   "masjidName": "Aotearoa Muslim Youth - Masjid",
+   "website": "https://muslimyouth.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The page is an unrelated loan and NZ Super content site. It has no Jumu'ah or prayer times and does not appear to be a masjid website.",
+   "pagesChecked": [
+    "https://www.muslimyouth.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/295577814",
+   "masjidName": "Avondale Islamic Centre",
+   "website": "https://nzma.kiwi.nz/masjids/avondale/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "None of the provided pages state a Jumu'ah or Friday prayer time for Avondale. The prayer timetable page has no content in the scraped text.",
+   "pagesChecked": [
+    "https://nzma.kiwi.nz/masjids/avondale/",
+    "https://nzma.kiwi.nz/prayer-timetable/",
+    "https://nzma.kiwi.nz/services/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501085506",
+   "masjidName": "Baitul Mukarram Islamic Centre",
+   "website": "https://baitulmukarram.co.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: fetch failed",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3683197689",
+   "masjidName": "Glen Innes Islamic Centre",
+   "website": "https://buildamosque.co.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: HTTP 502",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/5362650146",
+   "masjidName": "Hibiscus Coast Islamic Centre",
+   "website": "https://www.hcic.org.nz",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The only page provided shows a loading screen and CSS error, with no prayer time content.",
+   "pagesChecked": [
+    "https://www.hcic.org.nz/s/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3702016441",
+   "masjidName": "Islamic Ahlulbayt Foundation of New Zealand",
+   "website": "https://islam.org.nz",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "No Jumu'ah or Friday prayer time is stated on any of the provided pages. The Salah times section on the homepage has no times in the scraped text.",
+   "pagesChecked": [
+    "https://islam.org.nz/",
+    "https://islam.org.nz/services/",
+    "https://islam.org.nz/justice-of-peace-services/",
+    "https://islam.org.nz/iafonz-halal-services/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501069627",
+   "masjidName": "Manukau Islamic Youth Centre - Masjid",
+   "website": "https://miyc.co.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "No Jumu'ah or Friday prayer time appears in the page text. The Prayer Times page has no timetable in the scraped content; it is likely loaded dynamically or only available in the mobile app.",
+   "pagesChecked": [
+    "https://miyc.co.nz/",
+    "https://miyc.co.nz/services/",
+    "https://miyc.co.nz/prayer-times/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3701968582",
+   "masjidName": "Masjid As-Salam",
+   "website": "http://www.salammasjid.co.nz",
+   "status": "found",
+   "jummahTimes": "Khutbah 1:45pm, Prayer 2:15pm",
+   "evidence": "Jummah Prayer\nصلاة الجمعة\nKhutbah\n1:45 PM\nPrayer\n2:15 PM\nEvery Friday",
+   "sourceUrl": "https://www.salammasjid.co.nz/",
+   "confidence": 0.6,
+   "notes": "The same page also says 'Fridays at 1:15 PM' in the Our Services section, which conflicts with the 1:45/2:15 times. Times may change seasonally with daylight saving.",
+   "pagesChecked": [
+    "https://www.salammasjid.co.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3683039850",
+   "masjidName": "Masjid At-Taqwa",
+   "website": "https://masjidattaqwa.co.nz",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND masjidattaqwa.co.nz",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/439643386",
+   "masjidName": "Masjid Ayesha",
+   "website": "https://www.masjidayesha.co.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: fetch failed",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3702024763",
+   "masjidName": "Masjid e Abu Hurairah (Kelston Islamic Centre NZMA)",
+   "website": "http://nzma.kiwi.nz/masjids/kelston/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: HTTP 404",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/308373663",
+   "masjidName": "Masjid e Umar",
+   "website": "https://www.masjideumar.co.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "No explicit Jumu'ah or Friday prayer time on the pages. Only a general Zuhr timetable is shown, which is not used.",
+   "pagesChecked": [
+    "https://masjideumar.co.nz/",
+    "https://masjideumar.co.nz/prayer-timetable/",
+    "https://masjideumar.co.nz/services/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501069626",
+   "masjidName": "Masjid-E-Zahra - (Al Falah Education Trust)",
+   "website": "http://alfalah.nz",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The homepage mentions Jumuah as a service but gives no time. A 'Namaz Timing' news item is listed without its content.",
+   "pagesChecked": [
+    "https://www.alfalah.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3700505525",
+   "masjidName": "Mount Albert Islamic Centre",
+   "website": "https://mtalbertislamiccentre.org",
+   "status": "found",
+   "jummahTimes": "Pre-Khutbah 1:15pm, Adhaan 1:30pm, Khutbah 1:40pm, Prayers 2:00pm (Friday Jummah)",
+   "evidence": "Prayer Times\nAll year round (both winter and summer)\nPre-Khutbah | 1.15pm |\nAdhaan | 1.30pm |\nKhutbah | 1.40pm |\nPrayers | 2.00pm |",
+   "sourceUrl": "https://mtalbertislamiccentre.org/",
+   "confidence": 0.85,
+   "notes": "Stated as all year round (winter and summer). Held at Mt Albert War Memorial Hall. Page does not label the times as Friday, but the centre's purpose is Friday Jummah prayers.",
+   "pagesChecked": [
+    "https://mtalbertislamiccentre.org/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3700492108",
+   "masjidName": "New Lynn Islamic Centre",
+   "website": "https://newlynnislamiccentre.co.nz",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: HTTP 403",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3683200835",
+   "masjidName": "North Shore Islamic Centre",
+   "website": "http://isnorthshore.org",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND isnorthshore.org",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12527833991",
+   "masjidName": "Otahuhu Mosque - Masjid",
+   "website": "https://masjidalfarooq.co.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: fetch failed",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/1464569803",
+   "masjidName": "Qiyam Education Centre",
+   "website": "https://qiyam.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The homepage describes community programmes only and does not mention Jumu'ah or Friday prayer times.",
+   "pagesChecked": [
+    "https://qiyam.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/1458827076",
+   "masjidName": "Ulul Albab Islamic Institute NZ",
+   "website": "https://ululalbabinstitute.co.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: fetch failed",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12508326803",
+   "masjidName": "Linwood Islam Centre - Masjid Al-Shuhada'a",
+   "website": "https://linwoodislamiccentre.org.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website is under construction and contains no Jumu'ah or prayer time information.",
+   "pagesChecked": [
+    "https://linwoodislamiccentre.org.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/3702073524",
+   "masjidName": "Nawawi Centre",
+   "website": "https://nawawicenter.org/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The page is a youth charity homepage with no Jumu'ah or Friday prayer times. It only mentions a Masjid Al-Nur meeting point for a trip.",
+   "pagesChecked": [
+    "https://nawawicenter.org/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12508326804",
+   "masjidName": "Rolleston Islamic Centre - Masjid",
+   "website": "http://ric.org.nz",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND ric.org.nz",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/837271009",
+   "masjidName": "University of Canterbury Musalla",
+   "website": "https://www.canterburymusa.com",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND www.canterburymusa.com",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/438225997",
+   "masjidName": "Hastings Mosque",
+   "website": "https://www.hastingsmosque.org",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "This is Hastings Mosque in the UK (St Leonards-on-sea), not a New Zealand masjid. The pages only give daily prayer timetables, with no explicit Jumu'ah or Friday khutbah time.",
+   "pagesChecked": [
+    "https://www.hastingsmosque.org/",
+    "https://www.hastingsmosque.org/prayer-timetable"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/368408185",
+   "masjidName": "Palmerston North Islamic Centre",
+   "website": "https://www.manawatumuslims.org.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Pages mention Jumma prayers only in the context of the shuttle service and Friday Quran halqa; no Jumu'ah or khutbah time is stated. The prayer times page only links to timetables.",
+   "pagesChecked": [
+    "https://manawatumuslims.org.nz/",
+    "https://manawatumuslims.org.nz/our-services/",
+    "https://manawatumuslims.org.nz/prayer-times/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12508326905",
+   "masjidName": "Blenheim Masjid and Community Centre",
+   "website": "https://mam.nz",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND mam.nz",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12508327002",
+   "masjidName": "Nelson Islamic Cultural Society (NICS)",
+   "website": "https://nelsonmosque.co.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The page appears to be hijacked with online pokies spam content and has no Jumu'ah or prayer time information.",
+   "pagesChecked": [
+    "https://www.nelsonmosque.co.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501086606",
+   "masjidName": "Al-Maryam Islamic Centre - Masjid",
+   "website": "https://dunedinmuslims.co.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND dunedinmuslims.co.nz",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12508327102",
+   "masjidName": "Queenstown Islamic Centre - Masjid",
+   "website": "http://queenstownislamiccentre.org.nz",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND queenstownislamiccentre.org.nz",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12508326906",
+   "masjidName": "Invercargill Islamic Trust - Masjid",
+   "website": "https://www.iit.org.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The page mentions five daily prayers and Friday evening Quran classes, but gives no Jumu'ah or Friday prayer/khutbah time.",
+   "pagesChecked": [
+    "https://www.iit.org.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/1347920415",
+   "masjidName": "Southland Muslims Association Masjid",
+   "website": "http://www.sma.org.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND www.sma.org.nz",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501085510",
+   "masjidName": "New Plymouth Islamic Centre",
+   "website": "http://nakimuslim.org",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: getaddrinfo ENOTFOUND nakimuslim.org",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501069629",
+   "masjidName": "Hamilton West Islamic Centre - Masjid",
+   "website": "https://www.nzmuslimleague.org/",
+   "status": "found",
+   "jummahTimes": "Jumu'ah 1:45pm",
+   "evidence": "Jumuah |\n1:45\n|",
+   "sourceUrl": "https://www.nzmuslimleague.org/namaztimes/",
+   "confidence": 0.6,
+   "notes": "Time is from a dynamic prayer timetable widget (dated Fri 6th Nov) and may change seasonally, e.g. with daylight saving. It matches the Zuhr iqamah of 1:45.",
+   "pagesChecked": [
+    "https://www.nzmuslimleague.org/",
+    "https://www.nzmuslimleague.org/namaztimes/",
+    "https://www.nzmuslimleague.org/namaz-timing/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/222843028",
+   "masjidName": "Jamia Masjid",
+   "website": "https://hamiltonmosque.com/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The pages are for the Muslim Association of Hamilton in Ontario, Canada, not Jamia Masjid in Waikato, New Zealand. None of them state a Jumu'ah time.",
+   "pagesChecked": [
+    "https://www.mahcanada.com/",
+    "https://www.mahcanada.com/services/marriage",
+    "https://www.mahcanada.com/services/funeral",
+    "https://www.mahcanada.com/services/facility-bookings",
+    "https://www.mahcanada.com/services/zakaat-application"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/11191907237",
+   "masjidName": "Masjid - Khadijah Rototuna Islamic Centre",
+   "website": "https://ricc.org.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: fetch failed",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/12501085511",
+   "masjidName": "Abu Bakr Siddiqui Musalla - Masjid",
+   "website": "https://abst.co.nz/",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "The homepage covers the madrasah, courses and teachers. It gives no Jumu'ah or Friday prayer times.",
+   "pagesChecked": [
+    "https://abst.co.nz/"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/376316502",
+   "masjidName": "Haleema Kindergarten - Haleema Kindergarten Trust",
+   "website": "https://www.haleema.org.nz/",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: HTTP 404",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "node/9562316061",
+   "masjidName": "Masjid Al-Ameen",
+   "website": "https://www.alameen.org.nz",
+   "status": "not_found",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "No explicit Jumu'ah or Friday prayer time appears in the provided pages. The Jumaah Khutbah page only lists past khutbah dates, and the Prayer Times page has no times in the scraped text.",
+   "pagesChecked": [
+    "https://www.alameen.org.nz/",
+    "https://www.alameen.org.nz/jumaah-khutbah",
+    "https://www.alameen.org.nz/prayertimes",
+    "https://www.alameen.org.nz/importance-of-prayer"
+   ],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  },
+  {
+   "masjidId": "way/813231842",
+   "masjidName": "Wellington Islamic Centre",
+   "website": "https://www.iman.co.nz/ic/nz.php",
+   "status": "unreachable",
+   "jummahTimes": null,
+   "evidence": null,
+   "sourceUrl": null,
+   "confidence": null,
+   "notes": "Website could not be read: fetch failed",
+   "pagesChecked": [],
+   "model": "claude-sonnet-5-5",
+   "checkedAt": "2026-11-05T11:47:35.604Z"
+  }
+ ]
+}

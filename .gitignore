@@ -11,3 +11,6 @@ Thumbs.db
 *.log
 
 node_modules/
+
+# Local Netlify folder
+.netlify
