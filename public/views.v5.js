@@ -94,7 +94,12 @@
 
   let aiLoaded = false;
   function loadAiJummah() {
-    fetch('/api/ai-jummah', { cache: 'no-cache' }).then((r) => r.json()).then((d) => {
+    const fallback = () => fetch('data/ai-jummah.json', { cache: 'no-cache' }).then((r) => r.json());
+    fetch('/api/ai-jummah', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status))))
+      .then((d) => ((d.results || []).some((x) => x.status === 'found') ? d : fallback().then((f) => Object.assign({}, f, { refreshing: d.refreshing })).catch(() => d)))
+      .catch(() => fallback())
+      .then((d) => {
       App.aiJummah = {};
       (d.results || []).filter((r) => r.status === 'found' && r.jummahTimes).forEach((r) => { App.aiJummah[r.masjidId] = r; });
       App.aiJummahMeta = d;
