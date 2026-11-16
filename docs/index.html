@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-<link rel="stylesheet" href="styles.css?v=9" />
+<link rel="stylesheet" href="styles.css?v=13" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5437118973757495"
      crossorigin="anonymous"></script>
 </head>
@@ -46,6 +46,10 @@
     <button id="adminPanelBtn" class="btn btn-outline" type="button" title="Admin dashboard">⚙</button>
   </div>
 </header>
+
+<div id="offlineBar" class="offlinebar" role="status" aria-live="polite" hidden>
+  Offline — showing saved data
+</div>
 
 <div id="verifyBar" class="verifybar" hidden>
   <span class="vlabel">Verification mode</span>
@@ -104,6 +108,10 @@
         <div class="panel-head">
           <h3>Today's times</h3>
           <span id="pSource" class="pill">—</span>
+        </div>
+        <div id="pNotice" class="notice" role="status" hidden>
+          <span id="pNoticeText"></span>
+          <button id="pRetry" class="notice-btn" type="button">Retry</button>
         </div>
         <ul class="prayer-list" id="pTimes"></ul>
         <p class="note" id="pNote"></p>
@@ -234,13 +242,13 @@
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <!-- Bump ?v= on the module tags below and on styles.css in <head> whenever any
      of them changes, so browsers fetch the new files instead of their cached copy. -->
-<script src="config.js?v=9"></script>
-<script src="supabase.js?v=9"></script>
-<script src="verification.js?v=9"></script>
-<script src="admin.js?v=9"></script>
-<script src="prayer.js?v=9"></script>
-<script src="qibla.js?v=9"></script>
-<script src="app.js?v=9"></script>
-<script src="views.js?v=9"></script>
+<script src="config.js?v=13"></script>
+<script src="supabase.js?v=13"></script>
+<script src="verification.js?v=13"></script>
+<script src="admin.js?v=13"></script>
+<script src="prayer.js?v=13"></script>
+<script src="qibla.js?v=13"></script>
+<script src="app.js?v=13"></script>
+<script src="views.js?v=13"></script>
 </body>
 </html>

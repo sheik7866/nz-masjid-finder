@@ -383,8 +383,34 @@
     renderMasjidList(true);
   }
 
+  // ------------------------------------------------------------ offline banner
+  function wireOfflineBar() {
+    const bar = $('offlineBar');
+    if (!bar) return;
+    let timer = null;
+    const show = (msg) => { bar.textContent = msg; bar.hidden = false; };
+    const hide = () => { bar.hidden = true; };
+    const refresh = () => { if (navigator.onLine) hide(); else show('Offline — showing saved data'); };
+
+    refresh();
+    window.addEventListener('offline', () => show('Offline — showing saved data'));
+    window.addEventListener('online', () => {
+      show('Back online');
+      clearTimeout(timer);
+      timer = setTimeout(hide, 2200);
+    });
+    // network failed but navigator.onLine is still true (captive portal,
+    // dropped connection): the service worker says it answered from the cache
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.addEventListener('message', (e) => {
+        if (e.data && e.data.type === 'nz-served-from-cache') show('Offline — showing saved data');
+      });
+    }
+  }
+
   async function boot() {
     const metaEl = $('meta');
+    wireOfflineBar();
     try {
       const [mRes, hRes] = await Promise.all([
         fetch('data/masjids.json', { cache: 'no-cache' }),
@@ -639,4 +665,13 @@
       App.renderMasjidList(false);
   });
   });
+
+  // ------------------------------------------------------------ offline shell
+  // Registered after load so it never delays first paint; a failure here is
+  // silent because offline support is an enhancement, not a requirement.
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
 })();

@@ -9,3 +9,6 @@ rls-live-results.json
 .DS_Store
 Thumbs.db
 *.log
+
+# deploy-time archive, built from public/ — never commit it
+nz-masjid-finder-site.zip

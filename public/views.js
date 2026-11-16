@@ -44,7 +44,7 @@
     sel.value = String(s.method == null ? 3 : s.method);
   }
 
-  async function renderPrayer() {
+  async function renderPrayer(force) {
     const place = App.place;
     fillCitySelect($('pCity'), null);
     fillMethods();
@@ -52,7 +52,7 @@
     const method = settings.method == null ? 3 : settings.method;
 
     $('pNext').textContent = '…';
-    const day = await P.getDay(place.lat, place.lon, today(), { method });
+    const day = await P.getDay(place.lat, place.lon, today(), { method, force: Boolean(force) });
     const times = day.times;
 
     // hijri date
@@ -82,9 +82,20 @@
         '<span class="ptime">' + (t || '—') + '</span></li>';
     }).join('');
 
-    $('pNote').textContent = day.error
-      ? 'Offline mode: ' + day.error + '. Times are calculated locally for ' + place.lat.toFixed(3) + ', ' + place.lon.toFixed(3) + '.'
-      : 'Method: ' + (day.method || 'Muslim World League') + '. Calculated for ' + place.lat.toFixed(3) + ', ' + place.lon.toFixed(3) + '.';
+    // Say plainly when these times came from the on-device calculator rather
+    // than AlAdhan, so nobody mistakes a calculation for a fetched timetable.
+    const offlineCalc = Boolean(day.error) || day.source === 'Calculated offline';
+    const notice = $('pNotice');
+    if (notice) {
+      notice.hidden = !offlineCalc;
+      const noticeText = $('pNoticeText');
+      if (noticeText && offlineCalc) {
+        noticeText.textContent = 'Offline — calculated on this device from the sun position, not fetched from AlAdhan' +
+          (day.error ? ' (' + day.error + ')' : '') + '.';
+      }
+    }
+    $('pNote').textContent = 'Method: ' + (day.method || 'Muslim World League') +
+      '. Calculated for ' + place.lat.toFixed(3) + ', ' + place.lon.toFixed(3) + '.';
 
     renderJummah();
 
@@ -125,6 +136,17 @@
       P.saveSettings(s);
       renderPrayer();
     });
+    const retry = $('pRetry');
+    if (retry) {
+      retry.addEventListener('click', async () => {
+        retry.disabled = true;
+        retry.textContent = 'Retrying…';
+        try { await renderPrayer(true); } finally {
+          retry.disabled = false;
+          retry.textContent = 'Retry';
+        }
+      });
+    }
     document.addEventListener('nz:tab', (e) => { if (e.detail.tab === 'prayer') renderPrayer(); });
   }
 
