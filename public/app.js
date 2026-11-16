@@ -125,7 +125,24 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     App.maps[id] = map;
-    App.layers[id] = L.layerGroup().addTo(map);
+    // Clusters keep overlapping pins usable when zoomed out; individual pins
+    // appear once the map is close enough (or after clicking a cluster).
+    App.layers[id] = (L.markerClusterGroup ? L.markerClusterGroup({
+      showCoverageOnHover: false,
+      spiderfyOnMaxZoom: true,
+      disableClusteringAtZoom: 14,
+      maxClusterRadius: 45,
+      iconCreateFunction: (cluster) => {
+        const n = cluster.getChildCount();
+        const size = n < 10 ? 36 : n < 50 ? 42 : 48;
+        return L.divIcon({
+          html: '<span>' + n + '</span>',
+          className: 'pin-cluster',
+          iconSize: [size, size],
+          iconAnchor: [size / 2, size / 2],
+        });
+      },
+    }) : L.layerGroup()).addTo(map);  // plugin CDN down: show plain pins rather than no map
     return map;
   }
   App.baseMap = baseMap;
@@ -348,7 +365,7 @@
     if (vtag) {
       const approvedN = (V && V.approvedCountHint) ? V.approvedCountHint() : 0;
       const err = (V && V.lastError) ? V.lastError : '';
-      vtag.textContent = 'build · ' + App.masjids.length + ' masjids · ' + approvedN + ' community' + (err ? ' · ERR:' + err : '');
+      vtag.textContent = 'build · ' + approvedN + ' community' + (err ? ' · ERR:' + err : '');
     }
     if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
 
