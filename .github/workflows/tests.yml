@@ -1,0 +1,20 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      # The suites need no credentials; tests/rls-live.test.cjs skips itself
+      # when SUPABASE_URL / SUPABASE_ANON_KEY are absent.
+      - name: Run test suite
+        run: sh tests/run-all.sh

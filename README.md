@@ -136,8 +136,8 @@ same way. Their token keeps admin rights until it refreshes, so also
 
 ### Test the policies (do not trust them until this passes)
 
-Static audit — no credentials needed, runs anywhere Node is installed (this repo
-ships no CI workflow):
+Static audit — no credentials needed, runs anywhere Node is installed; the
+`Tests` workflow runs it (and the rest of the suite) on every push:
 ```
 node tests/schema.test.cjs      # 29 checks
 ```
@@ -392,7 +392,7 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 90 checks across five suites (the live RLS audit
+`sh tests/run-all.sh` runs 92 checks across six suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (12) — verify / report / undo / export / corrupt storage
@@ -402,6 +402,7 @@ skips without credentials):
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
 - `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
 - `tests/sync.test.cjs` (9) — shared-store merge, offline queue, realtime
+- `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 
 ## Deploy
