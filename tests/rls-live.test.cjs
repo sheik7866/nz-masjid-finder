@@ -20,7 +20,7 @@
 // 2. Copy .env.example to .env in the project root and fill it in. The file is
 //    git-ignored; keep it local and delete it when you are finished.
 // 3. Run:
-//        "$ABACUSAI_BOT_NODE" tests/rls-live.test.cjs
+//        node tests/rls-live.test.cjs
 //
 // Nothing is deployed and no paid service is used.
 const fs = require('fs');

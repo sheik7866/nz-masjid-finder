@@ -4,7 +4,7 @@
 // the security model depends on. They do not run against a live database —
 // see tests/rls-live.test.cjs for the live harness.
 //
-// Run: "$ABACUSAI_BOT_NODE" tests/schema.test.cjs
+// Run: node tests/schema.test.cjs
 const fs = require('fs');
 const path = require('path');
 const assert = require('assert');

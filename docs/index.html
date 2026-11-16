@@ -33,7 +33,7 @@
     <div>
       <h1>NZ Masjid Finder</h1>
       <p id="meta" class="meta">Loading…</p>
-      <span class="vtag" id="vtag">v5</span>
+      <span class="vtag" id="vtag">build</span>
     </div>
   </div>
   <div class="topactions">
@@ -228,13 +228,15 @@
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="config.v5.js"></script>
-<script src="supabase.v5.js"></script>
-<script src="verification.v5.js"></script>
-<script src="admin.v5.js"></script>
-<script src="prayer.v5.js"></script>
-<script src="qibla.v5.js"></script>
-<script src="app.v5.js"></script>
-<script src="views.v5.js"></script>
+<!-- Bump ?v= on every module below whenever any of them changes, so browsers
+     fetch the new files instead of their cached copy. -->
+<script src="config.js?v=6"></script>
+<script src="supabase.js?v=6"></script>
+<script src="verification.js?v=6"></script>
+<script src="admin.js?v=6"></script>
+<script src="prayer.js?v=6"></script>
+<script src="qibla.js?v=6"></script>
+<script src="app.js?v=6"></script>
+<script src="views.js?v=6"></script>
 </body>
 </html>

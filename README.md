@@ -139,7 +139,7 @@ same way. Their token keeps admin rights until it refreshes, so also
 Static audit — no credentials needed, runs anywhere Node is installed (this repo
 ships no CI workflow):
 ```
-"$ABACUSAI_BOT_NODE" tests/schema.test.cjs      # 29 checks
+node tests/schema.test.cjs      # 29 checks
 ```
 
 Live audit — runs against your real project with three identities (anon, an
@@ -150,7 +150,7 @@ SUPABASE_ANON_KEY=... \
 SUPABASE_SERVICE_ROLE=... \
 TEST_USER_EMAIL=... TEST_USER_PASSWORD=... \
 TEST_ADMIN_EMAIL=... TEST_ADMIN_PASSWORD=... \
-"$ABACUSAI_BOT_NODE" tests/rls-live.test.cjs
+node tests/rls-live.test.cjs
 ```
 
 It checks, among others: anon cannot insert `verified` without a name, anon
@@ -165,8 +165,8 @@ Three test layers, none of which needs a password to be shared with anyone:
 
 | Layer | What it proves | How to run |
 |---|---|---|
-| Static | the SQL matches the security model (29 checks) | `"$ABACUSAI_BOT_NODE" tests/schema.test.cjs` |
-| Live, anonymous | the public key cannot write, modify or approve anything | `"$ABACUSAI_BOT_NODE" tests/rls-live.test.cjs` (works with only the publishable key) |
+| Static | the SQL matches the security model (29 checks) | `node tests/schema.test.cjs` |
+| Live, anonymous | the public key cannot write, modify or approve anything | `node tests/rls-live.test.cjs` (works with only the publishable key) |
 | Live, three identities | ordinary users get nothing; only `app_metadata` admins can administer | same script, after you add the two test accounts to `.env` |
 
 ### Create the test accounts yourself (no credentials shared)
@@ -177,7 +177,7 @@ Three test layers, none of which needs a password to be shared with anyone:
      with that email to add `{"role":"admin"}` to `app_metadata`.
 2. Copy `.env.example` to `.env` in the project root and fill in the four test
    values. `.env` is git-ignored; delete it when finished.
-3. Run `"$ABACUSAI_BOT_NODE" tests/rls-live.test.cjs`.
+3. Run `node tests/rls-live.test.cjs`.
 
 Use dedicated test accounts, not your real admin login. Passwords stay in
 `.env` on your machine; the script reads them for one sign-in request each,
@@ -392,9 +392,8 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs the first four suites — 81 checks. The sync suite is
-not wired into that script yet, so run it directly with
-`node tests/sync.test.cjs`; with it, 90 checks in total, plus the live RLS audit:
+`sh tests/run-all.sh` runs 90 checks across five suites (the live RLS audit
+skips without credentials):
 
 - `tests/verification.test.cjs` (12) — verify / report / undo / export / corrupt storage
 - `tests/supabase.test.cjs` (10) — offline queue, sync, submissions, sign-in, admin PATCH
@@ -402,7 +401,7 @@ not wired into that script yet, so run it directly with
   bearings, Hijri dates, Ramadan calendar, dataset sanity, source URLs, region
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
 - `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
-- `tests/sync.test.cjs` (9) — shared-store merge, offline queue, realtime; run directly
+- `tests/sync.test.cjs` (9) — shared-store merge, offline queue, realtime
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 
 ## Deploy

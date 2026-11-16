@@ -1,5 +1,5 @@
 // Tests for prayer times, qibla, Ramadan calendar and the halal dataset.
-// Run: "$ABACUSAI_BOT_NODE" tests/core.test.cjs
+// Run: node tests/core.test.cjs
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
