@@ -7,7 +7,7 @@
  *
  * Bump CACHE when the shell changes; older caches are deleted on activate.
  */
-const CACHE = 'nz-masjid-v14';
+const CACHE = 'nz-masjid-v15';
 const SHELL = [
   './',
   'index.html',
@@ -59,7 +59,7 @@ async function networkFirst(request, event) {
     if (response && response.ok) cache.put(request, response.clone());
     return response;
   } catch (err) {
-    // ignoreSearch so a cached styles.css answers styles.css?v=14 offline
+    // ignoreSearch so a cached styles.css answers styles.css?v=15 offline
     const cached = await cache.match(request, { ignoreSearch: true });
     const shell = request.mode === 'navigate' ? ((await cache.match('index.html')) || (await cache.match('./'))) : null;
     const fallback = cached || shell;

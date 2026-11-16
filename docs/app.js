@@ -419,10 +419,6 @@
       const mDoc = await mRes.json();
       const hDoc = (hRes && hRes.ok) ? await hRes.json() : null;
       const V = window.NZVerification;
-      if (V && V.sync) await V.sync();
-      // Live updates are a bonus: never let them hold up the first render.
-      try { if (V && V.subscribe) V.subscribe(['verifications', 'submissions']).catch(() => {}); } catch (e) { /* realtime optional */ }
-      updateBackendBadge();
       App.rawMosques = mDoc;
       App.rawHalal = hDoc;
       rebuildFromSources(mDoc, hDoc);
@@ -430,6 +426,7 @@
       baseMap('masjidMap');
       renderMasjidList(true);
       wireMasjidView();
+      updateBackendBadge();
 
       document.addEventListener('nz:sync', () => {
         try {
@@ -440,6 +437,12 @@
           document.dispatchEvent(new CustomEvent('nz:masjids-changed'));
         } catch (e) { console.warn('community refresh failed', e); }
       });
+
+      // Shared community data loads after the cached listings are on screen:
+      // a slow, blocked or offline backend must never hold up first paint.
+      // sync() dispatches nz:sync above once it lands.
+      try { if (V && V.sync) V.sync().catch(() => {}); } catch (e) { /* backend optional */ }
+      try { if (V && V.subscribe) V.subscribe(['verifications', 'submissions']).catch(() => {}); } catch (e) { /* realtime optional */ }
     } catch (err) {
       if (metaEl) metaEl.textContent = 'Data failed to load';
       console.error(err);
