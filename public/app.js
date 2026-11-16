@@ -420,7 +420,8 @@
       const hDoc = (hRes && hRes.ok) ? await hRes.json() : null;
       const V = window.NZVerification;
       if (V && V.sync) await V.sync();
-      try { if (V && V.subscribe) await V.subscribe(['verifications', 'submissions']); } catch (e) { /* realtime optional */ }
+      // Live updates are a bonus: never let them hold up the first render.
+      try { if (V && V.subscribe) V.subscribe(['verifications', 'submissions']).catch(() => {}); } catch (e) { /* realtime optional */ }
       updateBackendBadge();
       App.rawMosques = mDoc;
       App.rawHalal = hDoc;

@@ -87,17 +87,37 @@
       this.openPromise = new Promise((resolve, reject) => {
         if (typeof WebSocket === 'undefined') return reject(new Error('no WebSocket'));
         let sock;
+        let settled = false;
+        let timer = null;
+        // Offline, or with the socket blocked, the browser can sit between
+        // "connecting" and any event, so settle the promise explicitly on
+        // close or timeout: callers must never wait forever on an optional
+        // live-update channel.
+        const settle = (err) => {
+          if (settled) return;
+          settled = true;
+          if (timer) clearTimeout(timer);
+          if (err) {
+            this.openPromise = null;
+            if (sock) { try { sock.close(); } catch (e) { /* already closing */ } }
+            reject(err);
+          } else {
+            resolve(sock);
+          }
+        };
         try { sock = new WebSocket(urlStr); }
         catch (e) { this.openPromise = null; return reject(e); }
         this.socket = sock;
-        sock.onopen = () => resolve(sock);
+        sock.onopen = () => settle(null);
         sock.onerror = () => { /* onclose handles it */ };
         sock.onclose = () => {
           this.socket = null;
           this.openPromise = null;
           Object.keys(this.channels).forEach((t) => { this.channels[t].joined = false; });
           document.dispatchEvent(new CustomEvent('nz:realtime', { detail: { state: 'closed' } }));
+          settle(new Error('realtime socket closed before it opened'));
         };
+        timer = setTimeout(() => settle(new Error('realtime connect timeout')), 8000);
         sock.onmessage = (ev) => {
           let msg;
           try { msg = JSON.parse(ev.data); } catch (e) { return; }
