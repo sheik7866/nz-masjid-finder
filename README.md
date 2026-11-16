@@ -207,6 +207,23 @@ transaction so you can `rollback`. Real listings are untouched: genuine ids are
 OSM ids (`node/123`, `way/123`, `relation/123`), which can never start with
 `probe`.
 
+### Rotating the test accounts
+
+The same cleanup, plus new passwords for the two test accounts, is available as
+a command. With `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE` in `.env` (or the
+environment):
+
+```sh
+node scripts/rotate-test-accounts.cjs --dry-run   # list accounts and rows only
+node scripts/rotate-test-accounts.cjs             # rotate + delete
+```
+
+It selects the probe rows first and refuses to delete anything whose id looks
+like a real OSM listing, deletes by exact id, rotates both passwords, signs
+their sessions out, and writes the new passwords to `.env` (mode 600) — they are
+printed masked, never in full. Requires Node 18+ for `fetch`; the service key
+never leaves the process.
+
 ## Verification report
 
 Three things checked, with the evidence each one rests on.

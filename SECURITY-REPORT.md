@@ -154,6 +154,9 @@ All checks passed — anon, ordinary user and admin behave exactly as designed.
 4. **Rotate the test passwords.** `sheikrazil786987@gmail.com` (ordinary test) and
    `sheik.m.razil@gmail.com` (admin) both had passwords used during this audit.
    Change them, or delete the ordinary test account, before the app goes public.
+   `node scripts/rotate-test-accounts.cjs` does this and the row cleanup in one
+   step (see README); it writes the new passwords to `.env` and shows them
+   masked only.
    Section 3 of `supabase/admin-role.sql` revokes admin; remember the 1-hour JWT
    caveat if you ever revoke it.
 
