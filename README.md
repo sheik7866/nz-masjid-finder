@@ -136,9 +136,10 @@ same way. Their token keeps admin rights until it refreshes, so also
 
 ### Test the policies (do not trust them until this passes)
 
-Static audit — no credentials needed, runs in CI:
+Static audit — no credentials needed, runs anywhere Node is installed (this repo
+ships no CI workflow):
 ```
-"$ABACUSAI_BOT_NODE" tests/schema.test.cjs      # 24 checks
+"$ABACUSAI_BOT_NODE" tests/schema.test.cjs      # 29 checks
 ```
 
 Live audit — runs against your real project with three identities (anon, an
@@ -212,7 +213,7 @@ Three things checked, with the evidence each one rests on.
 
 ### 1. Supabase security and admin permissions
 
-`supabase/schema.sql` is audited by `tests/schema.test.cjs` — 24 checks that fail
+`supabase/schema.sql` is audited by `tests/schema.test.cjs` — 29 checks that fail
 if any of these guarantees regress (see **Security model** above for the full table):
 
 | Guarantee | How it is enforced |
@@ -359,8 +360,10 @@ community submissions, and gate admin actions.
 1. Create a project at supabase.com (free tier: 500 MB database, 50k monthly users).
 2. SQL Editor → paste `supabase/schema.sql` → Run. That creates `verifications` and
    `submissions` with Row Level Security: anyone may read a badge, inserts need a
-   name, only signed-in users may review.
-3. Authentication → Users → *Add user* → email + password. That account is the admin.
+   name, only an account with `app_metadata.role = "admin"` may review.
+3. Authentication → Users → *Add user* → email + password. That account is **not**
+   an admin yet — run `supabase/admin-role.sql` for its email to add
+   `{"role":"admin"}` to `app_metadata`. Admin comes from that claim alone.
 4. Project Settings → API → copy **Project URL** and the **anon public** key.
 5. Paste both into `public/config.js` (`supabaseUrl`, `supabaseAnonKey`). Commit.
 
@@ -389,14 +392,17 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-70 checks across four suites (plus the live RLS audit):
+`sh tests/run-all.sh` runs the first four suites — 81 checks. The sync suite is
+not wired into that script yet, so run it directly with
+`node tests/sync.test.cjs`; with it, 90 checks in total, plus the live RLS audit:
 
 - `tests/verification.test.cjs` (12) — verify / report / undo / export / corrupt storage
 - `tests/supabase.test.cjs` (10) — offline queue, sync, submissions, sign-in, admin PATCH
 - `tests/core.test.cjs` (30) — prayer maths vs AlAdhan, timezone, next-prayer, qibla
   bearings, Hijri dates, Ramadan calendar, dataset sanity, source URLs, region
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
-- `tests/schema.test.cjs` (24) — RLS, grants, policies, admin role, constraints, rerunnability
+- `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
+- `tests/sync.test.cjs` (9) — shared-store merge, offline queue, realtime; run directly
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 
 ## Deploy

@@ -16,7 +16,7 @@ window.NZ_CONFIG = {
   supabaseAnonKey: 'sb_publishable_MBCmnFU_-Sft1Xuc8JCCvw_val1ETQd',
 
   // Where community "missing masjid" submissions are reviewed.
-  // Any signed-in Supabase user (email + password you create in the dashboard)
-  // is treated as an admin by supabase/schema.sql.
-  adminHint: 'Sign in with the admin email you created in Supabase → Authentication.',
+  // Only an account whose app_metadata carries {"role":"admin"} is an admin —
+  // see public.is_admin() in supabase/schema.sql. Signing in alone grants nothing.
+  adminHint: 'Sign in with an account that has the admin role in Supabase → Authentication.',
 };
