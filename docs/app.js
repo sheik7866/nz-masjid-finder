@@ -120,7 +120,7 @@
   function baseMap(id, center, zoom) {
     if (App.maps[id]) return App.maps[id];
     const map = L.map(id, { zoomControl: true, scrollWheelZoom: true }).setView(center || [-41.2, 172.9], zoom || 5);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
