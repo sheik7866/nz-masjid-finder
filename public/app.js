@@ -125,6 +125,20 @@
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
     App.maps[id] = map;
+    // A window resize left the map framed for the old width — half the Pacific
+    // above and below NZ — until the next search. Refit to what is on screen.
+    if (!App.mapResizeWired) {
+      App.mapResizeWired = true;
+      let t = 0;
+      window.addEventListener('resize', () => {
+        clearTimeout(t);
+        t = setTimeout(() => {
+          Object.keys(App.maps).forEach((k) => { if (App.maps[k]) App.maps[k].invalidateSize(); });
+          const mapView = $('view-map');
+          if (mapView && !mapView.hidden && App.renderMasjidList) App.renderMasjidList(true);
+        }, 180);
+      });
+    }
     // Clusters keep overlapping pins usable when zoomed out; individual pins
     // appear once the map is close enough (or after clicking a cluster).
     App.layers[id] = (L.markerClusterGroup ? L.markerClusterGroup({
@@ -259,8 +273,11 @@
         .addTo(layer);
     });
     if (fit) {
-      if (items.length === 1) App.maps.masjidMap.setView([items[0].lat, items[0].lon], 14);
-      else if (items.length) App.maps.masjidMap.fitBounds(L.latLngBounds(items.map((m) => [m.lat, m.lon])), { padding: [30, 30], maxZoom: 13 });
+      // Two results a street apart used to fill the map with one street, with
+      // the tiles still loading; capping the zoom keeps a town in view.
+      if (items.length === 1) App.maps.masjidMap.setView([items[0].lat, items[0].lon], 13);
+      else if (items.length) App.maps.masjidMap.fitBounds(L.latLngBounds(items.map((m) => [m.lat, m.lon])), { padding: [30, 30], maxZoom: 12 });
+      setTimeout(() => App.maps.masjidMap.invalidateSize(), 60);
     }
   }
   App.renderMasjidList = renderMasjidList;
@@ -366,9 +383,13 @@
     const metaEl = $('meta');
     const vtag = $('vtag');
     if (vtag) {
-      const approvedN = (V && V.approvedCountHint) ? V.approvedCountHint() : 0;
-      const err = (V && V.lastError) ? V.lastError : '';
-      vtag.textContent = 'build · ' + approvedN + ' community' + (err ? ' · ERR:' + err : '');
+      // A visitor-facing trust signal: how many of these listings are verified.
+      // A build tag with a community count helped nobody, so it is gone; a
+      // failed background fetch is logged instead of printed in the header.
+      const verifiedN = App.masjids.filter((m) => m.verified).length;
+      vtag.textContent = verifiedN ? verifiedN + ' verified' : '';
+      vtag.hidden = !verifiedN;
+      if (V && V.lastError) console.warn('community data:', V.lastError);
     }
     if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
 
@@ -503,11 +524,15 @@
     const v = m.verification;
     const dir = window.NZApp.directionsLinks(m);
     if (v && v.status === 'verified') {
+      // Undo only appears when it can actually work: a signed-out visitor used
+      // to get a button that always failed, next to an admin's own verification.
+      const V = window.NZVerification;
+      const canUndo = !(V && V.canUndo) || V.canUndo();
       return '<div class="vbox">' +
         '<p class="vline">✓ Confirmed by <b>' + esc(v.verified_by) + '</b> ' + esc(relTime(v.verified_at)) +
         (v.source_url ? ' · <a href="' + esc(v.source_url) + '" target="_blank" rel="noopener">source</a>' : ' · <i>no source link</i>') +
         '</p><div class="vbtns">' +
-        '<button class="vbtn undo" data-act="undo" data-id="' + esc(m.id) + '" type="button">Undo</button>' +
+        (canUndo ? '<button class="vbtn undo" data-act="undo" data-id="' + esc(m.id) + '" type="button">Undo</button>' : '') +
         '<button class="vbtn report" data-act="report" data-id="' + esc(m.id) + '" type="button">Report a change</button>' +
         '</div></div>';
     }

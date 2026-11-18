@@ -260,6 +260,13 @@
     },
 
     /**
+     * Whether Undo can do anything right now. Signed out against Supabase it
+     * cannot (only is_admin() may delete), so the UI hides the button instead of
+     * offering an action that always fails.
+     */
+    canUndo: () => !SB.enabled || SB.isSignedIn(),
+
+    /**
      * Remove a verification. Shared rows go through the admin DELETE path,
      * because the database grants UPDATE/DELETE only to is_admin(); a visitor
      * gets a clear error instead of a fake local "undo". With no Supabase

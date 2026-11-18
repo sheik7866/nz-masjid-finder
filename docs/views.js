@@ -229,8 +229,8 @@
         .addTo(layer);
     });
     if (rows.length) {
-      if (rows.length === 1) map.setView([rows[0].lat, rows[0].lon], 14);
-      else map.fitBounds(L.latLngBounds(rows.map((b) => [b.lat, b.lon])), { padding: [30, 30], maxZoom: 13 });
+      if (rows.length === 1) map.setView([rows[0].lat, rows[0].lon], 13);
+      else map.fitBounds(L.latLngBounds(rows.map((b) => [b.lat, b.lon])), { padding: [30, 30], maxZoom: 12 });
     }
     setTimeout(() => map.invalidateSize(), 80);
   }

@@ -66,6 +66,10 @@ a { color: var(--green-600); }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .topactions { display: flex; gap: 6px; align-items: center; }
+/* 44px is the minimum comfortable touch target, and the icon-only buttons
+   below are the only way to reach verification mode, adding and the admin
+dashboard on a phone. */
+.topactions .btn { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 
 .btn {
   font: inherit; border: 0; border-radius: 11px; padding: 9px 12px;
@@ -100,6 +104,9 @@ main { padding-bottom: var(--tabbar-offset); }
   background: #fbfcfb; color: var(--ink); width: 100%;
 }
 input[type="search"]:focus, select:focus { outline: 2px solid rgba(11,61,51,.2); border-color: var(--green-600); }
+/* The panel supplies its own ✕; without this a second native clear appears. */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; appearance: none; }
 .filters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
 select {
   font: inherit; font-size: 14px; padding: 9px 10px;
@@ -128,7 +135,8 @@ select.full { width: 100%; }
 }
 .badge.kind { background: var(--gold-soft); color: #7a5c14; }
 .badge.verified { background: var(--green-600); color: #fff; }
-.badge.unverified { background: #f6efdc; color: #8a6d1f; }
+/* 7a5c14 on f6efdc clears 4.5:1; 8a6d1f sat at 4.3 and failed AA. */
+.badge.unverified { background: #f6efdc; color: #7a5c14; }
 .badge.dist { background: #eef2fb; color: #2a4a8a; }
 .actions { display: flex; flex-wrap: wrap; gap: 6px; }
 .actions a {
@@ -324,6 +332,7 @@ select.full { width: 100%; }
   font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
   padding: 7px 11px; border-radius: 10px; border: 1px solid var(--line);
   background: #fbfcfb; color: var(--green-600); text-decoration: none;
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
 }
 .vbtn.confirm { background: var(--green-600); border-color: var(--green-600); color: #fff; }
 .vbtn.report { background: #fff5f2; border-color: #f0c6b8; color: #a8402a; }
@@ -405,6 +414,10 @@ select.full { width: 100%; }
 }
 @media (max-width: 520px) {
   .topactions .btn-label { display: none; }
+  /* The counts wrapped to "223 halal s…"; let the line wrap and drop the
+     secondary chip rather than truncating the only description of the site. */
+  .meta { font-size: 11px; white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.3; }
+  .vtag { display: none; }
 }
 @media (max-width: 380px) {
   .filters { grid-template-columns: 1fr; }
