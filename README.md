@@ -301,6 +301,10 @@ Notes:
 - Two times on one page are read as a winter and a daylight-saving time, so the
   second one is what gets saved; both stay visible next to the page they came
   from, and the button names the time it will save.
+- **Scan every website** reads all the listings that carry a website in one go,
+  three at a time, with a Stop button, and lists every Jumu'ah time it found with
+  the page behind it. The scan writes nothing; each row has its own Save button,
+  so a person still confirms each time that reaches a listing.
 - Times are only taken from a line that mentions Jumu'ah / khutbah / jama'at /
   salah, or a bare time row directly under one, so unrelated opening hours are
   not picked up. `tests/jummah.test.cjs` covers those cases.

@@ -206,11 +206,13 @@
             <li>Listings marked <b>no website</b> can still be found through web search, when a search key is configured on the project.</li>
             <li>Every result shows the time and the exact page it was read from, so you can open the page and confirm it before saving.</li>
             <li><b>Use these times</b> saves the time as verified, with that page as the source. If a page lists two times (winter and daylight saving), the second one is saved and the button says which. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
+            <li><b>Scan every website</b> reads all the listings that have a website in one go — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
           </ul>
         </details>
         <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />
         <div class="jfTools">
           <button id="jfSiteOnly" class="vbtn" type="button" aria-pressed="false">Masjids with a website</button>
+          <button id="jfScanAll" class="vbtn confirm" type="button">Scan every website</button>
         </div>
         <ul class="admList" id="jfList"></ul>
 
@@ -424,6 +426,8 @@
         paint();
       });
     }
+    const scanBtn = $('jfScanAll');
+    if (scanBtn) scanBtn.addEventListener('click', scanAllJummah);
 
     const paint = () => {
       const q = input.value.trim().toLowerCase();
@@ -526,6 +530,108 @@
       status.textContent = '';
       out.innerHTML = '<p class="hint" style="color:#a8402a">' + esc(msg) + '</p>';
     }
+  }
+
+  // ------------------------------------------------------ every website at once
+  // One button for the whole directory: reads each listing's website, collects
+  // the Jumu'ah times found, and prints them as saveable rows. Three requests at
+  // a time so one slow site cannot block the queue, and Stop is always live.
+  // The scan itself writes nothing — each row keeps its own Save button, so a
+  // person still confirms every time that reaches a listing.
+  async function scanAllJummah() {
+    const all = (window.NZApp && window.NZApp.masjids) || [];
+    const targets = all.filter((m) => m.website);
+    if (!targets.length) { toast('No masjids with a website to scan'); return; }
+
+    openModal('Scanning every masjid with a website', `
+      <p class="hint" id="jsStatus">Reading 0 of ${targets.length}…</p>
+      <div class="vbtns"><button class="vbtn report" id="jsStop" type="button">Stop</button></div>
+      <ul class="admList" id="jsList"><li class="hint">Results appear here as each masjid is read.</li></ul>
+      <p class="hint" id="jsSummary"></p>
+    `);
+
+    const list = $('jsList');
+    const status = $('jsStatus');
+    const summary = $('jsSummary');
+    const stopBtn = $('jsStop');
+    let stopped = false;
+    if (stopBtn) {
+      stopBtn.addEventListener('click', () => {
+        stopped = true;
+        stopBtn.disabled = true;
+        stopBtn.textContent = 'Stopping…';
+      });
+    }
+
+    let done = 0;
+    let found = 0;
+    let failed = 0;
+    const queue = targets.slice();
+
+    const addRow = (m, time, src, pages, note) => {
+      found += 1;
+      const row = document.createElement('li');
+      row.className = 'admItem';
+      row.innerHTML = `
+        <div class="admTop"><b>${esc(m.name)}</b><span class="badge verified">${esc(time)}</span></div>
+        <p class="addr">${esc(cityOf(m) || 'New Zealand')}${pages ? ' · ' + pages + ' page(s) read' : ''}${note ? ' · ' + esc(note) : ''}</p>
+        <p class="addr small"><a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)}</a></p>
+        <div class="vbtns"><button class="vbtn confirm" type="button">Save ${esc(time)}</button></div>`;
+      row.querySelector('button').addEventListener('click', async (ev) => {
+        const btn = ev.currentTarget;
+        btn.disabled = true;
+        btn.textContent = 'Saving…';
+        try {
+          await V.confirm(m.id, {
+            by: 'admin',
+            jummah: time,
+            source: src,
+            note: 'Jumu\'ah times read from ' + src + ' on ' + new Date().toISOString().slice(0, 10),
+          });
+          btn.textContent = 'Saved';
+          toast('Saved — ' + time + ' for ' + m.name);
+          await ensureCommunityVisible();
+        } catch (err) {
+          toast('Failed: ' + err.message);
+          btn.disabled = false;
+          btn.textContent = 'Save ' + time;
+        }
+      });
+      list.appendChild(row);
+    };
+
+    const worker = async () => {
+      while (queue.length && !stopped) {
+        const m = queue.shift();
+        status.textContent = `Reading ${done} of ${targets.length}… (${m.name})`;
+        try {
+          const data = await SB.callFunction('verify-jummah', {
+            id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null,
+          });
+          const hit = (data.sources || []).find((s) => s.times && s.times.length);
+          done += 1;
+          if (hit) {
+            addRow(m, pickTime(hit.times), hit.url, data.pages_read,
+              hit.times.length > 1 ? '2nd of ' + hit.times.length : '');
+          }
+        } catch (err) {
+          done += 1;
+          failed += 1;
+          if (err && err.status === 404) stopped = true;
+        }
+        status.textContent = `Reading ${done} of ${targets.length}…`;
+      }
+    };
+
+    await Promise.all(Array.from({ length: Math.min(3, queue.length) }, () => worker()));
+
+    status.textContent = stopped
+      ? `Stopped after ${done} of ${targets.length} websites.`
+      : `Read ${done} of ${targets.length} websites.`;
+    if (stopBtn) stopBtn.remove();
+    const none = Math.max(0, done - found - failed);
+    summary.textContent = `${found} masjid(s) with a Jumu'ah time, ${none} without one, ${failed} could not be read. Press Save on a row to verify that time.`;
+    if (!found) list.innerHTML = '<li class="hint">No Jumu\'ah time was found on those websites.</li>';
   }
 
   // ------------------------------------------------------------ boot
