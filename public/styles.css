@@ -120,6 +120,7 @@ select.full { width: 100%; }
 .toggles label { display: flex; align-items: center; gap: 6px; }
 .toggles input { accent-color: var(--green-600); width: 16px; height: 16px; }
 .count { margin-left: auto; font-weight: 700; color: var(--green-600); }
+.tourline { display: flex; justify-content: flex-end; margin: -4px 2px 8px; }
 .tourlink {
   background: none; border: 0; padding: 0; font: inherit; font-size: 11.5px;
   font-weight: 700; color: var(--green-600); cursor: pointer;
