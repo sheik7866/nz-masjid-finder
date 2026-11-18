@@ -251,7 +251,18 @@
 
     /** Admin path: DELETE a row. Rejected by RLS unless is_admin(). */
     async deleteVerification(id) {
-      await request('/rest/v1/verifications?id=eq.' + q(id), { method: 'DELETE' });
+      const rows = await request('/rest/v1/verifications?id=eq.' + q(id), {
+        method: 'DELETE',
+        // Ask for the deleted row back: PostgREST answers 204 even when RLS hid
+        // the row, so an empty result is the only way to tell a real delete
+        // from a silent no-op by a non-admin caller.
+        headers: { Prefer: 'return=representation' },
+      });
+      if (Array.isArray(rows) && rows.length === 0) {
+        const err = new Error('Nothing was deleted — only an admin can remove a shared verification.');
+        err.status = 403;
+        throw err;
+      }
       return true;
     },
 

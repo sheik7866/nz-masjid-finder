@@ -259,6 +259,30 @@
       }));
     },
 
+    /**
+     * Remove a verification. Shared rows go through the admin DELETE path,
+     * because the database grants UPDATE/DELETE only to is_admin(); a visitor
+     * gets a clear error instead of a fake local "undo". With no Supabase
+     * configured there is nothing shared to delete, so the cached row and any
+     * queued write for this id are dropped locally.
+     */
+    async undo(id) {
+      if (SB.enabled) {
+        if (!SB.isSignedIn()) {
+          const err = new Error('Only a signed-in admin can remove a shared verification — use “Report a change” instead.');
+          err.status = 403;
+          throw err;
+        }
+        await SB.deleteVerification(id);
+      }
+      delete cache[id];
+      queue = queue.filter((r) => r.id !== id);
+      persist();
+      persistQueue();
+      document.dispatchEvent(new CustomEvent('nz:sync', { detail: api.syncState() }));
+      return true;
+    },
+
     /** Admin only (needs signed-in admin); never queued. */
     async adminUpdate(id, patch) {
       if (!SB.enabled) throw new Error('Supabase is not configured');

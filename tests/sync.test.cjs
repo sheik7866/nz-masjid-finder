@@ -237,6 +237,45 @@ ok('adminUpdate/adminDelete go through is_admin() and never queue offline', asyn
   assert.ok(V.get(ID) == null, 'deleted row leaves the cache');
 });
 
+// ---------------------------------------------------------------- undo
+asyncOk('undo refuses to remove a shared row without a signed-in admin', async () => {
+  const { V } = makeEnv(() => Promise.reject(new Error('undo must not call the network when signed out')));
+  await assert.rejects(() => V.undo(ID), /signed-in admin/i);
+});
+
+asyncOk('undo deletes the shared row, clears the cache and asks for the deleted row back', async () => {
+  const calls = [];
+  const { V, SB } = makeEnv((url, opts) => {
+    calls.push({ url, method: opts.method, prefer: opts.headers.Prefer });
+    if (url.includes('/auth/v1/token')) {
+      return Promise.resolve({
+        ok: true, status: 200,
+        text: () => JSON.stringify({ access_token: 'tok', refresh_token: 'r' }),
+        json: () => Promise.resolve({ access_token: 'tok', refresh_token: 'r' }),
+      });
+    }
+    if (url.includes('/verifications?select=')) {
+      return Promise.resolve({
+        ok: true, status: 200,
+        text: () => JSON.stringify([{ id: ID, status: 'verified', verified_by: 'Admin', jummah_times: '1.30 pm', updated_at: '2026-01-02T00:00:00Z' }]),
+      });
+    }
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) {
+      return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
+    }
+    if (opts.method === 'DELETE') return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([{ id: ID }]) });
+    return Promise.reject(new Error('unexpected ' + url + ' ' + opts.method));
+  });
+  await SB.signIn('admin@nz.nz', 'secret');
+  await V.sync();
+  assert.ok(V.get(ID), 'row is cached before the undo');
+  await V.undo(ID);
+  assert.strictEqual(V.get(ID), null, 'row removed from the cache');
+  const del = calls.find((c) => c.method === 'DELETE');
+  assert.ok(del && del.url.includes('id=eq.' + encodeURIComponent(ID)), 'DELETE by id');
+  assert.ok(del.prefer.includes('return=representation'), 'asks for the deleted row to detect a silent no-op');
+});
+
 // ---------------------------------------------------------------- submissions share, never hide locally
 ok('submitMasjid goes to the shared queue; offline only as a retry queue', async () => {
   const posted = [];

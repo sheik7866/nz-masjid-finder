@@ -322,6 +322,9 @@
       }
     } catch (e) { /* stats must never break boot */ }
   }
+  // The verify-hooks IIFE below is a separate closure, so share the badge
+  // updater through App instead of expecting it to be in that scope.
+  App.updateBackendBadge = updateBackendBadge;
 
   // ------------------------------------------------------------ boot
   function rebuildFromSources(mDoc, hDoc) {
@@ -570,7 +573,7 @@
     }
     delete App.masjidState.openForm[id];
     updateStats();
-    updateBackendBadge();
+    App.updateBackendBadge();
     App.renderMasjidList(false);
   }
 
@@ -619,7 +622,7 @@
     });
 
     const list = $('mList');
-    list.addEventListener('click', (e) => {
+    list.addEventListener('click', async (e) => {
       const b = e.target.closest('[data-act]');
       if (!b) return;
       e.stopPropagation();
@@ -635,7 +638,16 @@
         return;
       }
       if (act === 'cancel') { delete App.masjidState.openForm[id]; App.renderMasjidList(false); return; }
-      if (act === 'undo') { V.undo(id); refresh(id); toast('Verification removed'); }
+      if (act === 'undo') {
+        try {
+          await V.undo(id);
+          refresh(id);
+          toast('Verification removed');
+        } catch (err) {
+          toast('Not undone — ' + (err.message || 'the database refused'));
+        }
+        return;
+      }
     });
 
     list.addEventListener('submit', (e) => {
@@ -665,7 +677,7 @@
           return V.decorate(base);
         });
       }
-      updateBackendBadge();
+      App.updateBackendBadge();
       App.renderMasjidList(false);
   });
   });

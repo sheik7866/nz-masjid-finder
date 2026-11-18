@@ -72,6 +72,14 @@ ok('report() without Supabase queues offline', async () => {
   assert.strictEqual(V.get('node/1'), null, 'unconfirmed rows are never shown');
 });
 
+ok('undo is exposed and clears a queued local write', async () => {
+  assert.strictEqual(typeof V.undo, 'function', 'the Undo button needs a method to call');
+  await V.confirm('node/1', { by: 'Ahmed R.' });
+  assert.strictEqual(V.queues().verifications, 1);
+  await V.undo('node/1');
+  assert.strictEqual(V.queues().verifications, 0);
+});
+
 ok('stats() counts only the shared cache', () => {
   const s = V.stats(['node/1', 'node/99']);
   assert.strictEqual(s.verified, 0);

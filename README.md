@@ -517,16 +517,18 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 92 checks across six suites (the live RLS audit
+`sh tests/run-all.sh` runs 120 checks across eight suites (the live RLS audit
 skips without credentials):
 
-- `tests/verification.test.cjs` (12) — verify / report / undo / export / corrupt storage
-- `tests/supabase.test.cjs` (10) — offline queue, sync, submissions, sign-in, admin PATCH
+- `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
+- `tests/supabase.test.cjs` (11) — offline queue, sync, submissions, sign-in, admin PATCH, delete refusal
 - `tests/core.test.cjs` (30) — prayer maths vs AlAdhan, timezone, next-prayer, qibla
   bearings, Hijri dates, Ramadan calendar, dataset sanity, source URLs, region
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
 - `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
-- `tests/sync.test.cjs` (9) — shared-store merge, offline queue, realtime
+- `tests/sync.test.cjs` (11) — shared-store merge, offline queue, realtime, admin-only undo
+- `tests/jummah.test.cjs` (21) — Jumu'ah extraction, page/link selection, directory matching
+- `tests/app-ui.test.cjs` (3) — the verify hooks reach the shared badge updater and the Undo path
 - `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 

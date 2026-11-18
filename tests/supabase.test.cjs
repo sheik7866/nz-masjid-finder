@@ -74,6 +74,13 @@ ok("deleteVerification issues DELETE by id", async () => {
   assert.ok(seen.url.includes("id=eq.node" + encodeURIComponent("/1")));
 });
 
+ok("deleteVerification treats an RLS-filtered empty result as a refusal", async () => {
+  // PostgREST answers 204 even when RLS hid the row; asking for the deleted
+  // row back is what makes a silent no-op visible.
+  const SB = makeSB(DEMO, () => json([]));
+  await assert.rejects(() => SB.deleteVerification("node/1"), /only an admin/i);
+});
+
 ok("upsertVerification tries INSERT first, escalates to UPDATE on 409", async () => {
   const calls = [];
   const SB = makeSB(DEMO, (url, opts) => {

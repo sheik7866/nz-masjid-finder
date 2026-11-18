@@ -1,0 +1,159 @@
+// Regression tests for the verify hooks in app.js.
+//
+// The hooks live in a second IIFE, separate from the closure that owns
+// updateBackendBadge(). Loading the real script in a VM and firing the events
+// it listens for catches a helper that is out of scope (the original crash was
+// "ReferenceError: updateBackendBadge is not defined" on every sync) and an
+// Undo button wired to a method the store does not expose.
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+const assert = require('assert');
+
+const flush = () => new Promise((resolve) => setImmediate(resolve));
+
+function makeApp() {
+  const listeners = {};
+  const els = {};
+  const node = () => ({
+    hidden: false, style: {}, textContent: '', innerHTML: '', value: '', dataset: {},
+    classList: { add() {}, remove() {}, toggle() {} },
+    setAttribute() {}, getAttribute() { return null; },
+    addEventListener(type, fn) {
+      this._l = this._l || {};
+      (this._l[type] = this._l[type] || []).push(fn);
+    },
+    appendChild() {}, focus() {},
+    querySelector() { return null; }, querySelectorAll() { return []; },
+  });
+  const document = {
+    addEventListener(type, fn) { (listeners[type] = listeners[type] || []).push(fn); },
+    removeEventListener() {},
+    querySelectorAll() { return []; },
+    getElementById(id) { return (els[id] = els[id] || node()); },
+    createElement() { return node(); },
+    body: { appendChild() {}, textContent: '' },
+    documentElement: {},
+    visibilityState: 'visible',
+    readyState: 'complete',
+    dispatchEvent(ev) { (listeners[ev.type] || []).slice().forEach((fn) => fn(ev)); },
+  };
+  const layer = () => ({
+    addTo() { return this; }, clearLayers() {},
+  });
+  const V = {
+    undoCalls: [],
+    confirmed: [],
+    isVerifying: () => false,
+    setVerifying() {},
+    stats: () => ({ verified: 1, flagged: 0 }),
+    syncState: () => ({ backend: 'supabase', shared: 3, queued: 0, realtime: false }),
+    decorate: (m) => m,
+    sync: async () => ({ mode: 'supabase' }),
+    subscribe: async () => false,
+    exportJson: () => ({ records: [] }),
+    clearAll() {},
+    confirm: async (id) => { V.confirmed.push(id); return { stored: 'supabase' }; },
+    report: async () => ({}),
+    async undo(id) { V.undoCalls.push(id); },
+  };
+  const sandbox = {
+    document,
+    navigator: { onLine: true },
+    localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+    console, Date, JSON, Math, Promise, Array, Object, String, Number,
+    setTimeout: () => 0, clearTimeout() {}, setInterval: () => 0, clearInterval() {},
+    location: { hash: '' }, history: { replaceState() {} }, alert() {}, CSS: { escape: (s) => s },
+    CustomEvent: function (type, init) { this.type = type; this.detail = (init && init.detail) || {}; },
+    FormData: class { entries() { return [['by', 'Tester'], ['source', 'https://example.org'], ['jummah', '1:15pm']][Symbol.iterator](); } },
+    fetch: () => Promise.resolve({ ok: true, json: () => Promise.resolve({ masjids: [], meta: {} }) }),
+    L: {
+      map: () => ({ setView() { return this; }, invalidateSize() {}, flyTo() {} }),
+      tileLayer: () => ({ addTo() {} }),
+      layerGroup: layer,
+      latLngBounds: () => ({}),
+      divIcon: () => ({}),
+      marker: () => ({ bindPopup() { return this; }, on() { return this; }, addTo() { return this; } }),
+      circleMarker: () => ({ addTo() { return this; }, bindPopup() { return this; } }),
+    },
+    NZVerification: V,
+  };
+  sandbox.window = sandbox;
+  sandbox.window.addEventListener = () => {};
+  vm.createContext(sandbox);
+  vm.runInContext(fs.readFileSync(path.join(__dirname, '../public/app.js'), 'utf8'), sandbox, { filename: 'app.js' });
+  return { sandbox, els, V };
+}
+
+const pending = [];
+const ok = (name, fn) => { pending.push({ name, fn }); };
+
+ok('a sync refresh updates the badge instead of crashing on an out-of-scope helper', async () => {
+  const { sandbox, els, V } = makeApp();
+  const App = sandbox.NZApp;
+  let renders = 0;
+  App.renderMasjidList = () => { renders += 1; };
+  sandbox.document.dispatchEvent(new sandbox.CustomEvent('DOMContentLoaded'));
+  await flush();
+  await flush();
+  App.masjids = [{ id: 'node/1', name: 'Test Masjid', lat: -36.8, lon: 174.7, address: { formatted: '1 Test Rd' }, kind: 'mosque' }];
+  const before = renders;
+  assert.doesNotThrow(() => sandbox.document.dispatchEvent(new sandbox.CustomEvent('nz:masjids-changed')));
+  assert.ok(renders > before, 'the list re-rendered after the sync event');
+  assert.strictEqual(els.backendState.textContent, '· shared: 3 record(s)', 'badge text was written');
+});
+
+ok('Undo calls the shared store instead of a missing method', async () => {
+  const { sandbox, els, V } = makeApp();
+  const App = sandbox.NZApp;
+  let renders = 0;
+  App.renderMasjidList = () => { renders += 1; };
+  sandbox.document.dispatchEvent(new sandbox.CustomEvent('DOMContentLoaded'));
+  await flush();
+  await flush();
+  App.masjids = [{ id: 'node/1', name: 'Test Masjid', lat: -36.8, lon: 174.7, address: { formatted: '1 Test Rd' }, kind: 'mosque' }];
+  const clicks = els.mList._l.click || [];
+  assert.ok(clicks.length > 0, 'the verify hooks registered their click handler');
+  for (const fn of clicks) {
+    await fn({ target: { closest: (sel) => (sel === '[data-act]' ? { dataset: { id: 'node/1', act: 'undo' } } : null) }, stopPropagation() {} });
+  }
+  assert.deepStrictEqual(V.undoCalls, ['node/1'], 'undo reached the store');
+  assert.ok(renders > 0, 'the card was re-rendered after the undo');
+});
+
+ok('saving a confirmation re-renders through the shared badge updater', async () => {
+  const { sandbox, els, V } = makeApp();
+  const App = sandbox.NZApp;
+  let renders = 0;
+  App.renderMasjidList = () => { renders += 1; };
+  sandbox.document.dispatchEvent(new sandbox.CustomEvent('DOMContentLoaded'));
+  await flush();
+  await flush();
+  App.masjids = [{ id: 'node/1', name: 'Test Masjid', lat: -36.8, lon: 174.7, address: { formatted: '1 Test Rd' }, kind: 'mosque' }];
+  const submits = els.mList._l.submit || [];
+  assert.ok(submits.length > 0, 'the verify hooks registered their submit handler');
+  for (const fn of submits) {
+    await fn({
+      target: { closest: () => ({ dataset: { id: 'node/1', form: 'confirm' } }) },
+      preventDefault() {},
+    });
+  }
+  assert.deepStrictEqual(V.confirmed, ['node/1'], 'confirmation reached the store');
+  assert.ok(renders > 0, 'the card re-rendered without a ReferenceError');
+});
+
+(async () => {
+  let good = 0;
+  for (const t of pending) {
+    try {
+      await t.fn();
+      good += 1;
+      console.log('  ✓', t.name);
+    } catch (e) {
+      console.error('  ✗', t.name, '—', e.message);
+      if (e.stack) console.error(e.stack.split('\n').slice(1, 5).join('\n'));
+      process.exitCode = 1;
+    }
+  }
+  console.log(`\n${good} checks passed (${pending.length} total)`);
+})();

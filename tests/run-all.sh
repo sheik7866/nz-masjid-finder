@@ -16,6 +16,7 @@ fi
 "$NODE" tests/schema.test.cjs
 "$NODE" tests/sync.test.cjs
 "$NODE" tests/jummah.test.cjs
+"$NODE" tests/app-ui.test.cjs
 "$NODE" tests/mirror.test.cjs
 # live three-identity RLS test — reads .env (git-ignored) or the environment,
 # and skips cleanly when no credentials are configured
