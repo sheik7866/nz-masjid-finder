@@ -134,6 +134,7 @@
         clearTimeout(t);
         t = setTimeout(() => {
           Object.keys(App.maps).forEach((k) => { if (App.maps[k]) App.maps[k].invalidateSize(); });
+          if (App.refreshMeta) App.refreshMeta();
           const mapView = $('view-map');
           if (mapView && !mapView.hidden && App.renderMasjidList) App.renderMasjidList(true);
         }, 180);
@@ -391,7 +392,16 @@
       vtag.hidden = !verifiedN;
       if (V && V.lastError) console.warn('community data:', V.lastError);
     }
-    if (metaEl) metaEl.textContent = App.masjids.length + ' masjids · ' + App.halal.length + ' halal spots';
+    // On a phone the long line ran under the action buttons, so only the masjid
+    // count is shown there; both counts still fit on anything wider.
+    const setMetaText = () => {
+      if (!metaEl) return;
+      const phone = !window.matchMedia || window.matchMedia('(max-width: 520px)').matches;
+      metaEl.textContent = App.masjids.length + ' masjids' +
+        (phone ? '' : ' · ' + App.halal.length + ' halal spots');
+    };
+    setMetaText();
+    App.refreshMeta = setMetaText;
 
     const regions = {};
     App.masjids.forEach((m) => { regions[m.region] = (regions[m.region] || 0) + 1; });
