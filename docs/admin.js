@@ -212,7 +212,7 @@
             <li>The two buttons list the listings <b>with a website</b> and <b>without one</b>; typing still searches all of them.</li>
             <li><b>Scan all</b> reads whichever half is listed — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
             <li><b>Scan &amp; save missing</b> is the hands-off one: it reads every masjid that has no Jumu'ah time yet and saves what it finds, with the source page, without asking per row. It waits for you to press Start, skips masjids that already have a time, and reports how many it saved.</li>
-            <li>Everything the hands-off run saves is listed under <b>“Saved by the automatic scan”</b> below, newest first, with the page it came from — and a <b>Revert</b> button that clears the time and puts the listing back to unverified.</li>
+            <li>Everything the hands-off run saves is listed under <b>“Saved by the automatic scan”</b> below, newest first, with the page it came from — and, when the time came from Kiwi Muslim Directory, the row it was matched to — plus a <b>Revert</b> button that clears the time and puts the listing back to unverified.</li>
             <li>When a masjid's own pages give no time, the check also reads <b>Kiwi Muslim Directory's “Jumah Prayer Times”</b> article — a winter/summer table for about 65 masjids — and offers the summer (second) time.</li>
             <li>Each result links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> as well. Their search and listing screens draw times in with JavaScript, so those links are for comparing by eye.</li>
           </ul>
@@ -227,7 +227,7 @@
         <ul class="admList" id="jfList"></ul>
 
         <h3>Saved by the automatic scan (${autoSaved.length})</h3>
-        <p class="hint">Every time the hands-off run wrote, newest first, with the page it was read from. Revert puts the listing back to unverified with no time.</p>
+        <p class="hint">Every time the hands-off run wrote, newest first, with the page it was read from and the directory row it matched. Revert puts the listing back to unverified with no time.</p>
         ${autoSavedHtml(autoSaved)}
 
         <h3>Submissions awaiting review (live)</h3>
@@ -305,6 +305,7 @@
       <li class="admItem">
         <div class="admTop"><b>${esc(masjidName(v.id))}</b><span class="badge verified">${esc(v.jummah_times || 'no time')}</span></div>
         <p class="addr small">${v.source_url ? `<a href="${esc(v.source_url)}" target="_blank" rel="noopener">${esc(v.source_url)}</a>` : 'no source recorded'} · ${esc((v.verified_at || '').slice(0, 10))}</p>
+        ${kmdNoteHtml(v.note)}
         <div class="vbtns"><button class="vbtn undo" data-jarevert="${esc(v.id)}" type="button">Revert</button></div>
       </li>`).join('') + '</ul>';
   }
@@ -479,6 +480,23 @@
     website: m.website || null,
   });
 
+  // A time that came from the directory article is only as good as the row it
+  // was matched to, and that page lists sixty-odd rows with near-identical
+  // names. So the row is shown next to the time — and, for the hands-off run,
+  // written into the saved note — instead of only the article's URL.
+  const KMD_NOTE = /\bmatched directory row: "?([^";]+)"?/i;
+  const kmdRowHtml = (match) => {
+    if (!match || !match.name) return '';
+    const place = [match.address, match.region].filter(Boolean).join(' · ');
+    return `<p class="addr small"><b>Directory row:</b> ${esc(match.name)}${place ? ' — ' + esc(place) : ''}</p>`;
+  };
+  const kmdNoteText = (match) => (!match || !match.name) ? ''
+    : '; matched directory row: "' + [match.name, match.address, match.region].filter(Boolean).join(', ') + '"';
+  const kmdNoteHtml = (note) => {
+    const m = String(note || '').match(KMD_NOTE);
+    return m ? `<p class="addr small"><b>Directory row:</b> ${esc(m[1])}</p>` : '';
+  };
+
   function wireJummahFinder() {
     const input = $('jfSearch');
     const list = $('jfList');
@@ -599,6 +617,7 @@
               <p class="addr">${esc(s.url)}</p>
               <p class="jfTimes">${s.times.map((t) => `<b>${esc(t)}</b>`).join(' ')}</p>
               ${s.snippets && s.snippets.length ? `<p class="addr small">…${esc(s.snippets[0])}…</p>` : ''}
+              ${kmdRowHtml(s.match)}
               <div class="vbtns"><button class="vbtn confirm" data-jfuse="${esc(pick)}" data-jfsrc="${esc(s.url)}" type="button">${twoUp ? 'Use ' + esc(pick) + ' (2nd of ' + s.times.length + ')' : 'Use this time'}</button>
                 <a class="vbtn" href="${esc(s.url)}" target="_blank" rel="noopener">Open page</a></div>
             </li>`;
@@ -686,7 +705,7 @@
     let failed = 0;
     const queue = targets.slice();
 
-    const addRow = (m, time, src, pages, note) => {
+    const addRow = (m, time, src, pages, note, match) => {
       found += 1;
       const row = document.createElement('li');
       row.className = 'admItem';
@@ -694,6 +713,7 @@
         <div class="admTop"><b>${esc(m.name)}</b><span class="badge verified">${esc(time)}</span></div>
         <p class="addr">${esc(cityOf(m) || 'New Zealand')}${pages ? ' · ' + pages + ' page(s) read' : ''}${note ? ' · ' + esc(note) : ''}</p>
         <p class="addr small"><a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)}</a></p>
+        ${kmdRowHtml(match)}
         <div class="vbtns"><button class="vbtn confirm" type="button">Save ${esc(time)}</button></div>`;
       row.querySelector('button').addEventListener('click', async (ev) => {
         const btn = ev.currentTarget;
@@ -728,7 +748,7 @@
           done += 1;
           if (hit) {
             addRow(m, pickTime(hit.times), hit.url, data.pages_read,
-              hit.times.length > 1 ? '2nd of ' + hit.times.length : '');
+              hit.times.length > 1 ? '2nd of ' + hit.times.length : '', hit.match);
           }
         } catch (err) {
           done += 1;
@@ -799,13 +819,14 @@
     let failed = 0;
     const queue = targets.slice();
 
-    const addRow = (m, time, src, state) => {
+    const addRow = (m, time, src, state, match) => {
       const row = document.createElement('li');
       row.className = 'admItem';
       const badge = state === 'saved' ? 'verified' : 'unverified';
       row.innerHTML = `
         <div class="admTop"><b>${esc(m.name)}</b><span class="badge ${badge}">${esc(time || state)}</span></div>
-        <p class="addr small">${esc(src || '')}</p>`;
+        <p class="addr small">${esc(src || '')}</p>
+        ${kmdRowHtml(match)}`;
       list.appendChild(row);
     };
 
@@ -834,10 +855,10 @@
               by: 'admin',
               jummah: time,
               source: hit.url,
-              note: 'Jumu\'ah time read from ' + hit.url + ' on ' + new Date().toISOString().slice(0, 10) + ' (automatic scan)',
+              note: 'Jumu\'ah time read from ' + hit.url + ' on ' + new Date().toISOString().slice(0, 10) + ' (automatic scan)' + kmdNoteText(hit.match),
             });
             saved += 1;
-            addRow(m, time, hit.url, 'saved');
+            addRow(m, time, hit.url, 'saved', hit.match);
           } catch (e) {
             failed += 1;
             addFail(m, 'read ' + time + ' but the save failed: ' + ((e && e.message) || 'unknown error'));

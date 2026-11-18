@@ -166,7 +166,13 @@ Deno.serve(async (req: Request) => {
 
     const notes: string[] = [];
     const queries: string[] = [];
-    const sources: Array<{ url: string; title: string; times: string[]; snippets: string[] }> = [];
+    const sources: Array<{
+      url: string;
+      title: string;
+      times: string[];
+      snippets: string[];
+      match?: { name: string; address: string; region: string };
+    }> = [];
     const seen = new Set<string>();
     let fetched = 0;
 
@@ -246,6 +252,10 @@ Deno.serve(async (req: Request) => {
             // which is the one in force while daylight saving is on.
             times: [row.winter, row.summer],
             snippets: [row.name + ' — winter ' + row.winter + ', summer ' + row.summer],
+            // The row the matcher settled on travels with the time: the article
+            // holds sixty-odd rows, so "which row?" is the only way to spot a
+            // wrong match before trusting the time it supplied.
+            match: { name: row.name, address: row.address, region: row.region },
           });
         } else {
           notes.push('Kiwi Muslim Directory lists no Jumu\'ah time for this masjid.');

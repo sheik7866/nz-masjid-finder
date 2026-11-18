@@ -304,7 +304,9 @@ Notes:
 - **Scan every website** reads all the listings that carry a website in one go,
   three at a time, with a Stop button, and lists every Jumu'ah time it found with
   the page behind it. The scan writes nothing; each row has its own Save button,
-  so a person still confirms each time that reaches a listing.
+  so a person still confirms each time that reaches a listing. When the time came
+  from Kiwi Muslim Directory, the row names the directory entry it was matched to
+  (name, address and region), so a wrong match is visible before Save.
 - **Scan & save missing** is the hands-off version: it reads every masjid that
   has no Jumu'ah time yet (both halves of the directory) and saves what it finds
   with the source page, without per-row confirmation. Two guards keep it safe —
@@ -314,8 +316,9 @@ Notes:
   reported, and if the admin sign-in has expired the run stops with that as the
   reason instead of counting a hundred identical failures.
 - **Saved by the automatic scan** lists every time the hands-off run wrote,
-  newest first, with the page it was read from and a Revert button that clears
-  the time and puts the listing back to unverified.
+  newest first, with the page it was read from, the directory row it matched (its
+  note carries `matched directory row: "…"`) and a Revert button that clears the
+  time and puts the listing back to unverified.
 - When the masjid's own pages give no time, the check falls back to Kiwi Muslim
   Directory's **Jumah Prayer Times** article
   (`muslimdirectory.co.nz/blog/jumah-prayer-times`). That one page is
@@ -324,7 +327,8 @@ Notes:
   one. Names match conservatively: the article's city headings, the masjid's
   aliases and its street address all have to agree, a shortened name needs the
   address to confirm it, and near misses or two equally good rows are refused
-  rather than guessed.
+  rather than guessed. The matched row travels back with the time, and the admin
+  panel shows it beside every time it supplied.
 - Each result also links to **Kiwi Muslim Directory** and **Go Pray**. The
   directory's search and listing screens, and Go Pray's timetables, are drawn in
   by JavaScript (KMD disallows `/api`; Go Pray keeps times in its payload), so
