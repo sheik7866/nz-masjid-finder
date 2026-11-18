@@ -418,9 +418,17 @@ select.full { width: 100%; }
      and the two subtitles cost more than they explain on a phone. */
   .meta { font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .vtag { display: none; }
-  .topbar { padding: 8px 12px; }
-  .topbar h1 { font-size: 16px; }
-  .logo { width: 34px; height: 34px; border-radius: 10px; }
+  /* Four 44px action buttons leave ~130px for the name, so the brand block is
+     tightened until "NZ Masjid Finder" fits whole rather than as "NZ Masjid F…". */
+  .topbar { padding: 8px 10px; gap: 8px; }
+  .topbar h1 { font-size: 15px; letter-spacing: -.3px; }
+  .brand { gap: 8px; }
+  .logo { width: 32px; height: 32px; border-radius: 10px; }
+  .topactions { gap: 5px; }
+}
+@media (max-width: 400px) {
+  /* Below 400px even the 32px logo pushes the name into an ellipsis. */
+  .logo { display: none; }
 }
 @media (max-width: 380px) {
   .filters { grid-template-columns: 1fr; }
