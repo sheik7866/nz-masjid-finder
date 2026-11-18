@@ -207,6 +207,7 @@
             <li>Every result shows the time and the exact page it was read from, so you can open the page and confirm it before saving.</li>
             <li><b>Use these times</b> saves the time as verified, with that page as the source. If a page lists two times (winter and daylight saving), the second one is saved and the button says which. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
             <li><b>Scan every website</b> reads all the listings that have a website in one go — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
+            <li>Each result also links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> for that masjid. Those directories hold Jumu'ah times but draw them in with JavaScript, so they cannot be read by the check — open them when you want to compare by eye.</li>
           </ul>
         </details>
         <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />
@@ -499,6 +500,11 @@
       if (empty.length) out.innerHTML += `<p class="hint">${empty.length} page(s) mentioned Jumu\'ah but gave no time.</p>`;
       if (data.notes && data.notes.length) out.innerHTML += '<p class="hint">' + data.notes.map(esc).join('<br>') + '</p>';
       if (m.website) out.innerHTML += `<p class="hint"><a href="${esc(m.website)}" target="_blank" rel="noopener">Open the masjid website</a> · <a href="https://www.google.com/search?q=${encodeURIComponent(m.name + ' ' + cityOf(m) + ' jummah times')}" target="_blank" rel="noopener">search Google manually</a></p>`;
+      // Directories carry Jumu'ah times too, but they render them with JavaScript
+      // (Kiwi Muslim Directory's /api and Go Pray's data are not in the HTML), so
+      // they cannot be read from here — these links open them for a human look.
+      const dirQ = encodeURIComponent(m.name + ' ' + cityOf(m));
+      out.innerHTML += `<p class="hint">Check a directory: <a href="https://muslimdirectory.co.nz/search?q=${dirQ}" target="_blank" rel="noopener">Kiwi Muslim Directory</a> · <a href="https://www.google.com/search?q=site%3Agopray.app+${dirQ}" target="_blank" rel="noopener">Go Pray</a></p>`;
       out.querySelectorAll('[data-jfuse]').forEach((btn) => {
         btn.addEventListener('click', async () => {
           const label = btn.textContent;

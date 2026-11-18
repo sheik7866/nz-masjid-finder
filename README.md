@@ -305,6 +305,11 @@ Notes:
   three at a time, with a Stop button, and lists every Jumu'ah time it found with
   the page behind it. The scan writes nothing; each row has its own Save button,
   so a person still confirms each time that reaches a listing.
+- Each result also links to **Kiwi Muslim Directory** and **Go Pray**. Both
+  publish Jumu'ah times, but they render them client-side (`muslimdirectory.co.nz`
+  serves a Next.js shell and disallows its `/api`; `gopray.app` pages carry the
+  times only in their JS payload), so the check cannot read them and the links
+  are there for a human comparison.
 - Times are only taken from a line that mentions Jumu'ah / khutbah / jama'at /
   salah, or a bare time row directly under one, so unrelated opening hours are
   not picked up. `tests/jummah.test.cjs` covers those cases.
