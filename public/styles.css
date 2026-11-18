@@ -16,7 +16,11 @@
   --tabbar-h: 60px;
   --topbar-h: 60px;
   --safe-b: env(safe-area-inset-bottom, 0px);
-  --topbar-offset: calc(var(--topbar-h) + env(safe-area-inset-top, 0px));
+  /* Named so every rule that changes the bar's padding can add it back: on an
+     installed iPhone app the page starts under the status bar, and a plain
+     padding shorthand silently drops the inset and hides the header behind it. */
+  --safe-t: env(safe-area-inset-top, 0px);
+  --topbar-offset: calc(var(--topbar-h) + var(--safe-t));
   --tabbar-offset: calc(var(--tabbar-h) + var(--safe-b));
   --chrome-h: calc(var(--topbar-offset) + var(--tabbar-offset));
 }
@@ -38,11 +42,10 @@ a { color: var(--green-600); }
 /* ---------------------------------------------------------------- top bar */
 .topbar {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
-  padding: 10px 14px;
+  padding: calc(10px + var(--safe-t)) 14px 10px;
   background: linear-gradient(135deg, #0b3d33 0%, #12594a 100%);
   color: #fff;
   position: sticky; top: 0; z-index: 1200;
-  padding-top: calc(10px + env(safe-area-inset-top, 0px));
 }
 .topbar::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
@@ -405,7 +408,7 @@ select.full { width: 100%; }
   .list { overflow: visible; max-height: none; }
   .foot { display: none; }
   .topbar h1 { font-size: 15.5px; }
-  .topactions .btn { padding: 8px 9px; font-size: 12.5px; min-height: 38px; }
+  .topactions .btn { padding: 8px 9px; font-size: 12.5px; min-height: 44px; }
   .topactions #mNear { padding: 8px 10px; }
   .vtag { display: none; }
   .verifybar #exportBtn { margin-left: 0; }
@@ -420,7 +423,7 @@ select.full { width: 100%; }
   .vtag { display: none; }
   /* Four 44px action buttons leave ~130px for the name, so the brand block is
      tightened until "NZ Masjid Finder" fits whole rather than as "NZ Masjid F…". */
-  .topbar { padding: 8px 10px; gap: 8px; }
+  .topbar { padding: calc(8px + var(--safe-t)) 10px 8px; gap: 8px; }
   .topbar h1 { font-size: 15px; letter-spacing: -.3px; }
   .brand { gap: 8px; }
   .logo { width: 32px; height: 32px; border-radius: 10px; }
