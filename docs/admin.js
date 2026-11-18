@@ -197,6 +197,20 @@
           <span><b>${flagged.length}</b> flagged listings</span>
           <span><b>${verified.length}</b> verified</span>
         </div>
+        <h3>Jumu'ah web check</h3>
+        <p class="hint">Search a masjid's website and pages for its Jumu'ah times. Nothing is saved until you press Use on a result.</p>
+        <details class="admHelp">
+          <summary>How the web check works</summary>
+          <ul>
+            <li>Pick a masjid below and press <b>Check the web</b>. It reads that masjid's own website and its prayer or timetable pages — up to 8 pages, usually within 20 seconds.</li>
+            <li>Listings marked <b>no website</b> can still be found through web search, when a search key is configured on the project.</li>
+            <li>Every result shows the time and the exact page it was read from, so you can open the page and confirm it before saving.</li>
+            <li><b>Use these times</b> saves the time as verified, with that page as the source. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
+          </ul>
+        </details>
+        <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />
+        <ul class="admList" id="jfList"></ul>
+
         <h3>Submissions awaiting review (live)</h3>
         ${subsHtml(pending, { empty: 'Queue is clear — every submission has been reviewed.' })}
         <h3>Recently decided</h3>
@@ -207,6 +221,7 @@
         ${verifiedHtml(verified)}
       `);
       wireAdminActions();
+      wireJummahFinder();
       const so = $('signOut');
       if (so) so.addEventListener('click', () => { SB.signOut(); toast('Signed out'); closeModal(); });
     } catch (e) {
@@ -380,6 +395,103 @@
         }
       });
     });
+  }
+
+  // ------------------------------------------------------------ Jumu'ah web check
+  // Asks the `verify-jummah` Edge Function to read the masjid's own pages (and
+  // the wider web when a search key is configured), then shows every Jumu'ah
+  // time it found next to the page it came from. The admin picks one; only then
+  // is anything written, through the normal is_admin() verification path.
+  const cityOf = (m) => (m.address && (m.address.city || m.address.formatted)) || m.region || '';
+
+  function wireJummahFinder() {
+    const input = $('jfSearch');
+    const list = $('jfList');
+    if (!input || !list) return;
+    const masjids = (window.NZApp && window.NZApp.masjids) || [];
+    const paint = () => {
+      const q = input.value.trim().toLowerCase();
+      if (!q) { list.innerHTML = '<li class="hint">Start typing to pick a masjid.</li>'; return; }
+      const hits = masjids.filter((m) => (
+        String(m.name || '').toLowerCase().includes(q) ||
+        String(cityOf(m)).toLowerCase().includes(q)
+      )).slice(0, 8);
+      if (!hits.length) { list.innerHTML = '<li class="hint">No masjid matches that name.</li>'; return; }
+      list.innerHTML = hits.map((m) => `<li class="admItem">
+        <div class="admTop"><b>${esc(m.name)}</b><span class="badge ${m.website ? 'verified' : 'unverified'}">${m.website ? 'has website' : 'no website'}</span></div>
+        <p class="addr">${esc(cityOf(m) || 'New Zealand')}${m.jummah_times ? ' · now: ' + esc(m.jummah_times) : ''}</p>
+        <div class="vbtns"><button class="vbtn confirm" data-jf="${esc(m.id)}" type="button">Check the web</button></div>
+      </li>`).join('');
+      list.querySelectorAll('[data-jf]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const m = masjids.find((x) => String(x.id) === String(btn.dataset.jf));
+          if (m) checkJummah(m);
+        });
+      });
+    };
+    input.addEventListener('input', paint);
+    paint();
+  }
+
+  async function checkJummah(m) {
+    const modal = openModal('Jumu\'ah web check — ' + m.name,
+      `<p class="hint" id="jfStatus">Reading ${esc(m.website || 'search results')} and its prayer pages… this can take up to 20 seconds.</p>
+       <div id="jfOut"></div>`);
+    const status = $('jfStatus');
+    const out = $('jfOut');
+    try {
+      const data = await SB.callFunction('verify-jummah', {
+        id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null,
+      });
+      status.textContent = data.pages_read
+        ? 'Read ' + data.pages_read + ' page(s)' + (data.search_used ? ' including web search results' : ' on the masjid website') + '.'
+        : 'Nothing could be read for this masjid.';
+      const sources = (data.sources || []).filter((s) => s.times && s.times.length);
+      const empty = (data.sources || []).filter((s) => !s.times || !s.times.length);
+      out.innerHTML = sources.length
+        ? '<ul class="admList">' + sources.map((s) => `
+            <li class="admItem">
+              <div class="admTop"><b><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a></b><span class="badge verified">${s.times.length} time${s.times.length === 1 ? '' : 's'}</span></div>
+              <p class="addr">${esc(s.url)}</p>
+              <p class="jfTimes">${s.times.map((t) => `<b>${esc(t)}</b>`).join(' ')}</p>
+              ${s.snippets && s.snippets.length ? `<p class="addr small">…${esc(s.snippets[0])}…</p>` : ''}
+              <div class="vbtns"><button class="vbtn confirm" data-jfuse="${esc(s.times.join(', '))}" data-jfsrc="${esc(s.url)}" type="button">Use these times</button>
+                <a class="vbtn" href="${esc(s.url)}" target="_blank" rel="noopener">Open page</a></div>
+            </li>`).join('') + '</ul>'
+        : '<p class="hint">No Jumu\'ah time was found on the pages that could be read. Check the site yourself, or set the time from the listing\'s “Confirm details” form.</p>';
+      if (empty.length) out.innerHTML += `<p class="hint">${empty.length} page(s) mentioned Jumu\'ah but gave no time.</p>`;
+      if (data.notes && data.notes.length) out.innerHTML += '<p class="hint">' + data.notes.map(esc).join('<br>') + '</p>';
+      if (m.website) out.innerHTML += `<p class="hint"><a href="${esc(m.website)}" target="_blank" rel="noopener">Open the masjid website</a> · <a href="https://www.google.com/search?q=${encodeURIComponent(m.name + ' ' + cityOf(m) + ' jummah times')}" target="_blank" rel="noopener">search Google manually</a></p>`;
+      out.querySelectorAll('[data-jfuse]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          btn.disabled = true;
+          btn.textContent = 'Saving…';
+          try {
+            await V.confirm(m.id, {
+              by: 'admin',
+              jummah: btn.dataset.jfuse,
+              source: btn.dataset.jfsrc,
+              note: 'Jumu\'ah times read from ' + btn.dataset.jfsrc + ' on ' + new Date().toISOString().slice(0, 10),
+            });
+            toast('Saved — ' + btn.dataset.jfuse + ' now verified');
+            await ensureCommunityVisible();
+            openAdmin();
+          } catch (e) {
+            toast('Failed: ' + e.message);
+            btn.disabled = false;
+            btn.textContent = 'Use these times';
+          }
+        });
+      });
+    } catch (e) {
+      const msg = e.status === 404
+        ? 'The verify-jummah function is not deployed on this Supabase project yet. See README → “Checking Jumu\'ah times online”.'
+        : e.status === 401 || e.status === 403
+          ? 'Only a signed-in admin can run the web check. Sign out and back in if this persists.'
+          : e.message || 'The check failed.';
+      status.textContent = '';
+      out.innerHTML = '<p class="hint" style="color:#a8402a">' + esc(msg) + '</p>';
+    }
   }
 
   // ------------------------------------------------------------ boot

@@ -302,6 +302,33 @@
       return true;
     },
 
+    // ---------------------------------------------------------- edge functions
+    /** Call a Supabase Edge Function with the signed-in admin's token.
+     *  The function re-checks app_metadata.role itself — this is not the gate. */
+    async callFunction(name, body) {
+      if (!enabled) throw new Error('Supabase is not configured');
+      const res = await fetch(url + '/functions/v1/' + encodeURIComponent(name), {
+        method: 'POST',
+        headers: {
+          apikey: anonKey,
+          Authorization: 'Bearer ' + token(),
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body || {}),
+      });
+      const text = await res.text();
+      let data = null;
+      if (text) { try { data = JSON.parse(text); } catch (e) { data = text; } }
+      if (!res.ok) {
+        const msg = (data && (data.error || data.message)) || ('HTTP ' + res.status);
+        const err = new Error(msg);
+        err.status = res.status;
+        err.body = data;
+        throw err;
+      }
+      return data;
+    },
+
     // ---------------------------------------------------------- auth (admin)
     async signIn(email, password) {
       const res = await fetch(url + '/auth/v1/token?grant_type=password', {

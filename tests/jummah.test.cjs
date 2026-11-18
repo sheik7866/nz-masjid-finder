@@ -1,0 +1,105 @@
+// Tests for the Jumu'ah web-check text extraction (shared by the Edge Function
+// and the tests themselves). Run: node tests/jummah.test.cjs
+const assert = require('assert');
+
+const pending = [];
+const check = (name, fn) => pending.push({ name, fn });
+
+(async () => {
+  const X = await import('../supabase/functions/verify-jummah/extract.mjs');
+
+  check('finds both khutbah and salah times on a Jumu\'ah line', () => {
+    const r = X.extractJummah("Jumu'ah: Khutbah 1:15pm, Salah 1:45pm");
+    assert.deepStrictEqual(r.times, ['1:15pm', '1:45pm']);
+  });
+
+  check('reads a time from the line after the keyword', () => {
+    const r = X.extractJummah('Friday Prayer\nFirst jamaat 1:30 pm');
+    assert.deepStrictEqual(r.times, ['1:30pm']);
+  });
+
+  check('normalises 24-hour times near a Jumu\'ah word', () => {
+    const r = X.extractJummah('Friday prayer times: 13:30 and 14:45');
+    assert.deepStrictEqual(r.times, ['1:30pm', '2:45pm']);
+  });
+
+  check('normalises dotted times and bare hours', () => {
+    const r = X.extractJummah('Jummah 1.05pm');
+    assert.deepStrictEqual(r.times, ['1:05pm']);
+    assert.deepStrictEqual(X.extractJummah('Jummah 1 pm').times, ['1:00pm']);
+  });
+
+  check('ignores times further than three lines from any Jumu\'ah word', () => {
+    const text = 'Jumu\'ah 1:15pm\n\n\n\n\n\n\n\nShop open 5:00pm';
+    assert.deepStrictEqual(X.extractJummah(text).times, ['1:15pm']);
+  });
+
+  check('ignores dates and opening hours with no Jumu\'ah context', () => {
+    assert.deepStrictEqual(X.extractJummah('Office hours 9:00am to 5:00pm, 12/05/2026').times, []);
+  });
+
+  check('does not read 12-hour times out of phone-like digit runs', () => {
+    assert.deepStrictEqual(X.extractJummah('Jumu\'ah contact 09 123 4567').times, []);
+  });
+
+  check('deduplicates a time repeated across lines', () => {
+    const r = X.extractJummah('Jumu\'ah 1:15pm\nFriday prayer 1:15pm');
+    assert.deepStrictEqual(r.times, ['1:15pm']);
+  });
+
+  check('strips scripts and styles before extraction', () => {
+    const html = '<html><head><script>var t="Jumu\'ah 9:99pm";</script><style>.x{}</style></head>' +
+      '<body><h1>Masjid</h1><p>Jumu\'ah khutbah 1:20pm</p></body></html>';
+    const text = X.stripHtml(html);
+    assert.ok(!text.includes('var t='));
+    assert.ok(!text.includes('.x{}'));
+    assert.deepStrictEqual(X.extractJummah(text).times, ['1:20pm']);
+  });
+
+  check('decodes entities and keeps readable lines', () => {
+    const text = X.stripHtml('<p>Jumu&apos;ah&nbsp;Salah 1:45&nbsp;pm</p>');
+    assert.ok(text.includes("Jumu'ah Salah 1:45 pm"));
+  });
+
+  check('reads the page title, falling back to h1', () => {
+    assert.strictEqual(X.pageTitle('<title> Masjid Al-Huda &amp; Centre </title>'), 'Masjid Al-Huda & Centre');
+    assert.strictEqual(X.pageTitle('<h1>Al Noor</h1>'), 'Al Noor');
+  });
+
+  check('finds same-origin prayer pages and skips external, pdf and anchors', () => {
+    const html = `
+      <a href="/prayer-times">Prayer times</a>
+      <a href="https://facebook.com/masjid">Facebook</a>
+      <a href="/timetable.pdf">Timetable</a>
+      <a href="/prayer-times#top">Prayer times again</a>
+      <a href="/contact">Contact us</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/">Home</a>`;
+    const links = X.sameOriginLinks(html, 'https://masjid.example.nz/', { limit: 6 });
+    assert.deepStrictEqual(links, ['https://masjid.example.nz/prayer-times', 'https://masjid.example.nz/contact']);
+  });
+
+  check('respects the link limit and never returns the homepage', () => {
+    const html = ['/a', '/b', '/c', '/d'].map((p) => `<a href="${p}">prayer ${p}</a>`).join('');
+    assert.strictEqual(X.sameOriginLinks(html, 'https://m.example.nz/', { limit: 2 }).length, 2);
+  });
+
+  check('builds a search query with name and place', () => {
+    const q = X.searchQuery({ name: 'Masjid Al-Huda', city: 'Hamilton' });
+    assert.ok(q.includes('Masjid Al-Huda'));
+    assert.ok(q.includes('Hamilton'));
+    assert.ok(/jumu/i.test(q));
+  });
+
+  check('labels a source by host without www', () => {
+    assert.strictEqual(X.hostOf('https://www.ait.org.nz/prayer'), 'ait.org.nz');
+  });
+
+  let pass = 0;
+  for (const t of pending) {
+    await t.fn();
+    pass += 1;
+    console.log('  ✓', t.name);
+  }
+  console.log(`\n${pass} checks passed`);
+})().catch((e) => { console.error('\n✗ FAILED:', e.message); process.exit(1); });

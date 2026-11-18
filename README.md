@@ -224,6 +224,86 @@ their sessions out, and writes the new passwords to `.env` (mode 600) — they a
 printed masked, never in full. Requires Node 18+ for `fetch`; the service key
 never leaves the process.
 
+## Checking Jumu'ah times online (admin)
+
+Signed-in admins get a **Jumu'ah web check** on the dashboard: pick a masjid,
+the app reads the masjid's own website and its prayer/timetable pages, and lists
+every Jumu'ah time it finds next to the page it came from. Nothing is written
+until you press **Use these times** on a source; that saves the times plus the
+source URL through the normal admin verification path.
+
+The reading happens in a Supabase Edge Function, not the browser — a static
+GitHub Pages site cannot fetch other sites (CORS), and any search key must stay
+server-side. The function is `supabase/functions/verify-jummah/`:
+
+```sh
+sh scripts/deploy-jummah.sh                 # deploy, then verify the auth gates
+```
+
+That script deploys the function and then checks it against the real gateway:
+signed out → 401, invalid token → 401, and — when `TEST_USER_EMAIL`
+/`TEST_ADMIN_EMAIL` and their passwords are in the git-ignored `.env` — an
+ordinary account → 403 and an admin account → 200 with the times it read. It
+exits 2 and explains itself when the token lacks the Edge Functions permission,
+and never prints a secret. `supabase functions deploy verify-jummah` still works
+on its own if you would rather deploy by hand.
+
+No key or account is needed for the basic mode: it fetches the website already
+on the listing (~40 of the 118 have one). To also search the wider web for a
+timetable page, add a search key as a function secret:
+
+```sh
+supabase secrets set TAVILY_API_KEY=...      # optional
+```
+
+No key needs setting for the admin check itself. The function reads its
+low-privilege key from the runtime environment — the new
+`SUPABASE_PUBLISHABLE_KEYS` (`default` entry) first, then the legacy
+`SUPABASE_ANON_KEY` — so it keeps working when legacy anon/service_role keys are
+disabled under **Project Settings → API Keys**, and on older projects that still
+only have an anon key.
+
+### Verification status
+
+Deployed to project `nvpmpygmtsextdmcnoiq` as function version 1 — `ACTIVE`,
+`verify_jwt: true` — and checked with `sh scripts/deploy-jummah.sh`:
+
+- The deployed bundle is byte-identical to `supabase/functions/verify-jummah/`
+  (`supabase functions download` + `diff`), so the running code is this code.
+- Signed out → `401 {"error":"Sign in as an admin to use the web check."}` — the
+  function's own gate, not only the gateway.
+- Malformed token → `401 {"code":"UNAUTHORIZED_INVALID_JWT_FORMAT"}`.
+- The publishable key the function sends is accepted by the gateway:
+  `GET /auth/v1/user` with `apikey: sb_publishable_…` and a malformed bearer
+  returns `403 bad_jwt`, while a nonsense key returns `401 Invalid API key` — so
+  the key is good and only the JWT was rejected.
+- The function type-checks and serves under Deno 2.9.8 locally (`deno check`),
+  where `OPTIONS` → 204 with the CORS headers and `GET` → 405 "POST only".
+- Key selection is covered by 8 scenarios (publishable dictionary, named key,
+  legacy anon, malformed JSON, local singular key, no key, non-admin, signed
+  out); `sh tests/run-all.sh` passes.
+
+Not yet exercised, because this workspace has no test accounts: an ordinary
+account receiving 403, an admin account receiving 200 with times, and the "Use
+these times" save through `is_admin()`. Put `TEST_USER_EMAIL` /
+`TEST_ADMIN_EMAIL` and their passwords in `.env`, then run
+`sh scripts/deploy-jummah.sh --verify-only` to cover them.
+
+Then reload the app; the admin dashboard shows the box. If the function has not
+been deployed yet the panel says so instead of failing silently.
+
+Notes:
+
+- Admin-only: the function verifies the caller's JWT and requires
+  `app_metadata.role = "admin"` before doing anything. The anon key alone gets 401.
+- Read-only: it never writes to the database, so a wrong time can never reach a
+  listing without a human pressing Use.
+- Times are only taken from a line that mentions Jumu'ah / khutbah / jama'at /
+  salah, or a bare time row directly under one, so unrelated opening hours are
+  not picked up. `tests/jummah.test.cjs` covers those cases.
+- It reads at most 8 pages per check, with a 9-second timeout each, and returns
+  extracted times and short snippets — never whole pages.
+
 ## Verification report
 
 Three things checked, with the evidence each one rests on.
