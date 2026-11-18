@@ -39,13 +39,14 @@
     },
     {
       // The tour drives the real tab bar, so the next step can show the
-      // Prayer screen itself instead of describing it.
+      // Prayer screen itself instead of describing it. The `.next` row is the
+      // prayer still to come; the whole list stands in when the day is done.
       tab: 'prayer',
-      target: '#pTimes li',
-      fallback: '#view-prayer .hero',
+      target: '#pTimes li.next',
+      fallback: '#pTimes',
       title: 'Prayer times',
       body: 'The next prayer and the whole day, calculated for your coordinates — ' +
-        'the highlighted row is the one coming up. It still works with no signal, and ' +
+        'the row in green is the one coming up. It still works with no signal, and ' +
         'the calculation method can be matched to your masjid.',
     },
     {

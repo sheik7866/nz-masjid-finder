@@ -159,7 +159,7 @@ ok('the walkthrough switches to the Prayer screen before the tab-bar step', () =
   const tabbar = tour.indexOf("target: '.tabbar'");
   assert.ok(prayer > 0, 'a step names the Prayer tab');
   assert.ok(tabbar > 0 && prayer < tabbar, 'the Prayer step comes before the tab-bar step');
-  assert.ok(/#pTimes li/.test(tour), 'the Prayer step points at a real row of times');
+  assert.ok(/#pTimes li\.next/.test(tour), 'the Prayer step points at the row of the prayer still to come');
   assert.ok(/NZApp\.showTab/.test(tour), 'the step drives the app’s own tab switcher');
   assert.ok(/if \(step\.tab && currentTab\(\) !== step\.tab\) goTab\(step\.tab\)/.test(tour), 'the switch happens when the step is entered');
   assert.ok(/startTab/.test(tour) && /goTab\(startTab\)/.test(tour), 'leaving the tour returns to the tab the visitor came from');
