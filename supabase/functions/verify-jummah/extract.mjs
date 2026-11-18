@@ -108,7 +108,12 @@ export function findTimes(text) {
     const before = rest[m.index - 1];
     const after = rest[m.index + m[0].length];
     if (before === '-' || before === '/' || after === '/' || after === '-') continue;
-    out.push(fmt12(parseInt(m[1], 10), m[2], parseInt(m[1], 10) >= 12 ? 'pm' : 'am'));
+    // A bare "1:45" is a 24-hour timetable, and no Jumu'ah happens at 1:45 in
+    // the morning. Hours 1–6 can only be afternoon, so they are read as pm;
+    // 7–11 stay am, which keeps an 11:30 sitting while 7:00 is still refused by
+    // the plausibility window rather than saved as an evening time.
+    const hour = parseInt(m[1], 10);
+    out.push(fmt12(hour, m[2], hour >= 12 || hour <= 6 ? 'pm' : 'am'));
   }
 
   return out.filter((t, i) => out.indexOf(t) === i);

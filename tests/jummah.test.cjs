@@ -194,6 +194,20 @@ const check = (name, fn) => pending.push({ name, fn });
     assert.deepStrictEqual(r.times, ['1:45pm']);
   });
 
+  check('reads a bare 24-hour time as an afternoon Jumu\'ah time', () => {
+    // The league timetables write "Jumuah 1:45" with no am/pm; as a.m. that is
+    // impossible and used to be thrown away entirely.
+    assert.deepStrictEqual(X.extractJummah("Jumuah\n1:45").times, ['1:45pm']);
+    assert.deepStrictEqual(X.extractJummah('Friday prayer\n1:30\n2:15').times, ['1:30pm', '2:15pm']);
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah 12:35").times, ['12:35pm']);
+  });
+
+  check('leaves a morning 11:30 sitting alone and still refuses 7:00', () => {
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah 11:30").times, ['11:30am']);
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah 7:00").times, []);
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah 6:30").times, []);
+  });
+
   let pass = 0;
   for (const t of pending) {
     await t.fn();

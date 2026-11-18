@@ -335,7 +335,9 @@ Notes:
   those links are for a human comparison.
 - Times are only taken from a line that mentions Jumu'ah / khutbah / jama'at /
   salah, or a bare time row directly under one, so unrelated opening hours are
-  not picked up. `tests/jummah.test.cjs` covers those cases.
+  not picked up. A bare 24-hour value (`1:45`) is read as an afternoon time,
+  because no Jumu'ah is at 1:45 in the morning, and the 11:00–18:00 window still
+  refuses anything else. `tests/jummah.test.cjs` covers those cases.
 - It reads at most 8 pages per check, with a 9-second timeout each, and returns
   extracted times and short snippets — never whole pages.
 
@@ -524,7 +526,7 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 125 checks across eight suites (the live RLS audit
+`sh tests/run-all.sh` runs 127 checks across eight suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
@@ -534,7 +536,7 @@ skips without credentials):
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
 - `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
 - `tests/sync.test.cjs` (11) — shared-store merge, offline queue, realtime, admin-only undo
-- `tests/jummah.test.cjs` (26) — Jumu'ah extraction, page/link selection, directory matching by region/alias/address
+- `tests/jummah.test.cjs` (28) — Jumu'ah extraction, bare 24-hour times, page/link selection, directory matching by region/alias/address
 - `tests/app-ui.test.cjs` (3) — the verify hooks reach the shared badge updater and the Undo path
 - `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
