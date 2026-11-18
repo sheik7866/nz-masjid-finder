@@ -206,7 +206,8 @@
             <li>Listings marked <b>no website</b> can still be found through web search, when a search key is configured on the project.</li>
             <li>Every result shows the time and the exact page it was read from, so you can open the page and confirm it before saving.</li>
             <li><b>Use these times</b> saves the time as verified, with that page as the source. If a page lists two times (winter and daylight saving), the second one is saved and the button says which. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
-            <li><b>Scan every website</b> reads all the listings that have a website in one go — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
+            <li>The two buttons list the listings <b>with a website</b> and <b>without one</b>; typing still searches all of them.</li>
+            <li><b>Scan all</b> reads whichever half is listed — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
             <li>When a masjid's own pages give no time, the check also reads <b>Kiwi Muslim Directory's “Jumah Prayer Times”</b> article — a winter/summer table for about 65 masjids — and offers the summer (second) time.</li>
             <li>Each result links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> as well. Their search and listing screens draw times in with JavaScript, so those links are for comparing by eye.</li>
           </ul>
@@ -214,6 +215,7 @@
         <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />
         <div class="jfTools">
           <button id="jfSiteOnly" class="vbtn" type="button" aria-pressed="false">Masjids with a website</button>
+          <button id="jfNoSite" class="vbtn" type="button" aria-pressed="false">Masjids with no website</button>
           <button id="jfScanAll" class="vbtn confirm" type="button">Scan every website</button>
         </div>
         <ul class="admList" id="jfList"></ul>
@@ -416,34 +418,53 @@
     const list = $('jfList');
     if (!input || !list) return;
     const siteBtn = $('jfSiteOnly');
+    const noSiteBtn = $('jfNoSite');
+    const scanBtn = $('jfScanAll');
     const masjids = (window.NZApp && window.NZApp.masjids) || [];
     const withSite = masjids.filter((m) => m.website);
-    let showAllSites = false;
+    const noSite = masjids.filter((m) => !m.website);
+    let mode = ''; // '' idle, 'site' lists the ones with a website, 'nos' the rest
+
+    const scanSet = () => (mode === 'nos' ? noSite : withSite);
+    const paintScan = () => {
+      if (!scanBtn) return;
+      scanBtn.textContent = (mode === 'nos'
+        ? 'Scan all without a website (' : 'Scan all with a website (')
+        + scanSet().length + ')';
+    };
+    const setMode = (next) => {
+      mode = mode === next ? '' : next;
+      if (siteBtn) siteBtn.setAttribute('aria-pressed', String(mode === 'site'));
+      if (noSiteBtn) noSiteBtn.setAttribute('aria-pressed', String(mode === 'nos'));
+      paintScan();
+      paint();
+    };
 
     if (siteBtn) {
       siteBtn.textContent = `Masjids with a website (${withSite.length})`;
-      siteBtn.addEventListener('click', () => {
-        showAllSites = !showAllSites;
-        siteBtn.setAttribute('aria-pressed', String(showAllSites));
-        paint();
-      });
+      siteBtn.addEventListener('click', () => setMode('site'));
     }
-    const scanBtn = $('jfScanAll');
-    if (scanBtn) scanBtn.addEventListener('click', scanAllJummah);
+    if (noSiteBtn) {
+      noSiteBtn.textContent = `Masjids with no website (${noSite.length})`;
+      noSiteBtn.addEventListener('click', () => setMode('nos'));
+    }
+    if (scanBtn) scanBtn.addEventListener('click', () => scanAllJummah(scanSet()));
+    paintScan();
 
     const paint = () => {
       const q = input.value.trim().toLowerCase();
-      if (!q && !showAllSites) {
-        list.innerHTML = '<li class="hint">Start typing to pick a masjid, or press “Masjids with a website”.</li>';
+      if (!q && !mode) {
+        list.innerHTML = '<li class="hint">Start typing to pick a masjid, or use the two buttons to list the ones with a website and the ones without.</li>';
         return;
       }
-      // Typing searches every masjid. With an empty box the button lists the
-      // ones that carry a website — the listings the check can read directly.
-      const pool = q ? masjids : withSite;
+      // Typing searches every masjid. With an empty box the active button lists
+      // that half of the directory: with a website, or without one — where the
+      // check falls back to Kiwi Muslim Directory and any web search.
+      const pool = q ? masjids : (mode === 'nos' ? noSite : withSite);
       const hits = pool.filter((m) => !q || (
         String(m.name || '').toLowerCase().includes(q) ||
         String(cityOf(m)).toLowerCase().includes(q)
-      )).slice(0, q ? 8 : 60);
+      )).slice(0, q ? 8 : 90);
       if (!hits.length) { list.innerHTML = '<li class="hint">No masjid matches that name.</li>'; return; }
       list.innerHTML = hits.map((m) => `<li class="admItem">
         <div class="admTop"><b>${esc(m.name)}</b><span class="badge ${m.website ? 'verified' : 'unverified'}">${m.website ? 'has website' : 'no website'}</span></div>
@@ -539,18 +560,20 @@
     }
   }
 
-  // ------------------------------------------------------ every website at once
-  // One button for the whole directory: reads each listing's website, collects
-  // the Jumu'ah times found, and prints them as saveable rows. Three requests at
-  // a time so one slow site cannot block the queue, and Stop is always live.
-  // The scan itself writes nothing — each row keeps its own Save button, so a
-  // person still confirms every time that reaches a listing.
-  async function scanAllJummah() {
-    const all = (window.NZApp && window.NZApp.masjids) || [];
-    const targets = all.filter((m) => m.website);
-    if (!targets.length) { toast('No masjids with a website to scan'); return; }
+  // ------------------------------------------------------ a whole half at once
+  // Reads one half of the directory — the listings that carry a website, or the
+  // ones that do not (where the function falls back to Kiwi Muslim Directory and
+  // any web search) — and prints every Jumu'ah time it found as a saveable row.
+  // Three requests at a time so one slow site cannot block the queue, and Stop
+  // is always live. The scan writes nothing: each row keeps its own Save button,
+  // so a person still confirms every time that reaches a listing.
+  async function scanAllJummah(set) {
+    const targets = (set && set.length)
+      ? set
+      : ((window.NZApp && window.NZApp.masjids) || []).filter((m) => m.website);
+    if (!targets.length) { toast('Nothing to scan in that list'); return; }
 
-    openModal('Scanning every masjid with a website', `
+    openModal('Scanning ' + targets.length + ' masjids', `
       <p class="hint" id="jsStatus">Reading 0 of ${targets.length}…</p>
       <div class="vbtns"><button class="vbtn report" id="jsStop" type="button">Stop</button></div>
       <ul class="admList" id="jsList"><li class="hint">Results appear here as each masjid is read.</li></ul>
@@ -633,8 +656,8 @@
     await Promise.all(Array.from({ length: Math.min(3, queue.length) }, () => worker()));
 
     status.textContent = stopped
-      ? `Stopped after ${done} of ${targets.length} websites.`
-      : `Read ${done} of ${targets.length} websites.`;
+      ? `Stopped after ${done} of ${targets.length} masjids.`
+      : `Read ${done} of ${targets.length} masjids.`;
     if (stopBtn) stopBtn.remove();
     const none = Math.max(0, done - found - failed);
     summary.textContent = `${found} masjid(s) with a Jumu'ah time, ${none} without one, ${failed} could not be read. Press Save on a row to verify that time.`;
