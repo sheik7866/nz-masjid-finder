@@ -482,6 +482,9 @@
       console.error(err);
     }
     showTab(location.hash.slice(1) || 'map');
+    // First listings are on screen (or the failure is showing): lift the launch
+    // screen. splash.js also has a hard stop of its own.
+    if (window.NZSplash) window.NZSplash.hide();
   }
 
   document.addEventListener('DOMContentLoaded', boot);

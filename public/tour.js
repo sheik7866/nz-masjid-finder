@@ -14,9 +14,9 @@
   const KEY = 'nzmasjidfinder.tour';
   const STEPS = [
     {
-      title: 'Kia ora — a quick look around',
-      body: 'Seven short steps, about thirty seconds. You can leave at any point and ' +
-        'start again from “How it works”.',
+      title: 'Assalāmu ʿalaykum — a quick look around',
+      body: 'Peace be upon you. Seven short steps, about thirty seconds. You can leave ' +
+        'at any point and start again from “How it works”.',
     },
     {
       target: '.searchrow',
@@ -270,7 +270,16 @@
     const btn = document.getElementById('tourBtn');
     if (btn) btn.addEventListener('click', () => start(true));
     if (seen()) return;
-    // Let the map and the first cards settle before pointing at them.
-    setTimeout(() => start(false), 1400);
+    // Let the map and the first cards settle before pointing at them, and wait
+    // for the launch screen to lift so the first card is not behind it.
+    const begin = () => {
+      const splash = document.getElementById('splash');
+      if (splash && !splash.hidden && !splash.classList.contains('is-hidden')) {
+        setTimeout(begin, 300);
+        return;
+      }
+      start(false);
+    };
+    setTimeout(begin, 1400);
   });
 })();

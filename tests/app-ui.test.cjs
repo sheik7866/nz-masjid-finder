@@ -153,6 +153,24 @@ ok('the walkthrough is modal, keyboard dismissible and replayable', () => {
   assert.ok(/prefers-reduced-motion/.test(fs.readFileSync(path.join(__dirname, '../public/styles.css'), 'utf8')), 'the spotlight honours reduced motion');
 });
 
+ok('the launch screen greets first, then gets out of the way', () => {
+  const html = fs.readFileSync(path.join(__dirname, '../public/index.html'), 'utf8');
+  const css = fs.readFileSync(path.join(__dirname, '../public/styles.css'), 'utf8');
+  const splash = fs.readFileSync(path.join(__dirname, '../public/splash.js'), 'utf8');
+  const app = fs.readFileSync(path.join(__dirname, '../public/app.js'), 'utf8');
+  const tour = fs.readFileSync(path.join(__dirname, '../public/tour.js'), 'utf8');
+  assert.ok(/id="splash"/.test(html), 'the splash is in the HTML, so it paints before any script runs');
+  assert.ok(/Assalāmu ʿalaykum/.test(html), 'it greets with a Muslim greeting');
+  assert.ok(/splash\.js\?v=\d+/.test(html), 'its controller loads with a cache-busting version');
+  assert.ok(/\.splash\.is-hidden/.test(css), 'it can be faded out');
+  assert.ok(/prefers-reduced-motion/.test(css) && /\.splash-wait span/.test(css), 'the motion is opt-out for reduced-motion users');
+  assert.ok(/setTimeout\(hide, MAX_MS\)/.test(splash), 'a hard stop lifts it even if boot never finishes');
+  assert.ok(/window\.NZSplash\.hide\(\)/.test(app), 'the app lifts it once the first listings are on screen');
+  assert.ok(!/Kia ora/.test(tour), 'the walkthrough no longer opens with “Kia ora”');
+  assert.ok(/Assalāmu/.test(tour), 'the walkthrough opens with a Muslim greeting');
+  assert.ok(/id=\s*'splash'|getElementById\('splash'\)/.test(tour), 'the walkthrough waits for it to lift');
+});
+
 ok('the walkthrough switches to the Prayer screen before the tab-bar step', () => {
   const tour = fs.readFileSync(path.join(__dirname, '../public/tour.js'), 'utf8');
   const prayer = tour.indexOf("tab: 'prayer'");
