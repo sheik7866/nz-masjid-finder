@@ -15,7 +15,7 @@
   const STEPS = [
     {
       title: 'Kia ora — a quick look around',
-      body: 'Six short steps, about thirty seconds. You can leave at any point and ' +
+      body: 'Seven short steps, about thirty seconds. You can leave at any point and ' +
         'start again from “How it works”.',
     },
     {
@@ -38,10 +38,22 @@
         'has confirmed it. “Confirm details” is how a listing earns its tick.',
     },
     {
+      // The tour drives the real tab bar, so the next step can show the
+      // Prayer screen itself instead of describing it.
+      tab: 'prayer',
+      target: '#pTimes li',
+      fallback: '#view-prayer .hero',
+      title: 'Prayer times',
+      body: 'The next prayer and the whole day, calculated for your coordinates — ' +
+        'the highlighted row is the one coming up. It still works with no signal, and ' +
+        'the calculation method can be matched to your masjid.',
+    },
+    {
+      // Stays on Prayer on purpose: the active tab is part of what it points at.
       target: '.tabbar',
       title: 'Four more tabs',
-      body: 'Prayer times for wherever you are, the halal directory, the Ramadan ' +
-        'calendar and the qibla compass.',
+      body: 'Prayer sits alongside Masjids, the halal directory, the Ramadan ' +
+        'calendar and the qibla compass — one tap each.',
     },
     {
       title: 'Keep it on your phone',
@@ -54,6 +66,8 @@
   let root, card, hole, shade, titleEl, bodyEl, dotsEl, nextBtn, backBtn;
   let lastFocus = null;
   let running = false;
+  let startTab = 'map';   // where the visitor was before the tour moved them
+  let tabTimer = 0;
 
   const seen = () => {
     try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; }
@@ -62,6 +76,21 @@
     try { localStorage.setItem(KEY, '1'); } catch (e) { /* private mode: show it again */ }
   };
   const tabOf = (name) => document.querySelector('.tab[data-tab="' + name + '"]');
+  const currentTab = () => {
+    const on = document.querySelector('.tab.active');
+    return (on && on.dataset && on.dataset.tab) || 'map';
+  };
+
+  // Drive the app's own switcher, so the view, the hash and the tab's active
+  // state all follow the tour as they would for a real tap.
+  function goTab(name) {
+    if (window.NZApp && typeof window.NZApp.showTab === 'function') {
+      window.NZApp.showTab(name);
+      return;
+    }
+    const btn = tabOf(name);
+    if (btn && btn.click) btn.click();
+  }
 
   function el(tag, cls, html) {
     const n = document.createElement(tag);
@@ -174,6 +203,7 @@
     if (next < 0 || next >= STEPS.length) { finish(); return; }
     index = next;
     const step = STEPS[index];
+    if (step.tab && currentTab() !== step.tab) goTab(step.tab);
     titleEl.textContent = step.title;
     bodyEl.textContent = step.body;
     backBtn.hidden = index === 0;
@@ -191,23 +221,32 @@
     }
     place();
     nextBtn.focus({ preventScroll: true });
+    // A freshly shown view can fill in after it is switched to (prayer times
+    // arrive a moment later), so re-measure once the layout has settled.
+    clearTimeout(tabTimer);
+    if (step.tab) tabTimer = setTimeout(() => { if (running && index === next) place(); }, 350);
   }
 
   function finish() {
     if (!running) return;
     running = false;
     remember();
+    clearTimeout(tabTimer);
     document.removeEventListener('keydown', onKey);
     window.removeEventListener('resize', place);
     window.removeEventListener('scroll', place, true);
     if (root && root.parentNode) root.parentNode.removeChild(root);
     root = null;
+    // Put the visitor back on the tab they were reading, not on Prayer.
+    if (startTab && currentTab() !== startTab) goTab(startTab);
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     else if (nextBtn && nextBtn.blur) nextBtn.blur();
   }
 
   function start(replay) {
     if (running) return;
+    // Remember where they were before the tour starts moving them about.
+    const from = currentTab();
     // The tour points at map elements, so start from the map rather than
     // hijacking someone who is halfway through the prayer view.
     const mapView = document.getElementById('view-map');
@@ -217,6 +256,7 @@
     if (document.getElementById('modalWrap') && !document.getElementById('modalWrap').hidden && !replay) return;
 
     running = true;
+    startTab = from;
     lastFocus = document.activeElement;
     build();
     go(0);

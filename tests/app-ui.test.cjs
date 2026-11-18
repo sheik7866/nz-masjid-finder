@@ -153,6 +153,18 @@ ok('the walkthrough is modal, keyboard dismissible and replayable', () => {
   assert.ok(/prefers-reduced-motion/.test(fs.readFileSync(path.join(__dirname, '../public/styles.css'), 'utf8')), 'the spotlight honours reduced motion');
 });
 
+ok('the walkthrough switches to the Prayer screen before the tab-bar step', () => {
+  const tour = fs.readFileSync(path.join(__dirname, '../public/tour.js'), 'utf8');
+  const prayer = tour.indexOf("tab: 'prayer'");
+  const tabbar = tour.indexOf("target: '.tabbar'");
+  assert.ok(prayer > 0, 'a step names the Prayer tab');
+  assert.ok(tabbar > 0 && prayer < tabbar, 'the Prayer step comes before the tab-bar step');
+  assert.ok(/#pTimes li/.test(tour), 'the Prayer step points at a real row of times');
+  assert.ok(/NZApp\.showTab/.test(tour), 'the step drives the app’s own tab switcher');
+  assert.ok(/if \(step\.tab && currentTab\(\) !== step\.tab\) goTab\(step\.tab\)/.test(tour), 'the switch happens when the step is entered');
+  assert.ok(/startTab/.test(tour) && /goTab\(startTab\)/.test(tour), 'leaving the tour returns to the tab the visitor came from');
+});
+
 (async () => {
   let good = 0;
   for (const t of pending) {
