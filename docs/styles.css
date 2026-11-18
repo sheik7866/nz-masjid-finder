@@ -212,6 +212,8 @@ select.full { width: 100%; }
 .admHelp summary { cursor: pointer; color: var(--green-600); font-weight: 600; }
 .admHelp ul { margin: 6px 0 0; padding-left: 18px; line-height: 1.5; }
 .admHelp li { margin: 3px 0; }
+.jfTools { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 2px; }
+.vbtn[aria-pressed="true"] { background: var(--green-600); border-color: var(--green-600); color: #fff; }
 .jfTimes { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
 .jfTimes b {
   background: #eef6ee; color: var(--green-600); padding: 2px 9px; border-radius: 999px;

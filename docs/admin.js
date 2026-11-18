@@ -209,6 +209,9 @@
           </ul>
         </details>
         <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />
+        <div class="jfTools">
+          <button id="jfSiteOnly" class="vbtn" type="button" aria-pressed="false">Masjids with a website</button>
+        </div>
         <ul class="admList" id="jfList"></ul>
 
         <h3>Submissions awaiting review (live)</h3>
@@ -408,14 +411,33 @@
     const input = $('jfSearch');
     const list = $('jfList');
     if (!input || !list) return;
+    const siteBtn = $('jfSiteOnly');
     const masjids = (window.NZApp && window.NZApp.masjids) || [];
+    const withSite = masjids.filter((m) => m.website);
+    let showAllSites = false;
+
+    if (siteBtn) {
+      siteBtn.textContent = `Masjids with a website (${withSite.length})`;
+      siteBtn.addEventListener('click', () => {
+        showAllSites = !showAllSites;
+        siteBtn.setAttribute('aria-pressed', String(showAllSites));
+        paint();
+      });
+    }
+
     const paint = () => {
       const q = input.value.trim().toLowerCase();
-      if (!q) { list.innerHTML = '<li class="hint">Start typing to pick a masjid.</li>'; return; }
-      const hits = masjids.filter((m) => (
+      if (!q && !showAllSites) {
+        list.innerHTML = '<li class="hint">Start typing to pick a masjid, or press “Masjids with a website”.</li>';
+        return;
+      }
+      // Typing searches every masjid. With an empty box the button lists the
+      // ones that carry a website — the listings the check can read directly.
+      const pool = q ? masjids : withSite;
+      const hits = pool.filter((m) => !q || (
         String(m.name || '').toLowerCase().includes(q) ||
         String(cityOf(m)).toLowerCase().includes(q)
-      )).slice(0, 8);
+      )).slice(0, q ? 8 : 60);
       if (!hits.length) { list.innerHTML = '<li class="hint">No masjid matches that name.</li>'; return; }
       list.innerHTML = hits.map((m) => `<li class="admItem">
         <div class="admTop"><b>${esc(m.name)}</b><span class="badge ${m.website ? 'verified' : 'unverified'}">${m.website ? 'has website' : 'no website'}</span></div>
