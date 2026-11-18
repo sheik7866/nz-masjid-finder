@@ -305,6 +305,12 @@ Notes:
   three at a time, with a Stop button, and lists every Jumu'ah time it found with
   the page behind it. The scan writes nothing; each row has its own Save button,
   so a person still confirms each time that reaches a listing.
+- **Scan & save missing** is the hands-off version: it reads every masjid that
+  has no Jumu'ah time yet (both halves of the directory) and saves what it finds
+  with the source page, without per-row confirmation. Two guards keep it safe —
+  nothing runs until Start is pressed on the confirmation screen, and listings
+  that already carry a time are never touched, so a re-run cannot overwrite a
+  time a person confirmed.
 - When the masjid's own pages give no time, the check falls back to Kiwi Muslim
   Directory's **Jumah Prayer Times** article
   (`muslimdirectory.co.nz/blog/jumah-prayer-times`). That one page is

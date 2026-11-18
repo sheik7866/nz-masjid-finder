@@ -208,6 +208,7 @@
             <li><b>Use these times</b> saves the time as verified, with that page as the source. If a page lists two times (winter and daylight saving), the second one is saved and the button says which. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
             <li>The two buttons list the listings <b>with a website</b> and <b>without one</b>; typing still searches all of them.</li>
             <li><b>Scan all</b> reads whichever half is listed — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
+            <li><b>Scan &amp; save missing</b> is the hands-off one: it reads every masjid that has no Jumu'ah time yet and saves what it finds, with the source page, without asking per row. It waits for you to press Start, skips masjids that already have a time, and reports how many it saved.</li>
             <li>When a masjid's own pages give no time, the check also reads <b>Kiwi Muslim Directory's “Jumah Prayer Times”</b> article — a winter/summer table for about 65 masjids — and offers the summer (second) time.</li>
             <li>Each result links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> as well. Their search and listing screens draw times in with JavaScript, so those links are for comparing by eye.</li>
           </ul>
@@ -217,6 +218,7 @@
           <button id="jfSiteOnly" class="vbtn" type="button" aria-pressed="false">Masjids with a website</button>
           <button id="jfNoSite" class="vbtn" type="button" aria-pressed="false">Masjids with no website</button>
           <button id="jfScanAll" class="vbtn confirm" type="button">Scan every website</button>
+          <button id="jfAutoSave" class="vbtn confirm" type="button">Scan &amp; save missing</button>
         </div>
         <ul class="admList" id="jfList"></ul>
 
@@ -449,6 +451,12 @@
       noSiteBtn.addEventListener('click', () => setMode('nos'));
     }
     if (scanBtn) scanBtn.addEventListener('click', () => scanAllJummah(scanSet()));
+    const autoBtn = $('jfAutoSave');
+    if (autoBtn) {
+      const missing = masjids.filter((m) => !m.jummah_times).length;
+      autoBtn.textContent = `Scan & save missing (${missing})`;
+      autoBtn.addEventListener('click', autoSaveJummah);
+    }
     paintScan();
 
     const paint = () => {
@@ -662,6 +670,109 @@
     const none = Math.max(0, done - found - failed);
     summary.textContent = `${found} masjid(s) with a Jumu'ah time, ${none} without one, ${failed} could not be read. Press Save on a row to verify that time.`;
     if (!found) list.innerHTML = '<li class="hint">No Jumu\'ah time was found on those websites.</li>';
+  }
+
+  // ------------------------------------------------- hands-off scan and save
+  // Reads every masjid that still has no Jumu'ah time and writes what it finds
+  // straight to the listing, source included. Two guards: it waits for Start,
+  // and it only ever touches listings with no time yet, so a re-run cannot
+  // overwrite a time a person already confirmed.
+  async function autoSaveJummah() {
+    const all = (window.NZApp && window.NZApp.masjids) || [];
+    const targets = all.filter((m) => !m.jummah_times);
+    if (!targets.length) { toast('Every masjid already has a Jumu\'ah time'); return; }
+
+    openModal('Scan and save ' + targets.length + ' masjids', `
+      <p class="hint">Reads each masjid with no Jumu'ah time yet — its own website first, then Kiwi Muslim Directory — and saves what it finds with the source page. Masjids that already have a time are left alone.</p>
+      <div class="vbtns">
+        <button class="vbtn confirm" id="jaStart" type="button">Start — save up to ${targets.length}</button>
+        <button class="vbtn report" id="jaStop" type="button" disabled>Stop</button>
+      </div>
+      <p class="hint" id="jaStatus"></p>
+      <ul class="admList" id="jaList"></ul>
+      <p class="hint" id="jaSummary"></p>
+    `);
+
+    const start = $('jaStart');
+    const stop = $('jaStop');
+    const status = $('jaStatus');
+    const list = $('jaList');
+    const summary = $('jaSummary');
+    let stopped = false;
+
+    stop.addEventListener('click', () => {
+      stopped = true;
+      stop.disabled = true;
+      stop.textContent = 'Stopping…';
+    });
+    // Nothing runs until a person presses Start on this screen.
+    await new Promise((resolve) => {
+      start.addEventListener('click', () => {
+        start.disabled = true;
+        start.textContent = 'Running…';
+        stop.disabled = false;
+        resolve();
+      }, { once: true });
+    });
+
+    let done = 0;
+    let saved = 0;
+    let missing = 0;
+    let failed = 0;
+    const queue = targets.slice();
+
+    const addRow = (m, time, src, state) => {
+      const row = document.createElement('li');
+      row.className = 'admItem';
+      const badge = state === 'saved' ? 'verified' : 'unverified';
+      row.innerHTML = `
+        <div class="admTop"><b>${esc(m.name)}</b><span class="badge ${badge}">${esc(time || state)}</span></div>
+        <p class="addr small">${esc(src || '')}</p>`;
+      list.appendChild(row);
+    };
+
+    const worker = async () => {
+      while (queue.length && !stopped) {
+        const m = queue.shift();
+        status.textContent = `Reading ${done} of ${targets.length}… (${m.name})`;
+        try {
+          const data = await SB.callFunction('verify-jummah', {
+            id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null,
+          });
+          const hit = (data.sources || []).find((s) => s.times && s.times.length);
+          done += 1;
+          if (!hit) { missing += 1; continue; }
+          const time = pickTime(hit.times);
+          try {
+            await V.confirm(m.id, {
+              by: 'admin',
+              jummah: time,
+              source: hit.url,
+              note: 'Jumu\'ah time read from ' + hit.url + ' on ' + new Date().toISOString().slice(0, 10) + ' (automatic scan)',
+            });
+            saved += 1;
+            addRow(m, time, hit.url, 'saved');
+          } catch (e) {
+            failed += 1;
+            addRow(m, time + ' — save failed', hit.url, 'failed');
+          }
+        } catch (e) {
+          done += 1;
+          failed += 1;
+          if (e && e.status === 404) stopped = true;
+        }
+        status.textContent = `Reading ${done} of ${targets.length}…`;
+      }
+    };
+
+    await Promise.all(Array.from({ length: Math.min(3, queue.length) }, () => worker()));
+
+    status.textContent = stopped
+      ? `Stopped after ${done} of ${targets.length} masjids.`
+      : `Read ${done} of ${targets.length} masjids.`;
+    if (stop) stop.remove();
+    summary.textContent = `${saved} saved, ${missing} had no time, ${failed} failed.`;
+    if (saved) await ensureCommunityVisible();
   }
 
   // ------------------------------------------------------------ boot
