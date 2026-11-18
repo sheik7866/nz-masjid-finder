@@ -165,6 +165,9 @@ ok('the launch screen greets first, then gets out of the way', () => {
   assert.ok(/\.splash\.is-hidden/.test(css), 'it can be faded out');
   assert.ok(/prefers-reduced-motion/.test(css) && /\.splash-wait span/.test(css), 'the motion is opt-out for reduced-motion users');
   assert.ok(/setTimeout\(hide, MAX_MS\)/.test(splash), 'a hard stop lifts it even if boot never finishes');
+  assert.ok(/sessionStorage/.test(splash), 'it greets once per session, not on every reload');
+  assert.ok(/classList\.add\('no-splash'\)/.test(splash) && /\.no-splash \.splash/.test(css), 'a warm reload hides it before the first paint');
+  assert.ok(html.indexOf('splash.js') < html.indexOf('<body>'), 'that decision runs in <head>, before the body paints');
   assert.ok(/window\.NZSplash\.hide\(\)/.test(app), 'the app lifts it once the first listings are on screen');
   assert.ok(!/Kia ora/.test(tour), 'the walkthrough no longer opens with “Kia ora”');
   assert.ok(/Assalāmu/.test(tour), 'the walkthrough opens with a Muslim greeting');
