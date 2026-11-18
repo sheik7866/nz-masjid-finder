@@ -298,6 +298,9 @@ Notes:
   `app_metadata.role = "admin"` before doing anything. The anon key alone gets 401.
 - Read-only: it never writes to the database, so a wrong time can never reach a
   listing without a human pressing Use.
+- Two times on one page are read as a winter and a daylight-saving time, so the
+  second one is what gets saved; both stay visible next to the page they came
+  from, and the button names the time it will save.
 - Times are only taken from a line that mentions Jumu'ah / khutbah / jama'at /
   salah, or a bare time row directly under one, so unrelated opening hours are
   not picked up. `tests/jummah.test.cjs` covers those cases.

@@ -205,7 +205,7 @@
             <li>Pick a masjid below and press <b>Check the web</b>. It reads that masjid's own website and its prayer or timetable pages — up to 8 pages, usually within 20 seconds.</li>
             <li>Listings marked <b>no website</b> can still be found through web search, when a search key is configured on the project.</li>
             <li>Every result shows the time and the exact page it was read from, so you can open the page and confirm it before saving.</li>
-            <li><b>Use these times</b> saves the time as verified, with that page as the source. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
+            <li><b>Use these times</b> saves the time as verified, with that page as the source. If a page lists two times (winter and daylight saving), the second one is saved and the button says which. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
           </ul>
         </details>
         <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />
@@ -455,6 +455,10 @@
     paint();
   }
 
+  // Masjids that keep a winter and a summer timetable list two times on the
+  // page. The second one follows the clock change, so that is the one saved.
+  const pickTime = (times) => (times.length >= 2 ? times[1] : times[0]);
+
   async function checkJummah(m) {
     const modal = openModal('Jumu\'ah web check — ' + m.name,
       `<p class="hint" id="jfStatus">Reading ${esc(m.website || 'search results')} and its prayer pages… this can take up to 20 seconds.</p>
@@ -471,21 +475,29 @@
       const sources = (data.sources || []).filter((s) => s.times && s.times.length);
       const empty = (data.sources || []).filter((s) => !s.times || !s.times.length);
       out.innerHTML = sources.length
-        ? '<ul class="admList">' + sources.map((s) => `
+        ? '<ul class="admList">' + sources.map((s) => {
+            const pick = pickTime(s.times);
+            const twoUp = s.times.length > 1;
+            return `
             <li class="admItem">
-              <div class="admTop"><b><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a></b><span class="badge verified">${s.times.length} time${s.times.length === 1 ? '' : 's'}</span></div>
+              <div class="admTop"><b><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a></b><span class="badge verified">${s.times.length} time${twoUp ? 's' : ''}</span></div>
               <p class="addr">${esc(s.url)}</p>
               <p class="jfTimes">${s.times.map((t) => `<b>${esc(t)}</b>`).join(' ')}</p>
               ${s.snippets && s.snippets.length ? `<p class="addr small">…${esc(s.snippets[0])}…</p>` : ''}
-              <div class="vbtns"><button class="vbtn confirm" data-jfuse="${esc(s.times.join(', '))}" data-jfsrc="${esc(s.url)}" type="button">Use these times</button>
+              <div class="vbtns"><button class="vbtn confirm" data-jfuse="${esc(pick)}" data-jfsrc="${esc(s.url)}" type="button">${twoUp ? 'Use ' + esc(pick) + ' (2nd of ' + s.times.length + ')' : 'Use this time'}</button>
                 <a class="vbtn" href="${esc(s.url)}" target="_blank" rel="noopener">Open page</a></div>
-            </li>`).join('') + '</ul>'
+            </li>`;
+          }).join('') + '</ul>'
         : '<p class="hint">No Jumu\'ah time was found on the pages that could be read. Check the site yourself, or set the time from the listing\'s “Confirm details” form.</p>';
+      if (sources.some((s) => s.times.length > 1)) {
+        out.innerHTML += '<p class="hint">A page that lists two times is read as winter and daylight-saving times — the second one is the one saved.</p>';
+      }
       if (empty.length) out.innerHTML += `<p class="hint">${empty.length} page(s) mentioned Jumu\'ah but gave no time.</p>`;
       if (data.notes && data.notes.length) out.innerHTML += '<p class="hint">' + data.notes.map(esc).join('<br>') + '</p>';
       if (m.website) out.innerHTML += `<p class="hint"><a href="${esc(m.website)}" target="_blank" rel="noopener">Open the masjid website</a> · <a href="https://www.google.com/search?q=${encodeURIComponent(m.name + ' ' + cityOf(m) + ' jummah times')}" target="_blank" rel="noopener">search Google manually</a></p>`;
       out.querySelectorAll('[data-jfuse]').forEach((btn) => {
         btn.addEventListener('click', async () => {
+          const label = btn.textContent;
           btn.disabled = true;
           btn.textContent = 'Saving…';
           try {
@@ -501,7 +513,7 @@
           } catch (e) {
             toast('Failed: ' + e.message);
             btn.disabled = false;
-            btn.textContent = 'Use these times';
+            btn.textContent = label;
           }
         });
       });
