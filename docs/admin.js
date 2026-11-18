@@ -466,6 +466,19 @@
   // is anything written, through the normal is_admin() verification path.
   const cityOf = (m) => (m.address && (m.address.city || m.address.formatted)) || m.region || '';
 
+  // Everything the directory matcher needs to refuse a same-name stranger in
+  // another city: the masjid's own aliases and its full street address.
+  const jummahTarget = (m) => ({
+    id: m.id,
+    name: m.name,
+    alt_names: Array.isArray(m.alt_names) ? m.alt_names : [],
+    city: (m.address && m.address.city) || '',
+    suburb: (m.address && m.address.suburb) || '',
+    address: (m.address && m.address.formatted) || '',
+    region: m.region || '',
+    website: m.website || null,
+  });
+
   function wireJummahFinder() {
     const input = $('jfSearch');
     const list = $('jfList');
@@ -550,7 +563,7 @@
   // token is renewed by the client before the call is written off as a failure.
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   async function readJummah(m) {
-    const body = { id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null };
+    const body = jummahTarget(m);
     for (let attempt = 0; ; attempt += 1) {
       try {
         return await SB.callFunction('verify-jummah', body);
@@ -570,9 +583,7 @@
     const status = $('jfStatus');
     const out = $('jfOut');
     try {
-      const data = await SB.callFunction('verify-jummah', {
-        id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null,
-      });
+      const data = await SB.callFunction('verify-jummah', jummahTarget(m));
       status.textContent = data.pages_read
         ? 'Read ' + data.pages_read + ' page(s)' + (data.search_used ? ' including web search results' : ' on the masjid website') + '.'
         : 'Nothing could be read for this masjid.';

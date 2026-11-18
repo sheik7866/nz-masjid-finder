@@ -108,8 +108,22 @@ const check = (name, fn) => pending.push({ name, fn });
       'Winter: 12.40 pm', 'Summer: 1.40 pm',
     ].join('\n');
     assert.deepStrictEqual(X.kmdEntries(text), [
-      { name: 'Al Hijaz Masjid', winter: '12.50 pm', summer: '1.50 pm' },
-      { name: 'Ponsonby Masjid', winter: '12.40 pm', summer: '1.40 pm' },
+      { name: 'Al Hijaz Masjid', address: '79 Onewa Road, Birkenhead', region: '', winter: '12.50 pm', summer: '1.50 pm' },
+      { name: 'Ponsonby Masjid', address: '17 Vermont Street', region: '', winter: '12.40 pm', summer: '1.40 pm' },
+    ]);
+  });
+
+  check('tags directory rows with their section and reads each row once', () => {
+    const text = [
+      'AUCKLAND', 'Masjid One', 'Address/Venue:', '1 Alpha Road', 'Time:',
+      'Winter: 1.00 pm', 'Summer: 2.00 pm', 'Sisters: Yes',
+      'Time: 2nd', 'Winter: 1.25 pm', 'Summer: 2.05 pm',
+      'CHRISTCHURCH', 'Masjid Two', 'Address/Venue:', '2 Beta Road', 'Time:',
+      'Winter: 12.30 pm', 'Summer: 1.30 pm',
+    ].join('\n');
+    assert.deepStrictEqual(X.kmdEntries(text).map((e) => [e.name, e.address, e.region, e.summer]), [
+      ['Masjid One', '1 Alpha Road', 'Auckland', '2.00 pm'],
+      ['Masjid Two', '2 Beta Road', 'Canterbury', '1.30 pm'],
     ]);
   });
 
@@ -126,6 +140,47 @@ const check = (name, fn) => pending.push({ name, fn });
     assert.strictEqual(X.matchKmdEntry(rows, 'Al Hijaz Masjid').summer, '1.50 pm');
     assert.strictEqual(X.matchKmdEntry(rows, 'Masjid E Umar'), null);
     assert.strictEqual(X.matchKmdEntry(rows, 'Al Mustafa Charity Centre'), null);
+  });
+
+  check('matches a masjid by its alias and refuses a same-city stranger', () => {
+    const rows = [
+      { name: 'Al Hijaz Masjid', address: '236 Richardson Rd Mt Roskill', region: 'Auckland', winter: '12.50 pm', summer: '1.50 pm' },
+      { name: 'Ponsonby Masjid', address: '17 Vermont St, Ponsonby', region: 'Auckland', winter: '12.40 pm', summer: '1.40 pm' },
+    ];
+    const masjid = { name: 'Al-Masjid Al-Jamie', address: '17 Vermont Street, Ponsonby', region: 'Auckland' };
+    const hit = X.matchKmdEntry(rows, { ...masjid, alt_names: ['Ponsonby Masjid'] });
+    assert.strictEqual(hit && hit.summer, '1.40 pm');
+    assert.strictEqual(X.matchKmdEntry(rows, masjid), null, 'without the alias the near name is refused');
+  });
+
+  check('refuses another region and a short name contained in a longer venue', () => {
+    const rows = [
+      { name: 'AUT Muslim Prayer Room', address: 'The Chapel, Level 6', region: 'Auckland' },
+      { name: 'Massey University Prayer Room', address: '8 Hibiscus Coast Highway, Silverdale', region: 'Auckland' },
+      { name: 'Masjid E Bilal', address: '7 Waikaukau Pl, Glen Eden', region: 'Auckland' },
+    ];
+    assert.strictEqual(X.matchKmdEntry(rows, { name: 'Muslim Prayer Room', region: 'Auckland' }), null);
+    assert.strictEqual(X.matchKmdEntry(rows, { name: 'Massey Islamic Centre', region: 'Manawatu-Whanganui' }), null);
+    assert.strictEqual(X.matchKmdEntry(rows, { name: 'Masjid e Bilal - Wanganui Islamic Centre', region: 'Manawatu-Whanganui' }), null);
+    assert.strictEqual(X.matchKmdEntry(rows, { name: 'Masjid-E-Bilal', region: 'Auckland' }).name, 'Masjid E Bilal');
+  });
+
+  check('accepts a longer directory name only when the address agrees', () => {
+    const rows = [
+      { name: 'Al Noor Mosque (Muslim Association of Canterbury)', address: '101, Deans Ave, Riccarton, Christchurch', region: 'Canterbury', winter: '12.20 pm', summer: '1.30 pm' },
+      { name: 'Al Noor Educational Trust', address: 'Everglade Girl Guide hall, 64 Everglade Dr, Goodwood Heights', region: 'Auckland', winter: '12.30 pm', summer: '1.45 pm' },
+    ];
+    const hit = X.matchKmdEntry(rows, { name: 'Al Noor Mosque', address: '101 Deans Avenue, Riccarton, Christchurch', region: 'Canterbury' });
+    assert.strictEqual(hit && hit.summer, '1.30 pm');
+    assert.strictEqual(X.matchKmdEntry(rows, { name: 'Al Noor Mosque', region: 'Canterbury' }), null, '0.5 name score without the address is refused');
+  });
+
+  check('refuses two equally good rows it cannot tell apart', () => {
+    const rows = [
+      { name: 'Al Noor Masjid', address: '', region: '', winter: '1.00 pm', summer: '2.00 pm' },
+      { name: 'Al Noor Mosque', address: '', region: '', winter: '1.10 pm', summer: '2.10 pm' },
+    ];
+    assert.strictEqual(X.matchKmdEntry(rows, { name: 'Al Noor' }), null);
   });
 
   check('refuses a Jumu\'ah time that cannot be one', () => {

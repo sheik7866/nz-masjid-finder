@@ -183,30 +183,63 @@ const KMD_TIME = '(\\d{1,2}[:.]\\d{2}\\s*[ap]\\.?m\\.?)';
 const KMD_WINTER = new RegExp('^Winter:?\\s*' + KMD_TIME + '$', 'i');
 const KMD_SUMMER = new RegExp('^Summer:?\\s*' + KMD_TIME + '$', 'i');
 
-/** Winter/summer Jumu'ah pairs from the directory article: [{name, winter, summer}]. */
+// The article groups its rows under place headings. Carrying the heading into
+// each entry is what lets a name match be refused when the directory row is in
+// another city — "Massey Islamic Centre" (Manawatu) is not "Massey University
+// Prayer Room" (Auckland), however alike the names look.
+const KMD_SECTIONS = new Map([
+  ['north', 'Auckland'],
+  ['auckland', 'Auckland'],
+  ['auckland cbd', 'Auckland'],
+  ['central auckland', 'Auckland'],
+  ['east auckland', 'Auckland'],
+  ['west auckland', 'Auckland'],
+  ['south auckland', 'Auckland'],
+  ['christchurch', 'Canterbury'],
+  ['hamilton', 'Waikato'],
+  ['wellington', 'Wellington'],
+]);
+
+const KMD_FIELD_LABEL = /^(sisters?|brothers?|time|winter|summer|address\/venue|venue|address|notes?|entrance)\b/i;
+
+/** Winter/summer Jumu'ah rows from the directory article, with their section. */
 export function kmdEntries(text) {
   const lines = String(text || '').split('\n').map((l) => l.trim());
   const out = [];
+  let region = '';
+  let lastAnchor = -1;
   for (let i = 0; i < lines.length - 1; i += 1) {
+    const section = KMD_SECTIONS.get(lines[i].toLowerCase());
+    if (section) { region = section; continue; }
     const w = lines[i].match(KMD_WINTER);
     if (!w) continue;
     const s = lines[i + 1].match(KMD_SUMMER);
     if (!s) continue;
-    // The masjid name sits above the "Address/Venue:" label that opens the row;
-    // walking back from the time would otherwise pick up the street address.
-    let anchor = i;
+    // A real row is: name, "Address/Venue:", address, "Time:", winter, summer.
+    // Without that label this is a second time block or a footer fragment, and
+    // walking back would invent a masjid name for it.
+    let anchor = -1;
     for (let k = i - 1; k >= Math.max(0, i - 5); k -= 1) {
       if (/^Address\/Venue:/i.test(lines[k])) { anchor = k; break; }
     }
+    if (anchor < 0 || anchor === lastAnchor) continue;
     let name = '';
     for (let k = anchor - 1; k >= Math.max(0, anchor - 6); k -= 1) {
       const line = lines[k];
-      if (!line || /https?:\/\//i.test(line) || /^Time\b/i.test(line)) continue;
+      if (!line || KMD_FIELD_LABEL.test(line) || /https?:\/\//i.test(line)) continue;
       name = line;
       break;
     }
     if (!name) continue;
-    out.push({ name, winter: w[1], summer: s[1] });
+    let address = '';
+    for (let k = anchor + 1; k < i; k += 1) {
+      const line = lines[k];
+      if (!line || KMD_FIELD_LABEL.test(line)) continue;
+      address = line;
+      break;
+    }
+    lastAnchor = anchor;
+    out.push({ name, address, region, winter: w[1], summer: s[1] });
   }
   return out;
 }
@@ -214,37 +247,115 @@ export function kmdEntries(text) {
 const NAME_STOP_WORDS = new Set([
   'masjid', 'mosque', 'islamic', 'centre', 'center', 'trust', 'inc', 'the', 'of',
   'and', 'prayer', 'room', 'association', 'community', 'society', 'musalla',
-  'musallah', 'foundation', 'society', 'nz', 'new', 'zealand',
+  'musallah', 'foundation', 'muslim', 'muslims', 'nz', 'new', 'zealand',
+  'al', 'el', 'e',
 ]);
 
+/** Distinct name tokens, lower-cased and stripped of generic words. */
 function nameTokens(s) {
-  return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
-    .split(' ').filter((t) => t && !NAME_STOP_WORDS.has(t));
+  const tokens = String(s || '').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ').trim().split(' ')
+    .filter((t) => t && !NAME_STOP_WORDS.has(t));
+  return new Set(tokens);
+}
+
+const ADDRESS_STOP_WORDS = new Set([
+  'road', 'rd', 'street', 'st', 'avenue', 'ave', 'drive', 'dr', 'place', 'pl',
+  'terrace', 'tce', 'highway', 'hwy', 'lane', 'crescent', 'cres', 'level',
+  'unit', 'building', 'bldg', 'floor', 'entrance', 'opposite', 'next', 'mall',
+  'park', 'hall', 'central', 'po', 'box',
+]);
+
+function addressTokens(value) {
+  const tokens = String(value || '').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ').trim().split(' ')
+    .filter((t) => t && !/^\d+$/.test(t) && t.length >= 3 && !ADDRESS_STOP_WORDS.has(t));
+  return new Set(tokens);
+}
+
+function addressesAgree(entryAddress, masjidAddress) {
+  const a = addressTokens(entryAddress);
+  const b = addressTokens(masjidAddress);
+  if (!a.size || !b.size) return false;
+  for (const token of a) if (b.has(token)) return true;
+  return false;
+}
+
+/** The masjid's own name, its aliases, and any alias written in brackets. */
+function queryVariants(info) {
+  const name = typeof info === 'string' ? info : String((info && info.name) || '');
+  const alts = info && Array.isArray(info.alt_names) ? info.alt_names : [];
+  const parts = [name].concat(alts.map((a) => String(a || ''))).filter(Boolean);
+  const variants = [];
+  for (const part of parts) {
+    variants.push(part);
+    const bracketed = part.match(/\(([^)]+)\)/);
+    if (bracketed) variants.push(bracketed[1]);
+  }
+  return Array.from(new Set(variants.map((p) => p.trim()).filter(Boolean)));
 }
 
 /**
- * Best directory row for a masjid name, or null.
+ * Overlap between a queried name and a directory name.
  *
- * Scored as overlap / shorter-name length, so the shorter side must be almost
- * fully contained: "Al Hijaz Masjid" matches "Al Hijaz", and "Masjid E Umar"
- * matches "Masjid-e-Umar (Mount Roskill Islamic Trust)", while "Al Mustafa
- * Charity Centre" does NOT match "Masjid Al Mustafa (SAMA)" — a wrong time is
- * worse than no time, because the admin then has to undo it by hand.
+ * Distinct tokens only, so a repeated word cannot inflate the score. An entry
+ * name wholly contained in the masjid's name (or alias) is a strong match —
+ * "Papakura Musallah" inside "Falahe Darain (Papakura Musallah Masjid)" — but
+ * the reverse is not: "Muslim Prayer Room" is contained in "AUT Muslim Prayer
+ * Room" and is still a different venue.
  */
-export function matchKmdEntry(entries, name) {
-  const want = nameTokens(name);
-  if (!want.length || !Array.isArray(entries)) return null;
-  let best = null;
-  let score = 0;
+function nameScore(want, have) {
+  let hit = 0;
+  for (const token of want) if (have.has(token)) hit += 1;
+  if (!hit) return 0;
+  if (hit === want.size && hit === have.size) return 1;
+  if (hit === have.size) return 1;
+  return hit / (want.size + have.size - hit);
+}
+
+function regionsConflict(entryRegion, masjidRegion) {
+  const a = String(entryRegion || '').trim().toLowerCase();
+  const b = String(masjidRegion || '').trim().toLowerCase();
+  if (!a || !b || a === 'new zealand' || b === 'new zealand') return false;
+  return a !== b;
+}
+
+/**
+ * Best directory row for a masjid, or null.
+ *
+ * A masjid may be given as a name string or as {name, alt_names, city, suburb,
+ * address, region}. Matching is deliberately conservative: a row in another
+ * region is refused outright, a weak name needs the directory address to agree,
+ * and two equally good rows with nothing to separate them are refused. A wrong
+ * Jumu'ah time is worse than no time.
+ */
+export function matchKmdEntry(entries, masjid) {
+  const info = typeof masjid === 'string' ? { name: masjid } : (masjid || {});
+  const wantSets = queryVariants(info).map(nameTokens).filter((set) => set.size);
+  if (!wantSets.length || !Array.isArray(entries)) return null;
+  const locationText = [info.address, info.suburb, info.city].filter(Boolean).join(' ');
+  const candidates = [];
   for (const entry of entries) {
-    const have = nameTokens(entry && entry.name);
-    if (!have.length) continue;
-    let hit = 0;
-    for (const token of want) if (have.includes(token)) hit += 1;
-    const s = hit / Math.min(want.length, have.length);
-    if (s > score) { score = s; best = entry; }
+    if (!entry || !entry.name) continue;
+    if (regionsConflict(entry.region, info.region)) continue;
+    const have = nameTokens(entry.name);
+    if (!have.size) continue;
+    let score = 0;
+    for (const want of wantSets) score = Math.max(score, nameScore(want, have));
+    if (!score) continue;
+    candidates.push({ entry, score, addressMatch: addressesAgree(entry.address, locationText) });
   }
-  return score >= 0.8 ? { ...best, score } : null;
+  if (!candidates.length) return null;
+  candidates.sort((a, b) => (b.score - a.score) || (Number(b.addressMatch) - Number(a.addressMatch)));
+  const top = candidates[0];
+  const second = candidates[1];
+  const accepted = top.score >= 0.8 || (top.score >= 0.5 && top.addressMatch);
+  if (!accepted) return null;
+  if (second && second.score === top.score && second.addressMatch === top.addressMatch
+      && second.entry.name !== top.entry.name) return null;
+  return { ...top.entry, score: top.score, address_match: top.addressMatch };
 }
 
 export function searchQuery(info) {

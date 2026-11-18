@@ -321,7 +321,10 @@ Notes:
   (`muslimdirectory.co.nz/blog/jumah-prayer-times`). That one page is
   server-rendered and lists winter/summer pairs for ~65 masjids, so the returned
   pair is `[winter, summer]` and the admin UI saves the second (daylight-saving)
-  one. Names match conservatively — near misses are refused rather than guessed.
+  one. Names match conservatively: the article's city headings, the masjid's
+  aliases and its street address all have to agree, a shortened name needs the
+  address to confirm it, and near misses or two equally good rows are refused
+  rather than guessed.
 - Each result also links to **Kiwi Muslim Directory** and **Go Pray**. The
   directory's search and listing screens, and Go Pray's timetables, are drawn in
   by JavaScript (KMD disallows `/api`; Go Pray keeps times in its payload), so
@@ -517,7 +520,7 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 120 checks across eight suites (the live RLS audit
+`sh tests/run-all.sh` runs 125 checks across eight suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
@@ -527,7 +530,7 @@ skips without credentials):
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
 - `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
 - `tests/sync.test.cjs` (11) — shared-store merge, offline queue, realtime, admin-only undo
-- `tests/jummah.test.cjs` (21) — Jumu'ah extraction, page/link selection, directory matching
+- `tests/jummah.test.cjs` (26) — Jumu'ah extraction, page/link selection, directory matching by region/alias/address
 - `tests/app-ui.test.cjs` (3) — the verify hooks reach the shared badge updater and the Undo path
 - `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)

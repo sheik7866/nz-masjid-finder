@@ -155,7 +155,12 @@ Deno.serve(async (req: Request) => {
 
     const name = String(body.name ?? '').trim();
     if (!name) throw new HttpError(400, 'A masjid name is required.');
+    const altNames = Array.isArray(body.alt_names)
+      ? body.alt_names.map((v) => String(v ?? '')).filter(Boolean).slice(0, 8)
+      : [];
     const city = String(body.city ?? '').trim();
+    const suburb = String(body.suburb ?? '').trim();
+    const address = String(body.address ?? '').trim();
     const region = String(body.region ?? '').trim();
     const website = String(body.website ?? '').trim();
 
@@ -224,7 +229,14 @@ Deno.serve(async (req: Request) => {
       try {
         const html = await fetchText(KMD_URL);
         fetched += 1;
-        const row = matchKmdEntry(kmdEntries(stripHtml(html)), name);
+        const row = matchKmdEntry(kmdEntries(stripHtml(html)), {
+          name,
+          alt_names: altNames,
+          city,
+          suburb,
+          address,
+          region,
+        });
         if (row) {
           seen.add(KMD_URL);
           sources.push({
