@@ -120,6 +120,39 @@ select.full { width: 100%; }
 .toggles label { display: flex; align-items: center; gap: 6px; }
 .toggles input { accent-color: var(--green-600); width: 16px; height: 16px; }
 .count { margin-left: auto; font-weight: 700; color: var(--green-600); }
+.tourlink {
+  background: none; border: 0; padding: 0; font: inherit; font-size: 11.5px;
+  font-weight: 700; color: var(--green-600); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- walkthrough */
+.tour-root { position: fixed; inset: 0; z-index: 2000; }
+.tour-shade { position: absolute; inset: 0; background: rgba(9, 24, 20, .55); }
+.tour-hole {
+  position: fixed; border-radius: 14px; pointer-events: none; z-index: 2001;
+  box-shadow: 0 0 0 9999px rgba(9, 24, 20, .55), 0 0 0 2px rgba(200, 163, 90, .95);
+  transition: left .22s ease, top .22s ease, width .22s ease, height .22s ease;
+}
+.tour-card {
+  position: fixed; z-index: 2002; width: min(342px, calc(100vw - 24px));
+  background: #fff; color: var(--ink); border-radius: 16px; padding: 16px 16px 13px;
+  box-shadow: 0 18px 48px rgba(9, 24, 20, .38);
+}
+.tour-card h2 { margin: 0 0 6px; font-size: 16px; line-height: 1.25; }
+.tour-card p { margin: 0 0 12px; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.tour-foot { display: flex; align-items: center; gap: 6px; }
+.tour-dots { display: flex; gap: 5px; margin-right: auto; }
+.tour-dots span { width: 6px; height: 6px; border-radius: 50%; background: #d7ded9; }
+.tour-dots span.on { background: var(--green-600); }
+.tour-btn {
+  font: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  border-radius: 10px; border: 1px solid var(--line); background: #fbfcfb;
+  color: var(--green-600); padding: 0 12px; min-height: 44px;
+}
+.tour-btn.primary { background: var(--green-600); border-color: var(--green-600); color: #fff; }
+.tour-btn.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .tour-hole { transition: none; } }
 
 .list { list-style: none; margin: 0; padding: 0 2px 16px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; }
 .card {

@@ -21,6 +21,11 @@ Other screens: **🛡 Verify** (per-card confirmation with name + source), **＋
 (community submissions for masjids, halal spots and events), **⚙ Admin**
 (approve/reject review queue).
 
+A first-run **walkthrough** points at the search box, the map, a listing and the
+tab bar in six short steps. It shows itself once (a `localStorage` flag), can be
+left at any point, follows the keyboard (← → Esc, focus kept in the card) and is
+replayable from the **How it works** link in the search panel.
+
 ## Security model (Supabase)
 
 Read this before running `supabase/schema.sql`.
@@ -516,6 +521,7 @@ and is retried on the next load (`· offline — queued` in the verification bar
 
 ## Screens
 
+- **Walkthrough** — six-step coach-mark tour on first visit; `tour.js`, replayable from “How it works”.
 - **🛡 Verify** — per-card confirm/report (name + source + optional Jumu'ah time).
 - **＋ Add** — community submission form, with "use my current location" for coordinates.
 - **⚙ Admin** — sign-in, pending submissions with approve/reject, flagged listings.
@@ -526,7 +532,7 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 127 checks across eight suites (the live RLS audit
+`sh tests/run-all.sh` runs 128 checks across eight suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
@@ -537,7 +543,7 @@ skips without credentials):
 - `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
 - `tests/sync.test.cjs` (11) — shared-store merge, offline queue, realtime, admin-only undo
 - `tests/jummah.test.cjs` (28) — Jumu'ah extraction, bare 24-hour times, page/link selection, directory matching by region/alias/address
-- `tests/app-ui.test.cjs` (3) — the verify hooks reach the shared badge updater and the Undo path
+- `tests/app-ui.test.cjs` (4) — the verify hooks reach the shared badge updater and the Undo path
 - `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 

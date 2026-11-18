@@ -142,6 +142,17 @@ ok('saving a confirmation re-renders through the shared badge updater', async ()
   assert.ok(renders > 0, 'the card re-rendered without a ReferenceError');
 });
 
+ok('the walkthrough is modal, keyboard dismissible and replayable', () => {
+  const html = fs.readFileSync(path.join(__dirname, '../public/index.html'), 'utf8');
+  const tour = fs.readFileSync(path.join(__dirname, '../public/tour.js'), 'utf8');
+  assert.ok(/tour\.js\?v=\d+/.test(html), 'tour.js is loaded, with a cache-busting version');
+  assert.ok(/id="tourBtn"/.test(html), 'the “How it works” replay link is in the panel');
+  assert.ok(tour.includes("'dialog'") && tour.includes('aria-modal'), 'the overlay is announced as a modal dialog');
+  assert.ok(tour.includes('Escape') && tour.includes('ArrowRight'), 'Esc closes it and the arrows step through');
+  assert.ok(tour.includes("localStorage.setItem(KEY, '1')"), 'the seen-once flag is persisted');
+  assert.ok(/prefers-reduced-motion/.test(fs.readFileSync(path.join(__dirname, '../public/styles.css'), 'utf8')), 'the spotlight honours reduced motion');
+});
+
 (async () => {
   let good = 0;
   for (const t of pending) {
