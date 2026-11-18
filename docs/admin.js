@@ -187,6 +187,9 @@
         SB.listVerifications().catch(() => ({})),
       ]);
       const list = Object.keys(vers).map((k) => vers[k]);
+      const autoSaved = list
+        .filter((v) => v.status === 'verified' && /\(automatic scan\)/i.test(v.note || ''))
+        .sort((a, b) => String(b.verified_at || '').localeCompare(String(a.verified_at || '')));
       const flagged = list.filter((v) => v.status && v.status !== 'verified');
       const verified = list.filter((v) => v.status === 'verified');
       const pending = subs.filter((s) => s.status === 'pending');
@@ -209,6 +212,7 @@
             <li>The two buttons list the listings <b>with a website</b> and <b>without one</b>; typing still searches all of them.</li>
             <li><b>Scan all</b> reads whichever half is listed — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
             <li><b>Scan &amp; save missing</b> is the hands-off one: it reads every masjid that has no Jumu'ah time yet and saves what it finds, with the source page, without asking per row. It waits for you to press Start, skips masjids that already have a time, and reports how many it saved.</li>
+            <li>Everything the hands-off run saves is listed under <b>“Saved by the automatic scan”</b> below, newest first, with the page it came from — and a <b>Revert</b> button that clears the time and puts the listing back to unverified.</li>
             <li>When a masjid's own pages give no time, the check also reads <b>Kiwi Muslim Directory's “Jumah Prayer Times”</b> article — a winter/summer table for about 65 masjids — and offers the summer (second) time.</li>
             <li>Each result links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> as well. Their search and listing screens draw times in with JavaScript, so those links are for comparing by eye.</li>
           </ul>
@@ -222,6 +226,10 @@
         </div>
         <ul class="admList" id="jfList"></ul>
 
+        <h3>Saved by the automatic scan (${autoSaved.length})</h3>
+        <p class="hint">Every time the hands-off run wrote, newest first, with the page it was read from. Revert puts the listing back to unverified with no time.</p>
+        ${autoSavedHtml(autoSaved)}
+
         <h3>Submissions awaiting review (live)</h3>
         ${subsHtml(pending, { empty: 'Queue is clear — every submission has been reviewed.' })}
         <h3>Recently decided</h3>
@@ -233,6 +241,7 @@
       `);
       wireAdminActions();
       wireJummahFinder();
+      wireAutoSaved();
       const so = $('signOut');
       if (so) so.addEventListener('click', () => { SB.signOut(); toast('Signed out'); closeModal(); });
     } catch (e) {
@@ -277,6 +286,48 @@
           <button class="vbtn undo" data-vbdel="${esc(v.id)}" type="button">Delete record</button>
         </div>
       </li>`).join('') + '</ul>';
+  }
+
+  const masjidName = (id) => {
+    const all = (window.NZApp && window.NZApp.masjids) || [];
+    const m = all.find((x) => String(x.id) === String(id));
+    return m ? m.name : String(id);
+  };
+
+  // Everything the hands-off run wrote carries "(automatic scan)" in its note,
+  // so the panel can list exactly those times — with the page they came from —
+  // and take one back without hunting for the listing it belongs to.
+  function autoSavedHtml(list) {
+    if (!list || !list.length) {
+      return '<p class="hint">Nothing saved by the automatic scan yet. Each time it saves is listed here with the page it came from, so a wrong one can be reverted.</p>';
+    }
+    return '<ul class="admList">' + list.map((v) => `
+      <li class="admItem">
+        <div class="admTop"><b>${esc(masjidName(v.id))}</b><span class="badge verified">${esc(v.jummah_times || 'no time')}</span></div>
+        <p class="addr small">${v.source_url ? `<a href="${esc(v.source_url)}" target="_blank" rel="noopener">${esc(v.source_url)}</a>` : 'no source recorded'} · ${esc((v.verified_at || '').slice(0, 10))}</p>
+        <div class="vbtns"><button class="vbtn undo" data-jarevert="${esc(v.id)}" type="button">Revert</button></div>
+      </li>`).join('') + '</ul>';
+  }
+
+  function wireAutoSaved() {
+    document.querySelectorAll('[data-jarevert]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.jarevert;
+        if (!confirm('Revert the automatic time for ' + masjidName(id) + '? Its Jumu\'ah time is cleared and the listing goes back to unverified.')) return;
+        btn.disabled = true;
+        btn.textContent = 'Reverting…';
+        try {
+          await V.adminDelete(id);
+          toast('Reverted — ' + masjidName(id) + ' has no Jumu\'ah time again');
+          await refreshAdmin();
+          await ensureCommunityVisible();
+        } catch (e) {
+          toast('Failed: ' + e.message);
+          btn.disabled = false;
+          btn.textContent = 'Revert';
+        }
+      });
+    });
   }
 
   function verifiedHtml(list) {

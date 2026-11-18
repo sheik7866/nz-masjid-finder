@@ -313,6 +313,9 @@ Notes:
   time a person confirmed. A call that fails is retried twice before it is
   reported, and if the admin sign-in has expired the run stops with that as the
   reason instead of counting a hundred identical failures.
+- **Saved by the automatic scan** lists every time the hands-off run wrote,
+  newest first, with the page it was read from and a Revert button that clears
+  the time and puts the listing back to unverified.
 - When the masjid's own pages give no time, the check falls back to Kiwi Muslim
   Directory's **Jumah Prayer Times** article
   (`muslimdirectory.co.nz/blog/jumah-prayer-times`). That one page is
