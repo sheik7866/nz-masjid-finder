@@ -39,6 +39,27 @@
 
   const token = () => (getSession() && getSession().access_token) || anonKey;
 
+  // Supabase access tokens last an hour and nothing used to refresh them, so an
+  // admin panel left open through the afternoon — or a scan that runs for
+  // minutes — sent an expired token and every call came back 401.
+  async function refreshSession() {
+    const s = getSession();
+    if (!s || !s.refresh_token) return null;
+    try {
+      const res = await fetch(url + '/auth/v1/token?grant_type=refresh_token', {
+        method: 'POST',
+        headers: { apikey: anonKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refresh_token: s.refresh_token }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.access_token) { setSession(null); return null; }
+      setSession(data);
+      return data;
+    } catch (e) {
+      return null;
+    }
+  }
+
   function headers(extra) {
     return Object.assign({
       apikey: anonKey,
@@ -307,7 +328,7 @@
      *  The function re-checks app_metadata.role itself — this is not the gate. */
     async callFunction(name, body) {
       if (!enabled) throw new Error('Supabase is not configured');
-      const res = await fetch(url + '/functions/v1/' + encodeURIComponent(name), {
+      const send = () => fetch(url + '/functions/v1/' + encodeURIComponent(name), {
         method: 'POST',
         headers: {
           apikey: anonKey,
@@ -316,6 +337,13 @@
         },
         body: JSON.stringify(body || {}),
       });
+      let res = await send();
+      // A 401 here is usually an expired admin token, not a rejection: renew it
+      // once and retry before reporting the call as failed.
+      if (res.status === 401 && getSession()) {
+        const fresh = await refreshSession();
+        if (fresh) res = await send();
+      }
       const text = await res.text();
       let data = null;
       if (text) { try { data = JSON.parse(text); } catch (e) { data = text; } }
@@ -343,6 +371,7 @@
     },
 
     signOut() { setSession(null); },
+    refreshSession,
   };
 
   window.NZSupabase = api;

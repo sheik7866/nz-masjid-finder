@@ -494,6 +494,24 @@
   // page. The second one follows the clock change, so that is the one saved.
   const pickTime = (times) => (times.length >= 2 ? times[1] : times[0]);
 
+  // One call per masjid, tuned for a run of a hundred of them: a busy site, a
+  // 429 or a dropped connection is retried with a backoff, and an expired admin
+  // token is renewed by the client before the call is written off as a failure.
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  async function readJummah(m) {
+    const body = { id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null };
+    for (let attempt = 0; ; attempt += 1) {
+      try {
+        return await SB.callFunction('verify-jummah', body);
+      } catch (e) {
+        const status = e && e.status;
+        const retryable = !status || status === 429 || status >= 500;
+        if (retryable && attempt < 2) { await sleep(700 * Math.pow(2, attempt)); continue; }
+        throw e;
+      }
+    }
+  }
+
   async function checkJummah(m) {
     const modal = openModal('Jumu\'ah web check — ' + m.name,
       `<p class="hint" id="jfStatus">Reading ${esc(m.website || 'search results')} and its prayer pages… this can take up to 20 seconds.</p>
@@ -643,9 +661,7 @@
         const m = queue.shift();
         status.textContent = `Reading ${done} of ${targets.length}… (${m.name})`;
         try {
-          const data = await SB.callFunction('verify-jummah', {
-            id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null,
-          });
+          const data = await readJummah(m);
           const hit = (data.sources || []).find((s) => s.times && s.times.length);
           done += 1;
           if (hit) {
@@ -655,7 +671,7 @@
         } catch (err) {
           done += 1;
           failed += 1;
-          if (err && err.status === 404) stopped = true;
+          if (err && (err.status === 404 || err.status === 401 || err.status === 403)) stopped = true;
         }
         status.textContent = `Reading ${done} of ${targets.length}…`;
       }
@@ -731,14 +747,22 @@
       list.appendChild(row);
     };
 
+    let authError = '';
+    const addFail = (m, msg) => {
+      const row = document.createElement('li');
+      row.className = 'admItem';
+      row.innerHTML = `
+        <div class="admTop"><b>${esc(m.name)}</b><span class="badge unverified">failed</span></div>
+        <p class="addr small">${esc(msg)}</p>`;
+      list.appendChild(row);
+    };
+
     const worker = async () => {
       while (queue.length && !stopped) {
         const m = queue.shift();
         status.textContent = `Reading ${done} of ${targets.length}… (${m.name})`;
         try {
-          const data = await SB.callFunction('verify-jummah', {
-            id: m.id, name: m.name, city: cityOf(m), region: m.region || '', website: m.website || null,
-          });
+          const data = await readJummah(m);
           const hit = (data.sources || []).find((s) => s.times && s.times.length);
           done += 1;
           if (!hit) { missing += 1; continue; }
@@ -754,24 +778,36 @@
             addRow(m, time, hit.url, 'saved');
           } catch (e) {
             failed += 1;
-            addRow(m, time + ' — save failed', hit.url, 'failed');
+            addFail(m, 'read ' + time + ' but the save failed: ' + ((e && e.message) || 'unknown error'));
           }
         } catch (e) {
           done += 1;
           failed += 1;
-          if (e && e.status === 404) stopped = true;
+          const code = e && e.status;
+          if (code === 401 || code === 403) {
+            // Not this masjid's fault: the admin sign-in is the problem, so stop
+            // instead of turning the other hundred into identical failures.
+            stopped = true;
+            authError = code === 401
+              ? 'Your admin sign-in has expired, so no more times can be saved. Sign in again and run it again — everything saved so far is kept.'
+              : 'This account is not an admin any more, so nothing more can be saved.';
+            addFail(m, ((e && e.message) || 'not allowed') + ' — stopping here');
+          } else {
+            addFail(m, (e && e.message) || 'could not be read');
+          }
         }
         status.textContent = `Reading ${done} of ${targets.length}…`;
       }
     };
 
-    await Promise.all(Array.from({ length: Math.min(3, queue.length) }, () => worker()));
+    await Promise.all(Array.from({ length: Math.min(2, queue.length) }, () => worker()));
 
     status.textContent = stopped
       ? `Stopped after ${done} of ${targets.length} masjids.`
       : `Read ${done} of ${targets.length} masjids.`;
     if (stop) stop.remove();
-    summary.textContent = `${saved} saved, ${missing} had no time, ${failed} failed.`;
+    summary.textContent = `${saved} saved, ${missing} had no time, ${failed} failed.` + (authError ? ' ' + authError : '');
+    if (authError) toast(authError);
     if (saved) await ensureCommunityVisible();
   }
 

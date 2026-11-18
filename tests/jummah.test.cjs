@@ -128,6 +128,17 @@ const check = (name, fn) => pending.push({ name, fn });
     assert.strictEqual(X.matchKmdEntry(rows, 'Al Mustafa Charity Centre'), null);
   });
 
+  check('refuses a Jumu\'ah time that cannot be one', () => {
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah: 1:45am").times, []);
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah: 9:00pm").times, []);
+    assert.deepStrictEqual(X.extractJummah("Jumu'ah: 2:10pm").times, ['2:10pm']);
+  });
+
+  check('keeps the plausible time beside a rejected one', () => {
+    const r = X.extractJummah("Jumu'ah: 1:45am\nJumu'ah: 1:45pm");
+    assert.deepStrictEqual(r.times, ['1:45pm']);
+  });
+
   let pass = 0;
   for (const t of pending) {
     await t.fn();

@@ -120,6 +120,20 @@ export function findTimes(text) {
  * unrelated "5:00pm" elsewhere on the page cannot become a prayer time.
  * Returns { times: ["1:15pm", ...], snippets: ["Jumu'ah: Khutbah 1:15pm ..."] }.
  */
+// A Jumu'ah is never at 1:45am: a timetable that puts one there is a Fajr row
+// read as if it were Jumu'ah, and saving it is worse than saving nothing.
+const JUMUAH_FROM = 11 * 60;
+const JUMUAH_TO = 18 * 60;
+
+export function plausibleJummah(t) {
+  const m = String(t || '').match(/^(\d{1,2}):(\d{2})(am|pm)$/i);
+  if (!m) return false;
+  let hour = parseInt(m[1], 10) % 12;
+  if (/pm/i.test(m[3])) hour += 12;
+  const minutes = hour * 60 + parseInt(m[2], 10);
+  return minutes >= JUMUAH_FROM && minutes <= JUMUAH_TO;
+}
+
 export function extractJummah(text) {
   const lines = String(text || '').split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
   const times = [];
@@ -134,7 +148,7 @@ export function extractJummah(text) {
     const isTimeOnly = !/[a-z]/i.test(line) && findTimes(line).length > 0;
     const active = isKeyword || (sawKeyword && isTimeOnly);
     if (active) {
-      const found = findTimes(line);
+      const found = findTimes(line).filter(plausibleJummah);
       if (found.length) {
         found.forEach((t) => { if (!times.includes(t)) times.push(t); });
         if (snippets.length < 5) {

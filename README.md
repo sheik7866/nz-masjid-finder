@@ -310,7 +310,9 @@ Notes:
   with the source page, without per-row confirmation. Two guards keep it safe —
   nothing runs until Start is pressed on the confirmation screen, and listings
   that already carry a time are never touched, so a re-run cannot overwrite a
-  time a person confirmed.
+  time a person confirmed. A call that fails is retried twice before it is
+  reported, and if the admin sign-in has expired the run stops with that as the
+  reason instead of counting a hundred identical failures.
 - When the masjid's own pages give no time, the check falls back to Kiwi Muslim
   Directory's **Jumah Prayer Times** article
   (`muslimdirectory.co.nz/blog/jumah-prayer-times`). That one page is
