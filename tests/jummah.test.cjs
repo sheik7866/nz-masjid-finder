@@ -95,6 +95,39 @@ const check = (name, fn) => pending.push({ name, fn });
     assert.strictEqual(X.hostOf('https://www.ait.org.nz/prayer'), 'ait.org.nz');
   });
 
+  check('matches a shortened directory name', () => {
+    const rows = [{ name: 'Al Hijaz', winter: '12.50 pm', summer: '1.50 pm' }];
+    assert.strictEqual(X.matchKmdEntry(rows, 'Al Hijaz Masjid').summer, '1.50 pm');
+  });
+
+  check('reads winter/summer rows from the directory article', () => {
+    const text = [
+      'Al Hijaz Masjid', 'Address/Venue:', '79 Onewa Road, Birkenhead', 'Time:',
+      'Winter: 12.50 pm', 'Summer: 1.50 pm', 'Sisters: Yes',
+      'Ponsonby Masjid', 'Address/Venue:', '17 Vermont Street', 'Time:',
+      'Winter: 12.40 pm', 'Summer: 1.40 pm',
+    ].join('\n');
+    assert.deepStrictEqual(X.kmdEntries(text), [
+      { name: 'Al Hijaz Masjid', winter: '12.50 pm', summer: '1.50 pm' },
+      { name: 'Ponsonby Masjid', winter: '12.40 pm', summer: '1.40 pm' },
+    ]);
+  });
+
+  check('skips directory rows whose masjid name cannot be read', () => {
+    const rows = X.kmdEntries('https://tinyurl.com/x\nTime:\nWinter: 12.30 pm\nSummer: 1.30 pm');
+    assert.deepStrictEqual(rows, []);
+  });
+
+  check('matches a directory row by name and refuses near misses', () => {
+    const rows = [
+      { name: 'Al Hijaz Masjid', winter: '12.50 pm', summer: '1.50 pm' },
+      { name: 'Masjid Al Mustafa (SAMA)', winter: '12.40 pm', summer: '1.40 pm' },
+    ];
+    assert.strictEqual(X.matchKmdEntry(rows, 'Al Hijaz Masjid').summer, '1.50 pm');
+    assert.strictEqual(X.matchKmdEntry(rows, 'Masjid E Umar'), null);
+    assert.strictEqual(X.matchKmdEntry(rows, 'Al Mustafa Charity Centre'), null);
+  });
+
   let pass = 0;
   for (const t of pending) {
     await t.fn();

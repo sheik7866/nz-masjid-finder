@@ -20,7 +20,8 @@
 // legacy anon key second, so both key generations work (see apiKey()).
 
 import {
-  extractJummah, hostOf, pageTitle, sameOriginLinks, searchQuery, stripHtml,
+  extractJummah, hostOf, kmdEntries, matchKmdEntry, pageTitle, sameOriginLinks,
+  searchQuery, stripHtml,
 } from './extract.mjs';
 
 const CORS = {
@@ -29,6 +30,11 @@ const CORS = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   Vary: 'Origin',
 };
+
+// The directory's "Jumah Prayer Times" article is a plain server-rendered page
+// (its search and listing screens are not), and lists winter/summer pairs for
+// many masjids — worth one extra request when the masjid's own pages come up dry.
+const KMD_URL = 'https://muslimdirectory.co.nz/blog/jumah-prayer-times';
 
 const MAX_PAGES = 8;
 // Masjid sites are often heavy single-page builds: the Al Hijaz homepage is
@@ -210,6 +216,30 @@ Deno.serve(async (req: Request) => {
         add(r.url, pageTitle(html) || r.title, stripHtml(html));
       } catch (e) {
         notes.push('Could not read ' + hostOf(r.url) + ' (' + (e as Error).message + ').');
+      }
+    }
+
+    // 3. Directory fallback: only when nothing above produced a time.
+    if (!sources.some((s) => s.times.length)) {
+      try {
+        const html = await fetchText(KMD_URL);
+        fetched += 1;
+        const row = matchKmdEntry(kmdEntries(stripHtml(html)), name);
+        if (row) {
+          seen.add(KMD_URL);
+          sources.push({
+            url: KMD_URL,
+            title: 'Kiwi Muslim Directory — Jumah Prayer Times',
+            // Winter first, summer second: the admin UI saves the second time,
+            // which is the one in force while daylight saving is on.
+            times: [row.winter, row.summer],
+            snippets: [row.name + ' — winter ' + row.winter + ', summer ' + row.summer],
+          });
+        } else {
+          notes.push('Kiwi Muslim Directory lists no Jumu\'ah time for this masjid.');
+        }
+      } catch (e) {
+        notes.push('Could not read Kiwi Muslim Directory (' + (e as Error).message + ').');
       }
     }
 

@@ -151,6 +151,88 @@ export function extractJummah(text) {
 }
 
 /** Search query used when a search API key is configured. */
+// ---------------------------------------------------------------- directories
+// Kiwi Muslim Directory publishes a "Jumah Prayer Times" article that lists, per
+// masjid:
+//
+//   Al Hijaz Masjid
+//   Address/Venue:
+//   79 Onewa Road, Birkenhead
+//   Time:
+//   Winter: 12.50 pm
+//   Summer: 1.50 pm
+//   Sisters: Yes
+//
+// That page is server-rendered, so unlike the directory's search and listing
+// screens it can be read without a browser. These helpers turn it into rows.
+const KMD_TIME = '(\\d{1,2}[:.]\\d{2}\\s*[ap]\\.?m\\.?)';
+const KMD_WINTER = new RegExp('^Winter:?\\s*' + KMD_TIME + '$', 'i');
+const KMD_SUMMER = new RegExp('^Summer:?\\s*' + KMD_TIME + '$', 'i');
+
+/** Winter/summer Jumu'ah pairs from the directory article: [{name, winter, summer}]. */
+export function kmdEntries(text) {
+  const lines = String(text || '').split('\n').map((l) => l.trim());
+  const out = [];
+  for (let i = 0; i < lines.length - 1; i += 1) {
+    const w = lines[i].match(KMD_WINTER);
+    if (!w) continue;
+    const s = lines[i + 1].match(KMD_SUMMER);
+    if (!s) continue;
+    // The masjid name sits above the "Address/Venue:" label that opens the row;
+    // walking back from the time would otherwise pick up the street address.
+    let anchor = i;
+    for (let k = i - 1; k >= Math.max(0, i - 5); k -= 1) {
+      if (/^Address\/Venue:/i.test(lines[k])) { anchor = k; break; }
+    }
+    let name = '';
+    for (let k = anchor - 1; k >= Math.max(0, anchor - 6); k -= 1) {
+      const line = lines[k];
+      if (!line || /https?:\/\//i.test(line) || /^Time\b/i.test(line)) continue;
+      name = line;
+      break;
+    }
+    if (!name) continue;
+    out.push({ name, winter: w[1], summer: s[1] });
+  }
+  return out;
+}
+
+const NAME_STOP_WORDS = new Set([
+  'masjid', 'mosque', 'islamic', 'centre', 'center', 'trust', 'inc', 'the', 'of',
+  'and', 'prayer', 'room', 'association', 'community', 'society', 'musalla',
+  'musallah', 'foundation', 'society', 'nz', 'new', 'zealand',
+]);
+
+function nameTokens(s) {
+  return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    .split(' ').filter((t) => t && !NAME_STOP_WORDS.has(t));
+}
+
+/**
+ * Best directory row for a masjid name, or null.
+ *
+ * Scored as overlap / shorter-name length, so the shorter side must be almost
+ * fully contained: "Al Hijaz Masjid" matches "Al Hijaz", and "Masjid E Umar"
+ * matches "Masjid-e-Umar (Mount Roskill Islamic Trust)", while "Al Mustafa
+ * Charity Centre" does NOT match "Masjid Al Mustafa (SAMA)" — a wrong time is
+ * worse than no time, because the admin then has to undo it by hand.
+ */
+export function matchKmdEntry(entries, name) {
+  const want = nameTokens(name);
+  if (!want.length || !Array.isArray(entries)) return null;
+  let best = null;
+  let score = 0;
+  for (const entry of entries) {
+    const have = nameTokens(entry && entry.name);
+    if (!have.length) continue;
+    let hit = 0;
+    for (const token of want) if (have.includes(token)) hit += 1;
+    const s = hit / Math.min(want.length, have.length);
+    if (s > score) { score = s; best = entry; }
+  }
+  return score >= 0.8 ? { ...best, score } : null;
+}
+
 export function searchQuery(info) {
   const name = String((info && info.name) || '').trim();
   const place = String((info && (info.city || info.region)) || 'New Zealand').trim();

@@ -207,7 +207,8 @@
             <li>Every result shows the time and the exact page it was read from, so you can open the page and confirm it before saving.</li>
             <li><b>Use these times</b> saves the time as verified, with that page as the source. If a page lists two times (winter and daylight saving), the second one is saved and the button says which. If nothing is found, set the time by hand from the listing's “Confirm details” form.</li>
             <li><b>Scan every website</b> reads all the listings that have a website in one go — three at a time, with a Stop button — and lists each Jumu'ah time it found. Nothing is saved by the scan; every row has its own Save button.</li>
-            <li>Each result also links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> for that masjid. Those directories hold Jumu'ah times but draw them in with JavaScript, so they cannot be read by the check — open them when you want to compare by eye.</li>
+            <li>When a masjid's own pages give no time, the check also reads <b>Kiwi Muslim Directory's “Jumah Prayer Times”</b> article — a winter/summer table for about 65 masjids — and offers the summer (second) time.</li>
+            <li>Each result links to <b>Kiwi Muslim Directory</b> and <b>Go Pray</b> as well. Their search and listing screens draw times in with JavaScript, so those links are for comparing by eye.</li>
           </ul>
         </details>
         <input id="jfSearch" class="jfSearch" type="search" placeholder="Type a masjid name, e.g. Masjid Al-Huda" autocomplete="off" />

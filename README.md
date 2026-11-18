@@ -305,11 +305,16 @@ Notes:
   three at a time, with a Stop button, and lists every Jumu'ah time it found with
   the page behind it. The scan writes nothing; each row has its own Save button,
   so a person still confirms each time that reaches a listing.
-- Each result also links to **Kiwi Muslim Directory** and **Go Pray**. Both
-  publish Jumu'ah times, but they render them client-side (`muslimdirectory.co.nz`
-  serves a Next.js shell and disallows its `/api`; `gopray.app` pages carry the
-  times only in their JS payload), so the check cannot read them and the links
-  are there for a human comparison.
+- When the masjid's own pages give no time, the check falls back to Kiwi Muslim
+  Directory's **Jumah Prayer Times** article
+  (`muslimdirectory.co.nz/blog/jumah-prayer-times`). That one page is
+  server-rendered and lists winter/summer pairs for ~65 masjids, so the returned
+  pair is `[winter, summer]` and the admin UI saves the second (daylight-saving)
+  one. Names match conservatively — near misses are refused rather than guessed.
+- Each result also links to **Kiwi Muslim Directory** and **Go Pray**. The
+  directory's search and listing screens, and Go Pray's timetables, are drawn in
+  by JavaScript (KMD disallows `/api`; Go Pray keeps times in its payload), so
+  those links are for a human comparison.
 - Times are only taken from a line that mentions Jumu'ah / khutbah / jama'at /
   salah, or a bare time row directly under one, so unrelated opening hours are
   not picked up. `tests/jummah.test.cjs` covers those cases.
