@@ -149,7 +149,7 @@ same way. Their token keeps admin rights until it refreshes, so also
 Static audit — no credentials needed, runs anywhere Node is installed; the
 `Tests` workflow runs it (and the rest of the suite) on every push:
 ```
-node tests/schema.test.cjs      # 29 checks
+node tests/schema.test.cjs      # 31 checks
 ```
 
 Live audit — runs against your real project with three identities (anon, an
@@ -175,7 +175,7 @@ Three test layers, none of which needs a password to be shared with anyone:
 
 | Layer | What it proves | How to run |
 |---|---|---|
-| Static | the SQL matches the security model (29 checks) | `node tests/schema.test.cjs` |
+| Static | the SQL matches the security model (31 checks) | `node tests/schema.test.cjs` |
 | Live, anonymous | the public key cannot write, modify or approve anything | `node tests/rls-live.test.cjs` (works with only the publishable key) |
 | Live, three identities | ordinary users get nothing; only `app_metadata` admins can administer | same script, after you add the two test accounts to `.env` |
 
@@ -357,7 +357,7 @@ Three things checked, with the evidence each one rests on.
 
 ### 1. Supabase security and admin permissions
 
-`supabase/schema.sql` is audited by `tests/schema.test.cjs` — 29 checks that fail
+`supabase/schema.sql` is audited by `tests/schema.test.cjs` — 31 checks that fail
 if any of these guarantees regress (see **Security model** above for the full table):
 
 | Guarantee | How it is enforced |
@@ -542,16 +542,16 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 132 checks across eight suites (the live RLS audit
+`sh tests/run-all.sh` runs 137 checks across eight suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
-- `tests/supabase.test.cjs` (11) — offline queue, sync, submissions, sign-in, admin PATCH, delete refusal
+- `tests/supabase.test.cjs` (13) — offline queue, sync, submissions, sign-in, admin PATCH, delete refusal
 - `tests/core.test.cjs` (30) — prayer maths vs AlAdhan, timezone, next-prayer, qibla
   bearings, Hijri dates, Ramadan calendar, dataset sanity, source URLs, region
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
-- `tests/schema.test.cjs` (29) — RLS, grants, policies, admin role, constraints, rerunnability
-- `tests/sync.test.cjs` (11) — shared-store merge, offline queue, realtime, admin-only undo
+- `tests/schema.test.cjs` (31) — RLS, grants, policies, admin role, constraints, rerunnability
+- `tests/sync.test.cjs` (12) — shared-store merge, offline queue, realtime, admin-only undo
 - `tests/jummah.test.cjs` (28) — Jumu'ah extraction, bare 24-hour times, page/link selection, directory matching by region/alias/address
 - `tests/app-ui.test.cjs` (8) — the verify hooks reach the shared badge updater and the Undo path, a failed or queued write is never toasted as saved, the walkthrough opens Prayer, and the launch screen bows out
 - `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
