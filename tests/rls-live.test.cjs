@@ -127,6 +127,7 @@ let adminHeaders = null;
 const RUN = String(Date.now());
 const VER_ID = 'rlstest-' + RUN;          // no 'probe/' prefix: cleaned up by the test itself
 const VER_ID_2 = 'rlstest-' + RUN + '-b';
+const VER_REPORT = 'rlstest-' + RUN + '-report';
 const SUB_NAME = 'rls-test ' + RUN;
 
 // Cleanup: the test deletes its own rows with the admin identity when one is
@@ -136,12 +137,13 @@ async function cleanup() {
   const auth = adminHeaders || serviceHeaders;
   if (!auth) {
     console.log('\n  note: no admin/service_role available — test rows left behind:');
-    console.log('        verifications: ' + VER_ID + ', ' + VER_ID_2);
+    console.log('        verifications: ' + VER_ID + ', ' + VER_ID_2 + ', ' + VER_REPORT);
     console.log('        submissions:   ' + SUB_NAME + '*');
     return;
   }
   await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_ID), { method: 'DELETE', headers: auth });
   await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_ID_2), { method: 'DELETE', headers: auth });
+  await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_REPORT), { method: 'DELETE', headers: auth });
   await req('/rest/v1/submissions?name=like.' + encodeURIComponent(SUB_NAME + '*'), { method: 'DELETE', headers: auth });
 }
 
@@ -204,6 +206,74 @@ async function cleanup() {
     const still = await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_ID) + '&select=id');
     if (!still.data || still.data.length !== 1) throw new Error('row disappeared — anon deleted it');
   });
+  // ---------------------------------------------------------------- report path
+  // A report changes a row that already exists, so the community INSERT above
+  // returns 409. anon holds no UPDATE grant: the only way in is the checked
+  // function public.report_verification(). These checks prove it exists, that it
+  // demotes without touching anything else, and that it did not become a
+  // general write path. No account is needed for any of them.
+  await check('anon', 'report path: a verified listing exists to report', async () => {
+    const r = await req('/rest/v1/verifications', {
+      method: 'POST', prefer: 'return=minimal',
+      body: { id: VER_REPORT, status: 'verified', verified_by: 'live rls test', jummah_times: '1:30pm' },
+    });
+    if (!r.ok) throw new Error('could not create the row to report: ' + r.status + ' ' + JSON.stringify(r.data));
+  });
+  await check('anon', 'report path: can report an existing row through report_verification()', async () => {
+    const r = await req('/rest/v1/rpc/report_verification', {
+      method: 'POST', prefer: 'return=minimal',
+      body: { p_id: VER_REPORT, p_by: 'live rls test', p_kind: 'moved', p_note: 'moved two streets over' },
+    });
+    if (r.status === 404 || (r.data && r.data.code === 'PGRST202')) {
+      throw new Error('report_verification() is missing — run supabase/schema.sql');
+    }
+    if (!r.ok) throw new Error('report rejected: ' + r.status + ' ' + JSON.stringify(r.data));
+  });
+  await check('anon', 'report path: the row is demoted and the old verification dropped', async () => {
+    const r = await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_REPORT) +
+      '&select=status,verified_by,verified_at,reported_by,report_note,jummah_times,history');
+    if (!r.data || !r.data[0]) throw new Error('the reported row is not readable');
+    const row = r.data[0];
+    if (row.status !== 'moved') throw new Error('status is ' + JSON.stringify(row.status));
+    if (row.verified_by !== null || row.verified_at !== null) throw new Error('the previous verification was not cleared');
+    if (row.reported_by !== 'live rls test') throw new Error('reported_by is ' + JSON.stringify(row.reported_by));
+    if (!row.report_note) throw new Error('the report note was not stored');
+    if (row.jummah_times !== '1:30pm') throw new Error('the report changed an unrelated column (jummah_times)');
+    if (!Array.isArray(row.history) || row.history.length < 1) throw new Error('history was not recorded');
+  });
+  await check('anon', 'report path: refuses a report with no name', async () => {
+    const r = await req('/rest/v1/rpc/report_verification', {
+      method: 'POST', body: { p_id: VER_REPORT, p_by: '   ', p_kind: 'moved' },
+    });
+    if (r.ok) throw new Error('a nameless report was ACCEPTED');
+    if (!r.data || r.data.code !== '22023') throw new Error('expected error 22023, got ' + r.status + ' ' + JSON.stringify(r.data));
+  });
+  await check('anon', 'report path: refuses an admin-only status as a report kind', async () => {
+    const r = await req('/rest/v1/rpc/report_verification', {
+      method: 'POST', body: { p_id: VER_REPORT, p_by: 'live rls test', p_kind: 'verified' },
+    });
+    if (r.ok) throw new Error('kind=verified was ACCEPTED — the report path can verify a listing');
+    if (!r.data || r.data.code !== '22023') throw new Error('expected error 22023, got ' + r.status + ' ' + JSON.stringify(r.data));
+  });
+  await check('anon', 'report path: cannot invent a row', async () => {
+    const r = await req('/rest/v1/rpc/report_verification', {
+      method: 'POST', body: { p_id: 'rlstest-never-' + RUN, p_by: 'live rls test', p_kind: 'closed' },
+    });
+    if (r.ok) throw new Error('reporting a non-existent row was ACCEPTED');
+    if (r.data && r.data.code !== 'P0002') throw new Error('expected P0002, got ' + r.status + ' ' + JSON.stringify(r.data));
+  });
+  await check('anon', 'report path: did not turn into a general UPDATE grant', async () => {
+    const r = await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_REPORT), { method: 'PATCH', body: { status: 'verified' } });
+    const after = await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_REPORT) + '&select=status');
+    const now = after.data && after.data[0] ? after.data[0].status : null;
+    if (now === 'verified') throw new Error('anon re-verified a reported row — UPDATE is exposed');
+    if (!now) throw new Error('the row disappeared after an anon PATCH');
+    if (now !== 'moved') throw new Error('row changed to ' + now);
+    // A 204 that matched zero visible rows is not a write; the row check above
+    // is what proves it. Only a real change would have failed this check.
+    if (r.status === 200 && Array.isArray(r.data) && r.data.length) throw new Error('anon UPDATE touched the row');
+  });
+
   await check('anon', 'can submit a masjid as pending', async () => {
     const r = await req('/rest/v1/submissions', { method: 'POST', prefer: 'return=minimal', body: { name: SUB_NAME + ' masjid', type: 'masjid' } });
     if (!r.ok) throw new Error('submit failed: ' + r.status + ' ' + JSON.stringify(r.data));

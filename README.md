@@ -164,7 +164,9 @@ node tests/rls-live.test.cjs
 ```
 
 It checks, among others: anon cannot insert `verified` without a name, anon
-cannot update or delete anything, submissions can only arrive `pending`, an
+cannot update or delete anything, a community report reaches an existing row
+only through `report_verification()` and cannot verify a listing, submissions
+can only arrive `pending`, an
 ordinary signed-in user cannot read the queue or approve their own submission,
 and only the admin can read/approve/update/delete. **If any check fails it
 prints DO NOT DEPLOY and exits non-zero.**
