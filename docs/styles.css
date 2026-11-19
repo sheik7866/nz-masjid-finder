@@ -492,7 +492,7 @@ select.full { width: 100%; }
   color: #f6f2e8;
   transition: opacity .32s ease, visibility .32s ease;
 }
-/* Set in <head> on a reload inside the same session: the greeting never paints. */
+/* Set in <head> once the session has been greeted: the greeting never paints. */
 .no-splash .splash { display: none; }
 .splash.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .splash-mark { color: var(--gold); line-height: 0; margin-bottom: 14px; }

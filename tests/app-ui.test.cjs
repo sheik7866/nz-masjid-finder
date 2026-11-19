@@ -165,13 +165,63 @@ ok('the launch screen greets first, then gets out of the way', () => {
   assert.ok(/\.splash\.is-hidden/.test(css), 'it can be faded out');
   assert.ok(/prefers-reduced-motion/.test(css) && /\.splash-wait span/.test(css), 'the motion is opt-out for reduced-motion users');
   assert.ok(/setTimeout\(hide, MAX_MS\)/.test(splash), 'a hard stop lifts it even if boot never finishes');
-  assert.ok(/sessionStorage/.test(splash), 'it greets once per session, not on every reload');
+  assert.ok(/localStorage/.test(splash) && /SESSION_MS/.test(splash), 'one greeting per browsing session, shared across tabs');
   assert.ok(/classList\.add\('no-splash'\)/.test(splash) && /\.no-splash \.splash/.test(css), 'a warm reload hides it before the first paint');
   assert.ok(html.indexOf('splash.js') < html.indexOf('<body>'), 'that decision runs in <head>, before the body paints');
   assert.ok(/window\.NZSplash\.hide\(\)/.test(app), 'the app lifts it once the first listings are on screen');
   assert.ok(!/Kia ora/.test(tour), 'the walkthrough no longer opens with “Kia ora”');
   assert.ok(/Assalāmu/.test(tour), 'the walkthrough opens with a Muslim greeting');
   assert.ok(/id=\s*'splash'|getElementById\('splash'\)/.test(tour), 'the walkthrough waits for it to lift');
+});
+
+ok('a second tab in the same session never sees the launch screen', () => {
+  const src = fs.readFileSync(path.join(__dirname, '../public/splash.js'), 'utf8');
+  const storage = {}; // one browser profile: localStorage is shared by every tab
+  const boot = (now) => {
+    const classes = new Set();
+    const listeners = {};
+    const splash = {
+      hidden: false,
+      classList: { add: (c) => classes.add(c), remove: (c) => classes.delete(c), contains: (c) => classes.has(c) },
+      setAttribute() {},
+      getAttribute() { return null; },
+    };
+    const sandbox = {
+      document: {
+        documentElement: { classList: { add: (c) => classes.add(c), contains: (c) => classes.has(c) } },
+        getElementById: () => splash,
+        addEventListener: (type, fn) => { (listeners[type] = listeners[type] || []).push(fn); },
+      },
+      localStorage: {
+        getItem: (k) => (Object.prototype.hasOwnProperty.call(storage, k) ? storage[k] : null),
+        setItem: (k, v) => { storage[k] = String(v); },
+      },
+      setTimeout: () => 0,
+      Date: { now: () => now },
+      console,
+    };
+    sandbox.window = sandbox;
+    vm.runInNewContext(src, sandbox);
+    (listeners.DOMContentLoaded || []).forEach((fn) => fn());
+    return { skipped: classes.has('no-splash'), splash, api: sandbox.NZSplash };
+  };
+  const t0 = 1795000000000;
+  const MIN = 60 * 1000;
+
+  const first = boot(t0);
+  assert.strictEqual(first.skipped, false, 'the first load of a session greets');
+  assert.strictEqual(typeof first.api.hide, 'function', 'and app.js can lift it');
+
+  const secondTab = boot(t0 + 1 * MIN);
+  assert.strictEqual(secondTab.skipped, true, 'a second tab in the same session is greeted silently');
+  assert.strictEqual(secondTab.splash.hidden, true, 'and the greeting is out of the document for it');
+  assert.doesNotThrow(() => secondTab.api.hide(), 'a no-op lift is not an error');
+
+  const reload = boot(t0 + 5 * MIN);
+  assert.strictEqual(reload.skipped, true, 'a reload stays inside the same session');
+
+  const nextSession = boot(t0 + 36 * MIN); // 31 quiet minutes after the reload above
+  assert.strictEqual(nextSession.skipped, false, 'after 30 quiet minutes the next session greets again');
 });
 
 ok('the walkthrough switches to the Prayer screen before the tab-bar step', () => {
