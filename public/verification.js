@@ -283,6 +283,14 @@
     canUndo: () => !SB.enabled || SB.isSignedIn(),
 
     /**
+     * Whether this visitor can change a listing that already has a shared row.
+     * Confirming one is an UPDATE, which RLS grants only to is_admin(); a
+     * visitor cannot, so the UI withholds the button. Reporting stays open to
+     * everyone through report_verification().
+     */
+    canChangeExisting: () => !SB.enabled || Boolean(SB.isAdmin && SB.isAdmin()),
+
+    /**
      * Remove a verification. Shared rows go through the admin DELETE path,
      * because the database grants UPDATE/DELETE only to is_admin(); a visitor
      * gets a clear error instead of a fake local "undo". With no Supabase

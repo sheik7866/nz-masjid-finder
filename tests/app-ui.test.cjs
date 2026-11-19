@@ -268,6 +268,32 @@ ok('the walkthrough switches to the Prayer screen before the tab-bar step', () =
   assert.ok(/startTab/.test(tour) && /goTab\(startTab\)/.test(tour), 'leaving the tour returns to the tab the visitor came from');
 });
 
+ok('a visitor is not offered Confirm on a listing only an admin can change', () => {
+  const { sandbox } = makeApp({ canChangeExisting: () => false });
+  const m = {
+    id: 'node/9', name: 'Flagged Masjid', lat: -36.8, lon: 174.7,
+    address: { formatted: '9 Test Rd' }, kind: 'mosque',
+    verification: { status: 'moved', reported_by: 'Amina', reported_at: new Date().toISOString(), report_note: 'Moved two streets over' },
+  };
+  const html = sandbox.NZMapExtra.verifySection(m);
+  assert.ok(!/data-act="confirm"/.test(html), 'no Confirm button on a stored listing: ' + html);
+  assert.ok(/Already reported — awaiting review/.test(html), 'the queue state is explained');
+  assert.ok(/Moved two streets over/.test(html), 'the existing report is still shown');
+  assert.ok(/data-act="report"/.test(html), 'the visitor can still report');
+});
+
+ok('an admin still gets Confirm on a listing that is already stored', () => {
+  const { sandbox } = makeApp({ canChangeExisting: () => true });
+  const m = {
+    id: 'node/9', name: 'Flagged Masjid', lat: -36.8, lon: 174.7,
+    address: { formatted: '9 Test Rd' }, kind: 'mosque',
+    verification: { status: 'moved', reported_by: 'Amina', reported_at: new Date().toISOString() },
+  };
+  const html = sandbox.NZMapExtra.verifySection(m);
+  assert.ok(/data-act="confirm"/.test(html), 'an admin can re-confirm: ' + html);
+  assert.ok(!/awaiting review/.test(html), 'and does not get the visitors-only message');
+});
+
 (async () => {
   let good = 0;
   for (const t of pending) {

@@ -536,10 +536,10 @@
   function verifyBoxHtml(m) {
     const v = m.verification;
     const dir = window.NZApp.directionsLinks(m);
+    const V = window.NZVerification;
     if (v && v.status === 'verified') {
       // Undo only appears when it can actually work: a signed-out visitor used
       // to get a button that always failed, next to an admin's own verification.
-      const V = window.NZVerification;
       const canUndo = !(V && V.canUndo) || V.canUndo();
       return '<div class="vbox">' +
         '<p class="vline">✓ Confirmed by <b>' + esc(v.verified_by) + '</b> ' + esc(relTime(v.verified_at)) +
@@ -550,6 +550,24 @@
         '</div></div>';
     }
     const flagged = v && v.status && v.status !== 'unverified';
+    // A listing that already has a shared row cannot be confirmed by a visitor:
+    // re-confirming is an UPDATE, and RLS grants UPDATE only to is_admin(). A
+    // report is still open to everyone (report_verification()), so show where
+    // the listing stands and offer that, instead of a button that cannot work.
+    const canChange = !(V && V.canChangeExisting) || V.canChangeExisting();
+    if (v && !canChange) {
+      return '<div class="vbox">' +
+        (flagged ? '<p class="vline">⚠ Reported by <b>' + esc(v.reported_by || 'Anonymous') + '</b> ' + esc(relTime(v.reported_at)) +
+          (v.report_note ? ' — “' + esc(v.report_note) + '”' : '') + '</p>' : '') +
+        '<p class="vline">' + (flagged
+          ? 'Already reported — awaiting review. An admin checks it against the masjid’s own details.'
+          : 'Already on file — only an admin can change it.') +
+        ' You can still report a problem below.</p>' +
+        '<div class="vbtns">' +
+        '<button class="vbtn report" data-act="report" data-id="' + esc(m.id) + '" type="button">Report issue</button>' +
+        '<a class="vbtn" href="' + dir.google + '" target="_blank" rel="noopener">Check on map</a>' +
+        '</div></div>';
+    }
     return '<div class="vbox">' +
       (flagged ? '<p class="vline">⚠ Reported by <b>' + esc(v.reported_by || 'Anonymous') + '</b> ' + esc(relTime(v.reported_at)) +
         (v.report_note ? ' — “' + esc(v.report_note) + '”' : '') + '</p>' : '') +

@@ -15,6 +15,7 @@ function makeSB(config, fetchImpl) {
   const sandbox = {
     localStorage, console, JSON, Date, Math, Promise, Error, Array, Object, String, Number,
     encodeURIComponent, setTimeout, clearTimeout,
+    atob: (s) => Buffer.from(s, 'base64').toString('binary'),
     fetch: fetchImpl,
   };
   sandbox.window = sandbox;
@@ -156,6 +157,22 @@ ok("sign-in stores a session token and attaches it to requests", async () => {
 ok("sign-in error surfaces the Supabase message", async () => {
   const SB = makeSB(DEMO, () => json({ error_description: "Invalid login credentials" }, 400));
   await assert.rejects(() => SB.signIn("a@b.c", "wrong"), /Invalid login credentials/);
+});
+
+ok("isAdmin reads app_metadata.role, and only for a signed-in session", async () => {
+  const b64url = (o) => Buffer.from(JSON.stringify(o)).toString('base64url');
+  const adminJwt = 'header.' + b64url({ app_metadata: { role: 'admin' } }) + '.sig';
+  const SB = makeSB(DEMO, () => json({ access_token: adminJwt }));
+  assert.strictEqual(SB.isAdmin(), false, 'signed out is never an admin');
+  await SB.signIn('admin@example.org', 'secret');
+  assert.strictEqual(SB.isAdmin(), true, 'the admin claim is read from the token');
+  SB.signOut();
+  assert.strictEqual(SB.isAdmin(), false, 'signing out drops the claim');
+
+  const userJwt = 'header.' + b64url({ app_metadata: { role: 'user' } }) + '.sig';
+  const SB2 = makeSB(DEMO, () => json({ access_token: userJwt }));
+  await SB2.signIn('tester@example.org', 'secret');
+  assert.strictEqual(SB2.isAdmin(), false, 'an ordinary account stays ordinary');
 });
 
 (async () => {

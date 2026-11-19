@@ -200,6 +200,25 @@
     getSession,
     isSignedIn: () => Boolean(getSession() && getSession().access_token),
 
+    /**
+     * Display-only: does the stored session carry app_metadata.role = 'admin'?
+     * The database still decides every write (is_admin() inside RLS); this only
+     * stops the UI offering an action that is certain to be refused. Reading
+     * the claim is safe — app_metadata can only be written with the service key.
+     */
+    isAdmin() {
+      const s = getSession();
+      if (!s) return false;
+      const fromUser = s.user && s.user.app_metadata && s.user.app_metadata.role;
+      if (fromUser) return fromUser === 'admin';
+      try {
+        const part = String(s.access_token || '').split('.')[1];
+        if (!part) return false;
+        const payload = JSON.parse(atob(part.replace(/-/g, '+').replace(/_/g, '/')));
+        return Boolean(payload && payload.app_metadata && payload.app_metadata.role === 'admin');
+      } catch (e) { return false; }
+    },
+
     // ---------------------------------------------------------- verifications
     async listVerifications() {
       const rows = await request('/rest/v1/verifications?select=*&order=updated_at.desc&limit=5000');

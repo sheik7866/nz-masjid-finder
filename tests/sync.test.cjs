@@ -334,6 +334,26 @@ ok('submitMasjid goes to the shared queue; offline only as a retry queue', async
   sandbox.navigator.onLine = true;
 });
 
+asyncOk('only an admin is offered Confirm on a listing that is already stored', async () => {
+  const local = makeEnv(null, { noSupabase: true });
+  assert.strictEqual(local.V.canChangeExisting(), true, 'local-only mode has nothing shared to protect');
+
+  const session = { access_token: 'header.eyJ9.sig', user: { app_metadata: { role: 'admin' } } };
+  const env = makeEnv((url) => {
+    if (url.includes('/auth/v1/token')) {
+      return Promise.resolve({
+        ok: true, status: 200,
+        text: () => JSON.stringify(session),
+        json: () => Promise.resolve(session),
+      });
+    }
+    return Promise.reject(new Error('unexpected ' + url));
+  });
+  assert.strictEqual(env.V.canChangeExisting(), false, 'a visitor gets no Confirm button');
+  await env.SB.signIn('admin@example.org', 'secret');
+  assert.strictEqual(env.V.canChangeExisting(), true, 'an admin can re-confirm');
+});
+
 (async () => {
   let good = 0;
   for (const t of pending) {

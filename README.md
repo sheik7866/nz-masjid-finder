@@ -494,7 +494,10 @@ e.g. `{"node/3683039850": {"verified": true, "verified_by": "Admin", "jummah_tim
    `public.report_verification()`: it requires a name, accepts only report
    statuses, and writes only the report columns (an anonymous visitor still has
    no `UPDATE` grant on the table). Re-run `supabase/schema.sql` to add it to an
-   existing project.
+   existing project. Confirming a listing that already has a shared row stays
+   admin-only (RLS grants `UPDATE` to `is_admin()`), so a visitor sees the
+   listing's state and the report button instead of a Confirm button that the
+   database would refuse.
 3. **Export verified** downloads `nz-masjid-verifications-<date>.json` — the review
    artefact you merge into `data/overrides.json` or upload to Supabase.
 4. Shared storage (optional, free): run `supabase/schema.sql` in a Supabase project,
@@ -544,18 +547,18 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 137 checks across eight suites (the live RLS audit
+`sh tests/run-all.sh` runs 141 checks across eight suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
-- `tests/supabase.test.cjs` (13) — offline queue, sync, submissions, sign-in, admin PATCH, delete refusal
+- `tests/supabase.test.cjs` (14) — offline queue, sync, submissions, sign-in, admin PATCH, delete refusal
 - `tests/core.test.cjs` (30) — prayer maths vs AlAdhan, timezone, next-prayer, qibla
   bearings, Hijri dates, Ramadan calendar, dataset sanity, source URLs, region
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
 - `tests/schema.test.cjs` (31) — RLS, grants, policies, admin role, constraints, rerunnability
-- `tests/sync.test.cjs` (12) — shared-store merge, offline queue, realtime, admin-only undo
+- `tests/sync.test.cjs` (13) — shared-store merge, offline queue, realtime, admin-only undo
 - `tests/jummah.test.cjs` (28) — Jumu'ah extraction, bare 24-hour times, page/link selection, directory matching by region/alias/address
-- `tests/app-ui.test.cjs` (8) — the verify hooks reach the shared badge updater and the Undo path, a failed or queued write is never toasted as saved, the walkthrough opens Prayer, and the launch screen bows out
+- `tests/app-ui.test.cjs` (10) — the verify hooks reach the shared badge updater and the Undo path, a failed or queued write is never toasted as saved, a visitor is not offered a Confirm button that only an admin can use, the walkthrough opens Prayer, and the launch screen bows out
 - `tests/mirror.test.cjs` (2) — `docs/` is byte-identical to `public/`, so the published page cannot drift
 - `tests/rls-live.test.cjs` — live three-identity audit against your project (skips without credentials)
 
