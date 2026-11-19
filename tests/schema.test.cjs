@@ -244,6 +244,29 @@ ok('the app never sends a status to the submissions endpoint', () => {
   assert.ok(/const row = \{[\s\S]*?name: sub\.name/.test(create));
 });
 
+// ---------------------------------------------------------------- community reports
+ok('a community report on an existing row goes through one narrow, checked function', () => {
+  const fn = sql.match(/create or replace function public\.report_verification\([\s\S]*?\$\$;/i);
+  assert.ok(fn, 'report_verification() exists');
+  assert.ok(/security definer/i.test(fn[0]), 'it must write past the forced RLS');
+  assert.ok(/set search_path = ''/i.test(fn[0]), 'search_path is pinned');
+  assert.ok(/v_by is null/i.test(fn[0]) && /A name is required/i.test(fn[0]), 'a report always carries a name');
+  assert.ok(/v_kind not in \('needs_review', 'closed', 'moved', 'outdated'\)/i.test(fn[0]), 'only report statuses are accepted');
+  assert.ok(/verified_by = null/i.test(fn[0]) && /verified_at = null/i.test(fn[0]), 'a report drops any verification');
+  assert.ok(/left\(btrim\(coalesce\(p_note, ''\)\), 300\)/i.test(fn[0]), 'the note is bounded');
+  assert.ok(/revoke all on function public\.report_verification/i.test(flat), 'execute is revoked from PUBLIC first');
+  assert.ok(/grant execute on function public\.report_verification\(text, text, text, text\) to anon, authenticated/i.test(flat), 'callable by the community');
+});
+
+ok('the report function does not grant anon UPDATE or DELETE on the table', () => {
+  const grants = [...flat.matchAll(/grant ([^;]+) on public\.verifications to ([^;]+);/g)];
+  grants.forEach((m) => {
+    if (!/\banon\b/.test(m[2])) return;
+    assert.ok(!/update/.test(m[1]), 'anon still has no UPDATE grant');
+    assert.ok(!/delete/.test(m[1]), 'anon still has no DELETE grant');
+  });
+});
+
 // ---------------------------------------------------------------- self-check present
 ok('the script ships a self-check query for grants and RLS', () => {
   assert.ok(/information_schema\.role_table_grants/i.test(sql));

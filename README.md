@@ -49,6 +49,11 @@ Key decisions:
   insert policy requires `verified_by` or `reported_by`, and the table constraint
   `verified_needs_a_name` blocks `status = 'verified'` with an empty verifier
   even for an admin.
+- **A community report cannot rewrite a verification.** anon has no `UPDATE`
+  grant and never gets one (a policy cannot limit which columns change).
+  Reporting an existing row calls `public.report_verification()`, a
+  `SECURITY DEFINER` function that checks the name and report kind itself and
+  can only demote the row, writing the report columns.
 - **Submissions arrive `pending` or not at all** (`with check (status = 'pending')`),
   and cannot be read back by the public — one person's submission is not public.
 - **Ordinary users cannot approve their own submission**: they have no UPDATE
@@ -483,6 +488,11 @@ e.g. `{"node/3683039850": {"verified": true, "verified_by": "Admin", "jummah_tim
 2. In the app, press **🛡 Verify** → each card gets **✓ Confirm details** and
    **Report issue**. Confirming stores: name, timestamp, source URL, optional
    Jumu'ah time. Reporting marks it `needs_review` and drops any prior verification.
+   A report on an already-verified listing goes through the database function
+   `public.report_verification()`: it requires a name, accepts only report
+   statuses, and writes only the report columns (an anonymous visitor still has
+   no `UPDATE` grant on the table). Re-run `supabase/schema.sql` to add it to an
+   existing project.
 3. **Export verified** downloads `nz-masjid-verifications-<date>.json` — the review
    artefact you merge into `data/overrides.json` or upload to Supabase.
 4. Shared storage (optional, free): run `supabase/schema.sql` in a Supabase project,

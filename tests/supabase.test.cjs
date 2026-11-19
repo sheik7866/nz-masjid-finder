@@ -81,6 +81,22 @@ ok("deleteVerification treats an RLS-filtered empty result as a refusal", async 
   await assert.rejects(() => SB.deleteVerification("node/1"), /only an admin/i);
 });
 
+ok("reportVerification POSTs to the report RPC and never PATCHes the table", async () => {
+  let seen = null;
+  const SB = makeSB(DEMO, (url, opts) => { seen = { url, opts }; return json(null, 204); });
+  const row = await SB.reportVerification("node/1", { status: "moved", reported_by: "Sara", report_note: "Moved" });
+  assert.strictEqual(row.status, "moved");
+  assert.ok(seen.url.endsWith("/rest/v1/rpc/report_verification"), "RPC endpoint used: " + seen.url);
+  assert.strictEqual(seen.opts.method, "POST");
+  const body = JSON.parse(seen.opts.body);
+  assert.deepStrictEqual(body, { p_id: "node/1", p_by: "Sara", p_kind: "moved", p_note: "Moved" });
+});
+
+ok("a project without report_verification() is told to run schema.sql", async () => {
+  const SB = makeSB(DEMO, () => json({ code: "PGRST202", message: "Could not find the function public.report_verification" }, 404));
+  await assert.rejects(() => SB.reportVerification("node/1", { reported_by: "Sara" }), /run supabase\/schema\.sql/i);
+});
+
 ok("upsertVerification tries INSERT first, escalates to UPDATE on 409", async () => {
   const calls = [];
   const SB = makeSB(DEMO, (url, opts) => {

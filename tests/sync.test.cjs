@@ -116,8 +116,32 @@ ok('confirm() writes to Supabase and caches only the server-accepted row', async
   assert.strictEqual(body.jummah_times, '1:15pm');
 });
 
-// ---------------------------------------------------------------- 409 on INSERT escalates to admin UPDATE
-ok('write() falls back INSERT -> admin UPDATE on 409 conflict', async () => {
+// ---------------------------------------------------------------- 409 on INSERT: report vs confirm
+ok('a report on an existing row goes through report_verification(), not an UPDATE', async () => {
+  const seen = [];
+  const rpcBodies = [];
+  const { V } = makeEnv((url, opts) => {
+    seen.push({ url, method: opts.method });
+    if (url.includes('/submissions') && url.includes('status=eq.approved')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
+    if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
+    if (url.includes('/rest/v1/rpc/report_verification')) {
+      rpcBodies.push(JSON.parse(opts.body));
+      return Promise.resolve({ ok: true, status: 204, text: () => JSON.stringify('') });
+    }
+    if (opts.method === 'POST') return Promise.resolve({ ok: false, status: 409, text: () => JSON.stringify({ code: '23505', message: 'duplicate' }) });
+    if (opts.method === 'PATCH') return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify('') });
+    return Promise.reject(new Error('unexpected ' + url));
+  });
+  await V.sync();
+  const res = await V.report(ID, { by: 'Sara', kind: 'moved', note: 'moved away' });
+  assert.strictEqual(res.stored, 'supabase');
+  assert.strictEqual(res.via, 'report');
+  assert.strictEqual(rpcBodies.length, 1, 'the report function was called');
+  assert.deepStrictEqual(rpcBodies[0], { p_id: ID, p_by: 'Sara', p_kind: 'moved', p_note: 'moved away' });
+  assert.ok(!seen.some((c) => c.method === 'PATCH'), 'anon must never PATCH the table');
+});
+
+ok('a confirmation on an existing row still uses the admin UPDATE path', async () => {
   const seen = [];
   const { V } = makeEnv((url, opts) => {
     seen.push({ url, method: opts.method });
@@ -125,13 +149,13 @@ ok('write() falls back INSERT -> admin UPDATE on 409 conflict', async () => {
     if (url.includes('/verifications?select=')) return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify([]) });
     if (opts.method === 'POST') return Promise.resolve({ ok: false, status: 409, text: () => JSON.stringify({ code: '23505', message: 'duplicate' }) });
     if (opts.method === 'PATCH') return Promise.resolve({ ok: true, status: 200, text: () => JSON.stringify('') });
-    return Promise.reject(new Error('unexpected'));
+    return Promise.reject(new Error('unexpected ' + url));
   });
   await V.sync();
-  const res = await V.report(ID, { by: 'Sara', kind: 'moved', note: 'moved away' });
-  assert.strictEqual(res.stored, 'supabase');
+  const res = await V.confirm(ID, { by: 'Ahmed' });
   assert.strictEqual(res.via, 'update');
   assert.ok(seen.some((c) => c.method === 'PATCH' && c.url.includes('id=eq.' + encodeURIComponent(ID))));
+  assert.ok(!seen.some((c) => String(c.url).includes('/rpc/')), 'a verification is not routed to the report function');
 });
 
 // ---------------------------------------------------------------- offline: queued, not shown, flushed later

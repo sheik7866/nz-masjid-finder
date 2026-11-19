@@ -16,7 +16,10 @@
 --   anon
 --     verifications  SELECT (public badge) + INSERT a first record with a name
 --                    and status 'verified' or 'needs_review' ONLY.
---                    No UPDATE, no DELETE, cannot touch an existing row.
+--                    No UPDATE, no DELETE, cannot rewrite an existing row.
+--                    One narrow function, report_verification(), lets it
+--                    report a change: it needs a name and can only demote the
+--                    row, writing the report columns and nothing else.
 --     submissions    INSERT only, and only with status 'pending'.
 --                    No SELECT: one person's submission is not public.
 --
@@ -265,6 +268,80 @@ grant select, insert on public.submissions   to anon, authenticated;
 -- matter, but only rows passing is_admin() are visible to them.
 grant update, delete on public.verifications to authenticated;
 grant select, update, delete on public.submissions to authenticated;
+
+-- ---------------------------------------------------------------- community reports
+-- A report changes a row that already exists: someone verified or flagged the
+-- listing first, so the community INSERT above fails with 409. anon must NOT be
+-- given UPDATE — an UPDATE policy cannot say "only these columns may change",
+-- so it would let any visitor rewrite a whole verification. This one function
+-- is the only community path into an existing row. It is SECURITY DEFINER
+-- because RLS is FORCED here and the caller never has UPDATE; the function
+-- therefore checks every argument itself and can only demote a row.
+-- The function owner must be a role with BYPASSRLS (the SQL Editor runs as
+-- `postgres`, which has it); running this as a role without it would fail at
+-- the UPDATE with a row-level security error.
+create or replace function public.report_verification(
+  p_id   text,
+  p_by   text,
+  p_kind text default 'needs_review',
+  p_note text default null
+)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_by   text := nullif(btrim(coalesce(p_by, '')), '');
+  v_kind text := coalesce(nullif(btrim(coalesce(p_kind, '')), ''), 'needs_review');
+  v_note text := nullif(left(btrim(coalesce(p_note, '')), 300), '');
+  v_row  public.verifications%rowtype;
+begin
+  if v_by is null then
+    raise exception 'A name is required to report a listing' using errcode = '22023';
+  end if;
+  if length(v_by) > 60 then
+    raise exception 'Reporter name is too long' using errcode = '22023';
+  end if;
+  if v_kind not in ('needs_review', 'closed', 'moved', 'outdated') then
+    raise exception 'Unknown report kind: %', v_kind using errcode = '22023';
+  end if;
+
+  select * into v_row from public.verifications where id = p_id for update;
+  if not found then
+    raise exception 'No verification record for %', p_id using errcode = 'P0002';
+  end if;
+
+  -- Only the report columns move. The listing's note and Jumu'ah time stay as
+  -- they are: an admin decides whether they survive the review.
+  update public.verifications
+     set status      = v_kind,
+         reported_by = v_by,
+         reported_at = now(),
+         report_note = v_note,
+         verified_by = null,
+         verified_at = null,
+         source_url  = null,
+         updated_at  = now(),
+         history     = coalesce(v_row.history, '[]'::jsonb) || jsonb_build_array(
+           jsonb_build_object(
+             'action', 'reported:' || v_kind,
+             'at',     now(),
+             'by',     v_by,
+             'note',   v_note
+           )
+         )
+   where id = p_id;
+end;
+$$;
+
+revoke all on function public.report_verification(text, text, text, text) from public;
+grant execute on function public.report_verification(text, text, text, text) to anon, authenticated;
+
+comment on function public.report_verification(text, text, text, text) is
+  'Community report on an existing verification. Requires a name, accepts only '
+  'report statuses, clears any verification and writes only report columns; '
+  'anon is never granted UPDATE on the table itself.';
 
 -- ---------------------------------------------------------------- indexes
 create index if not exists verifications_status_idx on public.verifications (status);

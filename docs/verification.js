@@ -67,6 +67,12 @@
   }
 
   // ---------------------------------------------------------- write paths
+  /** A report carries reported_by and a non-verified status. Its row already
+   *  exists, so it is the one community write the database accepts on an
+   *  existing record — through report_verification(), not an UPDATE grant. */
+  const isReport = (rec) => Boolean(rec && rec.reported_by && rec.status &&
+    rec.status !== 'verified' && rec.status !== 'unverified');
+
   async function pushVerification(rec) {
     if (!SB.enabled) throw new Error('Supabase is not configured');
     try {
@@ -75,7 +81,17 @@
       return { stored: 'supabase', via: 'insert' };
     } catch (e) {
       if (e.status === 409 || (e.body && (e.body.code === '23505' || /duplicate/i.test(e.message || '')))) {
-        // ...row exists, so this is an admin UPDATE — the database decides.
+        // ...the row exists. A report is the only community write allowed on an
+        // existing row; a verification still needs an admin UPDATE.
+        if (isReport(rec)) {
+          if (!SB.reportVerification) {
+            const err = new Error('Change reports are not available in this version of the app — reload to get the latest copy.');
+            err.status = 501;
+            throw err;
+          }
+          await SB.reportVerification(rec.id, rec);
+          return { stored: 'supabase', via: 'report' };
+        }
         await SB.updateVerification(rec.id, rec);
         return { stored: 'supabase', via: 'update' };
       }

@@ -237,6 +237,38 @@
       return row;
     },
 
+    /**
+     * Community path for a report on an EXISTING row. anon is never granted
+     * UPDATE on the table, so the write goes through report_verification(),
+     * which checks the name and kind itself and can only demote the row.
+     */
+    async reportVerification(id, rec) {
+      const r = rec || {};
+      const row = {
+        p_id: String(id),
+        p_by: (r.reported_by || r.by || '').trim() || 'Anonymous',
+        p_kind: r.status || r.kind || 'needs_review',
+        p_note: r.report_note || r.note || null,
+      };
+      try {
+        await request('/rest/v1/rpc/report_verification', {
+          method: 'POST',
+          headers: { Prefer: 'return=minimal' },
+          body: row,
+        });
+      } catch (e) {
+        // A project that has not re-run schema.sql has no function yet; say so
+        // plainly instead of repeating "Could not find the function".
+        if (e.status === 404 || (e.body && e.body.code === 'PGRST202')) {
+          const err = new Error('Change reports are not enabled on this project yet — run supabase/schema.sql to add report_verification().');
+          err.status = 501;
+          throw err;
+        }
+        throw e;
+      }
+      return { id: row.p_id, status: row.p_kind, reported_by: row.p_by };
+    },
+
     /** Admin path: UPDATE an existing row. Rejected by RLS unless is_admin(). */
     async updateVerification(id, patch) {
       const row = Object.assign({}, patch, { updated_at: new Date().toISOString() });
