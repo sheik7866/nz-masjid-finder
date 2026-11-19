@@ -688,7 +688,7 @@
       }
     });
 
-    list.addEventListener('submit', (e) => {
+    list.addEventListener('submit', async (e) => {
       const form = e.target.closest('.vform');
       if (!form) return;
       e.preventDefault();
@@ -698,9 +698,26 @@
       const name = (data.by || '').trim();
       if (!name) return toast('Please add your name — verification must not be anonymous');
       localStorage.setItem('nzmasjidfinder.verifier', JSON.stringify({ name }));
-      if (act === 'confirm') { V.confirm(id, data); toast('✓ Verified and saved with your name'); }
-      else { V.report(id, data); toast('Report saved — listing marked for review'); }
-      refresh(id);
+      // The success message must wait for the store: a rejected write left the
+      // listing unchanged, and an offline write is only queued here. Claiming
+      // either was saved tells a volunteer their work counted when it did not.
+      const submit = form.querySelector('button[type="submit"]');
+      if (submit) submit.disabled = true;
+      try {
+        const res = act === 'confirm' ? await V.confirm(id, data) : await V.report(id, data);
+        refresh(id);
+        if (res && res.stored === 'queued') {
+          toast(res.reason === 'no-supabase'
+            ? 'Saved on this device only — shared sync is not configured'
+            : 'Saved on this device — it will sync when you are back online');
+        } else toast(act === 'confirm'
+          ? '✓ Verified and saved with your name'
+          : 'Report saved — listing marked for review');
+      } catch (err) {
+        // Keep the form open and filled in so the same details can be retried.
+        if (submit) submit.disabled = false;
+        toast('Not saved — ' + (err.message || 'the database refused') + '. Nothing was changed.');
+      }
     });
 
     document.addEventListener('nz:tab', (e) => {

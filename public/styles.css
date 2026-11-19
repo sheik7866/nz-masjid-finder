@@ -440,7 +440,13 @@ select.full { width: 100%; }
   .mapwrap { order: -1; height: 42dvh; position: sticky; top: var(--topbar-offset); z-index: 900; }
   .panel { border-right: 0; border-top: 1px solid var(--line); padding-bottom: 8px; }
   .list { overflow: visible; max-height: none; }
-  .foot { display: none; }
+  /* ODbL and the tile/API terms require the credits wherever the data is
+     shown, so the footer stays on phones — only tightened. The fixed tab bar
+     covers the end of the document, hence the matching bottom padding. */
+  .foot {
+    gap: 2px 6px; padding: 8px 14px calc(var(--tabbar-offset) + 8px);
+    font-size: 10.5px; line-height: 1.5; text-align: center;
+  }
   .topbar h1 { font-size: 15.5px; }
   .topactions .btn { padding: 8px 9px; font-size: 12.5px; min-height: 44px; }
   .topactions #mNear { padding: 8px 10px; }

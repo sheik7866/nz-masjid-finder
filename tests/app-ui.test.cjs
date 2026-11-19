@@ -12,7 +12,7 @@ const assert = require('assert');
 
 const flush = () => new Promise((resolve) => setImmediate(resolve));
 
-function makeApp() {
+function makeApp(store) {
   const listeners = {};
   const els = {};
   const node = () => ({
@@ -57,6 +57,8 @@ function makeApp() {
     report: async () => ({}),
     async undo(id) { V.undoCalls.push(id); },
   };
+  // A test can swap in a store that rejects or queues a write.
+  if (store) Object.assign(V, store);
   const sandbox = {
     document,
     navigator: { onLine: true },
@@ -134,12 +136,42 @@ ok('saving a confirmation re-renders through the shared badge updater', async ()
   assert.ok(submits.length > 0, 'the verify hooks registered their submit handler');
   for (const fn of submits) {
     await fn({
-      target: { closest: () => ({ dataset: { id: 'node/1', form: 'confirm' } }) },
+      target: { closest: () => ({ dataset: { id: 'node/1', form: 'confirm' }, querySelector: () => null }) },
       preventDefault() {},
     });
   }
   assert.deepStrictEqual(V.confirmed, ['node/1'], 'confirmation reached the store');
   assert.ok(renders > 0, 'the card re-rendered without a ReferenceError');
+});
+
+ok('a failed or queued verification is never announced as saved', async () => {
+  const submit = async (store) => {
+    const { sandbox, els } = makeApp(store);
+    const App = sandbox.NZApp;
+    App.renderMasjidList = () => {};
+    sandbox.document.dispatchEvent(new sandbox.CustomEvent('DOMContentLoaded'));
+    await flush();
+    await flush();
+    App.masjids = [{ id: 'node/1', name: 'Test Masjid', lat: -36.8, lon: 174.7, address: { formatted: '1 Test Rd' }, kind: 'mosque' }];
+    for (const fn of els.mList._l.submit || []) {
+      await fn({
+        target: { closest: () => ({ dataset: { id: 'node/1', form: 'confirm' }, querySelector: () => null }) },
+        preventDefault() {},
+      });
+    }
+    return els.toast.textContent;
+  };
+
+  // The old handler toasted “✓ Verified and saved” before the write was even
+  // sent, so a rejected write told the volunteer their work had counted.
+  const failed = await submit({ confirm: async () => { throw new Error('JWT expired'); } });
+  assert.ok(/^Not saved/.test(failed), 'a rejected write says so: ' + failed);
+  assert.ok(/JWT expired/.test(failed), 'and keeps the reason: ' + failed);
+  assert.ok(!/Verified/.test(failed), 'it never claims the listing was verified');
+
+  const queued = await submit({ confirm: async () => ({ stored: 'queued' }) });
+  assert.ok(/will sync when you are back online/.test(queued), 'an offline write is reported as queued: ' + queued);
+  assert.ok(!/✓ Verified and saved/.test(queued), 'not as saved for everyone');
 });
 
 ok('the walkthrough is modal, keyboard dismissible and replayable', () => {

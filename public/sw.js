@@ -8,7 +8,7 @@
  *
  * Bump CACHE when the shell changes; older caches are deleted on activate.
  */
-const CACHE = 'nz-masjid-v42';
+const CACHE = 'nz-masjid-v43';
 const TILE_CACHE = 'nz-masjid-tiles-v1';
 const TILE_HOST = 'tile.openstreetmap.org';
 const TILE_LIMIT = 300;   // ~a few MB: panning a region, not a whole country
