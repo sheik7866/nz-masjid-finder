@@ -258,6 +258,13 @@ ok('a community report on an existing row goes through one narrow, checked funct
   assert.ok(/grant execute on function public\.report_verification\(text, text, text, text\) to anon, authenticated/i.test(flat), 'callable by the community');
 });
 
+ok('a report for a missing listing is a client error, not a server fault', () => {
+  const fn = sql.match(/create or replace function public\.report_verification\([\s\S]*?\$\$;/i);
+  assert.ok(fn, 'report_verification() exists');
+  assert.ok(/errcode = 'P0001'/i.test(fn[0]), 'P0001 is the code PostgREST maps to HTTP 400');
+  assert.ok(!/P0002/i.test(fn[0]), 'P0002 is unmapped and came back as a 500');
+});
+
 ok('the report function does not grant anon UPDATE or DELETE on the table', () => {
   const grants = [...flat.matchAll(/grant ([^;]+) on public\.verifications to ([^;]+);/g)];
   grants.forEach((m) => {

@@ -547,7 +547,7 @@ and is retried on the next load (`· offline — queued` in the verification bar
 sh tests/run-all.sh
 ```
 
-`sh tests/run-all.sh` runs 141 checks across eight suites (the live RLS audit
+`sh tests/run-all.sh` runs 142 checks across eight suites (the live RLS audit
 skips without credentials):
 
 - `tests/verification.test.cjs` (13) — verify / report / undo / export / corrupt storage
@@ -555,7 +555,7 @@ skips without credentials):
 - `tests/core.test.cjs` (30) — prayer maths vs AlAdhan, timezone, next-prayer, qibla
   bearings, Hijri dates, Ramadan calendar, dataset sanity, source URLs, region
   assignment, attribution, and a guard that no unverified Jumu'ah time is shipped
-- `tests/schema.test.cjs` (31) — RLS, grants, policies, admin role, constraints, rerunnability
+- `tests/schema.test.cjs` (32) — RLS, grants, policies, admin role, constraints, rerunnability
 - `tests/sync.test.cjs` (13) — shared-store merge, offline queue, realtime, admin-only undo
 - `tests/jummah.test.cjs` (28) — Jumu'ah extraction, bare 24-hour times, page/link selection, directory matching by region/alias/address
 - `tests/app-ui.test.cjs` (10) — the verify hooks reach the shared badge updater and the Undo path, a failed or queued write is never toasted as saved, a visitor is not offered a Confirm button that only an admin can use, the walkthrough opens Prayer, and the launch screen bows out

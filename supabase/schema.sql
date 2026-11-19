@@ -309,7 +309,11 @@ begin
 
   select * into v_row from public.verifications where id = p_id for update;
   if not found then
-    raise exception 'No verification record for %', p_id using errcode = 'P0002';
+    -- P0001 (raise_exception) is what PostgREST maps to HTTP 400. P0002
+    -- (no_data_found) is not in its table and came back as a 500, which reads
+    -- like a server fault when the row was simply deleted while someone was
+    -- reporting it.
+    raise exception 'No verification record for %', p_id using errcode = 'P0001';
   end if;
 
   -- Only the report columns move. The listing's note and Jumu'ah time stay as

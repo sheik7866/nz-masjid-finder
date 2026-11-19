@@ -260,7 +260,9 @@ async function cleanup() {
       method: 'POST', body: { p_id: 'rlstest-never-' + RUN, p_by: 'live rls test', p_kind: 'closed' },
     });
     if (r.ok) throw new Error('reporting a non-existent row was ACCEPTED');
-    if (r.data && r.data.code !== 'P0002') throw new Error('expected P0002, got ' + r.status + ' ' + JSON.stringify(r.data));
+    // A missing row is the caller's problem, not the server's: 400, not 500.
+    if (r.status !== 400) throw new Error('expected HTTP 400, got ' + r.status + ' ' + JSON.stringify(r.data));
+    if (!r.data || r.data.code !== 'P0001') throw new Error('expected P0001, got ' + r.status + ' ' + JSON.stringify(r.data));
   });
   await check('anon', 'report path: did not turn into a general UPDATE grant', async () => {
     const r = await req('/rest/v1/verifications?id=eq.' + encodeURIComponent(VER_REPORT), { method: 'PATCH', body: { status: 'verified' } });
